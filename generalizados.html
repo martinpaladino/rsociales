@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R para Ciencias Sociales</title>
+  <meta name="description" content="Análisis de datos con R, con aplicación a las ciencias sociales">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R para Ciencias Sociales" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R para Ciencias Sociales" />
+  
+  <meta name="twitter:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+<meta name="author" content="Martín Paladino">
+
+
+<meta name="date" content="2018-08-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="lineales.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.0/DiagrammeR.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R para ciencias sociales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preámbulo</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#para-quien-es-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Para quién es este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#el-tidyverse"><i class="fa fa-check"></i><b>0.2</b> El <code>tidyverse</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introducción</a><ul>
+<li class="chapter" data-level="0.3" data-path="introduccion.html"><a href="introduccion.html#que-es-r"><i class="fa fa-check"></i><b>0.3</b> ¿Qué es R?</a><ul>
+<li class="chapter" data-level="0.3.1" data-path="introduccion.html"><a href="introduccion.html#el-lenguaje-de-programacion-r"><i class="fa fa-check"></i><b>0.3.1</b> El <em>lenguaje de programación R</em></a></li>
+<li class="chapter" data-level="0.3.2" data-path="introduccion.html"><a href="introduccion.html#el-interprete"><i class="fa fa-check"></i><b>0.3.2</b> El <em>intérprete</em></a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="introduccion.html"><a href="introduccion.html#instalacion-de-r-y-rstudio-en-windows."><i class="fa fa-check"></i><b>0.4</b> Instalación de R y Rstudio en Windows.</a></li>
+<li class="chapter" data-level="0.5" data-path="introduccion.html"><a href="introduccion.html#interface-de-rstudio."><i class="fa fa-check"></i><b>0.5</b> Interface de Rstudio.</a><ul>
+<li class="chapter" data-level="0.5.1" data-path="introduccion.html"><a href="introduccion.html#consola."><i class="fa fa-check"></i><b>0.5.1</b> Consola.</a></li>
+<li class="chapter" data-level="0.5.2" data-path="introduccion.html"><a href="introduccion.html#editor-de-archivos."><i class="fa fa-check"></i><b>0.5.2</b> Editor de Archivos.</a></li>
+<li class="chapter" data-level="0.5.3" data-path="introduccion.html"><a href="introduccion.html#entorno-de-trabajo."><i class="fa fa-check"></i><b>0.5.3</b> Entorno de trabajo.</a></li>
+<li class="chapter" data-level="0.5.4" data-path="introduccion.html"><a href="introduccion.html#graficos."><i class="fa fa-check"></i><b>0.5.4</b> Gráficos.</a></li>
+<li class="chapter" data-level="0.5.5" data-path="introduccion.html"><a href="introduccion.html#ayuda."><i class="fa fa-check"></i><b>0.5.5</b> Ayuda.</a></li>
+<li class="chapter" data-level="0.5.6" data-path="introduccion.html"><a href="introduccion.html#paquetes-de-extension."><i class="fa fa-check"></i><b>0.5.6</b> Paquetes de extensión.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="introduccion.html"><a href="introduccion.html#tipos-y-estructuras-de-datos"><i class="fa fa-check"></i><b>0.6</b> Tipos y estructuras de datos</a><ul>
+<li class="chapter" data-level="0.6.1" data-path="introduccion.html"><a href="introduccion.html#tipos-de-datos"><i class="fa fa-check"></i><b>0.6.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="0.6.2" data-path="introduccion.html"><a href="introduccion.html#estructuras-de-datos."><i class="fa fa-check"></i><b>0.6.2</b> Estructuras de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.7" data-path="introduccion.html"><a href="introduccion.html#orientacion-a-objetos."><i class="fa fa-check"></i><b>0.7</b> Orientación a objetos.</a></li>
+<li class="chapter" data-level="0.8" data-path="introduccion.html"><a href="introduccion.html#programacion-funcional."><i class="fa fa-check"></i><b>0.8</b> Programación funcional.</a></li>
+<li class="chapter" data-level="0.9" data-path="introduccion.html"><a href="introduccion.html#vocabulario."><i class="fa fa-check"></i><b>0.9</b> Vocabulario.</a></li>
+<li class="chapter" data-level="0.10" data-path="introduccion.html"><a href="introduccion.html#funciones-y-librerias-de-funciones."><i class="fa fa-check"></i><b>0.10</b> Funciones y librerías de funciones.</a></li>
+<li class="chapter" data-level="0.11" data-path="introduccion.html"><a href="introduccion.html#convenciones-de-estilo-de-este-documento."><i class="fa fa-check"></i><b>0.11</b> Convenciones de estilo de este documento.</a></li>
+<li class="chapter" data-level="0.12" data-path="introduccion.html"><a href="introduccion.html#bloques-de-codigo-y-comentarios."><i class="fa fa-check"></i><b>0.12</b> Bloques de código y comentarios.</a></li>
+<li class="chapter" data-level="0.13" data-path="introduccion.html"><a href="introduccion.html#uso-de-mayusculas."><i class="fa fa-check"></i><b>0.13</b> Uso de mayúsculas.</a></li>
+<li class="chapter" data-level="0.14" data-path="introduccion.html"><a href="introduccion.html#sobre-el-estilo-de-programacion-en-r."><i class="fa fa-check"></i><b>0.14</b> Sobre el estilo de programación en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="primeros.html"><a href="primeros.html"><i class="fa fa-check"></i><b>1</b> Primeros pasos en R</a><ul>
+<li class="chapter" data-level="1.1" data-path="primeros.html"><a href="primeros.html#crear-un-proyecto."><i class="fa fa-check"></i><b>1.1</b> Crear un proyecto.</a></li>
+<li class="chapter" data-level="1.2" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-operadores-y-operandos."><i class="fa fa-check"></i><b>1.2</b> Sintaxis de R: operadores y operandos.</a></li>
+<li class="chapter" data-level="1.3" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-funciones-y-argumentos."><i class="fa fa-check"></i><b>1.3</b> Sintaxis de R: funciones y argumentos.</a></li>
+<li class="chapter" data-level="1.4" data-path="primeros.html"><a href="primeros.html#vectores-y-atributos-de-los-vectores."><i class="fa fa-check"></i><b>1.4</b> Vectores y atributos de los vectores.</a></li>
+<li class="chapter" data-level="1.5" data-path="primeros.html"><a href="primeros.html#manipulacion-de-datos."><i class="fa fa-check"></i><b>1.5</b> Manipulación de datos.</a></li>
+<li class="chapter" data-level="1.6" data-path="primeros.html"><a href="primeros.html#funcion-para-calcular-una-mediana-con-funciones-primitivas-de-r."><i class="fa fa-check"></i><b>1.6</b> Función para calcular una mediana con funciones primitivas de R.</a></li>
+<li class="chapter" data-level="1.7" data-path="primeros.html"><a href="primeros.html#manipulacion-de-estructuras-de-datos."><i class="fa fa-check"></i><b>1.7</b> Manipulación de estructuras de datos.</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="primeros.html"><a href="primeros.html#magia"><i class="fa fa-check"></i><b>1.7.1</b> Magia</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="primeros.html"><a href="primeros.html#sobre-los-archivos-de-sintaxis."><i class="fa fa-check"></i><b>1.8</b> Sobre los archivos de sintaxis.</a></li>
+<li class="chapter" data-level="1.9" data-path="primeros.html"><a href="primeros.html#anexo"><i class="fa fa-check"></i><b>1.9</b> Anexo</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="primeros.html"><a href="primeros.html#operadores-binarios-de-r"><i class="fa fa-check"></i><b>1.9.1</b> Operadores binarios de R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html"><i class="fa fa-check"></i><b>2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#introduccion-alcances-del-problema."><i class="fa fa-check"></i><b>2.1</b> Introducción: alcances del problema.</a></li>
+<li class="chapter" data-level="2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#investigacion-reproducible.-1"><i class="fa fa-check"></i><b>2.2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#ventajas-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.1</b> Ventajas de la investigación reproducible.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#desafios-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.2</b> Desafíos de la investigación reproducible.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#filosofia-programacion-funcional-con-inmutabilidad-de-datos-transparencia-referencial-y-funciones-puras."><i class="fa fa-check"></i><b>2.3</b> Filosofía: programación funcional con inmutabilidad de datos, transparencia referencial y funciones puras.</a></li>
+<li class="chapter" data-level="2.4" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#hagamos-pizza-en-r."><i class="fa fa-check"></i><b>2.4</b> Hagamos pizza en R.</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-el-asignador.-pizzas-de-hoy-y-de-ayer."><i class="fa fa-check"></i><b>2.4.1</b> Pizzería “El asignador”. Pizzas de hoy y de ayer.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-la-funcional-clasica.-el-cambio-se-lo-da-en-parentesis."><i class="fa fa-check"></i><b>2.4.2</b> Pizzería La funcional clásica. El cambio se lo da en paréntesis.</a></li>
+<li class="chapter" data-level="2.4.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-magrittr-la-mas-del-rumbo"><i class="fa fa-check"></i><b>2.4.3</b> Pizzería magrittr ¡La más %&gt;% del rumbo!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="manejo.html"><a href="manejo.html"><i class="fa fa-check"></i><b>3</b> Manejo da datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="manejo.html"><a href="manejo.html#el-objeto-de-este-documento."><i class="fa fa-check"></i><b>3.1</b> El objeto de este documento.</a></li>
+<li class="chapter" data-level="3.2" data-path="manejo.html"><a href="manejo.html#manipulacion-de-datos-con-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Manipulación de datos con <code>tidyverse::</code></a></li>
+<li class="chapter" data-level="3.3" data-path="manejo.html"><a href="manejo.html#la-forma-de-los-datos."><i class="fa fa-check"></i><b>3.3</b> La forma de los datos.</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="manejo.html"><a href="manejo.html#sumarios-de-datos-o-base-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> ¿Sumarios de datos o base de datos?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="manejo.html"><a href="manejo.html#datos-rectangulares."><i class="fa fa-check"></i><b>3.4</b> Datos rectangulares.</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="manejo.html"><a href="manejo.html#datos-prolijos-tidy-data"><i class="fa fa-check"></i><b>3.4.1</b> Datos prolijos (tidy data)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="manejo.html"><a href="manejo.html#reformateo-de-datos."><i class="fa fa-check"></i><b>3.4.2</b> Reformateo de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="manejo.html"><a href="manejo.html#manejo-de-datos-con-dplyr"><i class="fa fa-check"></i><b>3.5</b> Manejo de datos con <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="manejo.html"><a href="manejo.html#verbos-basicos-de-dplyr"><i class="fa fa-check"></i><b>3.5.1</b> Verbos básicos de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.5.2" data-path="manejo.html"><a href="manejo.html#uso-de-la-de-sintaxis-de-dplyr"><i class="fa fa-check"></i><b>3.5.2</b> Uso de la de sintaxis de <code>dplyr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="manejo.html"><a href="manejo.html#uso-avanzado-de-dplyr"><i class="fa fa-check"></i><b>3.6</b> Uso avanzado de <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.6.1" data-path="manejo.html"><a href="manejo.html#alternar-entre-formato-largo-y-ancho."><i class="fa fa-check"></i><b>3.6.1</b> Alternar entre formato largo y ancho.</a></li>
+<li class="chapter" data-level="3.6.2" data-path="manejo.html"><a href="manejo.html#seleccionar-las-columnas-que-cumplen-determinada-condicion."><i class="fa fa-check"></i><b>3.6.2</b> Seleccionar las columnas que cumplen determinada condición.</a></li>
+<li class="chapter" data-level="3.6.3" data-path="manejo.html"><a href="manejo.html#filtrar-por-mas-de-una-condicion-o-dentro-de-un-conjunto."><i class="fa fa-check"></i><b>3.6.3</b> Filtrar por más de una condición o dentro de un conjunto.</a></li>
+<li class="chapter" data-level="3.6.4" data-path="manejo.html"><a href="manejo.html#transformacion-avanzada-de-datos."><i class="fa fa-check"></i><b>3.6.4</b> Transformacion avanzada de datos.</a></li>
+<li class="chapter" data-level="3.6.5" data-path="manejo.html"><a href="manejo.html#sumarios-avanzados."><i class="fa fa-check"></i><b>3.6.5</b> Sumarios avanzados.</a></li>
+<li class="chapter" data-level="3.6.6" data-path="manejo.html"><a href="manejo.html#funciones-avanzadas-de-combinacion-de-bases-de-datos."><i class="fa fa-check"></i><b>3.6.6</b> Funciones avanzadas de combinación de bases de datos.</a></li>
+<li class="chapter" data-level="3.6.7" data-path="manejo.html"><a href="manejo.html#operadores-avanzados-de-magrittr"><i class="fa fa-check"></i><b>3.6.7</b> Operadores avanzados de <code>magrittr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="manejo.html"><a href="manejo.html#limites-de-dplyr"><i class="fa fa-check"></i><b>3.7</b> Límites de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.8" data-path="manejo.html"><a href="manejo.html#manipulacion-con-dplyren-la-practica.-flujo-de-trabajo."><i class="fa fa-check"></i><b>3.8</b> Manipulación con <code>dplyr::</code>en la práctica. Flujo de trabajo.</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="manejo.html"><a href="manejo.html#implementacion-en-dplyr-de-un-analisis-exploratorio-de-la-base-de-datos-indice-de-marginacion-del-conapo."><i class="fa fa-check"></i><b>3.8.1</b> Implementación en dplyr:: de un análisis exploratorio de la base de datos Índice de marginación del CONAPO.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graficos.html"><a href="graficos.html"><i class="fa fa-check"></i><b>4</b> Gráficos con R y ggplot</a><ul>
+<li class="chapter" data-level="4.1" data-path="graficos.html"><a href="graficos.html#acerca-de-este-documento."><i class="fa fa-check"></i><b>4.1</b> Acerca de este documento.</a></li>
+<li class="chapter" data-level="4.2" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos."><i class="fa fa-check"></i><b>4.2</b> La gramática de los gráficos.</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="graficos.html"><a href="graficos.html#filosofia."><i class="fa fa-check"></i><b>4.2.1</b> Filosofía.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos-aplicada-en-ggplot."><i class="fa fa-check"></i><b>4.3</b> La gramática de los gráficos aplicada en <code>ggplot()</code>.</a></li>
+<li class="chapter" data-level="4.4" data-path="graficos.html"><a href="graficos.html#la-base-de-datos."><i class="fa fa-check"></i><b>4.4</b> La base de datos.</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="graficos.html"><a href="graficos.html#indice-de-marginacion-por-municipios-1990-2015."><i class="fa fa-check"></i><b>4.4.1</b> Índice de marginación por municipios 1990-2015.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="graficos.html"><a href="graficos.html#descripcion-rapida-de-la-base-de-datos."><i class="fa fa-check"></i><b>4.5</b> Descripción rápida de la base de datos.</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="graficos.html"><a href="graficos.html#nombres-cortos-y-largos."><i class="fa fa-check"></i><b>4.5.1</b> Nombres cortos y largos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="graficos.html"><a href="graficos.html#grafico-basico."><i class="fa fa-check"></i><b>4.6</b> Gráfico básico.</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="graficos.html"><a href="graficos.html#construccion-de-un-grafico-de-barras-paso-a-paso."><i class="fa fa-check"></i><b>4.6.1</b> Construcción de un gráfico de barras paso a paso.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="graficos.html"><a href="graficos.html#personalizacion-de-grafico."><i class="fa fa-check"></i><b>4.7</b> Personalización de gráfico.</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="graficos.html"><a href="graficos.html#orden-manual-de-las-categorias."><i class="fa fa-check"></i><b>4.7.1</b> Orden manual de las categorías.</a></li>
+<li class="chapter" data-level="4.7.2" data-path="graficos.html"><a href="graficos.html#orden-automatico-de-categorias."><i class="fa fa-check"></i><b>4.7.2</b> Orden automático de categorías.</a></li>
+<li class="chapter" data-level="4.7.3" data-path="graficos.html"><a href="graficos.html#titulo-subtitulo-titulos-de-ejes-vineta"><i class="fa fa-check"></i><b>4.7.3</b> Título, subtítulo, títulos de ejes, viñeta</a></li>
+<li class="chapter" data-level="4.7.4" data-path="graficos.html"><a href="graficos.html#estilos-visuales."><i class="fa fa-check"></i><b>4.7.4</b> Estilos visuales.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="graficos.html"><a href="graficos.html#graficos-intermedios-mas-de-una-serie-de-datos"><i class="fa fa-check"></i><b>4.8</b> Gráficos intermedios (más de una serie de datos)</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="graficos.html"><a href="graficos.html#datos-formato-de-datos-largo-y-ancho."><i class="fa fa-check"></i><b>4.8.1</b> Datos Formato de datos largo y ancho.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="graficos.html"><a href="graficos.html#grafico-de-barras-lado-a-lado."><i class="fa fa-check"></i><b>4.8.2</b> Gráfico de barras lado a lado.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="graficos.html"><a href="graficos.html#graficos-multipanel."><i class="fa fa-check"></i><b>4.8.3</b> Gráficos multipanel.</a></li>
+<li class="chapter" data-level="4.8.4" data-path="graficos.html"><a href="graficos.html#grafico-de-punto."><i class="fa fa-check"></i><b>4.8.4</b> Gráfico de punto.</a></li>
+<li class="chapter" data-level="4.8.5" data-path="graficos.html"><a href="graficos.html#grafico-de-punto-y-linea."><i class="fa fa-check"></i><b>4.8.5</b> Gráfico de punto y línea.</a></li>
+<li class="chapter" data-level="4.8.6" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion."><i class="fa fa-check"></i><b>4.8.6</b> Gráfico de dispersión.</a></li>
+<li class="chapter" data-level="4.8.7" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-en-paneles."><i class="fa fa-check"></i><b>4.8.7</b> Gráfico de dispersión en paneles.</a></li>
+<li class="chapter" data-level="4.8.8" data-path="graficos.html"><a href="graficos.html#grafico-de-caja."><i class="fa fa-check"></i><b>4.8.8</b> Gráfico de caja.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="graficos.html"><a href="graficos.html#personalizacion-avanzada-de-graficos."><i class="fa fa-check"></i><b>4.9</b> Personalización avanzada de gráficos.</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="graficos.html"><a href="graficos.html#etiquetas-y-elementos-de-texto."><i class="fa fa-check"></i><b>4.9.1</b> Etiquetas y elementos de texto.</a></li>
+<li class="chapter" data-level="4.9.2" data-path="graficos.html"><a href="graficos.html#ajuste-del-elemento-texto."><i class="fa fa-check"></i><b>4.9.2</b> Ajuste del elemento texto.</a></li>
+<li class="chapter" data-level="4.9.3" data-path="graficos.html"><a href="graficos.html#posicion-de-las-leyendas."><i class="fa fa-check"></i><b>4.9.3</b> Posición de las leyendas.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="graficos.html"><a href="graficos.html#escalas."><i class="fa fa-check"></i><b>4.10</b> Escalas.</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="graficos.html"><a href="graficos.html#escalas-y-sistemas-de-coordenadas"><i class="fa fa-check"></i><b>4.10.1</b> Escalas y sistemas de coordenadas</a></li>
+<li class="chapter" data-level="4.10.2" data-path="graficos.html"><a href="graficos.html#ajuste-manual-de-intervalos-de-escala."><i class="fa fa-check"></i><b>4.10.2</b> Ajuste manual de intervalos de escala.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="graficos.html"><a href="graficos.html#transformacion-de-escalas"><i class="fa fa-check"></i><b>4.10.3</b> Transformación de escalas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="graficos.html"><a href="graficos.html#sistemas-de-coordenadas."><i class="fa fa-check"></i><b>4.11</b> Sistemas de coordenadas.</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="graficos.html"><a href="graficos.html#coordenadas-polares."><i class="fa fa-check"></i><b>4.11.1</b> Coordenadas polares.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="graficos.html"><a href="graficos.html#fortificar-nuestros-graficos-con-datos-de-un-modelo"><i class="fa fa-check"></i><b>4.12</b> Fortificar nuestros gráficos con datos de un modelo</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="graficos.html"><a href="graficos.html#rectas-de-ajuste"><i class="fa fa-check"></i><b>4.12.1</b> Rectas de ajuste</a></li>
+<li class="chapter" data-level="4.12.2" data-path="graficos.html"><a href="graficos.html#intervalos-de-confianza-y-barras-de-error."><i class="fa fa-check"></i><b>4.12.2</b> Intervalos de confianza y barras de error.</a></li>
+<li class="chapter" data-level="4.12.3" data-path="graficos.html"><a href="graficos.html#etiquetado-de-casos."><i class="fa fa-check"></i><b>4.12.3</b> Etiquetado de casos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="graficos.html"><a href="graficos.html#extensiones-a-ggplot2"><i class="fa fa-check"></i><b>4.13</b> Extensiones a <code>ggplot2::</code></a></li>
+<li class="chapter" data-level="4.14" data-path="graficos.html"><a href="graficos.html#etiquetas"><i class="fa fa-check"></i><b>4.14</b> Etiquetas</a><ul>
+<li class="chapter" data-level="4.14.1" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-con-histogramas-marginales."><i class="fa fa-check"></i><b>4.14.1</b> Gráfico de dispersión con histogramas marginales.</a></li>
+<li class="chapter" data-level="4.14.2" data-path="graficos.html"><a href="graficos.html#graficos-de-proporciones-jerarquicas."><i class="fa fa-check"></i><b>4.14.2</b> Gráficos de proporciones jerárquicas.</a></li>
+<li class="chapter" data-level="4.14.3" data-path="graficos.html"><a href="graficos.html#im-feeling-lucky"><i class="fa fa-check"></i><b>4.14.3</b> I’m feeling lucky…</a></li>
+<li class="chapter" data-level="4.14.4" data-path="graficos.html"><a href="graficos.html#relaciones-multivariadas."><i class="fa fa-check"></i><b>4.14.4</b> Relaciones multivariadas.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html"><i class="fa fa-check"></i><b>5</b> Análisis de datos categóricos</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#introduccion-1"><i class="fa fa-check"></i><b>5.1</b> Introducción</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#datos-categoricos"><i class="fa fa-check"></i><b>5.1.1</b> Datos categóricos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas"><i class="fa fa-check"></i><b>5.2</b> Tablas</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-de-dos-dimensiones."><i class="fa fa-check"></i><b>5.2.1</b> Tablas de contingencia de dos dimensiones.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-en-r."><i class="fa fa-check"></i><b>5.2.2</b> Tablas de contingencia en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-hipotesis-de-independencia-estadistica-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.3</b> Prueba de hipótesis de independencia estadística para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#el-modelo-de-independencia."><i class="fa fa-check"></i><b>5.3.1</b> El modelo de independencia.</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-independencia-para-una-tabla-bidimensional."><i class="fa fa-check"></i><b>5.3.2</b> Prueba de independencia para una tabla bidimensional.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-de-los-residuos."><i class="fa fa-check"></i><b>5.4</b> Análisis de los residuos.</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-chi2-en-r."><i class="fa fa-check"></i><b>5.4.1</b> Prueba <span class="math inline">\(\chi\)</span><sup>2</sup> en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#metodos-graficos-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.5</b> Métodos gráficos para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-loglineales-para-datos-categoricos."><i class="fa fa-check"></i><b>5.5.1</b> Modelos loglineales para datos categóricos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-practico-de-datos-categoricos."><i class="fa fa-check"></i><b>5.6</b> Análisis práctico de datos categóricos.</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-base-de-datos.-1"><i class="fa fa-check"></i><b>5.6.1</b> La base de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#genero-y-partido-politico."><i class="fa fa-check"></i><b>5.7</b> Género y partido político.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lineales.html"><a href="lineales.html"><i class="fa fa-check"></i><b>6</b> Modelos lineales</a><ul>
+<li class="chapter" data-level="6.1" data-path="lineales.html"><a href="lineales.html#introduccion-2"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.2" data-path="lineales.html"><a href="lineales.html#ajuste-de-modelo-lineales-con-lm"><i class="fa fa-check"></i><b>6.2</b> Ajuste de modelo lineales con <code>lm()</code></a><ul>
+<li class="chapter" data-level="6.2.1" data-path="lineales.html"><a href="lineales.html#sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.1</b> Sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.2" data-path="lineales.html"><a href="lineales.html#interpretacion-basica-del-sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.2</b> Interpretación básica del sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.3" data-path="lineales.html"><a href="lineales.html#intervalos-de-confianza."><i class="fa fa-check"></i><b>6.2.3</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="6.2.4" data-path="lineales.html"><a href="lineales.html#valores-estimados-y-residuos."><i class="fa fa-check"></i><b>6.2.4</b> Valores estimados y residuos.</a></li>
+<li class="chapter" data-level="6.2.5" data-path="lineales.html"><a href="lineales.html#prediccion-del-modelo."><i class="fa fa-check"></i><b>6.2.5</b> Predicción del modelo.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-mas-de-una-variable-independiente."><i class="fa fa-check"></i><b>6.3</b> Modelos lineales con más de una variable independiente.</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="lineales.html"><a href="lineales.html#exploracion-de-datos-multivariados."><i class="fa fa-check"></i><b>6.3.1</b> Exploración de datos multivariados.</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lineales.html"><a href="lineales.html#especificacion-de-modelos-con-multiples-variables-independientes."><i class="fa fa-check"></i><b>6.3.2</b> Especificación de modelos con múltiples variables independientes.</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lineales.html"><a href="lineales.html#comparar-modelos-lineales-multiples."><i class="fa fa-check"></i><b>6.3.3</b> Comparar modelos lineales múltiples.</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.4</b> Imprimir un sumario de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-formateado-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.5</b> Imprimir un sumario formateado de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.6" data-path="lineales.html"><a href="lineales.html#anova-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.6</b> ANOVA de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.7" data-path="lineales.html"><a href="lineales.html#criterio-de-informacion-de-akaike."><i class="fa fa-check"></i><b>6.3.7</b> Criterio de información de Akaike.</a></li>
+<li class="chapter" data-level="6.3.8" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-variables-independientes-categoricas."><i class="fa fa-check"></i><b>6.3.8</b> Modelos lineales con variables independientes categóricas.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lineales.html"><a href="lineales.html#supuestos-de-un-modelo-lineal."><i class="fa fa-check"></i><b>6.4</b> Supuestos de un modelo lineal.</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="lineales.html"><a href="lineales.html#normalidad."><i class="fa fa-check"></i><b>6.4.1</b> Normalidad.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lineales.html"><a href="lineales.html#independencia."><i class="fa fa-check"></i><b>6.4.2</b> Independencia.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lineales.html"><a href="lineales.html#linealidad."><i class="fa fa-check"></i><b>6.4.3</b> Linealidad.</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lineales.html"><a href="lineales.html#homocedasticidad."><i class="fa fa-check"></i><b>6.4.4</b> Homocedasticidad.</a></li>
+<li class="chapter" data-level="6.4.5" data-path="lineales.html"><a href="lineales.html#casos-atipicos."><i class="fa fa-check"></i><b>6.4.5</b> Casos atípicos.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lineales.html"><a href="lineales.html#regresion-robusta."><i class="fa fa-check"></i><b>6.5</b> Regresión robusta.</a></li>
+<li class="chapter" data-level="6.6" data-path="lineales.html"><a href="lineales.html#supuestos-de-los-modelos-lineales-problemas-y-soluciones."><i class="fa fa-check"></i><b>6.6</b> Supuestos de los modelos lineales: problemas y soluciones.</a></li>
+<li class="chapter" data-level="6.7" data-path="lineales.html"><a href="lineales.html#funciones-adicionales-para-modelos-lineales."><i class="fa fa-check"></i><b>6.7</b> Funciones adicionales para modelos lineales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="generalizados.html"><a href="generalizados.html"><i class="fa fa-check"></i><b>7</b> Modelos lineales generalizados</a><ul>
+<li class="chapter" data-level="7.1" data-path="generalizados.html"><a href="generalizados.html#introduccion."><i class="fa fa-check"></i><b>7.1</b> Introducción.</a></li>
+<li class="chapter" data-level="7.2" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-con-glm"><i class="fa fa-check"></i><b>7.2</b> Ajuste de modelos logit con <code>glm()</code></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-los-datos."><i class="fa fa-check"></i><b>7.2.1</b> Presentación de los datos.</a></li>
+<li class="chapter" data-level="7.2.2" data-path="generalizados.html"><a href="generalizados.html#un-modelo-lineal-con-glm"><i class="fa fa-check"></i><b>7.2.2</b> Un modelo lineal con <code>glm()</code></a></li>
+<li class="chapter" data-level="7.2.3" data-path="generalizados.html"><a href="generalizados.html#la-ordenada-al-origen-de-un-modelo-logit."><i class="fa fa-check"></i><b>7.2.3</b> La ordenada al origen de un modelo logit.</a></li>
+<li class="chapter" data-level="7.2.4" data-path="generalizados.html"><a href="generalizados.html#estimacion-de-beta_1"><i class="fa fa-check"></i><b>7.2.4</b> Estimación de <span class="math inline">\(\beta_1\)</span></a></li>
+<li class="chapter" data-level="7.2.5" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-dos-variables-independientes."><i class="fa fa-check"></i><b>7.2.5</b> Modelo logit con dos variables independientes.</a></li>
+<li class="chapter" data-level="7.2.6" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-multiples-variables-dependientes."><i class="fa fa-check"></i><b>7.2.6</b> Modelo logit con múltiples variables dependientes.</a></li>
+<li class="chapter" data-level="7.2.7" data-path="generalizados.html"><a href="generalizados.html#pruebas-de-significancia."><i class="fa fa-check"></i><b>7.2.7</b> Pruebas de significancia.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-resultados."><i class="fa fa-check"></i><b>7.3</b> Presentación de resultados.</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="generalizados.html"><a href="generalizados.html#intervalos-de-confianza.-1"><i class="fa fa-check"></i><b>7.3.1</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="7.3.2" data-path="generalizados.html"><a href="generalizados.html#grafico-de-coeficientes."><i class="fa fa-check"></i><b>7.3.2</b> Gráfico de coeficientes.</a></li>
+<li class="chapter" data-level="7.3.3" data-path="generalizados.html"><a href="generalizados.html#tabla-y-grafico-de-efectos-totales-promedio."><i class="fa fa-check"></i><b>7.3.3</b> Tabla y gráfico de efectos totales promedio.</a></li>
+<li class="chapter" data-level="7.3.4" data-path="generalizados.html"><a href="generalizados.html#sumario-de-efectos-marginales."><i class="fa fa-check"></i><b>7.3.4</b> Sumario de efectos marginales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="generalizados.html"><a href="generalizados.html#modelos-ligit-multinomiales."><i class="fa fa-check"></i><b>7.4</b> Modelos ligit multinomiales.</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-multinomiales-com-multinom"><i class="fa fa-check"></i><b>7.4.1</b> Ajuste de modelos logit multinomiales com <code>multinom()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="generalizados.html"><a href="generalizados.html#anexo-i.-probabilidades-y-razones-de-probabilidad."><i class="fa fa-check"></i><b>7.5</b> Anexo I. Probabilidades y razones de probabilidad.</a></li>
+<li class="chapter" data-level="7.6" data-path="generalizados.html"><a href="generalizados.html#anexo-ii.-asterisco-sobre-los-asteriscos."><i class="fa fa-check"></i><b>7.6</b> Anexo II. Asterisco sobre los asteriscos.</a></li>
+<li class="chapter" data-level="7.7" data-path="generalizados.html"><a href="generalizados.html#anexo-iii.-tipos-de-variables-independiente-y-modelo-lineal-apropiado."><i class="fa fa-check"></i><b>7.7</b> Anexo III. Tipos de variables independiente y modelo lineal apropiado.</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="martinpaladino.github.com" target="blank">Martín Paladino</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R para Ciencias Sociales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="generalizados" class="section level1">
+<h1><span class="header-section-number">Capítulo 7</span> Modelos lineales generalizados</h1>
+<div id="introduccion." class="section level2">
+<h2><span class="header-section-number">7.1</span> Introducción.</h2>
+<p>Los <a href="martinpaladino.github.io/modelos_lineales_con_R.html">modelos lineales</a> nos permiten predecir el valor de una variable a partir del valor de otra u otras. En su formulación original se desarrollaron para variables dependientes continuas, es decir, para estimar los valores que toma y para cada valor de x a partir de una ordenada al origen y una o más pendientes. Sin embargo puede ser de interés tomar como variables dependiente a una categórica y eso es lo que hacen los modelos logit, también conocidos como regresión logística. Claro que no es muy útil predecir cualquier valor de <span class="math inline">\(y\)</span> dadas <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, <span class="math inline">\(x_n\)</span>, dado que <span class="math inline">\(y_{categórica}\)</span> solamente puede adquirir dos valores, 0 y 1. Lo que buscaremos predecir son las probabilidades de 0 o 1. Es decir, dado cierto valor de <span class="math inline">\(x\)</span> ¿cuál es la probabilidad de <span class="math inline">\(y_0\)</span> y de <span class="math inline">\(y_1\)</span>?
+Podríamos simplificarnos la tarea y ajustar sin modificaciones un modelo lineal con la forma de la ecuación 1.</p>
+<ol class="example" style="list-style-type: decimal">
+<li><span class="math inline">\(y=\beta_0+\beta_1x+...\beta_ix\)</span></li>
+</ol>
+<p>Le pediríamos al modelo que predijera 0 o 1, al fin y al los podríamos considerar valores numéricos e interpretar adecuadamente. Sin embargo estaríamos violando los supuestos de un modelo lineal: la distribución de probabilidad de y categórica no es normal. Sin embargo no todo está perdido. Si y no se ajusta a una distribución normal se puede ajustar a otras distribuciones y, para y dicotómica, podemos asumir que se ajusta a una distribución binomial. En ese caso podemos usar la ecuación (2)</p>
+<ol start="2" class="example" style="list-style-type: decimal">
+<li><span class="math inline">\(ln(\frac{p_1}{1-p_1})=\beta_0+\beta_1x+...\beta_ix\)</span></li>
+</ol>
+<p>El lado derecho es igual de cualquier modelo lineal, pero el lado izquierdo tiene peculiaridades que vale la pena comentar. Como mencionamos, ya no buscamos al valor de <span class="math inline">\(y\)</span> como una combinación lineal de los valores de <span class="math inline">\(x_1...X_i\)</span>. Lo que buscamos es el <em>logaritmo de las razones de probabilidad de <span class="math inline">\(y=1\)</span></em>, que obtenemos dividiendo las probabilidades 1 por la probabilidad de 0.<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a> El <a href="generalizados.html#anexo-i.-probabilidades-y-razones-de-probabilidad.">Anexo I. Probabilidades y razones de probabilidad.</a> desarrolla algunas propiedades de las razones de probabilidad.</p>
+</div>
+<div id="ajuste-de-modelos-logit-con-glm" class="section level2">
+<h2><span class="header-section-number">7.2</span> Ajuste de modelos logit con <code>glm()</code></h2>
+<p>Los modelos logit forman parte de lo que conocemos como Modelos Lineales Generalizados. Utilizamos la expresión generalizados porque son un marco general dentro del que caben casos particulares. Los modelos lineales con y continua son un caso particular de los generalizados: aquellos con una distribución normal y una función de enlace directa<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>. Los modelos logit son un caso particular de los modelos lineales generalizados en los que la distribución es binomial y la función de enlace el logaritmo de las razones de probabilidad, es decir, la función logit que les da nombre.</p>
+<p>La función <code>glm()</code> de R nos permite ajustar modelos lineales de muchos tipos, incluyendo los que ajustamos con <code>lm()</code>, modelos de Poisson y los logit en los que nos enfocaremos.
+La sintaxis básica para obtener un modelo lineal es <code>glm(dependiente~independiente1+independiente2, family=binomial(), data=datos&quot;)</code>.</p>
+<p>El primer argumento es un objeto de la clase fórmula. A la izquierda del signo <code>~</code> ubicamos a la variable dependiente y a la derecha, unidos por el signo <code>+</code> las independientes, si no estamos especificando una interacción entre variables.</p>
+<p>El segundo, <code>family=binomial()</code>, especifica la función de probabilidad que utilizaremos. Para modelos logit es una función binomial. Dentro de los paréntesis se puede especificar la función de enlace. Para la familia de distribuciones binomial <code>glm()</code> por defecto usa una función logit. Si nos interesa una función probit deberíamos especificar <code>link=probit</code>.</p>
+<p>El tercero apunta a un data.frame en el que están los datos. Los nombres de columna del data.frame deben coincidir con las variables especificadas en la fórmula, aunque podría contener más variables que serán descartadas. En el caso de hacer previamente una manipulación de datos encadenada con el operador <code>%&gt;%</code> usamos <code>.</code> como sustituto anónimo de los datos.</p>
+<div id="presentacion-de-los-datos." class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Presentación de los datos.</h3>
+<p>Introduciremos una nueva base de datos y una hipótesis sustantiva para que nos sirva de guía. La base elaborada por el Sistema de Información Municipal del Instituto Nacional para el Federalismo y el Desarrollo Municipal tiene información sobre los presidentes municipales de México, incluyendo el sexo, partido y título. Como incluye el número de municipio y entidad federativa podemos combinar esta base de datos con la de CONAPO para agregar más variables. La base de datos tienen algunos problemas que requieren manipulación y que hemos atendido en otra parte(AGREGAR EL ENLACE). Trabajaremos con la base ya limpia, con una N=1881.
+Queremos explorar qué variables explican que un municipio tenga presidente o presidenta municipal. Nuestra primer hipótesis es que el partido político es una buena variable explicativa, considerando que los partidos progresistas son más propensos a apoyar candidaturas femeninas. Sin embargo otras variables podrían intervenir: la ruralidad/urbanidad del municipio, el Grado de Marginación, la región, etc.</p>
+<p>Las variables que consideraremos son las siguientes:</p>
+<table>
+<caption>Variables a modelar.</caption>
+<colgroup>
+<col width="17%" />
+<col width="82%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>sexo</td>
+<td>Sexo del presidente o presidenta municipal (H o M)<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a></td>
+</tr>
+<tr class="even">
+<td>POmenor5000</td>
+<td>% De población que vive en localidades de menos de 5000 habitantes. Proxy de ruralidad.</td>
+</tr>
+<tr class="odd">
+<td>partido_coalición</td>
+<td>Partido gobernante o cabeza de coalición gobernante.</td>
+</tr>
+<tr class="even">
+<td>POB_TOT</td>
+<td>Población total del municipio.</td>
+</tr>
+<tr class="odd">
+<td>IM</td>
+<td>Índice de Marginación.</td>
+</tr>
+</tbody>
+</table>
+<div id="desciptivos-de-la-base-de-datos." class="section level4">
+<h4><span class="header-section-number">7.2.1.1</span> Desciptivos de la base de datos.</h4>
+<table style="width:93%;">
+<caption>Sumario de la base de datos (continued below)</caption>
+<colgroup>
+<col width="43%" />
+<col width="27%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">sexo</th>
+<th align="center">partido_coalicion</th>
+<th align="center">POB_TOT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">H :10710</td>
+<td align="center">PRI :4245</td>
+<td align="center">Min. : 87</td>
+</tr>
+<tr class="even">
+<td align="center">M : 1805</td>
+<td align="center">PAN :2713</td>
+<td align="center">1st Qu.: 4066</td>
+</tr>
+<tr class="odd">
+<td align="center"><a href="mailto:presidente@jojutla.gob.mx">presidente@jojutla.gob.mx</a>: 6</td>
+<td align="center">UYC :2106</td>
+<td align="center">Median : 11862</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center">PRD :1390</td>
+<td align="center">Mean : 36834</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">Otro :1175</td>
+<td align="center">3rd Qu.: 27822</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center">(Other): 850</td>
+<td align="center">Max. :1688258</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">NA’s : 42</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<table style="width:50%;">
+<colgroup>
+<col width="27%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">IM</th>
+<th align="center">POmenor5000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Min. :-2.440000</td>
+<td align="center">Min. : 0.00</td>
+</tr>
+<tr class="even">
+<td align="center">1st Qu.:-0.727000</td>
+<td align="center">1st Qu.: 44.80</td>
+</tr>
+<tr class="odd">
+<td align="center">Median :-0.058000</td>
+<td align="center">Median :100.00</td>
+</tr>
+<tr class="even">
+<td align="center">Mean :-0.001275</td>
+<td align="center">Mean : 73.74</td>
+</tr>
+<tr class="odd">
+<td align="center">3rd Qu.: 0.632000</td>
+<td align="center">3rd Qu.:100.00</td>
+</tr>
+<tr class="even">
+<td align="center">Max. : 4.845000</td>
+<td align="center">Max. :100.00</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">NA’s :2080</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="un-modelo-lineal-con-glm" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Un modelo lineal con <code>glm()</code></h3>
+</div>
+<div id="la-ordenada-al-origen-de-un-modelo-logit." class="section level3">
+<h3><span class="header-section-number">7.2.3</span> La ordenada al origen de un modelo logit.</h3>
+<p>Para introducirnos al ajuste e interpretación de los coeficientes de los modelos logit comenzaremos por el más simple de todos: uno que no tiene variables predictoras. Por el momento no nos preocuparemos por las pruebas de hipótesis y los estadísticos de ajuste, sólo consideraremos los coeficientes.
+La formula en R para este de ordenada al origen modelo es <code>sexo~1</code>, es decir, utilizamos solamente el lado izquierdo y del lado derecho ubicamos la constante <code>1</code>. El único coeficiente que estimaremos es el de la ordenada al origen: el logaritmo de la razón de probabilidad de <span class="math inline">\(y=1\)</span>. Para saber a qué se refiere <span class="math inline">\(y=1\)</span> es necesario conocer cuál es la categoría de referencia de la variable, es decir, <code>y=0</code>.</p>
+<p>En R las variables categóricas que utilizamos como dependientes en un modelo logit corresponden al tipo de datos <code>factor</code>. Un factor es, técnicamente, una variable numérica compuesta de enteros sucesivos a partir de 1. Cada entero es un nivel o categoría de la variable y está acompañado de una etiqueta que nos facilita recordar a qué categoría corresponde. Los modelos logit binomiales aceptan para las variables dicotómicas codificadas como 0 y 1, lo cuál podría ser problemático si, como numéricos, los factores comienzan con 1. Como la estructura del tipo de datos factor es conocida las funciones que estiman modelos logit convierten internamente a la variable categórica/factor en una variable codificada como 0/1. No es necesario recodificar la variable o convertirla en dummy, esto se procesa de manera transparente para el usuario. Usando la función <code>levels()</code> podemos consultar los niveles o categorías de un factor e identificar al nivel 1, que será el nivel de referencia en el modelo, es decir, <span class="math inline">\(y=0\)</span>. Para variable dicotómicas el nivel 2 del factor equivale a <span class="math inline">\(y=1\)</span>.
+Veamos cuales son los valores de y para la variable sexo del conjunto de datos:</p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" data-line-number="1"><span class="kw">levels</span>(presidentes<span class="op">$</span>sexo)</a></code></pre></div>
+<pre><code>## [1] &quot;H&quot;                         &quot;M&quot;                        
+## [3] &quot;presidente@jojutla.gob.mx&quot;</code></pre>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb440-1" data-line-number="1"><span class="kw">ref</span>(presidentes)            <span class="co">#ref() es una función personalizada para reportar el nivel 1 de un conjutno de factores</span></a></code></pre></div>
+<pre><code>## # A tibble: 1 x 2
+##   sexo  partido_coalicion
+##   &lt;chr&gt; &lt;chr&gt;            
+## 1 H     PRI</code></pre>
+<p>y=0 es hombre y y=1 es mujer. Entonces el modelo de la ordenada al origen nos reportará el logaritmo de la razón de probabilidad de que un municipio esté gobernado por una mujer.</p>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb442-1" data-line-number="1"><span class="co">#Modelo logit sin variables independientes</span></a>
+<a class="sourceLine" id="cb442-2" data-line-number="2">presidentes <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb442-3" data-line-number="3"><span class="st">  </span><span class="kw">glm</span>(sexo<span class="op">~</span><span class="dv">1</span>, <span class="dt">family=</span><span class="kw">binomial</span>(), <span class="dt">data=</span>.) -&gt;molige1</a>
+<a class="sourceLine" id="cb442-4" data-line-number="4">molige1</a></code></pre></div>
+<pre><code>## 
+## Call:  glm(formula = sexo ~ 1, family = binomial(), data = .)
+## 
+## Coefficients:
+## (Intercept)  
+##      -1.777  
+## 
+## Degrees of Freedom: 12520 Total (i.e. Null);  12520 Residual
+## Null Deviance:       10350 
+## Residual Deviance: 10350     AIC: 10350</code></pre>
+<p>La constante para la variable dependiente (Intercept) es -1.735</p>
+<p><em>¿Qué significa ese número?</em> De manera directa que el logaritmo de la razón de probabilidad de <span class="math inline">\(y=1\)</span> es -1.735. Sin embargo interpretar un logaritmo de razón de probabilidad no es lo más intuitivo. Al menos por el signo negativo sabemos que la probabilidad de <span class="math inline">\(y=1\)</span> es menor a la de <span class="math inline">\(y=0\)</span>: hay menos mujeres presidentas municipales que hombres. Para hacer más intuitiva la interpretación podemos desandar el camino de la función de enlace de la ecuación (2). El primer paso es quitar el logaritmo y convertir al coeficiente en una razón de probabilidad: exponenciar el logaritmo. En R lo hacemos con la función <code>exp()</code>, que nos regresa el exponencial de un logaritmo. El exponencial de -1.735 es 0.176, redondeado. Por cada presidente municipal hay 0.176 presidentas o, lo que es lo mismo, hay 5.67 presidentes municipales por cada presidenta.</p>
+<p><em>¿De dónde salió?</em> Sobre 1881 presidentes municipales 282 son mujeres y 1599 hombres. Por lo tanto la probabilidad de presidenta municipal es 282/1881, es decir, 0.1499. Utilizando el lado derecho de la ecuación (2) podemos convertir a esta probabilidad en una razón de probabilidad: con <span class="math inline">\(p1=0.1499\)</span>, <span class="math inline">\(p1/(1-p1)=0.1499/(1-0.1499)=0.176\)</span>: aquí está nuestra razón de probabilidad, cuyo logaritmo es -1.735, el coeficiente que reportó el modelo.</p>
+<table>
+<caption>Presidentes y presidentas municipales</caption>
+<colgroup>
+<col width="38%" />
+<col width="12%" />
+<col width="12%" />
+<col width="36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">H</th>
+<th align="center">M</th>
+<th align="center"><a href="mailto:presidente@jojutla.gob.mx">presidente@jojutla.gob.mx</a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>y=</strong></td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Conteos</strong></td>
+<td align="center">10710</td>
+<td align="center">1805</td>
+<td align="center">6</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Probabilidades</strong></td>
+<td align="center">0.8554</td>
+<td align="center">0.1442</td>
+<td align="center">0.8554</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Razón de probabilidad</strong></td>
+<td align="center">1</td>
+<td align="center">0.1684</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Logaritmo RP</strong></td>
+<td align="center">0</td>
+<td align="center">-1.781</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="estimacion-de-beta_1" class="section level3">
+<h3><span class="header-section-number">7.2.4</span> Estimación de <span class="math inline">\(\beta_1\)</span></h3>
+<p>El segundo modelo que ajustaremos incluye una variable independiente, a la que simplificaremos para facilitar la exposición. Esta variable es dicotómica y refiere al partido político: tendrá valor 0 si el partido es el PRI y valor 1 si es otro.</p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb444-1" data-line-number="1">presidentes <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb444-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partido_coalicion=</span><span class="kw">fct_lump</span>(partido_coalicion, <span class="dv">1</span>, <span class="dt">other_level=</span><span class="st">&quot;Otro&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb444-3" data-line-number="3"><span class="st">  </span><span class="kw">glm</span>(sexo<span class="op">~</span>partido_coalicion, <span class="dt">family=</span><span class="kw">binomial</span>(), <span class="dt">data=</span>.) -&gt;molige2  </a>
+<a class="sourceLine" id="cb444-4" data-line-number="4">molige2</a></code></pre></div>
+<pre><code>## 
+## Call:  glm(formula = sexo ~ partido_coalicion, family = binomial(), 
+##     data = .)
+## 
+## Coefficients:
+##           (Intercept)  partido_coalicionOtro  
+##               -1.4432                -0.5356  
+## 
+## Degrees of Freedom: 12478 Total (i.e. Null);  12477 Residual
+##   (42 observations deleted due to missingness)
+## Null Deviance:       10340 
+## Residual Deviance: 10230     AIC: 10230</code></pre>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb446-1" data-line-number="1"><span class="kw">exp</span>(<span class="kw">coef</span>(molige2))</a></code></pre></div>
+<pre><code>##           (Intercept) partido_coalicionOtro 
+##             0.2361677             0.5853302</code></pre>
+<p>La salida de <code>glm()</code> incluye ahora un segundo coeficiente, llamado <code>partido_coalicionOtro</code>. Ese coeficiente es el logaritmo de la razón de probabilidad de presidenta municipal cuando el partido gobernante en el municipio <em>no</em> es el PRI. La pendiente negativa de <span class="math inline">\(\beta_1\)</span> nos indica que, cuando gobierna otro partido, las probabilidades de presidenta municipal bajan.</p>
+<p>Podríamos obtener este mismo coeficiente a través de una tabla de contingencia y… vamos a hacerlo.</p>
+<table style="width:67%;">
+<colgroup>
+<col width="41%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">PRI</th>
+<th align="center">Otro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>y=</strong></td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>1</strong></td>
+<td align="center">3434</td>
+<td align="center">7240</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>2</strong></td>
+<td align="center">811</td>
+<td align="center">994</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>pH</strong></td>
+<td align="center">0.809</td>
+<td align="center">0.8793</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>pM</strong></td>
+<td align="center">0.191</td>
+<td align="center">0.1207</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Razón de probalidad
+presidenta</strong></td>
+<td align="center">0.2362</td>
+<td align="center">0.1373</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>RP presidenta Otro</strong></td>
+<td align="center">1</td>
+<td align="center">0.5813</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>log(RP presidenta Otro)</strong></td>
+<td align="center">0</td>
+<td align="center">-0.5424</td>
+</tr>
+</tbody>
+</table>
+<p>¿Cuál es la probabilidad de ser presidenta municipal cuando el partido es el PRI? 154/687, es decir, el número de mujeres entre todos los presidentes y presidentas municipales tricolores. Esto equivale a 0.224163. Cuando es otro partido es 0.1405049, 128 presidentas sobre un total 911. Entonces podemos calcular la razón de probabilidad de presidenta para Otro partido vs el PRI: 0.1405049/0.224163, que es igual 0.626798, cuyo logaritmo es -0.4671309, el coeficiente que nos regresó el modelo.</p>
+</div>
+<div id="modelo-logit-con-dos-variables-independientes." class="section level3">
+<h3><span class="header-section-number">7.2.5</span> Modelo logit con dos variables independientes.</h3>
+<p>En el Modelo 2 estimamos el cambio en el logaritmo de la razón de probabilidad de la variable sexo a medida que cambia el partido político y encontramos que las probabilidades de presidenta municipal bajan cuando el partido gobernante no es el PRI. Sin embargo es posible que el PRI no sea la variable explicativa y que tengamos alguna variable confusora que nos está generando problemas. Pensemos en una hipótesis: el PRI gobierna muchos municipios rurales y quizás los municipios rurales sean más propensos a elegir presidentas que presidentes. En este caso la ruralidad sería una variable confusora, nos confunde haciéndonos creer que el PRI es una variable efectiva para explicar la probabilidad presidenta municipal, cuando en realidad es ella –la ruralidad– la que explica ambas: que el gobierno esté encabezado por una mujer <em>y</em> que esté encabezado por el PRI. Los modelos logit nos permiten controlar este tipo de situaciones y estimar los valores de <span class="math inline">\(\beta_1\)</span> descontando el efecto de los demás predictores. Si la hipótesis de la ruralidad como confusora es correcta agregando al modelo una medida de ruralidad, el efecto del PRI sobre la probabilidad de presidenta municipal debería desaparecer.</p>
+<p>Nótese que incluiremos del lado derecho tanto predictores categóricos como continuos. La interpretación de los predictores continuos es similar a la de los categóricos, aunque debemos tener en consideración su escala, ya que no varían entre 0 y 1 sino que adquieren más variados. El coeficiente <span class="math inline">\(\beta\)</span> para una variable continua indica el cambio en el logaritmo de la razón de probabilidad de y por cada incremento de una unidad de la variable continua. Profundizaremos este punto cuando interpretemos el Modelo 3.</p>
+<p>La formula que utilizaremos es <code>sexo~partido_coalicion+POmenor5000</code>. Expresaremos los coeficientes redondeados, de lo contrario R nos los regresa en notación científica.</p>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb448-1" data-line-number="1">presidentes <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb448-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partido_coalicion=</span><span class="kw">fct_lump</span>(partido_coalicion, <span class="dv">1</span>, <span class="dt">other_level=</span><span class="st">&quot;Otro&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb448-3" data-line-number="3"><span class="st">  </span><span class="kw">glm</span>(sexo<span class="op">~</span>partido_coalicion<span class="op">+</span>POmenor5000, <span class="dt">family=</span><span class="kw">binomial</span>(), <span class="dt">data=</span>.) -&gt;<span class="st"> </span>molige3</a>
+<a class="sourceLine" id="cb448-4" data-line-number="4"><span class="kw">round</span>(<span class="kw">coef</span>(molige3), <span class="dv">6</span>)</a></code></pre></div>
+<pre><code>##           (Intercept) partido_coalicionOtro           POmenor5000 
+##             -1.915734             -0.564728              0.006455</code></pre>
+<p>El coeficiente correspondiente a POmenor5000 es 0.006491, que interpretamos de la siguiente manera: <em>por cada unidad porcentual de adicional de población viviendo en localidades menores a 5000 habitantes el logaritmo de la razón de probabilidad de presidenta municipal aumenta 0.0006491.</em> Más adelante veremos maneras menos rebuscadas de comunicar estos resultados, por ahora consideremos que nuestra hipótesis de la ruralidad tiene algo de evidencia a favor: la probabilidad de presidenta municipal aumenta con la ruralidad, medida de esta manera un tanto brusca. ¿Es el efecto de la ruralidad suficiente para hacer desaparecer el efecto del PRI vs Otros? No, los demás partidos mantienen una probabilidad de presidenta menor a la del PRI.</p>
+</div>
+<div id="modelo-logit-con-multiples-variables-dependientes." class="section level3">
+<h3><span class="header-section-number">7.2.6</span> Modelo logit con múltiples variables dependientes.</h3>
+<p>Otra hipótesis sustantiva que podemos considerar es que no es la ruralidad, sino el Índice de Marginación la confusora. Iremos más allá y propondremos un modelo más sofisticado que incluye otras variables que controlaremos: población total del municipio, Índice de Marginación y región. Para hacer más granular la hipótesis partidaria incluiremos más partidos, un total de 6: PRI, PAN, PRD, PVEM, PMC, PT y Otros, a los que controlaremos por ruralidad, población total e Índice de marginación. Al cambiar la codificación de la variable partido_coalición el modelo 4 ya no será directamente comparable con los 3 anteriores, es decir, ya no serán modelos anidados.</p>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb450-1" data-line-number="1">presidentes <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb450-2" data-line-number="2"><span class="st">  </span><span class="kw">glm</span>(sexo<span class="op">~</span>partido_coalicion<span class="op">+</span>POmenor5000<span class="op">+</span>POB_TOT<span class="op">+</span>IM, <span class="dt">family=</span><span class="kw">binomial</span>(), <span class="dt">data=</span>.) -&gt;<span class="st"> </span>molige4</a>
+<a class="sourceLine" id="cb450-3" data-line-number="3"><span class="kw">round</span>(<span class="kw">coef</span>(molige4), <span class="dv">6</span>)</a></code></pre></div>
+<pre><code>##           (Intercept)  partido_coalicionPAN  partido_coalicionPMC 
+##             -2.087105             -0.275089             -0.621649 
+##  partido_coalicionPRD   partido_coalicionPT  partido_coalicionUYC 
+##             -0.035204             -2.123981             -1.390042 
+## partido_coalicionOtro           POmenor5000               POB_TOT 
+##             -0.529843              0.008744              0.000000 
+##                    IM 
+##              0.010489</code></pre>
+<p>El primer dato interesante es que hay un partido con una probabilidad de presidenta todavía más alta que la del PRI: el Verde Ecologista.<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a> Controlando por población, ruralidad e Índice de Marginación PRI y PVEM tienen probabilidades más altas de presidenta. Asimismo encontramos que, por cada punto de incremento de IM <span class="math inline">\(log(\frac{p_{presidenta}}{(1-p_{presidenta})}\)</span> aumenta 0.032.
+Si bien los resultados no son concluyentes. Deberíamos incorporar algunas hipótesis sustantivas orientadas a explicar la prevalencia de presidentas municipales, por no hablar del mecanismo que hace el PRI y PVEM sean buenos predictores de presidentas municipales. Los coeficientes sin un marco de hipótesis sustantivas no tienen mucha capacidad explicativa, en este caso nuestro análisis se limita a la descripción orientada por algunas hipótesis generales.
+De todos modo con este modelo podríamos concluir que el partido es relevante para explicar si a un municipio lo gobierna un hombre o una mujer, una correlación interesante que valdría la pena seguir investigando.</p>
+</div>
+<div id="pruebas-de-significancia." class="section level3">
+<h3><span class="header-section-number">7.2.7</span> Pruebas de significancia.</h3>
+<p>Hasta ahora hemos tratado a los coeficientes como si fueran un parámetro: el verdadero valor de la pendiente, suficientemente informativo por sí mismo. Sin embargo no son parámetros, son <em>estimaciones</em> y, como tales, no son completamente precisas. En sentido estricto son el centro de una distribución de probabilidades de coeficientes, el valor más probable, pero no el único posible. Cuan dispersa es esa distribución nos lo indica el error estándar: cuanto mayor el error más dispersos estarán los coeficientes, cuanto menor, menos dispersos.
+Todos los coeficientes estimados del modelo cuatro son numéricamente distintos de 0: aparentemente tienen un efecto sobre la probabilidad de presidenta. Pero si los consideramos el centro de una distribución de coeficientes deberíamos contemplar la posibilidad –probabilidad– de que el verdadero coeficiente fuera otro, quizás 0. Para minimizar la posibilidad de tratar como un valor distinto de cero a un coeficiente que lo es deberíamos realizar una prueba de hipótesis. En ella que comparamos a los coeficientes obtenidos en el Modelo 4 con unos coeficientes hipotéticos iguales a 0.</p>
+<div id="estimacion-manual-de-la-prueba-de-wald.-wonkish" class="section level4">
+<h4><span class="header-section-number">7.2.7.1</span> Estimación manual de la Prueba de Wald. (wonkish)</h4>
+<p>En modelos logit la prueba de hipótesis que se lleva a cabo para contrastar la hipótesis de que los coeficientes son diferentes de 0 es la prueba de Wald, que estima un estadístico <span class="math inline">\(\theta\)</span> o z de cada coeficiente, a diferencia del estadístico t que ocupamos en los modelos lineales con distribución gaussiana y enlace directo. El estadístico z se obtiene dividiendo al estimado entre el error estándar. Este valor z nos indica el valor del coeficiente normalizado, es decir, denrto una distribución de probabilidad normal con media 0 y desviación estándar 1.<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a> Cuanto más cercano a 0 el valor z, menos probable que sea diferente de 0. Para saber cuál es esa probabilidad calculamos la función de densidad para ese valor en una distribución normal: ese es nuestro p-value. Cuanto más bajo el p-value menor es la probabilidad de obtener nuestro coeficiente dada la hipótesis de nulidad.</p>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb452-1" data-line-number="1"><span class="co">#Estimación de la prueba de Wald en tres pasos. </span></a>
+<a class="sourceLine" id="cb452-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb452-3" data-line-number="3"><span class="co">#Paso 1. Extraer los coeficientes y los errores estandar del Modelo 4.  </span></a>
+<a class="sourceLine" id="cb452-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb452-5" data-line-number="5"><span class="kw">summary</span>(molige4)<span class="op">$</span>coefficients[,<span class="dv">1</span>]   <span class="co">#Subconjunto de la lista coeficientes, columna 1: estimados</span></a></code></pre></div>
+<pre><code>##           (Intercept)  partido_coalicionPAN  partido_coalicionPMC 
+##         -2.087105e+00         -2.750888e-01         -6.216494e-01 
+##  partido_coalicionPRD   partido_coalicionPT  partido_coalicionUYC 
+##         -3.520428e-02         -2.123981e+00         -1.390042e+00 
+## partido_coalicionOtro           POmenor5000               POB_TOT 
+##         -5.298428e-01          8.744226e-03         -6.909974e-08 
+##                    IM 
+##          1.048922e-02</code></pre>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb454-1" data-line-number="1"><span class="kw">summary</span>(molige4)<span class="op">$</span>coefficients[,<span class="dv">2</span>]   <span class="co">#Subconjunto de la lista coeficientes, columna 2: errores estandar</span></a></code></pre></div>
+<pre><code>##           (Intercept)  partido_coalicionPAN  partido_coalicionPMC 
+##          1.051732e-01          7.329305e-02          1.776745e-01 
+##  partido_coalicionPRD   partido_coalicionPT  partido_coalicionUYC 
+##          8.779994e-02          3.242491e-01          1.076144e-01 
+## partido_coalicionOtro           POmenor5000               POB_TOT 
+##          1.088661e-01          1.170809e-03          3.412913e-07 
+##                    IM 
+##          3.840605e-02</code></pre>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" data-line-number="1"><span class="co">#Estimar el valor z</span></a>
+<a class="sourceLine" id="cb456-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb456-3" data-line-number="3">z &lt;-<span class="st"> </span><span class="kw">summary</span>(molige4)<span class="op">$</span>coefficients[,<span class="dv">1</span>]<span class="op">/</span><span class="kw">summary</span>(molige4)<span class="op">$</span>coefficients[,<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb456-4" data-line-number="4">z</a></code></pre></div>
+<pre><code>##           (Intercept)  partido_coalicionPAN  partido_coalicionPMC 
+##           -19.8444697            -3.7532729            -3.4988116 
+##  partido_coalicionPRD   partido_coalicionPT  partido_coalicionUYC 
+##            -0.4009602            -6.5504605           -12.9168830 
+## partido_coalicionOtro           POmenor5000               POB_TOT 
+##            -4.8669196             7.4685332            -0.2024656 
+##                    IM 
+##             0.2731138</code></pre>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" data-line-number="1"><span class="co">#Estimar la probilidad de z en una distribución normal con media 0 y sigma 1. </span></a>
+<a class="sourceLine" id="cb458-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb458-3" data-line-number="3">p &lt;-<span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="kw">abs</span>(z), <span class="dv">0</span>, <span class="dv">1</span>)) <span class="op">*</span><span class="st"> </span><span class="dv">2</span>  <span class="co">#Usamos pnorm() para estimar la probabilidad, dado que es una función de prob acumulada usamos 1-pnorm()  </span></a>
+<a class="sourceLine" id="cb458-4" data-line-number="4">p</a></code></pre></div>
+<pre><code>##           (Intercept)  partido_coalicionPAN  partido_coalicionPMC 
+##          0.000000e+00          1.745406e-04          4.673367e-04 
+##  partido_coalicionPRD   partido_coalicionPT  partido_coalicionUYC 
+##          6.884494e-01          5.735989e-11          0.000000e+00 
+## partido_coalicionOtro           POmenor5000               POB_TOT 
+##          1.133511e-06          8.104628e-14          8.395528e-01 
+##                    IM 
+##          7.847657e-01</code></pre>
+</div>
+<div id="demostracion-grafica-de-la-prueba-de-wald-para-partido_pvem" class="section level4">
+<h4><span class="header-section-number">7.2.7.2</span> Demostración gráfica de la prueba de Wald para <code>partido_PVEM</code></h4>
+<div class="figure">
+<img src="libRo_files/figure-html/grafico_wald,%20-1.png" alt="Prueba de Wald para dos coeficientes" width="768" />
+<p class="caption">
+(#fig:grafico_wald, )Prueba de Wald para dos coeficientes
+</p>
+</div>
+<p>No es necesario que hagamos esta prueba cada vez y por separado, el sumario de los modelos lineales generalizados nos presenta los resultados de esa prueba de hipótesis. El p-value de la prueba de Wald nos indica la probabilidad de obtener unos coeficientes como los nuestros dada la hipótesis de nulidad H0 según la cuál los coeficientes verdaderos son 0. Si esa probabilidad es muy baja podemos rechazar la hipótesis de nulidad y considerar que nuestros coeficientes son diferentes de 0.
+Por supuesto, podríamos hacer una prueba de hipótesis con una H0 diferente, por ejemplo, contra la hipótesis de que el verdadero es 2.</p>
+<p>Obtenemos el sumario de un modelo con la función genérica <code>summary()</code>. Observemos la quinta columna del sumario, que reporta los p-value que especificamos en el párrafo anterior.</p>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb460-1" data-line-number="1"><span class="kw">summary</span>(molige4)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = sexo ~ partido_coalicion + POmenor5000 + POB_TOT + 
+##     IM, family = binomial(), data = .)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -0.7370  -0.6380  -0.5132  -0.3790   2.5971  
+## 
+## Coefficients:
+##                         Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)           -2.087e+00  1.052e-01 -19.844  &lt; 2e-16 ***
+## partido_coalicionPAN  -2.751e-01  7.329e-02  -3.753 0.000175 ***
+## partido_coalicionPMC  -6.216e-01  1.777e-01  -3.499 0.000467 ***
+## partido_coalicionPRD  -3.520e-02  8.780e-02  -0.401 0.688449    
+## partido_coalicionPT   -2.124e+00  3.242e-01  -6.550 5.74e-11 ***
+## partido_coalicionUYC  -1.390e+00  1.076e-01 -12.917  &lt; 2e-16 ***
+## partido_coalicionOtro -5.298e-01  1.089e-01  -4.867 1.13e-06 ***
+## POmenor5000            8.744e-03  1.171e-03   7.469 8.11e-14 ***
+## POB_TOT               -6.910e-08  3.413e-07  -0.202 0.839553    
+## IM                     1.049e-02  3.841e-02   0.273 0.784766    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 8622.4  on 10405  degrees of freedom
+## Residual deviance: 8285.8  on 10396  degrees of freedom
+##   (2115 observations deleted due to missingness)
+## AIC: 8305.8
+## 
+## Number of Fisher Scoring iterations: 6</code></pre>
+<p>La probabilidad de obtener los coeficientes del Modelo 4 dada la hipótesis de que el verdadero coeficiente es 0 es baja en todos los casos, excepto para el IM. En este caso el p-value es 0.6922, es decir, es muy probable que una distribución al azar de coeficientes con media 0 produzca el coeficiente que estimó el modelo. Concluimos que no es significativamente diferente de 0 y que el IM no tiene un efecto sobre la probabilidad de presidenta. Presidentes y presidentas se distribuyen de manera independiente al Índice de Marginación de un municipio. Para una discusión sobre las pruebas de hipótesis vea el <a href="generalizados.html#anexo-ii.-asterisco-sobre-los-asteriscos.">Anexo II. Asterisco sobre los asteriscos.</a></p>
+<p>¿Qué hay de los modelos anteriores? Para facilitar la comparación los reportaremos en una tabla formateada, usando la función <code>htmlreg()</code> del paquete <code>texreg()</code>. Esta función recibe una lista de modelos y nos regresa una tabla formateda con esos modelos. Para salidas en consola utilizamos <code>screenreg()</code> y <code>texreg()</code> para tablas formateadas en <span class="math inline">\(\LaTeX\)</span>.</p>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb462-1" data-line-number="1"><span class="kw">library</span>(texreg)</a>
+<a class="sourceLine" id="cb462-2" data-line-number="2"><span class="kw">htmlreg</span>(<span class="kw">list</span>(molige1, molige2, molige3), <span class="dt">caption=</span><span class="st">&quot;Comparación de modelos logit&quot;</span>)</a></code></pre></div>
+&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN” “<a href="http://www.w3.org/TR/html4/loose.dtd" class="uri">http://www.w3.org/TR/html4/loose.dtd</a>”&gt;
+<table cellspacing="0" align="center" style="border: none;">
+<caption align="bottom" style="margin-top:0.3em;">
+Comparación de modelos logit
+</caption>
+<tr>
+<th style="text-align: left; border-top: 2px solid black; border-bottom: 1px solid black; padding-right: 12px;">
+<b></b>
+</th>
+<th style="text-align: left; border-top: 2px solid black; border-bottom: 1px solid black; padding-right: 12px;">
+<b>Model 1</b>
+</th>
+<th style="text-align: left; border-top: 2px solid black; border-bottom: 1px solid black; padding-right: 12px;">
+<b>Model 2</b>
+</th>
+<th style="text-align: left; border-top: 2px solid black; border-bottom: 1px solid black; padding-right: 12px;">
+<b>Model 3</b>
+</th>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+(Intercept)
+</td>
+<td style="padding-right: 12px; border: none;">
+-1.78<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+-1.44<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+-1.92<sup style="vertical-align: 0px;">***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.03)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.04)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.08)
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+partido_coalicionOtro
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+-0.54<sup style="vertical-align: 0px;">***</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+-0.56<sup style="vertical-align: 0px;">***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.05)
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.06)
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+POmenor5000
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+0.01<sup style="vertical-align: 0px;">***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(0.00)
+</td>
+</tr>
+<tr>
+<td style="border-top: 1px solid black;">
+AIC
+</td>
+<td style="border-top: 1px solid black;">
+10351.67
+</td>
+<td style="border-top: 1px solid black;">
+10234.77
+</td>
+<td style="border-top: 1px solid black;">
+8484.95
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+BIC
+</td>
+<td style="padding-right: 12px; border: none;">
+10359.11
+</td>
+<td style="padding-right: 12px; border: none;">
+10249.63
+</td>
+<td style="padding-right: 12px; border: none;">
+8506.70
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+Log Likelihood
+</td>
+<td style="padding-right: 12px; border: none;">
+-5174.84
+</td>
+<td style="padding-right: 12px; border: none;">
+-5115.38
+</td>
+<td style="padding-right: 12px; border: none;">
+-4239.48
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+Deviance
+</td>
+<td style="padding-right: 12px; border: none;">
+10349.67
+</td>
+<td style="padding-right: 12px; border: none;">
+10230.77
+</td>
+<td style="padding-right: 12px; border: none;">
+8478.95
+</td>
+</tr>
+<tr>
+<td style="border-bottom: 2px solid black;">
+Num. obs.
+</td>
+<td style="border-bottom: 2px solid black;">
+12521
+</td>
+<td style="border-bottom: 2px solid black;">
+12479
+</td>
+<td style="border-bottom: 2px solid black;">
+10406
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;" colspan="5">
+<span style="font-size:0.8em"><sup style="vertical-align: 0px;"><em><strong></sup>p &lt; 0.001, <sup style="vertical-align: 0px;"></strong></sup>p &lt; 0.01, <sup style="vertical-align: 0px;"></em></sup>p &lt; 0.05</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div id="presentacion-de-resultados." class="section level2">
+<h2><span class="header-section-number">7.3</span> Presentación de resultados.</h2>
+<div id="intervalos-de-confianza.-1" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Intervalos de confianza.</h3>
+<p>Otra forma de presentar los coeficientes estimados por el modelo dando cuenta del error de estimación es presentar un intervalo, en lugar de una estimación puntual. Estos intervalos dan cuenta del error haciéndose más extensos a medida que el error es más grande. Se estiman a partir de un nivel de confianza, generalmente 90, 95 o 99%.
+En R los obtenemos con la función <code>confint()</code>, que lleva como primer argumento el nombre del modelo de que queremos extrae los intervalos de confianza. Por defecto los calcula con una confianza del 95%, aunque los podemos especificar con el argumento <code>level=confianza</code>, donde confianza es un número mayor que 0 y menor que 1.</p>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" data-line-number="1"><span class="kw">confint</span>(molige4)                        <span class="co">#Intervalo de confianza al 95% para el Modelo 4</span></a></code></pre></div>
+<pre><code>##                               2.5 %        97.5 %
+## (Intercept)           -2.294849e+00 -1.882502e+00
+## partido_coalicionPAN  -4.195394e-01 -1.321575e-01
+## partido_coalicionPMC  -9.846693e-01 -2.862944e-01
+## partido_coalicionPRD  -2.089096e-01  1.354040e-01
+## partido_coalicionPT   -2.827740e+00 -1.543170e+00
+## partido_coalicionUYC  -1.604854e+00 -1.182686e+00
+## partido_coalicionOtro -7.472939e-01 -3.201832e-01
+## POmenor5000            6.459762e-03  1.104996e-02
+## POB_TOT               -7.866624e-07  5.576079e-07
+## IM                    -6.501523e-02  8.555638e-02</code></pre>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" data-line-number="1"><span class="kw">exp</span>(<span class="kw">confint</span>(molige4, <span class="dt">level=</span><span class="fl">0.99</span>))    <span class="co">#Intevalo de confianza de las razones de probabilidad al 99% para el Modelo 4</span></a></code></pre></div>
+<pre><code>##                            0.5 %    99.5 %
+## (Intercept)           0.09434380 0.1622165
+## partido_coalicionPAN  0.62795893 0.9161989
+## partido_coalicionPMC  0.33106892 0.8304749
+## partido_coalicionPRD  0.76781916 1.2073660
+## partido_coalicionPT   0.04589185 0.2515411
+## partido_coalicionUYC  0.18748613 0.3266335
+## partido_coalicionOtro 0.44157562 0.7743408
+## POmenor5000           1.00576252 1.0118489
+## POB_TOT               0.99999897 1.0000007
+## IM                    0.91499099 1.1152351</code></pre>
+</div>
+<div id="grafico-de-coeficientes." class="section level3">
+<h3><span class="header-section-number">7.3.2</span> Gráfico de coeficientes.</h3>
+<p>A partir de los intervalos de confianza de los coeficientes se puede obtener una salida gráfica de la estimación del modelo, que es especialmente útil para ubicar las pendientes relativas de cada predictor. No es difícil hacer el gráfico nosotros mimos, pero la función <code>coefplot::coeffplot()</code> grafica directamente los coeficientes y regresa un objeto de la clase <code>ggplot2</code>, por lo que podemos personalizar el estilo visual, sin alterar el contenido. La sintaxis es <code>coefplot(modelo)</code>, donde <code>modelo</code> es un objeto de la clase <code>glm</code>.</p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" data-line-number="1"><span class="kw">library</span>(coefplot)</a>
+<a class="sourceLine" id="cb467-2" data-line-number="2"><span class="kw">coefplot</span>(molige4)  <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb467-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb467-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Estimación de coeficientes con error estandar&quot;</span>, </a>
+<a class="sourceLine" id="cb467-5" data-line-number="5">       <span class="dt">x=</span><span class="st">&quot;Estimación&quot;, </span></a>
+<a class="sourceLine" id="cb467-6" data-line-number="6"><span class="st">       y=&quot;</span>Variable<span class="st">&quot;, </span></a>
+<a class="sourceLine" id="cb467-7" data-line-number="7"><span class="st">       caption=&quot;</span>Elaboración propia con datos del SNIM y CONAPO<span class="st">&quot;)</span></a></code></pre></div>
+<div class="figure"><span id="fig:efectos1"></span>
+<img src="libRo_files/figure-html/efectos1-1.png" alt="Efecto de algunas variables sobre la probabilidad de presidenta municipal" width="768" />
+<p class="caption">
+Figure 7.1: Efecto de algunas variables sobre la probabilidad de presidenta municipal
+</p>
+</div>
+<p>En el gráfico podemos ver que, dentro del intervalo marcado por el error estandar, IM está sobre la línea que marca el valor 0. POB_TOT y POmenor5000 parecen estar cerca, pero sin tocar la línea. Definitivamente necesitaremos consultar la tabla para tener identificar la significancia de esos coeficientes. La constante u ordenada al origen es puramente teórica: señala el logaritmo de la razón de probabilidad de presidenta en un municipio gobernado por el PRI con 0% de población en localidades de menos de 5000 habitantes, 0 habitantes y 0 Índice de Marginación. No tiene una interpretación sustantiva.</p>
+</div>
+<div id="tabla-y-grafico-de-efectos-totales-promedio." class="section level3">
+<h3><span class="header-section-number">7.3.3</span> Tabla y gráfico de efectos totales promedio.</h3>
+<p>La razón de probabilidad o el logaritmo de la razón de probabilidad con el que los modelos logit reportan los coeficientes son matemáticamente correctos, pero sinceramente no son la forma más intuitiva de dar cuenta de la magnitud del cambio de <span class="math inline">\(y\)</span> cuando cambia <span class="math inline">\(x\)</span>. Sería mejor poder expresarlo como probabilidades directas o como variación en las probabilidades, más que en las razones de probabilidad. Como esto es R, hay una librería para eso, o mejor dicho 2. Para obtener los efectos promedio totales de unos coeficientes utilizamos la librería <code>effects::</code>, cortesía de John Fox<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>. <code>effects::</code> incluye salidas en tabla y gráficas de los efectos absolutos de un predictor, incluyendo salidas para los errores. Para obtener los efectos marginales podemos usar <code>mfx::</code>.</p>
+<p>La función <code>effects::allEffects()</code> produce una tabla con los efectos totales a partir de un modelo lineal. Es posible generar un gráfico de los efectos pasando el objeto resultante a la función plot. En este caso se presenta el efecto total y un intervalo de confianza del 95%. <code>plot(allEffects))</code> genera un gráfico para cada predictor y, si es continuo, grafica la pendiente y si es categórico el efectos de cada categoría de la variable.</p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb468-1" data-line-number="1"><span class="kw">library</span>(effects)</a>
+<a class="sourceLine" id="cb468-2" data-line-number="2"><span class="kw">allEffects</span>(molige4)</a></code></pre></div>
+<pre><code>##  model: sexo ~ partido_coalicion + POmenor5000 + POB_TOT + IM
+## 
+##  partido_coalicion effect
+## partido_coalicion
+##        PRI        PAN        PMC        PRD         PT        UYC 
+## 0.19079989 0.15188277 0.11239868 0.18542359 0.02741674 0.05546906 
+##       Otro 
+## 0.12188882 
+## 
+##  POmenor5000 effect
+## POmenor5000
+##          0         20         50         80        100 
+## 0.07381691 0.08670087 0.10985014 0.13824471 0.16042605 
+## 
+##  POB_TOT effect
+## POB_TOT
+##        90     4e+05     8e+05     1e+06     2e+06 
+## 0.1321600 0.1290227 0.1259484 0.1244349 0.1170997 
+## 
+##  IM effect
+## IM
+##        -2      -0.6         1         3         5 
+## 0.1294827 0.1311469 0.1330711 0.1355100 0.1379864</code></pre>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb470-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">allEffects</span>(molige4))</a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-102-1.png" width="768" /></p>
+</div>
+<div id="sumario-de-efectos-marginales." class="section level3">
+<h3><span class="header-section-number">7.3.4</span> Sumario de efectos marginales.</h3>
+<p>La función <code>logitmfx()</code> no recibe a un objeto de la clase <code>glm</code>, sino que requiere especificar el modelo dentro de la llamada. La sintaxis es similar a la de <code>glm()</code>: formula, datos. Es un poco más rudimentaria que <code>effects()</code>, pero es mejor que calcular manualmente los efectos marginales.</p>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" data-line-number="1"><span class="kw">round</span>(mfx<span class="op">::</span><span class="kw">logitmfx</span>(sexo<span class="op">~</span>partido_coalicion<span class="op">+</span>POmenor5000<span class="op">+</span>POB_TOT<span class="op">+</span>IM, presidentes)<span class="op">$</span>mfxest, <span class="dv">6</span>) </a></code></pre></div>
+<pre><code>##                           dF/dx Std. Err.          z    P&gt;|z|
+## partido_coalicionPAN  -0.029751  0.007475  -3.980170 0.000069
+## partido_coalicionPMC  -0.057428  0.012889  -4.455569 0.000008
+## partido_coalicionPRD  -0.003990  0.009850  -0.405040 0.685448
+## partido_coalicionPT   -0.120961  0.006982 -17.323601 0.000000
+## partido_coalicionUYC  -0.115446  0.006145 -18.785689 0.000000
+## partido_coalicionOtro -0.051763  0.008945  -5.787085 0.000000
+## POmenor5000            0.001001  0.000133   7.534709 0.000000
+## POB_TOT                0.000000  0.000000  -0.202469 0.839550
+## IM                     0.001201  0.004397   0.273116 0.784764</code></pre>
+</div>
+</div>
+<div id="modelos-ligit-multinomiales." class="section level2">
+<h2><span class="header-section-number">7.4</span> Modelos ligit multinomiales.</h2>
+<p>Otro caso de los modelos lineales generalizados son los modelos logit multinomiales. Los logit binomiales nos sirven para modelar una variable dependiente categórica dicotómica, pero podría interesarnos modelar una salida politómica, es decir, una categórica con más de dos niveles.
+La función <code>glm()</code> no tiene directamente la capacidad de ajustar este tipo de modelos, aunque es posible hacerlo como un tipo especial de regresión de Poisson. Sin embargo, esto requiere mucho trabajo previo de adecuación de los datos. La función <code>nnet:multinom()</code> facilita las cosas, pues conserva una sintaxis similar a la de <code>glm()</code> y ajusta rápidamente modelos logit multinomiales.<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>
+La salida de un modelo logit multinomial es similar a la de uno binomial, pero como podemos esperar hay más información, que no estamos modelando solamente el evento <span class="math inline">\(y=1\)</span>, también <span class="math inline">\(y=2, y=3, ..., y=k\)</span>. Los coeficientes se dividen en más tablas.</p>
+<div id="ajuste-de-modelos-logit-multinomiales-com-multinom" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> Ajuste de modelos logit multinomiales com <code>multinom()</code></h3>
+<p>La sintaxis básica es <code>multinom(formula, data=datos)</code>. El primer término de la formula puede ser un factor con dos o más niveles y del lado derecho podemos incluir tanto factores como predictores continuos.
+Para este ejemplo tomaremos como variable dependiente <code>partido_coalicion</code>, una categórica politómica con 6 niveles. La modelaremos como un combinación lineal de la población en localidades de menos de 5000 habitantes, el Índice de Marginación y el sexo del presidente/presidenta municipal. Las dos primeras son contínuas y la útlima categórica: no hay problema, estarán del lado derecho de la fórmula donde se acepta cualquier tipo de variable.</p>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" data-line-number="1"><span class="kw">library</span>(nnet)</a>
+<a class="sourceLine" id="cb473-2" data-line-number="2"><span class="kw">multinom</span>(partido_coalicion<span class="op">~</span>IM<span class="op">+</span>sexo, <span class="dt">data=</span>presidentes) -&gt;<span class="st"> </span>molige5</a></code></pre></div>
+<pre><code>## # weights:  35 (24 variable)
+## initial  value 24283.012750 
+## iter  10 value 20886.932682
+## iter  20 value 20226.106858
+## final  value 20098.862521 
+## converged</code></pre>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb475-1" data-line-number="1"><span class="kw">summary</span>(molige5)</a></code></pre></div>
+<pre><code>## Call:
+## multinom(formula = partido_coalicion ~ IM + sexo, data = presidentes)
+## 
+## Coefficients:
+##      (Intercept)          IM       sexoM sexopresidente@jojutla.gob.mx
+## PAN   -0.4087424 -0.04840464 -0.28689308                    -2.3997246
+## PMC   -2.2596733 -0.30311605 -0.68368847                    -0.5912868
+## PRD   -1.0805087  0.22067794 -0.08332861                    -1.0594274
+## PT    -2.1328638  0.36767543 -2.11525625                    -0.2764507
+## UYC   -0.8600331  1.12843922 -1.34289961                    -0.4477473
+## Otro  -1.1803124  0.10106826 -0.63339985                     8.6250570
+## 
+## Std. Errors:
+##      (Intercept)         IM      sexoM sexopresidente@jojutla.gob.mx
+## PAN   0.02769053 0.02811841 0.06663277                      64.79842
+## PMC   0.05864056 0.05982938 0.16246283                      57.20324
+## PRD   0.03445774 0.03451580 0.07987520                      55.29426
+## PT    0.05331588 0.05681811 0.29607649                      68.13464
+## UYC   0.03397561 0.03271269 0.10054188                      62.60279
+## Otro  0.03587259 0.03725668 0.10050886                      15.89222
+## 
+## Residual Deviance: 40197.73 
+## AIC: 40245.73</code></pre>
+<p>El sumario nos presenta por separado a los coeficientes y errores estándar. Los coeficientes se interpretan de igual modo que en un logit binomial: son el logaritmo de la razón de probabilidad de <span class="math inline">\(y=k\)</span> cuando cambia <span class="math inline">\(x\)</span>. Para cada nivel de la variable dependiente, excepto el de referencia, se presenta una fila en la tabla. Las columnas ordenan a las variables idenpendientes y a la ordenada al orígen.</p>
+<p>En tabla aparte se reportan los errores estándar de cada coeficiente. <code>multinom()</code> no calcula los estadísticos z y los p-value de la prueba de Wald, aunque podemos calcularlos facilmente usando el procedimiento del apartado 2.6.1.</p>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb477-1" data-line-number="1">pruebaz.multinom &lt;-<span class="st"> </span><span class="cf">function</span>(modelo) {}</a></code></pre></div>
+</div>
+</div>
+<div id="anexo-i.-probabilidades-y-razones-de-probabilidad." class="section level2">
+<h2><span class="header-section-number">7.5</span> Anexo I. Probabilidades y razones de probabilidad.</h2>
+<blockquote>
+<p>El momio tiene razones, que la razón desconoce.</p>
+</blockquote>
+<p>Las razones de probabilidad, también llamadas razones de momio o odds ratio, se obtienen dividiendo la probabilidad de éxito por la de fracaso. En el contexto de los modelos logit binomiales entendemos como éxito a <span class="math inline">\(y=1\)</span> y a <span class="math inline">\(y=0\)</span> como probabilidad de fracaso. Como <span class="math inline">\(y\)</span> tiene sólo dos categorías podemos obtenerlos usando <span class="math inline">\(RP_{y=1}=\frac{p_{y=1}}{1-p_{y=1}}\)</span>. Son una transformación de la probabilidad usuales, que varían entre 0 y 1, pero en lugar de eso varían entre 0 y una repetición infinita de números 9. Si bien la razón de probabilidad se expresa con un solo número tiene una referencia implícita que es el 1. Una razón de probabilidad 1 significa que ambos eventos tienen la misma probabilidad: la obtuvimos dividiendo 0.5 entre 0.5 Una razón de probabilidad mayor que 1 significa que el evento éxito es más probable que el evento fracaso y menor que 1 lo inverso.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-106">Table 7.1: </span>Razones de probabilidad de algunos pares de probabilidades</caption>
+<thead>
+<tr class="header">
+<th align="right">fila</th>
+<th align="right">p0</th>
+<th align="right">p1</th>
+<th align="right">RP 1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.1</td>
+<td align="right">0.9</td>
+<td align="right">9.0000000</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.2</td>
+<td align="right">0.8</td>
+<td align="right">4.0000000</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">0.3</td>
+<td align="right">0.7</td>
+<td align="right">2.3333333</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">0.4</td>
+<td align="right">0.6</td>
+<td align="right">1.5000000</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">0.6</td>
+<td align="right">0.4</td>
+<td align="right">0.6666667</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">0.3</td>
+<td align="right">0.7</td>
+<td align="right">2.3333333</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">0.2</td>
+<td align="right">0.8</td>
+<td align="right">4.0000000</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">0.1</td>
+<td align="right">0.9</td>
+<td align="right">9.0000000</td>
+</tr>
+</tbody>
+</table>
+<p>La razón de probabilidad nos da una magnitud de cuanto más probable es un evento que otro. En la cuarta fila de la Tabla 1 encontramos que el evento 1 tiene una razón de probabilidad de 1.5. Esto significa que es un 50% más probable obtener 1 que obtener 0. En la sexta fila la razón de probabilidad de 1 es 0.666: obtener 1 es un 66% menos probable que obtener 0.
+Los coeficientes de los modelos logit no se reportan como razones de probabilidad, sino como logaritmos de las razones de probabilidad. Aunque son más difíciles de interpretar que las razones de probabilidad tienen una ventaja: probabilidades iguales se expresan con el 0, una probabilidad superior del evento éxito con un número positivo y una menor con un número negativo. Es decir, permiten una interpretación rápida y simple de las pendients.
+Para pasar del logaritmo de la razón a probabilidad a la razón de probabilidad exponenciamos los coeficientes y$. En R utilizamos la función <code>exp()</code>, que nos regresa el exponencial de los datos numéricos que le pasemos.</p>
+</div>
+<div id="anexo-ii.-asterisco-sobre-los-asteriscos." class="section level2">
+<h2><span class="header-section-number">7.6</span> Anexo II. Asterisco sobre los asteriscos.</h2>
+<p>En el contextos de los modelos logit –y en todos los demás– debemos tener muy claro qué hacemos cuando hacemos una prueba de hipótesis y qué interpretación podemos realizar del mismo. En este caso se estima la probabilidad de obtener unos coeficientes como el que obtuvimos en una hipotética distribución de coeficientes que tiene como centro al 0 y una desviación similar a la de nuestros coeficientes. Si esa probabilidad es muy baja podemos rechazar <span class="math inline">\(H_0\)</span>, la hipótesis de nulidad que sostiene que el verdadero es 0. Hay un criterio establecido para interpretar que significa <em>muy baja</em>. Cuando el p-value es menor a 0.01 se considera que hay mucha evidencia en contra de la hipótesis de nulidad: hay una probabilidad de del 1% de que el verdadero valor sea 0. Esto suele expresarse con tres asteriscos (***) al lado del p-value.
+Cuando es menor a 0.05 (**) también podemos rechazar la hipótesis de nulidad, pero aceptando un poco más de incertidumbre: hay una probabilidad del 5% de que una distribución de coeficientes centrada en el 0 contenga nuestros coeficientes y así con p-values todavía más altos. Las pruebas de hipótesis no eliminan la incertidumbre, en el mejor de los casos la cuantifican.</p>
+<p>El p-value de la prueba de hipótesis depende de dos valores: el coeficiente y el error. Un p-value puede ser bajo –y, por lo tanto, el coeficiente estadísticamente significativo– porque es muy lejano a 0 y tiene un error relativamente bajo. O ser muy cercano a 0, pero al tener un error muy bajo ser significativamente distinto. Vale la pena revisar los coeficientes y el error. Quizás un coeficiente sea significativo por tener un error muy pequeño, pero sigue siendo cercano a cero: su efecto es distinguible, pero muy pequeño.</p>
+<p>Consideremos al Modelo 4 y el coeficiente 0.0006491 para la variable POmenor5000. El p-value para ese coeficiente es 0.00264, sería razonable rechazar la hipótesis de nulidad y concluir que es diferente de 0. En este caso diríamos que la ruralidad tiene un efecto sobre la probabilidad de presidenta. Sin embargo ¿cuán tangible es ese efecto? En mi opinión, muy poco. La razón de probabilidad presidenta es 1.000649, es decir, por cada incremento de un 1% de población en localidades con menos de 5000 habitantes aumenta un 0.0006491 la razón de probabilidad de presidenta. ¿Cuanto aumentaría si, digamos, nos pasamos de 0% de población en localidades menores a un 50%? Podemos obtener este número elevando el exponencial de <span class="math inline">\(\beta\)</span> al porcentaje que nos interesa. En este caso <span class="math inline">\(1.000649^{50}=1.032987\)</span>. Es decir, pasando del 0 al 50% de población en localidades con menos de 5000 habitantes la probabilidad de presidenta aumenta un 3.2%. Dependerá de nuestra hipótesis sustantiva determinar si es un cambio importante o no. A mí me sabe a poco: la ruralidad tiene un efecto significativo, pero es muy bajo. No sería sorprendente que replicando estos datos para otro ciclo electoral esta pendiente desaparezca o cambie de signo. Podría ser, perfectamente, <em>ruido</em>.</p>
+<p>Consideremos algunas posibles interpretaciones erroneas de un p-value, es decir, que <em>no</em> es un p-value.</p>
+<ul>
+<li><p><em>No</em> es una magnitud que nos diga algo sobre la relación entre <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span>. Eso nos lo indica el coeficiente.</p></li>
+<li><p>Un p-value bajo <em>no</em> significa que el coeficiente que estimó el modelo es el verdadero coeficiente. Solamente que podemos rechazar razonablemente la hipótesis de que está en una distribución centrada en 0. ¡El verdadero coeficiente podría ser todavía más alto!</p></li>
+<li><p><em>No</em> es la prueba definitiva de que nuestro coeficiente es diferente de 0. Las distribuciones de probabilidad son asintóticas, así que aún con un p-value extremadamente bajo sigue existiendo una probabilidad mayor que cero de que el verdadero coeficiente sea… 0.</p></li>
+<li><p><em>No</em> indica la cantidad de veces que debemos repetir el experimento –en este caso, modelar y obtener coeficientes para datos similares– hasta obtener un error. Un p-value de 0.05 <em>no</em> puede interpretarse sostiendo que cada 100 modelos sólo 5 reportarán un falso positivo: aceptar que el coeficiente es diferente de 0 cuando no lo es.</p></li>
+<li><p>Un p-value <em>no</em> estima la probabilidad de que la hipótesis estadística <span class="math inline">\(H_1\)</span> sea verdadera dados las datos. Hace todo lo contrario, estima la probabilidad de nuestros de datos dado <span class="math inline">\(H_0\)</span>.</p></li>
+</ul>
+</div>
+<div id="anexo-iii.-tipos-de-variables-independiente-y-modelo-lineal-apropiado." class="section level2">
+<h2><span class="header-section-number">7.7</span> Anexo III. Tipos de variables independiente y modelo lineal apropiado.</h2>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="26%" />
+<col width="24%" />
+<col width="18%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable dependiente</th>
+<th>Definición</th>
+<th>Ejemplo</th>
+<th>Tipo de modelo</th>
+<th>Función en R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Continua</td>
+<td>Dentro de un rango, puede adquirir infinitos valores numéricos</td>
+<td>Ingreso en pesos MN</td>
+<td>Lineal con mínimos cuadrados ordinarios</td>
+<td><code>lm()</code></td>
+</tr>
+<tr class="even">
+<td>Categórica dicotómica</td>
+<td>Restringida a dos valores no ordenados</td>
+<td>Sexo, Rural/urbano, Votó/No votó</td>
+<td>logit</td>
+<td><code>glm(family=binomial())</code></td>
+</tr>
+<tr class="odd">
+<td>Categórica politómica</td>
+<td>Más de dos categorías no ordenadas</td>
+<td>Género, partido político, Grado de Marginación</td>
+<td><code>multinom()</code></td>
+</tr>
+<tr class="even">
+<td>Conteo</td>
+<td>Conteo de eventos cuyo universo de probabilidad no es conocido<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a></td>
+<td>Denuncias por violencia de género</td>
+<td>Lineal de Poisson</td>
+<td><code>glm(family=log())</code></td>
+</tr>
+<tr class="odd">
+<td>Proporción</td>
+<td>y=0 y y=1 son proporciones que suman 1</td>
+<td>Composición parlamentaria: hombres y mujeres</td>
+<td>Regresión beta</td>
+<td><code>betareg()</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="34">
+<li id="fn34"><p>Como sabemos que la probabilidad de varía entre 0 y 1 entonces 1 menos la probabilidad de de 1 es igual a la probabilidad de 0.<a href="generalizados.html#fnref34" class="footnote-back">↩</a></p></li>
+<li id="fn35"><p>Estimamos directamente el valor y.<a href="generalizados.html#fnref35" class="footnote-back">↩</a></p></li>
+<li id="fn36"><p>Retomamos la codificación de la base de datos.<a href="generalizados.html#fnref36" class="footnote-back">↩</a></p></li>
+<li id="fn37"><p>Si pensó que era un partido de izquierda necesita rodearse de más feministas.<a href="generalizados.html#fnref37" class="footnote-back">↩</a></p></li>
+<li id="fn38"><p>Una discusión tan profunda como informal sobre este tópico está disponible en [<a href="http://stats.stackexchange.com/questions/60074/wald-test-for-logistic-regression" class="uri">http://stats.stackexchange.com/questions/60074/wald-test-for-logistic-regression</a>]<a href="generalizados.html#fnref38" class="footnote-back">↩</a></p></li>
+<li id="fn39"><p>Además de <code>effects</code> Fox a contribuido a la comunidad de R con las librerías <code>car::</code> para diagnostico de regresiones y <code>sem::</code> para ecuaciones estructurales.<a href="generalizados.html#fnref39" class="footnote-back">↩</a></p></li>
+<li id="fn40"><p>Nótese que es necesario instalar el paquete y tenerlo cargado. <code>nnet::</code> está disponible en CRAN.<a href="generalizados.html#fnref40" class="footnote-back">↩</a></p></li>
+<li id="fn41"><p>Para los modelos logit podemos convertir a los conteos en probabilidades, ya que conocemos la n, el total de eventos.<a href="generalizados.html#fnref41" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lineales.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["libRo.pdf", "libRo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

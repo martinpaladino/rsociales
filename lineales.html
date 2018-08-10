@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R para Ciencias Sociales</title>
+  <meta name="description" content="Análisis de datos con R, con aplicación a las ciencias sociales">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R para Ciencias Sociales" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R para Ciencias Sociales" />
+  
+  <meta name="twitter:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+<meta name="author" content="Martín Paladino">
+
+
+<meta name="date" content="2018-08-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="analisis-de-datos-categoricos.html">
+<link rel="next" href="generalizados.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.0/DiagrammeR.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R para ciencias sociales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preámbulo</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#para-quien-es-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Para quién es este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#el-tidyverse"><i class="fa fa-check"></i><b>0.2</b> El <code>tidyverse</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introducción</a><ul>
+<li class="chapter" data-level="0.3" data-path="introduccion.html"><a href="introduccion.html#que-es-r"><i class="fa fa-check"></i><b>0.3</b> ¿Qué es R?</a><ul>
+<li class="chapter" data-level="0.3.1" data-path="introduccion.html"><a href="introduccion.html#el-lenguaje-de-programacion-r"><i class="fa fa-check"></i><b>0.3.1</b> El <em>lenguaje de programación R</em></a></li>
+<li class="chapter" data-level="0.3.2" data-path="introduccion.html"><a href="introduccion.html#el-interprete"><i class="fa fa-check"></i><b>0.3.2</b> El <em>intérprete</em></a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="introduccion.html"><a href="introduccion.html#instalacion-de-r-y-rstudio-en-windows."><i class="fa fa-check"></i><b>0.4</b> Instalación de R y Rstudio en Windows.</a></li>
+<li class="chapter" data-level="0.5" data-path="introduccion.html"><a href="introduccion.html#interface-de-rstudio."><i class="fa fa-check"></i><b>0.5</b> Interface de Rstudio.</a><ul>
+<li class="chapter" data-level="0.5.1" data-path="introduccion.html"><a href="introduccion.html#consola."><i class="fa fa-check"></i><b>0.5.1</b> Consola.</a></li>
+<li class="chapter" data-level="0.5.2" data-path="introduccion.html"><a href="introduccion.html#editor-de-archivos."><i class="fa fa-check"></i><b>0.5.2</b> Editor de Archivos.</a></li>
+<li class="chapter" data-level="0.5.3" data-path="introduccion.html"><a href="introduccion.html#entorno-de-trabajo."><i class="fa fa-check"></i><b>0.5.3</b> Entorno de trabajo.</a></li>
+<li class="chapter" data-level="0.5.4" data-path="introduccion.html"><a href="introduccion.html#graficos."><i class="fa fa-check"></i><b>0.5.4</b> Gráficos.</a></li>
+<li class="chapter" data-level="0.5.5" data-path="introduccion.html"><a href="introduccion.html#ayuda."><i class="fa fa-check"></i><b>0.5.5</b> Ayuda.</a></li>
+<li class="chapter" data-level="0.5.6" data-path="introduccion.html"><a href="introduccion.html#paquetes-de-extension."><i class="fa fa-check"></i><b>0.5.6</b> Paquetes de extensión.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="introduccion.html"><a href="introduccion.html#tipos-y-estructuras-de-datos"><i class="fa fa-check"></i><b>0.6</b> Tipos y estructuras de datos</a><ul>
+<li class="chapter" data-level="0.6.1" data-path="introduccion.html"><a href="introduccion.html#tipos-de-datos"><i class="fa fa-check"></i><b>0.6.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="0.6.2" data-path="introduccion.html"><a href="introduccion.html#estructuras-de-datos."><i class="fa fa-check"></i><b>0.6.2</b> Estructuras de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.7" data-path="introduccion.html"><a href="introduccion.html#orientacion-a-objetos."><i class="fa fa-check"></i><b>0.7</b> Orientación a objetos.</a></li>
+<li class="chapter" data-level="0.8" data-path="introduccion.html"><a href="introduccion.html#programacion-funcional."><i class="fa fa-check"></i><b>0.8</b> Programación funcional.</a></li>
+<li class="chapter" data-level="0.9" data-path="introduccion.html"><a href="introduccion.html#vocabulario."><i class="fa fa-check"></i><b>0.9</b> Vocabulario.</a></li>
+<li class="chapter" data-level="0.10" data-path="introduccion.html"><a href="introduccion.html#funciones-y-librerias-de-funciones."><i class="fa fa-check"></i><b>0.10</b> Funciones y librerías de funciones.</a></li>
+<li class="chapter" data-level="0.11" data-path="introduccion.html"><a href="introduccion.html#convenciones-de-estilo-de-este-documento."><i class="fa fa-check"></i><b>0.11</b> Convenciones de estilo de este documento.</a></li>
+<li class="chapter" data-level="0.12" data-path="introduccion.html"><a href="introduccion.html#bloques-de-codigo-y-comentarios."><i class="fa fa-check"></i><b>0.12</b> Bloques de código y comentarios.</a></li>
+<li class="chapter" data-level="0.13" data-path="introduccion.html"><a href="introduccion.html#uso-de-mayusculas."><i class="fa fa-check"></i><b>0.13</b> Uso de mayúsculas.</a></li>
+<li class="chapter" data-level="0.14" data-path="introduccion.html"><a href="introduccion.html#sobre-el-estilo-de-programacion-en-r."><i class="fa fa-check"></i><b>0.14</b> Sobre el estilo de programación en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="primeros.html"><a href="primeros.html"><i class="fa fa-check"></i><b>1</b> Primeros pasos en R</a><ul>
+<li class="chapter" data-level="1.1" data-path="primeros.html"><a href="primeros.html#crear-un-proyecto."><i class="fa fa-check"></i><b>1.1</b> Crear un proyecto.</a></li>
+<li class="chapter" data-level="1.2" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-operadores-y-operandos."><i class="fa fa-check"></i><b>1.2</b> Sintaxis de R: operadores y operandos.</a></li>
+<li class="chapter" data-level="1.3" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-funciones-y-argumentos."><i class="fa fa-check"></i><b>1.3</b> Sintaxis de R: funciones y argumentos.</a></li>
+<li class="chapter" data-level="1.4" data-path="primeros.html"><a href="primeros.html#vectores-y-atributos-de-los-vectores."><i class="fa fa-check"></i><b>1.4</b> Vectores y atributos de los vectores.</a></li>
+<li class="chapter" data-level="1.5" data-path="primeros.html"><a href="primeros.html#manipulacion-de-datos."><i class="fa fa-check"></i><b>1.5</b> Manipulación de datos.</a></li>
+<li class="chapter" data-level="1.6" data-path="primeros.html"><a href="primeros.html#funcion-para-calcular-una-mediana-con-funciones-primitivas-de-r."><i class="fa fa-check"></i><b>1.6</b> Función para calcular una mediana con funciones primitivas de R.</a></li>
+<li class="chapter" data-level="1.7" data-path="primeros.html"><a href="primeros.html#manipulacion-de-estructuras-de-datos."><i class="fa fa-check"></i><b>1.7</b> Manipulación de estructuras de datos.</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="primeros.html"><a href="primeros.html#magia"><i class="fa fa-check"></i><b>1.7.1</b> Magia</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="primeros.html"><a href="primeros.html#sobre-los-archivos-de-sintaxis."><i class="fa fa-check"></i><b>1.8</b> Sobre los archivos de sintaxis.</a></li>
+<li class="chapter" data-level="1.9" data-path="primeros.html"><a href="primeros.html#anexo"><i class="fa fa-check"></i><b>1.9</b> Anexo</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="primeros.html"><a href="primeros.html#operadores-binarios-de-r"><i class="fa fa-check"></i><b>1.9.1</b> Operadores binarios de R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html"><i class="fa fa-check"></i><b>2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#introduccion-alcances-del-problema."><i class="fa fa-check"></i><b>2.1</b> Introducción: alcances del problema.</a></li>
+<li class="chapter" data-level="2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#investigacion-reproducible.-1"><i class="fa fa-check"></i><b>2.2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#ventajas-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.1</b> Ventajas de la investigación reproducible.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#desafios-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.2</b> Desafíos de la investigación reproducible.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#filosofia-programacion-funcional-con-inmutabilidad-de-datos-transparencia-referencial-y-funciones-puras."><i class="fa fa-check"></i><b>2.3</b> Filosofía: programación funcional con inmutabilidad de datos, transparencia referencial y funciones puras.</a></li>
+<li class="chapter" data-level="2.4" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#hagamos-pizza-en-r."><i class="fa fa-check"></i><b>2.4</b> Hagamos pizza en R.</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-el-asignador.-pizzas-de-hoy-y-de-ayer."><i class="fa fa-check"></i><b>2.4.1</b> Pizzería “El asignador”. Pizzas de hoy y de ayer.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-la-funcional-clasica.-el-cambio-se-lo-da-en-parentesis."><i class="fa fa-check"></i><b>2.4.2</b> Pizzería La funcional clásica. El cambio se lo da en paréntesis.</a></li>
+<li class="chapter" data-level="2.4.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-magrittr-la-mas-del-rumbo"><i class="fa fa-check"></i><b>2.4.3</b> Pizzería magrittr ¡La más %&gt;% del rumbo!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="manejo.html"><a href="manejo.html"><i class="fa fa-check"></i><b>3</b> Manejo da datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="manejo.html"><a href="manejo.html#el-objeto-de-este-documento."><i class="fa fa-check"></i><b>3.1</b> El objeto de este documento.</a></li>
+<li class="chapter" data-level="3.2" data-path="manejo.html"><a href="manejo.html#manipulacion-de-datos-con-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Manipulación de datos con <code>tidyverse::</code></a></li>
+<li class="chapter" data-level="3.3" data-path="manejo.html"><a href="manejo.html#la-forma-de-los-datos."><i class="fa fa-check"></i><b>3.3</b> La forma de los datos.</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="manejo.html"><a href="manejo.html#sumarios-de-datos-o-base-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> ¿Sumarios de datos o base de datos?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="manejo.html"><a href="manejo.html#datos-rectangulares."><i class="fa fa-check"></i><b>3.4</b> Datos rectangulares.</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="manejo.html"><a href="manejo.html#datos-prolijos-tidy-data"><i class="fa fa-check"></i><b>3.4.1</b> Datos prolijos (tidy data)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="manejo.html"><a href="manejo.html#reformateo-de-datos."><i class="fa fa-check"></i><b>3.4.2</b> Reformateo de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="manejo.html"><a href="manejo.html#manejo-de-datos-con-dplyr"><i class="fa fa-check"></i><b>3.5</b> Manejo de datos con <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="manejo.html"><a href="manejo.html#verbos-basicos-de-dplyr"><i class="fa fa-check"></i><b>3.5.1</b> Verbos básicos de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.5.2" data-path="manejo.html"><a href="manejo.html#uso-de-la-de-sintaxis-de-dplyr"><i class="fa fa-check"></i><b>3.5.2</b> Uso de la de sintaxis de <code>dplyr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="manejo.html"><a href="manejo.html#uso-avanzado-de-dplyr"><i class="fa fa-check"></i><b>3.6</b> Uso avanzado de <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.6.1" data-path="manejo.html"><a href="manejo.html#alternar-entre-formato-largo-y-ancho."><i class="fa fa-check"></i><b>3.6.1</b> Alternar entre formato largo y ancho.</a></li>
+<li class="chapter" data-level="3.6.2" data-path="manejo.html"><a href="manejo.html#seleccionar-las-columnas-que-cumplen-determinada-condicion."><i class="fa fa-check"></i><b>3.6.2</b> Seleccionar las columnas que cumplen determinada condición.</a></li>
+<li class="chapter" data-level="3.6.3" data-path="manejo.html"><a href="manejo.html#filtrar-por-mas-de-una-condicion-o-dentro-de-un-conjunto."><i class="fa fa-check"></i><b>3.6.3</b> Filtrar por más de una condición o dentro de un conjunto.</a></li>
+<li class="chapter" data-level="3.6.4" data-path="manejo.html"><a href="manejo.html#transformacion-avanzada-de-datos."><i class="fa fa-check"></i><b>3.6.4</b> Transformacion avanzada de datos.</a></li>
+<li class="chapter" data-level="3.6.5" data-path="manejo.html"><a href="manejo.html#sumarios-avanzados."><i class="fa fa-check"></i><b>3.6.5</b> Sumarios avanzados.</a></li>
+<li class="chapter" data-level="3.6.6" data-path="manejo.html"><a href="manejo.html#funciones-avanzadas-de-combinacion-de-bases-de-datos."><i class="fa fa-check"></i><b>3.6.6</b> Funciones avanzadas de combinación de bases de datos.</a></li>
+<li class="chapter" data-level="3.6.7" data-path="manejo.html"><a href="manejo.html#operadores-avanzados-de-magrittr"><i class="fa fa-check"></i><b>3.6.7</b> Operadores avanzados de <code>magrittr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="manejo.html"><a href="manejo.html#limites-de-dplyr"><i class="fa fa-check"></i><b>3.7</b> Límites de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.8" data-path="manejo.html"><a href="manejo.html#manipulacion-con-dplyren-la-practica.-flujo-de-trabajo."><i class="fa fa-check"></i><b>3.8</b> Manipulación con <code>dplyr::</code>en la práctica. Flujo de trabajo.</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="manejo.html"><a href="manejo.html#implementacion-en-dplyr-de-un-analisis-exploratorio-de-la-base-de-datos-indice-de-marginacion-del-conapo."><i class="fa fa-check"></i><b>3.8.1</b> Implementación en dplyr:: de un análisis exploratorio de la base de datos Índice de marginación del CONAPO.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graficos.html"><a href="graficos.html"><i class="fa fa-check"></i><b>4</b> Gráficos con R y ggplot</a><ul>
+<li class="chapter" data-level="4.1" data-path="graficos.html"><a href="graficos.html#acerca-de-este-documento."><i class="fa fa-check"></i><b>4.1</b> Acerca de este documento.</a></li>
+<li class="chapter" data-level="4.2" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos."><i class="fa fa-check"></i><b>4.2</b> La gramática de los gráficos.</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="graficos.html"><a href="graficos.html#filosofia."><i class="fa fa-check"></i><b>4.2.1</b> Filosofía.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos-aplicada-en-ggplot."><i class="fa fa-check"></i><b>4.3</b> La gramática de los gráficos aplicada en <code>ggplot()</code>.</a></li>
+<li class="chapter" data-level="4.4" data-path="graficos.html"><a href="graficos.html#la-base-de-datos."><i class="fa fa-check"></i><b>4.4</b> La base de datos.</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="graficos.html"><a href="graficos.html#indice-de-marginacion-por-municipios-1990-2015."><i class="fa fa-check"></i><b>4.4.1</b> Índice de marginación por municipios 1990-2015.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="graficos.html"><a href="graficos.html#descripcion-rapida-de-la-base-de-datos."><i class="fa fa-check"></i><b>4.5</b> Descripción rápida de la base de datos.</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="graficos.html"><a href="graficos.html#nombres-cortos-y-largos."><i class="fa fa-check"></i><b>4.5.1</b> Nombres cortos y largos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="graficos.html"><a href="graficos.html#grafico-basico."><i class="fa fa-check"></i><b>4.6</b> Gráfico básico.</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="graficos.html"><a href="graficos.html#construccion-de-un-grafico-de-barras-paso-a-paso."><i class="fa fa-check"></i><b>4.6.1</b> Construcción de un gráfico de barras paso a paso.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="graficos.html"><a href="graficos.html#personalizacion-de-grafico."><i class="fa fa-check"></i><b>4.7</b> Personalización de gráfico.</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="graficos.html"><a href="graficos.html#orden-manual-de-las-categorias."><i class="fa fa-check"></i><b>4.7.1</b> Orden manual de las categorías.</a></li>
+<li class="chapter" data-level="4.7.2" data-path="graficos.html"><a href="graficos.html#orden-automatico-de-categorias."><i class="fa fa-check"></i><b>4.7.2</b> Orden automático de categorías.</a></li>
+<li class="chapter" data-level="4.7.3" data-path="graficos.html"><a href="graficos.html#titulo-subtitulo-titulos-de-ejes-vineta"><i class="fa fa-check"></i><b>4.7.3</b> Título, subtítulo, títulos de ejes, viñeta</a></li>
+<li class="chapter" data-level="4.7.4" data-path="graficos.html"><a href="graficos.html#estilos-visuales."><i class="fa fa-check"></i><b>4.7.4</b> Estilos visuales.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="graficos.html"><a href="graficos.html#graficos-intermedios-mas-de-una-serie-de-datos"><i class="fa fa-check"></i><b>4.8</b> Gráficos intermedios (más de una serie de datos)</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="graficos.html"><a href="graficos.html#datos-formato-de-datos-largo-y-ancho."><i class="fa fa-check"></i><b>4.8.1</b> Datos Formato de datos largo y ancho.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="graficos.html"><a href="graficos.html#grafico-de-barras-lado-a-lado."><i class="fa fa-check"></i><b>4.8.2</b> Gráfico de barras lado a lado.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="graficos.html"><a href="graficos.html#graficos-multipanel."><i class="fa fa-check"></i><b>4.8.3</b> Gráficos multipanel.</a></li>
+<li class="chapter" data-level="4.8.4" data-path="graficos.html"><a href="graficos.html#grafico-de-punto."><i class="fa fa-check"></i><b>4.8.4</b> Gráfico de punto.</a></li>
+<li class="chapter" data-level="4.8.5" data-path="graficos.html"><a href="graficos.html#grafico-de-punto-y-linea."><i class="fa fa-check"></i><b>4.8.5</b> Gráfico de punto y línea.</a></li>
+<li class="chapter" data-level="4.8.6" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion."><i class="fa fa-check"></i><b>4.8.6</b> Gráfico de dispersión.</a></li>
+<li class="chapter" data-level="4.8.7" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-en-paneles."><i class="fa fa-check"></i><b>4.8.7</b> Gráfico de dispersión en paneles.</a></li>
+<li class="chapter" data-level="4.8.8" data-path="graficos.html"><a href="graficos.html#grafico-de-caja."><i class="fa fa-check"></i><b>4.8.8</b> Gráfico de caja.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="graficos.html"><a href="graficos.html#personalizacion-avanzada-de-graficos."><i class="fa fa-check"></i><b>4.9</b> Personalización avanzada de gráficos.</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="graficos.html"><a href="graficos.html#etiquetas-y-elementos-de-texto."><i class="fa fa-check"></i><b>4.9.1</b> Etiquetas y elementos de texto.</a></li>
+<li class="chapter" data-level="4.9.2" data-path="graficos.html"><a href="graficos.html#ajuste-del-elemento-texto."><i class="fa fa-check"></i><b>4.9.2</b> Ajuste del elemento texto.</a></li>
+<li class="chapter" data-level="4.9.3" data-path="graficos.html"><a href="graficos.html#posicion-de-las-leyendas."><i class="fa fa-check"></i><b>4.9.3</b> Posición de las leyendas.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="graficos.html"><a href="graficos.html#escalas."><i class="fa fa-check"></i><b>4.10</b> Escalas.</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="graficos.html"><a href="graficos.html#escalas-y-sistemas-de-coordenadas"><i class="fa fa-check"></i><b>4.10.1</b> Escalas y sistemas de coordenadas</a></li>
+<li class="chapter" data-level="4.10.2" data-path="graficos.html"><a href="graficos.html#ajuste-manual-de-intervalos-de-escala."><i class="fa fa-check"></i><b>4.10.2</b> Ajuste manual de intervalos de escala.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="graficos.html"><a href="graficos.html#transformacion-de-escalas"><i class="fa fa-check"></i><b>4.10.3</b> Transformación de escalas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="graficos.html"><a href="graficos.html#sistemas-de-coordenadas."><i class="fa fa-check"></i><b>4.11</b> Sistemas de coordenadas.</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="graficos.html"><a href="graficos.html#coordenadas-polares."><i class="fa fa-check"></i><b>4.11.1</b> Coordenadas polares.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="graficos.html"><a href="graficos.html#fortificar-nuestros-graficos-con-datos-de-un-modelo"><i class="fa fa-check"></i><b>4.12</b> Fortificar nuestros gráficos con datos de un modelo</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="graficos.html"><a href="graficos.html#rectas-de-ajuste"><i class="fa fa-check"></i><b>4.12.1</b> Rectas de ajuste</a></li>
+<li class="chapter" data-level="4.12.2" data-path="graficos.html"><a href="graficos.html#intervalos-de-confianza-y-barras-de-error."><i class="fa fa-check"></i><b>4.12.2</b> Intervalos de confianza y barras de error.</a></li>
+<li class="chapter" data-level="4.12.3" data-path="graficos.html"><a href="graficos.html#etiquetado-de-casos."><i class="fa fa-check"></i><b>4.12.3</b> Etiquetado de casos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="graficos.html"><a href="graficos.html#extensiones-a-ggplot2"><i class="fa fa-check"></i><b>4.13</b> Extensiones a <code>ggplot2::</code></a></li>
+<li class="chapter" data-level="4.14" data-path="graficos.html"><a href="graficos.html#etiquetas"><i class="fa fa-check"></i><b>4.14</b> Etiquetas</a><ul>
+<li class="chapter" data-level="4.14.1" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-con-histogramas-marginales."><i class="fa fa-check"></i><b>4.14.1</b> Gráfico de dispersión con histogramas marginales.</a></li>
+<li class="chapter" data-level="4.14.2" data-path="graficos.html"><a href="graficos.html#graficos-de-proporciones-jerarquicas."><i class="fa fa-check"></i><b>4.14.2</b> Gráficos de proporciones jerárquicas.</a></li>
+<li class="chapter" data-level="4.14.3" data-path="graficos.html"><a href="graficos.html#im-feeling-lucky"><i class="fa fa-check"></i><b>4.14.3</b> I’m feeling lucky…</a></li>
+<li class="chapter" data-level="4.14.4" data-path="graficos.html"><a href="graficos.html#relaciones-multivariadas."><i class="fa fa-check"></i><b>4.14.4</b> Relaciones multivariadas.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html"><i class="fa fa-check"></i><b>5</b> Análisis de datos categóricos</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#introduccion-1"><i class="fa fa-check"></i><b>5.1</b> Introducción</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#datos-categoricos"><i class="fa fa-check"></i><b>5.1.1</b> Datos categóricos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas"><i class="fa fa-check"></i><b>5.2</b> Tablas</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-de-dos-dimensiones."><i class="fa fa-check"></i><b>5.2.1</b> Tablas de contingencia de dos dimensiones.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-en-r."><i class="fa fa-check"></i><b>5.2.2</b> Tablas de contingencia en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-hipotesis-de-independencia-estadistica-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.3</b> Prueba de hipótesis de independencia estadística para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#el-modelo-de-independencia."><i class="fa fa-check"></i><b>5.3.1</b> El modelo de independencia.</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-independencia-para-una-tabla-bidimensional."><i class="fa fa-check"></i><b>5.3.2</b> Prueba de independencia para una tabla bidimensional.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-de-los-residuos."><i class="fa fa-check"></i><b>5.4</b> Análisis de los residuos.</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-chi2-en-r."><i class="fa fa-check"></i><b>5.4.1</b> Prueba <span class="math inline">\(\chi\)</span><sup>2</sup> en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#metodos-graficos-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.5</b> Métodos gráficos para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-loglineales-para-datos-categoricos."><i class="fa fa-check"></i><b>5.5.1</b> Modelos loglineales para datos categóricos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-practico-de-datos-categoricos."><i class="fa fa-check"></i><b>5.6</b> Análisis práctico de datos categóricos.</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-base-de-datos.-1"><i class="fa fa-check"></i><b>5.6.1</b> La base de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#genero-y-partido-politico."><i class="fa fa-check"></i><b>5.7</b> Género y partido político.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lineales.html"><a href="lineales.html"><i class="fa fa-check"></i><b>6</b> Modelos lineales</a><ul>
+<li class="chapter" data-level="6.1" data-path="lineales.html"><a href="lineales.html#introduccion-2"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.2" data-path="lineales.html"><a href="lineales.html#ajuste-de-modelo-lineales-con-lm"><i class="fa fa-check"></i><b>6.2</b> Ajuste de modelo lineales con <code>lm()</code></a><ul>
+<li class="chapter" data-level="6.2.1" data-path="lineales.html"><a href="lineales.html#sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.1</b> Sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.2" data-path="lineales.html"><a href="lineales.html#interpretacion-basica-del-sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.2</b> Interpretación básica del sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.3" data-path="lineales.html"><a href="lineales.html#intervalos-de-confianza."><i class="fa fa-check"></i><b>6.2.3</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="6.2.4" data-path="lineales.html"><a href="lineales.html#valores-estimados-y-residuos."><i class="fa fa-check"></i><b>6.2.4</b> Valores estimados y residuos.</a></li>
+<li class="chapter" data-level="6.2.5" data-path="lineales.html"><a href="lineales.html#prediccion-del-modelo."><i class="fa fa-check"></i><b>6.2.5</b> Predicción del modelo.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-mas-de-una-variable-independiente."><i class="fa fa-check"></i><b>6.3</b> Modelos lineales con más de una variable independiente.</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="lineales.html"><a href="lineales.html#exploracion-de-datos-multivariados."><i class="fa fa-check"></i><b>6.3.1</b> Exploración de datos multivariados.</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lineales.html"><a href="lineales.html#especificacion-de-modelos-con-multiples-variables-independientes."><i class="fa fa-check"></i><b>6.3.2</b> Especificación de modelos con múltiples variables independientes.</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lineales.html"><a href="lineales.html#comparar-modelos-lineales-multiples."><i class="fa fa-check"></i><b>6.3.3</b> Comparar modelos lineales múltiples.</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.4</b> Imprimir un sumario de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-formateado-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.5</b> Imprimir un sumario formateado de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.6" data-path="lineales.html"><a href="lineales.html#anova-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.6</b> ANOVA de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.7" data-path="lineales.html"><a href="lineales.html#criterio-de-informacion-de-akaike."><i class="fa fa-check"></i><b>6.3.7</b> Criterio de información de Akaike.</a></li>
+<li class="chapter" data-level="6.3.8" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-variables-independientes-categoricas."><i class="fa fa-check"></i><b>6.3.8</b> Modelos lineales con variables independientes categóricas.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lineales.html"><a href="lineales.html#supuestos-de-un-modelo-lineal."><i class="fa fa-check"></i><b>6.4</b> Supuestos de un modelo lineal.</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="lineales.html"><a href="lineales.html#normalidad."><i class="fa fa-check"></i><b>6.4.1</b> Normalidad.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lineales.html"><a href="lineales.html#independencia."><i class="fa fa-check"></i><b>6.4.2</b> Independencia.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lineales.html"><a href="lineales.html#linealidad."><i class="fa fa-check"></i><b>6.4.3</b> Linealidad.</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lineales.html"><a href="lineales.html#homocedasticidad."><i class="fa fa-check"></i><b>6.4.4</b> Homocedasticidad.</a></li>
+<li class="chapter" data-level="6.4.5" data-path="lineales.html"><a href="lineales.html#casos-atipicos."><i class="fa fa-check"></i><b>6.4.5</b> Casos atípicos.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lineales.html"><a href="lineales.html#regresion-robusta."><i class="fa fa-check"></i><b>6.5</b> Regresión robusta.</a></li>
+<li class="chapter" data-level="6.6" data-path="lineales.html"><a href="lineales.html#supuestos-de-los-modelos-lineales-problemas-y-soluciones."><i class="fa fa-check"></i><b>6.6</b> Supuestos de los modelos lineales: problemas y soluciones.</a></li>
+<li class="chapter" data-level="6.7" data-path="lineales.html"><a href="lineales.html#funciones-adicionales-para-modelos-lineales."><i class="fa fa-check"></i><b>6.7</b> Funciones adicionales para modelos lineales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="generalizados.html"><a href="generalizados.html"><i class="fa fa-check"></i><b>7</b> Modelos lineales generalizados</a><ul>
+<li class="chapter" data-level="7.1" data-path="generalizados.html"><a href="generalizados.html#introduccion."><i class="fa fa-check"></i><b>7.1</b> Introducción.</a></li>
+<li class="chapter" data-level="7.2" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-con-glm"><i class="fa fa-check"></i><b>7.2</b> Ajuste de modelos logit con <code>glm()</code></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-los-datos."><i class="fa fa-check"></i><b>7.2.1</b> Presentación de los datos.</a></li>
+<li class="chapter" data-level="7.2.2" data-path="generalizados.html"><a href="generalizados.html#un-modelo-lineal-con-glm"><i class="fa fa-check"></i><b>7.2.2</b> Un modelo lineal con <code>glm()</code></a></li>
+<li class="chapter" data-level="7.2.3" data-path="generalizados.html"><a href="generalizados.html#la-ordenada-al-origen-de-un-modelo-logit."><i class="fa fa-check"></i><b>7.2.3</b> La ordenada al origen de un modelo logit.</a></li>
+<li class="chapter" data-level="7.2.4" data-path="generalizados.html"><a href="generalizados.html#estimacion-de-beta_1"><i class="fa fa-check"></i><b>7.2.4</b> Estimación de <span class="math inline">\(\beta_1\)</span></a></li>
+<li class="chapter" data-level="7.2.5" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-dos-variables-independientes."><i class="fa fa-check"></i><b>7.2.5</b> Modelo logit con dos variables independientes.</a></li>
+<li class="chapter" data-level="7.2.6" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-multiples-variables-dependientes."><i class="fa fa-check"></i><b>7.2.6</b> Modelo logit con múltiples variables dependientes.</a></li>
+<li class="chapter" data-level="7.2.7" data-path="generalizados.html"><a href="generalizados.html#pruebas-de-significancia."><i class="fa fa-check"></i><b>7.2.7</b> Pruebas de significancia.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-resultados."><i class="fa fa-check"></i><b>7.3</b> Presentación de resultados.</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="generalizados.html"><a href="generalizados.html#intervalos-de-confianza.-1"><i class="fa fa-check"></i><b>7.3.1</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="7.3.2" data-path="generalizados.html"><a href="generalizados.html#grafico-de-coeficientes."><i class="fa fa-check"></i><b>7.3.2</b> Gráfico de coeficientes.</a></li>
+<li class="chapter" data-level="7.3.3" data-path="generalizados.html"><a href="generalizados.html#tabla-y-grafico-de-efectos-totales-promedio."><i class="fa fa-check"></i><b>7.3.3</b> Tabla y gráfico de efectos totales promedio.</a></li>
+<li class="chapter" data-level="7.3.4" data-path="generalizados.html"><a href="generalizados.html#sumario-de-efectos-marginales."><i class="fa fa-check"></i><b>7.3.4</b> Sumario de efectos marginales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="generalizados.html"><a href="generalizados.html#modelos-ligit-multinomiales."><i class="fa fa-check"></i><b>7.4</b> Modelos ligit multinomiales.</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-multinomiales-com-multinom"><i class="fa fa-check"></i><b>7.4.1</b> Ajuste de modelos logit multinomiales com <code>multinom()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="generalizados.html"><a href="generalizados.html#anexo-i.-probabilidades-y-razones-de-probabilidad."><i class="fa fa-check"></i><b>7.5</b> Anexo I. Probabilidades y razones de probabilidad.</a></li>
+<li class="chapter" data-level="7.6" data-path="generalizados.html"><a href="generalizados.html#anexo-ii.-asterisco-sobre-los-asteriscos."><i class="fa fa-check"></i><b>7.6</b> Anexo II. Asterisco sobre los asteriscos.</a></li>
+<li class="chapter" data-level="7.7" data-path="generalizados.html"><a href="generalizados.html#anexo-iii.-tipos-de-variables-independiente-y-modelo-lineal-apropiado."><i class="fa fa-check"></i><b>7.7</b> Anexo III. Tipos de variables independiente y modelo lineal apropiado.</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="martinpaladino.github.com" target="blank">Martín Paladino</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R para Ciencias Sociales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lineales" class="section level1">
+<h1><span class="header-section-number">Capítulo 6</span> Modelos lineales</h1>
+<div id="introduccion-2" class="section level2">
+<h2><span class="header-section-number">6.1</span> Introducción</h2>
+<p>Los modelos lineales son una de las herramientas más importantes del análisis cuantitativo. Los utilizamos cuando queremos predecir –o explicar– una variable dependiente a partir de una o más variables independientes. El uso mismo de la terminología de variables dependientes e independientes nos da una pista del abordaje: el ajuste de modelos lineales busca encontrar una función –en el sentido matemático– que nos permite expresar a una variable a partir de otras.
+El siguiente ejemplo es excesivamente simple,ya que conocemos de antemano la función: <span class="math inline">\(b=3+2a\)</span>.</p>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="kw">data.frame</span>(a&lt;-<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, b&lt;-<span class="dv">3</span><span class="op">+</span>a<span class="op">*</span><span class="dv">2</span>), <span class="kw">aes</span>(<span class="dt">x=</span>a, <span class="dt">y=</span>b)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb404-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb404-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb404-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;b=3+&quot;</span>,<span class="dv">2</span><span class="op">*</span>a)))</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-75"></span>
+<img src="libRo_files/figure-html/unnamed-chunk-75-1.png" alt="Función matemática" width="768" />
+<p class="caption">
+Figure 6.1: Función matemática
+</p>
+</div>
+<p>Considere, en cambio, este otro:</p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1">marginacion <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb405-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb405-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>SPRIM, <span class="dt">y=</span>PO2SM)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb405-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb405-5" data-line-number="5"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-76"></span>
+<img src="libRo_files/figure-html/unnamed-chunk-76-1.png" alt="Gráfico de dispersión" width="768" />
+<p class="caption">
+Figure 6.2: Gráfico de dispersión
+</p>
+</div>
+<p>Lo que vemos es un gráfico de dispersión. Cada punto representa a un municipio, su ubicación relativa al eje x indica el porcentaje de población de 15 años o más sin primaria completa y en el eje y el porcentaje de población que gana menos de dos salarios mínimos. Hemos conservado los nombres cortos de las variables: SPRIM y PO2SM, tal como aparecen en la base de datos elaborada por el CONAPO que utilizamos para este análisis. Los registros correspondientes al año 2015.</p>
+<p><del>Intuitivamente</del> Teóricamente podemos pensar que a menor nivel educativo en un municipio menor será el ingreso de sus habitantes y, aunque aquí lamentablemente no tenemos los datos por habitante sino por municipio, el gráfico parece indicar que estamos en lo cierto. Si el porcentaje de población mayor a 15 años sin primaria completa y el porcentaje de población que gana menos de dos salarios mínimos fueran independientes entre sí, los puntos deberían distribuirse por todo el espacio del gráfico. Sin embargo hay muy poco puntos en el área inferior izquierda: es decir, hay muy pocos municipios con mucha población sin primaria y pocos trabajadores ganando menos de dos salarios mínimos.</p>
+<p>Por valioso que resulte el gráfico –y veremos que la inspección visual de los datos es fundamental– sería mejor poder expresar la relación entre SPRIM y PO2SM de manera más sintética. Una función como la de la Figura 1 estaría muy bien. Podríamos expresar al porcentaje de habitantes que ganan menos de dos salarios mínimos como una magnitud relativa al porcentaje de analfabetismo.</p>
+<p>Eso es exactamente lo que produce un modelo lineal: expresa una variable –la dependiente– como función de otra –la independiente–, más la ordenada al origen y, no menos importante, el error. De manera abstracta podríamos formular la función que relaciona a estas variables así: <span class="math inline">\(PO2SM=SPRIM_0+SPRIM\cdot\beta_1+\epsilon\)</span>.</p>
+<p>En castellano: la población con ingresos menores a dos salarios mínimos es igual a la población sin primaria multiplicada por <span class="math inline">\(\beta\)</span>, más un error, al que llamamos <span class="math inline">\(\epsilon\)</span>. Es posible que aún para municipios con ninguna persona sin primaria haya algún porcentaje mayor a cero de personas que ganan menos de dos salarios mínimos. Para dar cuenta de ese porcentaje lo incluimos en la ecuación como <span class="math inline">\(SPRIM_0\)</span> y genéricamente llamamos <span class="math inline">\(\beta_0\)</span></p>
+<p>Dicho esto ¿qué es <span class="math inline">\(\beta_1\)</span>?</p>
+<p><span class="math inline">\(\beta_1\)</span> es la pendiente de la función, un coeficiente que, multiplicado por la variable independiente, nos regresa un valor estimado para la variable dependiente. Dado que la función incluye solamente una suma y una multiplicación producirá, como podemos verlo gráficamente, una recta. La pendiente es la misma a lo largo de todos los valores de <span class="math inline">\(x\)</span>. Los modelos <em>no lineales</em> ajustan funciones diferentes que producen curvas o parábolas en las que la pendiente es variable. A esto nos referimos cuando hablamos de relaciones lineales entre variables: las relación entre dos variables ajustada a una linea recta.
+La recta es una aproximación de esta relación, un modelo de la variación concomitante entre <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span>. Como modelo siempre tendrá un error<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>, pero será más inteligible que la totalidad de los datos. Este es el comercio que nos propone el modelado, ganar inteligibilidad al costo de perder precisión.
+Regresemos al ejemplo simple de la Figura 1. Allí <span class="math inline">\(\beta_1\)</span> es igual a 2. Podemos conocer el valor de <span class="math inline">\(b\)</span> sabiendo solamente el de <span class="math inline">\(a\)</span>, <span class="math inline">\(beta\)</span> y la ordenada al origen, es decir, el valor de b cuando <span class="math inline">\(a=0\)</span>. Como tenemos la función sabemos que para <span class="math inline">\(a=1\)</span> y dado que <span class="math inline">\(b=3+a*2\)</span>, entonces <span class="math inline">\(b=5\)</span>. Sin embargo en el caso de la Figura 2 no conocemos la función que relaciona a las variables. Como si fuera poco a diferencia de la Figura 1 en la 2 los puntos no están perfectamente alineados, más bien tienen la forma de una nube. Cualquier recta definida por una pendiente acertará con algunos valores PO2SM, pero errará la predicción de otros. Por eso incluimos en la formulación del modelo un error. Lo que nos lleva a la siguiente pregunta:</p>
+<p>¿Como obtenemos los valores de <span class="math inline">\(\beta_1\)</span> y <span class="math inline">\(\beta_0\)</span> para dos variables?</p>
+<p>Existen infinitas rectas que cortan el espacio cartesiano definido por ANALF y PO2SM. Es decir, podríamos pensar en infinitos valores de <span class="math inline">\(\beta_1\)</span> y <span class="math inline">\(\beta_0\)</span> que, sumando el error, expresan la relación entre estas dos variables. Pero el error es la clave. De las infinitas rectas que cortan el espacio buscamos aquella que produce el error más pequeño. A esta forma de proceder la llamamos criterio de los mínimos cuadrados: una forma de estimar los parámetros ocultos de un modelo (<span class="math inline">\(beta\)</span> y <span class="math inline">\(x_0\)</span>) tal que la distancia vertical entre la predicción del modelo y el dato observado elevada al cuadrado sea la menor posible. Consideremos la Figura 3, en la que se muestran los mismos puntos de la 2 y tres “candidatas” a rectas de ajuste o valores de <span class="math inline">\(beta\)</span> y <span class="math inline">\(x_0\)</span>.
+La recta roja supone que <span class="math inline">\(PO2SM=20+SPRIM\cdot2\)</span>, para la verde <span class="math inline">\(PO2SM=10+SPRIM\cdot1\)</span> y para la azul <span class="math inline">\(PO2SM=28+SPRIM\cdot0.93\)</span>.</p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" data-line-number="1">marginacion <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb406-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb406-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>SPRIM, <span class="dt">y=</span>PO2SM)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb406-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb406-5" data-line-number="5"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb406-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>, <span class="dt">se=</span><span class="ot">FALSE</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb406-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept=</span><span class="dv">20</span>, <span class="dt">slope=</span><span class="dv">2</span>, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb406-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> <span class="dv">10</span>, <span class="dt">slope=</span><span class="dv">1</span>, <span class="dt">color=</span><span class="st">&quot;green&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>)</a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-77-1.png" width="768" /></p>
+<p>¿Cuál es la mejor? ¿Cuál minimiza el error? ¿Por qué? Veamos que valor predicen cada una para PO2SM de cada municipio, dado ANALF, y comparemos los errores. Los obtenemos con <span class="math inline">\(\epsilon=\sum~(O-E^2)\)</span>, el error total es la sumatoria de las diferencias entre los valores predichos por el modelo y los valores observados, a los que elevamos al cuadrado.<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a></p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" data-line-number="1"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb407-2" data-line-number="2"><span class="kw">library</span>(car)</a>
+<a class="sourceLine" id="cb407-3" data-line-number="3">marginacion <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb407-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb407-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">roja=</span><span class="dv">30</span><span class="op">+</span>ANALF<span class="op">*</span><span class="dv">5</span>, <span class="dt">verde=</span><span class="dv">60</span><span class="op">+</span>ANALF, <span class="dt">azul=</span><span class="dv">41</span><span class="op">+</span>ANALF<span class="op">*</span><span class="fl">1.195</span>) <span class="op">%&gt;%</span><span class="st">                                </span><span class="co">#Estimaciones de cada función: E</span></a>
+<a class="sourceLine" id="cb407-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">error_roja=</span>(ANALF<span class="op">-</span>roja)<span class="op">^</span><span class="dv">2</span>, <span class="dt">error_verde=</span>(ANALF<span class="op">-</span>verde)<span class="op">^</span><span class="dv">2</span>, <span class="dt">error_azul=</span>(ANALF<span class="op">-</span>azul)<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st">   </span><span class="co">#Errores al cuadrado: O-E^2</span></a>
+<a class="sourceLine" id="cb407-7" data-line-number="7"><span class="st">  </span><span class="kw">summarise</span>(<span class="st">`</span><span class="dt">Error cuadrado Roja</span><span class="st">`</span>=<span class="kw">sum</span>(error_roja),                                                <span class="co">#Sumatorias de los errores</span></a>
+<a class="sourceLine" id="cb407-8" data-line-number="8">            <span class="st">`</span><span class="dt">Error cuadrado Verde</span><span class="st">`</span>=<span class="kw">sum</span>(error_verde), </a>
+<a class="sourceLine" id="cb407-9" data-line-number="9">            <span class="st">`</span><span class="dt">Error cuadrado Azul</span><span class="st">`</span>=<span class="kw">sum</span>(error_azul)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb407-10" data-line-number="10"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;Sumatoria de errores al cuadrado para las funciones azul, verde y roja&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-78">Table 6.1: </span>Sumatoria de errores al cuadrado para las funciones azul, verde y roja</caption>
+<thead>
+<tr class="header">
+<th align="right">Error cuadrado Roja</th>
+<th align="right">Error cuadrado Verde</th>
+<th align="right">Error cuadrado Azul</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">17471758</td>
+<td align="right">8845200</td>
+<td align="right">4611584</td>
+</tr>
+</tbody>
+</table>
+<p>La función que produce la recta azul es la que produce el menor error. Sobra decir que probar infinitas funciones para ver cuál tiene el menor error no es un método muy eficiente. La función <code>lm()</code> de R se encarga, entre otras cosas, de estimar la ordenada al origen y el coeficiente del modelo, de acuerdo con el criterio de mínimos cuadrados. De hecho así obtuvimos los de la recta azul.</p>
+<p><code>lm()</code> también computa una serie de estadístico que nos permiten conocer la varianza explicada por un modelo, la distribución de los residuos, la probabilidad de unos coeficientes como los que obtuvimos dada una hipótesis de nulidad según la cuál el coeficiente es 0. Veamos primero como ajustar modelos lineales con R y, en el camino, los estadísticos que produce y como interpretarlos.</p>
+</div>
+<div id="ajuste-de-modelo-lineales-con-lm" class="section level2">
+<h2><span class="header-section-number">6.2</span> Ajuste de modelo lineales con <code>lm()</code></h2>
+<p><code>lm()</code> es la función de R para ajustar modelos lineales. De ningún modo es la única, pero es la más importante. Dado que en un modelo lineal las variables no son simétricas usamos una sintaxis especial para introducirlas al modelo, señalando cuál está del lado izquierdo y cuál(es) del lado derecho, es decir, cuál es la dependiente y cuál es la independiente. Esa sintaxis especial se llama notación de fórmula y utiliza el símbolo <code>~</code> para separar el lado izquierdo del lado derecho. A la izquierda de <code>~</code> se ubica la variable dependiente, a la derecha la(s) independiente(s).
+La fórmula del modelo con el que ajustamos la recta azul es <code>PO2SM~SPRIM</code>, donde <code>PO2SM</code> y <code>SPRIM</code> son los nombres de dos vectores numéricos del mismo largo. Usualmente no trabajamos con vectores sueltos y utilizamos un <code>data.frame</code> que reúne a todas las variables de interés. En ese caso usamos los nombres de columna y agregamos el argumento <code>data=nuestro.data.frame</code> para indicar el entorno en el que debe buscar esos nombres. Si estamos haciendo alguna manipulación previa de datos y utilizamos el operador <code>%&gt;%</code> para encadenar funciones usamos el comodín <code>.</code> para referir a los datos.</p>
+<p><code>lm()</code> permite ajustar modelos con más de una variable independiente. Del lado derecho unimos predictores<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a> con el signo <code>+</code>. Adicionalmente podemos utilizar los signos <code>*</code> para especificar interacciones entre dos variables y <code>:</code> para las interacciones <em>y</em> los efectos directos.</p>
+<p>La sintaxis básica es</p>
+<pre><code>`lm(dependiente~independiente1+independiente2, data=datos)`. </code></pre>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" data-line-number="1"><span class="co">#Modelo 1</span></a>
+<a class="sourceLine" id="cb409-2" data-line-number="2">marginacion <span class="op">%&gt;%</span><span class="st">                              </span><span class="co">#Datos</span></a>
+<a class="sourceLine" id="cb409-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#Manipulación de datos: filtro datos de 2015 y para entidades federativas</span></a>
+<a class="sourceLine" id="cb409-4" data-line-number="4"><span class="st">  </span><span class="kw">lm</span>(PO2SM<span class="op">~</span>SPRIM, <span class="dt">data=</span>.) -&gt;<span class="st">                </span><span class="co">#data=. lo hereda de %&gt;% </span></a>
+<a class="sourceLine" id="cb409-5" data-line-number="5"><span class="st">  </span>moli1                                      <span class="co">#Asigno un nombre al objeto para explorar después. No habrá salida en consola.</span></a></code></pre></div>
+<p><code>lm()</code> recibe un fórmula y unos datos y produce como output un objeto de la clase <code>lm</code>. Si está acostumbrado a utilizar paquetes estadísticos posiblemente se sentirá decepcionado al ver que en consola <code>lm()</code> sólo muestra la ordenada al origen y los coeficientes ¿tanto trabajo aprendiendo a usar R para esto? No hay motivos para decepcionarse. En R un output suele ser input para otras funciones y hay muchas para explorar un objeto <code>lm</code> y analizar en profundidad nuestro modelo. Considere al ajuste del modelo un paso intermedio: la creación de una estructura de datos con los resultados a los que puede consultar posteriormente. La función <code>summary()</code> tiene un método para <code>lm()</code> y la utilizaremos con frecuencia para consultar los coeficientes y estadísticos básicos de un modelo.</p>
+<div id="sumario-de-un-modelo." class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Sumario de un modelo.</h3>
+<p>La función <code>summary()</code> nos regresa el sumario del modelo. Para utilizarla podemos ajustar primero el modelo, asignarle un nombre y luego ejecutar <code>summary(modelo)</code>, donde <code>modelo</code> es el nombre que asignamos. Alternativamente, usando tuberías, podemos agregar <code>%&gt;% summary</code> después del ajustar el modelo.</p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" data-line-number="1"><span class="kw">summary</span>(moli1)        <span class="co">#Regresa el sumario del modelo en la consola.  </span></a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = PO2SM ~ SPRIM, data = .)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -79.986  -8.167   0.611   8.956  41.396 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 28.16735    0.69227   40.69   &lt;2e-16 ***
+## SPRIM        0.93125    0.02191   42.51   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 12.93 on 2455 degrees of freedom
+## Multiple R-squared:  0.424,  Adjusted R-squared:  0.4238 
+## F-statistic:  1807 on 1 and 2455 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="interpretacion-basica-del-sumario-de-un-modelo." class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Interpretación básica del sumario de un modelo.</h3>
+<p>La primera línea es <code>Call:</code> y muestra la formula con la que obtuvimos el modelo. Es útil para evitar confusiones, especialmente si estamos comparando varios modelos a la vez. Podemos saber exactamente a qué variables dependientes e independientes corresponde el sumario.</p>
+<p>La segunda es <code>Residuals:</code> y nos da 5 estadísticos sobre la distribución de los residuos del modelo: valores mínimos, 1er, 2do y 3er cuartil y valor máximo. La media de los residuos siempre es cero, así que es un parámetro de referencia que no aparece en el sumario, pero que nos resulta útil. Si los residuos se distribuyen conforme a una distribución normal deberíamos esperar que la mediana sea 0 o muy cerca de 0, y que el 1er y 3er cuartil sean simétricos. Lo mismo para lo valores mínimos o máximos. Si hay desviaciones notables de media y mediana y no hay simetría entre cuartiles es muy probable que no estemos cumpliendo con algunos de los supuestos de los modelos lineales. Más adelante veremos el diagnóstico detallado de lo modelos lineales.</p>
+<p>La tercera es <code>Coefficients:</code> y muestra los coeficientes estimados por el modelo, es decir, los parámetros ocultos <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> de la ecuación 1. Estas son la ordenada al origen (Intercept) y las pendientes estimadas para cada variable. En este caso tenemos sólo una, pero podríamos incluir más, como veremos a continuación. En este caso, con un modelo lineal para variables dependientes e independientes continuas la interpretación de los coeficientes es directa: la ordenada al origen señala el valor de <span class="math inline">\(y\)</span> cuando <span class="math inline">\(x=0\)</span>: cuando un municipio tiene 0% de habitantes mayores a 15 a años sin educación primaria el modelo estima que un 28.16% de sus habitantes ganan menos de dos salarios mínimos. La pendiente de SPRIM igual a 0.93 se interpreta de la siguiente manera: por cada unidad adicional de SPRIM (un uno por ciento más de población &gt;15 años sin educación primaria) el porcentaje de población que gana menos de dos salarios mínimos aumenta 0.93. Para un municipios con 20% de población mayor a 15 años sin primaria el modelo predice un 46.8% de población ganando menos de dos salarios mínimos.</p>
+<p>En la tercer columna se registra el error estandar para la estimación de cada variable, al que podemos interpretar como el promedio de los residuos.
+A partir del coeficiente estimado y el error estándar se computa un valor <span class="math inline">\(t\)</span>, un estadístico de la divergencia entre el estimado que produce el modelo y un estimado hipotético con valor 0. Cuanto más alto es el valor t mayor la divergencia entre los coeficientes del modelo y el coeficiente igual a cero.
+Por último el p-value de la prueba de hipótesis del estadístico <span class="math inline">\(t\)</span>, que indica la probabilidad de obtener un estimado como el que obtuvimos si el coeficiente real fuera 0. Si la probabilidad de este evento es muy baja podemos rechazar la hipótesis de nulidad según la cuál el verdadero estimado es cero. Esto no significa que nuestro modelo sea verdadero, simplemente que es poco verosímil que obtuviéramos estos estimados siendo verdadero que la pendiente es 0. Si el p-value es alto (digamos, mayor que 0.05) no podemos rechazar la hipótesis de nulidad y deberíamos tratar a nuestro estimado como si fuera 0: la pendiente es horizontal, no hay diferencias significativas en los valores de <span class="math inline">\(y\)</span> a medida que varía el valor de <span class="math inline">\(x\)</span>. No se decepcione: los p-values altos son sumamente informativos. En este caso si el p-value fuera mayor que 0.05 obtendría una conclusión valiosa: que la educación no está relacionada con el ingreso, al menos para estos datos.</p>
+<p>La última línea muestra el error estándar de los residuos y los valores de <span class="math inline">\(R^2\)</span>, múltiple y ajustado. El R^2 de 0.424 indica el modelo explica un 42.4% de la varianza de la variable dependiente. Es decir, un 42.4% de la variación en la población que gana menos de dos salarios mínimos se explica por la variación en el porcentaje de población mayor a 15 años sin educación primaria. El resto de la varianza puede atribuirse al azar o a otras variables que no hemos incorporado al modelo.</p>
+<p>Por último reporta el estadístico F y el p-value correspondiente. El estadístico F considera a la varianza explicada y la no explicada y es la base de una prueba de hipótesis en la que contrasta a nuestro modelo con uno hipotético en el que las variables no tienen efectos, es decir, con todos los coeficientes iguales a 0. En el caso del Modelo 1, que incluye una sola variable predictora, el p-value de t y F es el mismo, en modelo lineales múltiples puede que este no sea el caso.
+Si el p-value del estadístico F es menor a cierto criterio –usualmente menor que 0.05– podemos rechazar esta hipótesis de nulidad. Sería poco probable que dado un modelo verdadero con coeficientes iguales a cero obtuviéramos un modelo como el nuestro.</p>
+</div>
+<div id="intervalos-de-confianza." class="section level3">
+<h3><span class="header-section-number">6.2.3</span> Intervalos de confianza.</h3>
+<p>Otra forma visualizar los coeficientes es a través de intervalos de confianza. Los intervalos de confianza marcan dos puntos dentro de los cuales es esperable que se encuentre el verdadero coeficiente del modelo –recuerde que los que obtuvimos son una estimación de ese verdadero coeficiente y tienen un término de error– con determinado nivel de confianza. En general cuanto mayor es la confianza, más amplio el intervalo. Es usual utilizar un intervalo de confianza del 95%.
+En R obtenemos los intervalos de confianza de un objeto <code>lm</code> con la función <code>confint()</code>.</p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" data-line-number="1"><span class="kw">confint</span>(moli1)</a></code></pre></div>
+<pre><code>##                  2.5 %     97.5 %
+## (Intercept) 26.8098627 29.5248424
+## SPRIM        0.8882918  0.9742011</code></pre>
+<p>Interpretamos a estos intervalos afirmando que, con una confianza del 95%, la pendiente se encuentra entre 0.888 y 0.974. Una vez más encontramos que es muy poco probable que el verdadero valor sea 0.</p>
+</div>
+<div id="valores-estimados-y-residuos." class="section level3">
+<h3><span class="header-section-number">6.2.4</span> Valores estimados y residuos.</h3>
+<p>Para obtener un vector con los estimados para y o de los residuos utilizamos <code>fitted(modelo)</code> y <code>residuals(modelo)</code> respectivamente.
+Dado que los vectores resultantes tienen el mismo largo y orden que la estructura de datos que los originó podemos adosar estos vectores a esa estructura.</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" data-line-number="1"><span class="kw">data.frame</span>(<span class="dt">predichos=</span><span class="kw">fitted</span>(moli1), <span class="dt">residuos=</span><span class="kw">residuals</span>(moli1)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb414-2" data-line-number="2"><span class="st">  </span><span class="kw">head</span>(., <span class="dv">20</span>)</a></code></pre></div>
+<pre><code>##    predichos    residuos
+## 1   37.05144  -5.9214439
+## 2   40.95337  -7.1833666
+## 3   50.68489  11.2651078
+## 4   41.90324   1.5367620
+## 5   42.04292  -0.5629250
+## 6   47.62109   5.1389087
+## 7   40.99062  -5.5006164
+## 8   48.77584   0.6141631
+## 9   47.77009   1.0299092
+## 10  43.57948   6.2105184
+## 11  42.01499   2.9150124
+## 12  37.18182 -16.7118184
+## 13  36.88382 -13.7938195
+## 14  41.82874 -12.1987383
+## 15  40.05937 -14.6993700
+## 16  38.93256 -13.2125617
+## 17  38.09444 -20.7744399
+## 18  36.01776 -13.7777603
+## 19  46.86678  -6.7667817
+## 20  47.50934 -19.3493417</code></pre>
+</div>
+<div id="prediccion-del-modelo." class="section level3">
+<h3><span class="header-section-number">6.2.5</span> Predicción del modelo.</h3>
+<p>Una vez que tenemos el modelo podemos utilizarlo para predecir cualquier valor de PO&lt;2SM, aún cuando no lo hayamos observado. Tomemos, por ejemplo, una serie de hipotéticos municipios con con SPRIM de 0%, 15% y 20%. Usamos la función <code>predict()</code>, que recibe dos argumentos: el modelo que usaremos para la predicción, un objeto de la clase <code>lm</code> u otro tipo de modelo y <code>newdata=</code>, un data.frame que contiene al menos una columna que el mismo nombre y tipo que la variable independiente.</p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" data-line-number="1">municipios_hipoteticos &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">SPRIM=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">20</span>))     <span class="co">#Creo un data frame con la columna SPRIM.</span></a>
+<a class="sourceLine" id="cb416-2" data-line-number="2"><span class="kw">predict</span>(moli1, <span class="dt">newdata =</span> municipios_hipoteticos)</a></code></pre></div>
+<pre><code>##        1        2        3 
+## 28.16735 42.13605 46.79228</code></pre>
+</div>
+</div>
+<div id="modelos-lineales-con-mas-de-una-variable-independiente." class="section level2">
+<h2><span class="header-section-number">6.3</span> Modelos lineales con más de una variable independiente.</h2>
+<p>Con frecuencia cuando modelamos una variable dependiente lo hacemos con más de una variable independiente. En otros ámbitos el motivo para hacer más complejo el modelo es aumentar su capacidad predictiva: obtener un <span class="math inline">\(R^2\)</span> más alto, reduciendo el componente aleatorio. En las ciencias sociales el marco suele ser explicativo más que predictivo: agregamos variables para identificar cuales tienen un efecto significativo y cuales no. En el marco de la prueba de <em>hipótesis sustantivas</em> aquí reside el mayor atractivo de los modelos lineales, nos permiten controlar el efecto de cada variable y ver si, dado este control, las variables adicionales tienen alguno.
+Propongamos una nueva hipótesis sustantiva: el ingreso medido como proporción de población que gana menos de dos salarios mínimos al mes se explica por la educación y no por la infraestructura. El primer problema que enfrentamos es que las variables de infraestructura y las educativas están correlacionadas entre sí, en general los municipios con una alta proporción de SPRIM también tienen una alta proporción de población en viviendas sin drenaje, en viviendas con piso de tierra, sin energía eléctrica, etc. En este caso lo ideal sería controlar el efecto de las variables: con el porcentaje de población en viviendas con piso de tierra constante ¿cuánto varía PO&lt;2SM con respecto a SPRIM? Eso es exactamente lo que hace un modelo lineal múltiple.</p>
+<div id="exploracion-de-datos-multivariados." class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Exploración de datos multivariados.</h3>
+<p>Antes de modelar es conveniente explorar los datos con los que vamos a trabajar. Mencionamos que es muy posible que SPRIM y las variables de infraestructura estén correlacionadas. Una matriz de correlaciones nos permitirá evaluar qué variables están correlacionadas entre sí, así como las direcciones e intensidades.
+Utilizarlos la función <code>cor()</code>, que nos regresa una matriz de correlaciones, por defecto estima la correlación R de Pearson. La sintaxis básica es <code>cor(data.frame)</code>, donde data.frame es un data.frame con las variables cuyas correlaciones queremos calcular. Dado que usamos una correlación <span class="math inline">\(R_Pearson\)</span> todas las variables deben ser numéricas.</p>
+<p>Para una exploración visual podemos generar un gráfico de pares: una gráfico de dispersión de las combinaciones de variables.
+La función <code>pairs()</code> de la librería <code>base::</code> ofrece uno básico, que se obtiene rápidamente. Una opción más avanzada es es usar <code>GGally::ggpairs()</code>, que permite trabajar simultáneamente con variables medidas en distintos niveles y ofrece información adicional como coeficientes de correlación.</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" data-line-number="1"><span class="kw">library</span>(GGally)</a>
+<a class="sourceLine" id="cb418-2" data-line-number="2"><span class="co">#Matríz de correlaciones. </span></a>
+<a class="sourceLine" id="cb418-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb418-4" data-line-number="4">marginacion <span class="op">%&gt;%</span><span class="st">                                    </span><span class="co">#Datos</span></a>
+<a class="sourceLine" id="cb418-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb418-6" data-line-number="6"><span class="st">  </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">PO2SM</span><span class="st">`</span>, SPRIM, OVPT, OVSEE, OVSDE) <span class="op">%&gt;%</span><span class="st">   </span><span class="co">#Selecciono las variables de interés</span></a>
+<a class="sourceLine" id="cb418-7" data-line-number="7"><span class="st">  </span><span class="kw">cor</span>()                                            <span class="co">#Calculo la matríz de correlaciones.    </span></a></code></pre></div>
+<pre><code>##           PO2SM     SPRIM      OVPT     OVSEE     OVSDE
+## PO2SM 1.0000000 0.6511697 0.4391999 0.1964478 0.1915885
+## SPRIM 0.6511697 1.0000000 0.5521924 0.3728836 0.2976330
+## OVPT  0.4391999 0.5521924 1.0000000 0.4828759 0.1752402
+## OVSEE 0.1964478 0.3728836 0.4828759 1.0000000 0.3980229
+## OVSDE 0.1915885 0.2976330 0.1752402 0.3980229 1.0000000</code></pre>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb420-1" data-line-number="1"><span class="co">#Gráficos de pares.</span></a>
+<a class="sourceLine" id="cb420-2" data-line-number="2">marginacion <span class="op">%&gt;%</span><span class="st">                                    </span><span class="co">#Datos</span></a>
+<a class="sourceLine" id="cb420-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb420-4" data-line-number="4"><span class="st">  </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">PO2SM</span><span class="st">`</span>, SPRIM, OVPT, OVSEE, OVSDE) <span class="op">%&gt;%</span><span class="st">   </span><span class="co">#Selecciono las variables de interés</span></a>
+<a class="sourceLine" id="cb420-5" data-line-number="5"><span class="st">  </span><span class="kw">ggpairs</span>()                                            <span class="co">#Calculo la matríz de correlaciones.    </span></a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-84-1.png" width="768" /></p>
+<p>En efecto, todas las variables están correlacionadas de manera positiva entre sí, en menor o mayor grado. De las variables de infraestructura física la población en viviendas con piso de tierra es la más correlacionada con PO2SM, pero también con SPRIM.
+Las variables de infraestructura tienen una distribución sesgada a la izquierda, la mayoría de los municipios tienen relativamente poca población con déficit de infraestructura.</p>
+</div>
+<div id="especificacion-de-modelos-con-multiples-variables-independientes." class="section level3">
+<h3><span class="header-section-number">6.3.2</span> Especificación de modelos con múltiples variables independientes.</h3>
+<p>Hasta ahora hemos modelado PO2SM a partir del porcentaje de población mayor a 15 años sin primaria completa y encontrado que hay una relación positiva –en el sentido de la pendiente, por supuesto. Ha mayor población sin primaria, mayor proporción de la población ganando menos de dos salarios mínimos. Esto indica, al menos provisionalmente, que la educación tiene efectos sobre el mercado de trabajo, pero para medirlo más específicamente valdría la pena controlar otras variables.
+Usando la notación de fórmula crearemos 3 nuevos modelos. En el primer multivariado controlaremos a OVPT, % Ocupantes en viviendas con piso de tierra, que ya hemos visto que está altamente correlacionado con SPRIM y PO2SM. En el siguiente agregaremos al PL&gt;5000, % Población en localidades con menos de 5 000 habitantes, como un proxy de ruralidad. El objetivo es determinar si la educación tiene un impacto mayor en el ingreso de las personas que la infraestructura y la ruralidad.</p>
+<table>
+<caption>Especificación de modelos.</caption>
+<colgroup>
+<col width="7%" />
+<col width="28%" />
+<col width="63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Modelo</th>
+<th>Formula</th>
+<th>Descripción de la nueva variable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>PO2SM~SPRIM</td>
+<td>% Población de 15 años o más sin primaria completa.</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>PO2SM~SPRIM+OVPT</td>
+<td>% Ocupantes en viviendas con piso de tierra</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>PO2SM~SPRIM+OVPT+PL&lt;5000</td>
+<td>% Población en localidades con menos de 5 000 habitantes</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>PO2SM~SPRIM+OVPT+PL&lt;5000+VHAC</td>
+<td>% Viviendas con algún nivel de hacinamiento</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>PO2SM~SPRIM+PL&lt;5000+VHAC</td>
+<td>Se elimina OVPT</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" data-line-number="1"><span class="co">#Modelo 2: educación+infraestructura.</span></a>
+<a class="sourceLine" id="cb421-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb421-3" data-line-number="3">marginacion <span class="op">%&gt;%</span><span class="st">                             </span></a>
+<a class="sourceLine" id="cb421-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb421-5" data-line-number="5"><span class="st">  </span><span class="kw">lm</span>(PO2SM<span class="op">~</span>SPRIM<span class="op">+</span>OVPT, <span class="dt">data=</span>.) -&gt;<span class="st"> </span>moli2</a>
+<a class="sourceLine" id="cb421-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb421-7" data-line-number="7"><span class="co">#Modelo 3. educación+infraestrura+ruralidad+hacinamiento</span></a>
+<a class="sourceLine" id="cb421-8" data-line-number="8">marginacion <span class="op">%&gt;%</span><span class="st">                             </span></a>
+<a class="sourceLine" id="cb421-9" data-line-number="9"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb421-10" data-line-number="10"><span class="st">  </span><span class="kw">lm</span>(PO2SM<span class="op">~</span>SPRIM<span class="op">+</span><span class="st">`</span><span class="dt">PL&lt;5000</span><span class="st">`</span><span class="op">+</span>OVPT, <span class="dt">data=</span>.) -&gt;<span class="st"> </span>moli3</a>
+<a class="sourceLine" id="cb421-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb421-12" data-line-number="12"><span class="co">#Modelo 4. </span></a>
+<a class="sourceLine" id="cb421-13" data-line-number="13">marginacion <span class="op">%&gt;%</span><span class="st">                             </span></a>
+<a class="sourceLine" id="cb421-14" data-line-number="14"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb421-15" data-line-number="15"><span class="st">  </span><span class="kw">lm</span>(PO2SM<span class="op">~</span>SPRIM<span class="op">+</span>OVPT<span class="op">+</span><span class="st">`</span><span class="dt">PL&lt;5000</span><span class="st">`</span><span class="op">+</span>VHAC, <span class="dt">data=</span>.) -&gt;<span class="st"> </span>moli4</a>
+<a class="sourceLine" id="cb421-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb421-17" data-line-number="17"><span class="co">#Modelo 5. </span></a>
+<a class="sourceLine" id="cb421-18" data-line-number="18">marginacion <span class="op">%&gt;%</span><span class="st">                             </span></a>
+<a class="sourceLine" id="cb421-19" data-line-number="19"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb421-20" data-line-number="20"><span class="st">  </span><span class="kw">lm</span>(PO2SM<span class="op">~</span>SPRIM<span class="op">+</span><span class="st">`</span><span class="dt">PL&lt;5000</span><span class="st">`</span><span class="op">+</span>VHAC, <span class="dt">data=</span>.) -&gt;<span class="st"> </span>moli5</a></code></pre></div>
+</div>
+<div id="comparar-modelos-lineales-multiples." class="section level3">
+<h3><span class="header-section-number">6.3.3</span> Comparar modelos lineales múltiples.</h3>
+</div>
+<div id="imprimir-un-sumario-de-varios-modelos." class="section level3">
+<h3><span class="header-section-number">6.3.4</span> Imprimir un sumario de varios modelos.</h3>
+<p>Cuando trabajamos con varios modelos a la vez seguramente querremos compararlos. Podríamos consultar los sumarios de cada modelo usando <code>summary()</code>, pero es mejor verlos lado a lado. La función <code>stargazer()</code> del paquete homónimo nos permite imprimir tablas de modelos, tanto para consultar en consola como para salidas en html o pdf.
+La sintaxis básica es <code>stargazer(modelo_1, modelo_2, modelo_n, type=&quot;text&quot;)</code>, donde <code>modelo_*</code> son objetos de la clase <code>lm</code><a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a> y <code>type=</code> el formato de salida de la tabla. Usamos <code>text</code> para salida en consola, <code>html</code> para páginas web y <code>latex</code> para salidas en .pdf.</p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb422-1" data-line-number="1"><span class="kw">library</span>(stargazer)</a>
+<a class="sourceLine" id="cb422-2" data-line-number="2"><span class="kw">stargazer</span>(moli1, moli2, moli3, moli4, moli5, <span class="dt">type=</span><span class="st">&quot;text&quot;</span>, <span class="dt">df=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>## 
+## ============================================================================
+##                                       Dependent variable:                   
+##                     --------------------------------------------------------
+##                                              PO2SM                          
+##                         (1)         (2)        (3)        (4)        (5)    
+## ----------------------------------------------------------------------------
+## SPRIM                 0.931***    0.841***   0.737***   0.561***   0.556*** 
+##                       (0.022)     (0.026)    (0.030)    (0.030)    (0.029)  
+##                                                                             
+## `PL&lt; 5000`                                   0.064***   0.076***   0.075*** 
+##                                              (0.009)    (0.009)    (0.009)  
+##                                                                             
+## VHAC                                                    0.472***   0.465*** 
+##                                                         (0.028)    (0.026)  
+##                                                                             
+## OVPT                              0.219***   0.207***    -0.024             
+##                                   (0.035)    (0.035)    (0.035)             
+##                                                                             
+## Constant             28.167***   28.996***  27.550***  16.603***  16.849*** 
+##                       (0.692)     (0.699)    (0.723)    (0.941)    (0.864)  
+##                                                                             
+## ----------------------------------------------------------------------------
+## Observations           2,457       2,457      2,457      2,457      2,457   
+## R2                     0.424       0.433      0.444      0.503      0.502   
+## Adjusted R2            0.424       0.433      0.443      0.502      0.502   
+## Residual Std. Error    12.928      12.828     12.705     12.022     12.021  
+## F Statistic         1,807.315*** 937.572*** 653.419*** 619.220*** 825.668***
+## ============================================================================
+## Note:                                            *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<p>La tabla en la salida de consola muestra que al agregar variables se reduce el error estándar del modelo y aumenta el <span class="math inline">\(R^2\)</span>. Es decir, aumenta la capacidad predictiva de nuestro modelo, que para el Modelo 4 da cuenta de más de un 50% de la varianza. Otro dato interesante es que, a medida que agregamos variables, algunas han dejado de ser significativas. Tal es el caso de OVPT en el Modelo 4. Controlado por hacinamiento y ruralidad el porcentaje de ocupantes en viviendas con piso de tierra no es significativamente diferente de 0. El Modelo 5 incluye VHAC, pero no OVPT.</p>
+</div>
+<div id="imprimir-un-sumario-formateado-de-varios-modelos." class="section level3">
+<h3><span class="header-section-number">6.3.5</span> Imprimir un sumario formateado de varios modelos.</h3>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" data-line-number="1"><span class="kw">stargazer</span>(moli1, <span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Modelo 1&quot;</span>)</a></code></pre></div>
+<table style="text-align:center">
+<caption>
+<strong>Modelo 1</strong>
+</caption>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+PO2SM
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+SPRIM
+</td>
+<td>
+0.931<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.022)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+28.167<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.692)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+2,457
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.424
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.424
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+12.928 (df = 2455)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+1,807.315<sup>***</sup> (df = 1; 2455)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb425-1" data-line-number="1"><span class="kw">stargazer</span>(moli1, moli2, moli3, moli4, moli5,<span class="dt">type=</span><span class="st">&quot;html&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Comparación de modelos&quot;</span>)</a></code></pre></div>
+<table style="text-align:center">
+<caption>
+<strong>Comparación de modelos</strong>
+</caption>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="5">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="5">
+PO2SM
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+<td>
+(5)
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+SPRIM
+</td>
+<td>
+0.931<sup>***</sup>
+</td>
+<td>
+0.841<sup>***</sup>
+</td>
+<td>
+0.737<sup>***</sup>
+</td>
+<td>
+0.561<sup>***</sup>
+</td>
+<td>
+0.556<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.022)
+</td>
+<td>
+(0.026)
+</td>
+<td>
+(0.030)
+</td>
+<td>
+(0.030)
+</td>
+<td>
+(0.029)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<code>PL&lt; 5000</code>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+0.064<sup>***</sup>
+</td>
+<td>
+0.076<sup>***</sup>
+</td>
+<td>
+0.075<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.009)
+</td>
+<td>
+(0.009)
+</td>
+<td>
+(0.009)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+VHAC
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+0.472<sup>***</sup>
+</td>
+<td>
+0.465<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.028)
+</td>
+<td>
+(0.026)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+OVPT
+</td>
+<td>
+</td>
+<td>
+0.219<sup>***</sup>
+</td>
+<td>
+0.207<sup>***</sup>
+</td>
+<td>
+-0.024
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.035)
+</td>
+<td>
+(0.035)
+</td>
+<td>
+(0.035)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+28.167<sup>***</sup>
+</td>
+<td>
+28.996<sup>***</sup>
+</td>
+<td>
+27.550<sup>***</sup>
+</td>
+<td>
+16.603<sup>***</sup>
+</td>
+<td>
+16.849<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.692)
+</td>
+<td>
+(0.699)
+</td>
+<td>
+(0.723)
+</td>
+<td>
+(0.941)
+</td>
+<td>
+(0.864)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+2,457
+</td>
+<td>
+2,457
+</td>
+<td>
+2,457
+</td>
+<td>
+2,457
+</td>
+<td>
+2,457
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.424
+</td>
+<td>
+0.433
+</td>
+<td>
+0.444
+</td>
+<td>
+0.503
+</td>
+<td>
+0.502
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.424
+</td>
+<td>
+0.433
+</td>
+<td>
+0.443
+</td>
+<td>
+0.502
+</td>
+<td>
+0.502
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+12.928 (df = 2455)
+</td>
+<td>
+12.828 (df = 2454)
+</td>
+<td>
+12.705 (df = 2453)
+</td>
+<td>
+12.022 (df = 2452)
+</td>
+<td>
+12.021 (df = 2453)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+1,807.315<sup>***</sup> (df = 1; 2455)
+</td>
+<td>
+937.572<sup>***</sup> (df = 2; 2454)
+</td>
+<td>
+653.419<sup>***</sup> (df = 3; 2453)
+</td>
+<td>
+619.220<sup>***</sup> (df = 4; 2452)
+</td>
+<td>
+825.668<sup>***</sup> (df = 3; 2453)
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="5" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+</div>
+<div id="anova-de-varios-modelos." class="section level3">
+<h3><span class="header-section-number">6.3.6</span> ANOVA de varios modelos.</h3>
+<p>La comparación de modelo y los R<sup>2</sup> nos sirven para decidir qué modelo es el mejor.<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a> Sin embargo podemos hacer una prueba más específica para compararlos. Tomemos el caso del Modelo 4, en el que OVPT no es significativo. ¿Vale la pena conservar esa variable, dado el p-value? El análisis de varianza de los modelos da un marco estadístico a esa pregunta: compara la varianza entre la no explicada en cada modelo y realiza una prueba de hipótesis para estimar si son o no diferentes. Al comparar modelos en los que están presentes algunas de las variables y sólo agregamos o quitamos otras podemos ver si esas variables son un buen predictor lineal o si es mejor descartarlas, ya que no aportan nada. Comparemos a los Modelos 4 y 5.</p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb426-1" data-line-number="1"><span class="kw">anova</span>(moli5, moli4)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: PO2SM ~ SPRIM + `PL&lt;5000` + VHAC
+## Model 2: PO2SM ~ SPRIM + OVPT + `PL&lt;5000` + VHAC
+##   Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
+## 1   2453 354471                           
+## 2   2452 354407  1    63.686 0.4406 0.5069</code></pre>
+<p>El p-value del estadístico F es alto, es decir, hay una probabilidad muy baja de que OVPT agregue algo a la varianza explicada. En sentido estricto, el Modelo 4 con OVPT y el Modelo 5 sin OVPT tienen una probabilidad muy alta de tener la misma capacidad predictiva. Así que podríamos eliminar OVPT sin perder mucho. Sin embargo puede valer la pena en un marco explicativo.</p>
+</div>
+<div id="criterio-de-informacion-de-akaike." class="section level3">
+<h3><span class="header-section-number">6.3.7</span> Criterio de información de Akaike.</h3>
+<p>Otro criterio para seleccionar modelo es el AIC o Akaike Information Criterion. El AIC busca un balance entre la capacidad predictiva de un modelo (la varianza explicada) y la cantidad de parámetros que este debe considerar para lograr un mejor ajuste. Es decir, premia a los modelos a medida que aumentan la varianza explicada, pero simultáneamente los penaliza a medida que aumentan el número de parámetros. El criterio de Akaike es de parsimonia, el mejor ajuste con el menor número de parámetros posibles. La función <code>AIC()</code> tiene una sintaxis similar a la de <code>anova()</code>: <code>AIC(modelo1, modelo2, modelo3)</code> y regresa un data.frame con el AIC para cada modelo. Los valores más bajos de AIC son preferibles, indican un buen compromiso entre varianza explicada y cantidad de parámetros.</p>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb428-1" data-line-number="1"><span class="kw">AIC</span>(moli1, moli2, moli3, moli4, moli5)</a></code></pre></div>
+<pre><code>##       df      AIC
+## moli1  3 19553.66
+## moli2  4 19516.43
+## moli3  5 19470.15
+## moli4  6 19199.65
+## moli5  5 19198.10</code></pre>
+<p>Con este criterio el Modelo 5 es el mejor: produce el mejor ajuste con el menor número de parámetros.</p>
+</div>
+<div id="modelos-lineales-con-variables-independientes-categoricas." class="section level3">
+<h3><span class="header-section-number">6.3.8</span> Modelos lineales con variables independientes categóricas.</h3>
+<blockquote>
+<p>Pendiente.</p>
+</blockquote>
+</div>
+</div>
+<div id="supuestos-de-un-modelo-lineal." class="section level2">
+<h2><span class="header-section-number">6.4</span> Supuestos de un modelo lineal.</h2>
+<p>El sumario del modelo nos da información sobre los coeficientes, ajustes, etc. pero no toma en cuenta si nuestro modelo cumple con los supuestos subyacentes. Consideraremos cuatro supuestos para los modelos lineales y diferentes formas de diagnosticarlos.</p>
+<table>
+<caption>supuestos de los modelos lineales.</caption>
+<colgroup>
+<col width="12%" />
+<col width="87%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Supuesto</th>
+<th>Implicación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Normalidad</td>
+<td>Para valores fijos de la variable independiente, la independiente se distribuye de manera normal. Consiguientemente, los residuos se distribuyen de manera normal.</td>
+</tr>
+<tr class="even">
+<td>Linealidad</td>
+<td>La variable dependiente y la independiente están asociadas de manera lineal. vs. asociadas a través de una curva, parábola, etc.</td>
+</tr>
+<tr class="odd">
+<td>Independencia</td>
+<td>Los valor de y son independientes unos de otros, no existe autocorrelación. También se eliminan las posibles formas de dependencia entre x y y que no sean la relación lineal entre las variables.</td>
+</tr>
+<tr class="even">
+<td>Homocedasticidad</td>
+<td>La varianza de la variable dependiente es homogénea a lo largo de los valores de la independiente.</td>
+</tr>
+</tbody>
+</table>
+<p>Diagnosticar si estamos violando alguno de estos supuestos requiere una batería de pruebas de diagnóstico. La librería <code>base::</code> incluye un método para <code>plot()</code> que produce cuatro gráficos de diagnóstico que nos permiten tener una aproximación a la validez de los supuestos para un modelo dado. Alternativamente se puede utilizar el set de gráficos y estadísticos de diagnóstico de la librería <code>car::</code><a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a></p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb430-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb430-2" data-line-number="2"><span class="kw">plot</span>(moli5)</a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-90-1.png" width="768" /></p>
+<div id="normalidad." class="section level3">
+<h3><span class="header-section-number">6.4.1</span> Normalidad.</h3>
+<p>Esperamos que los residuos se distribuyan como una normal. El gráfico <em>Normal-QQ</em> compara a los residuos estandarizados con una distribución normal teórica. Si se cumple el supuesto de normalidad de los residuos, los puntos deberían alinearse sobre la recta que corta el gráfico en 45° Como vemos, no es el caso: especialmente para los valores más bajos hay una desviación importante de los residuos.</p>
+</div>
+<div id="independencia." class="section level3">
+<h3><span class="header-section-number">6.4.2</span> Independencia.</h3>
+<p>Las probabilidad de x y y deben ser independientes y las probabilidad de cada valor de y independiente de los demás. Esto es, mayormente, un problema de muestreo o selección de datos. Obviamente si los estamos modelando esperamos que no se distribuyan al azar (o sí, dependerá de nuestra hipótesis sustantiva), pero debemos dejar abierta la posibilidad de que esto sea así.</p>
+<ul>
+<li>Una forma muy simple de violar este supuesto es ubicar inadvertidamente a la misma variable en ambos lados de la ecuación. La variable IM –Índice de Marginación– elaborada por el CONAPO es un índice que incluye información de muchas otras. De hecho todas las que hemos considerado hasta ahora forman parte del IM. Si modelara PO2SM como función de IM estaría violando el supuesto de independencia: antes de hacer cualquier modelo sé que no todos los valores de PO2SM tienen la misma probabilidad con respecto a IM, simplemente porque una parte de IM <em>es</em> PO2SM.</li>
+<li>Otra posible fuente de dependencia es la autocorrelación de la variable dependiente. En este caso podríamos tener un problema de autocorrelación espacial: hay municipios en los que los habitantes ganan poco no por las variables independientes que usamos para modelar esa variable, sino porque los municipios vecinos también tienen alto porcentaje de PO2SM y eso impacta al mercado de trabajo local. La forma de controlar este problema es agregar un termino de autocorrelación a la ecuación.</li>
+</ul>
+</div>
+<div id="linealidad." class="section level3">
+<h3><span class="header-section-number">6.4.3</span> Linealidad.</h3>
+<p>La variable dependiente está linealmente relacionada con la independiente. La relación podría ser de otro modo: curva, parabólica, etc. Una forma de diagnosticar este problema es graficar los datos y graficar la recta de ajuste lineal y la curva de ajuste de algún modelo de regresión local. En el gráfico Residuals vs. Fitted podemos ver que la curva de ajuste en rojo no es recta y horizontal, lo que señalaría que valores observados y residuos se distribuyen entre sí aleatoriamente. Posiblemente una función que incluya una curva sea mejor que nuestra aproximación lineal.</p>
+</div>
+<div id="homocedasticidad." class="section level3">
+<h3><span class="header-section-number">6.4.4</span> Homocedasticidad.</h3>
+<p>La varianza de la variable dependiente no varía a lo largo de la variable independiente. Podríamos llamarlo “varianza constante”, pero preferimos homocedasticidad porque es más difícil de pronunciar. Si bien el gráfico Scale-Location es de ayuda para el diagnóstico podemos utilizar la prueba varianza no constante con la función <code>car::ncvTest()</code>. En esta prueba si el p-value es bajo rechazamos la hipótesis de heterocedasticidad.</p>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" data-line-number="1">car<span class="op">::</span><span class="kw">ncvTest</span>(moli5)</a></code></pre></div>
+<pre><code>## Non-constant Variance Score Test 
+## Variance formula: ~ fitted.values 
+## Chisquare = 44.70069    Df = 1     p = 2.295769e-11</code></pre>
+</div>
+<div id="casos-atipicos." class="section level3">
+<h3><span class="header-section-number">6.4.5</span> Casos atípicos.</h3>
+<p>Una de las fuentes de violaciones de los supuestos en el modelado lineal es la presencia de casos atípicos. Un caso atípico es aquel que, dados ciertos de valores de x~1, x~2, x~n tiene valores de y muy diferentes a los demás y por lo tanto producen un residuo muy alto. Estos casos atípicos pueden tener gran influencia sobre el modelo, ya que el criterio de mínimos cuadrados buscará minimizar el error y cambiará la pendiente para dar cuenta de estos casos.
+Una forma rápida de identificar casos atípicos es usando la función <code>influencePlot()</code> del paquete <code>car::</code>. Esta función produce un gráfico que señala a los casos atípicos influyentes y regresa en consola a los más flagrantes.</p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1">car<span class="op">::</span><span class="kw">influencePlot</span>(moli5)</a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-92-1.png" width="768" /></p>
+<pre><code>##         StudRes         Hat        CookD
+## 1104 -1.3489014 0.007344403 3.364443e-03
+## 1361 -4.2356669 0.004279409 1.914436e-02
+## 1497 -6.2224852 0.005156267 4.941071e-02
+## 2194 -0.1912326 0.009029967 8.334125e-05</code></pre>
+<p>Para el Modelo 5 las observaciones 1274 y 2148 aparecen como casos atípicos.</p>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1">marginacion <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb435-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb435-3" data-line-number="3"><span class="st">  </span><span class="kw">slice</span>(<span class="kw">c</span>(<span class="dv">1274</span>, <span class="dv">2148</span>)) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(MUN,ENT, PO2SM,SPRIM,<span class="st">`</span><span class="dt">PL&lt;5000</span><span class="st">`</span>, VHAC) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb435-4" data-line-number="4"><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">caption=</span><span class="st">&quot;Municipios atípicos&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-93">Table 6.2: </span>Municipios atípicos</caption>
+<thead>
+<tr class="header">
+<th align="left">MUN</th>
+<th align="left">ENT</th>
+<th align="right">PO2SM</th>
+<th align="right">SPRIM</th>
+<th align="right">PL&lt;5000</th>
+<th align="right">VHAC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">San Simón Almolongas</td>
+<td align="left">Oaxaca</td>
+<td align="right">72.77</td>
+<td align="right">48.43</td>
+<td align="right">100.00</td>
+<td align="right">35.92</td>
+</tr>
+<tr class="even">
+<td align="left">Nanchital de Lázaro Cárdenas del Río</td>
+<td align="left">Veracruz de Ignacio de la Llave</td>
+<td align="right">19.62</td>
+<td align="right">13.95</td>
+<td align="right">6.66</td>
+<td align="right">26.69</td>
+</tr>
+</tbody>
+</table>
+<p>Se trata de un municipio rural que, con el 65% de la población mayor a 15 años sin primaria tiene menos del 10% de la población ganando menos de 2 salarios mínimos. El otro caso es un municipio urbano (menos del 20% de la población en localidades pequeñas) con alta población sin primaria.</p>
+</div>
+</div>
+<div id="regresion-robusta." class="section level2">
+<h2><span class="header-section-number">6.5</span> Regresión robusta.</h2>
+<p>Una alternativa para controlar casos atípicos es ajustar una modelo lineal robusto. Los modelos lineales robustos utilizan criterios diferentes al de los mínimos cuadrados y ponderan la influencia de los casos atípicos, por lo que producen coeficientes y -sobre todo- errores estandar más confiables. El paquete <code>MASS::</code> incluye la función <code>rlm()</code>, de sintaxis similar a <code>lm()</code> que implementa el método M para el ajuste de los coeficientes y cálculo de los errores estándar.</p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" data-line-number="1">marginacion <span class="op">%&gt;%</span><span class="st">                             </span></a>
+<a class="sourceLine" id="cb436-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb436-3" data-line-number="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">PLmenor5000=</span><span class="st">`</span><span class="dt">PL&lt;5000</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st">             </span><span class="co">#rlm se lleva mal con el signo &lt; en el nombre de columna. </span></a>
+<a class="sourceLine" id="cb436-4" data-line-number="4"><span class="st">  </span>MASS<span class="op">::</span><span class="kw">rlm</span>(PO2SM<span class="op">~</span>SPRIM<span class="op">+</span>PLmenor5000<span class="op">+</span><span class="st"> </span>VHAC, <span class="dt">data=</span>.) -&gt;<span class="st"> </span>rmoli5</a>
+<a class="sourceLine" id="cb436-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb436-6" data-line-number="6">marginacion <span class="op">%&gt;%</span><span class="st">                             </span></a>
+<a class="sourceLine" id="cb436-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(AÑO<span class="op">==</span><span class="st">&quot;2015&quot;</span> <span class="op">&amp;</span><span class="st"> </span>ENT<span class="op">!=</span><span class="st">&quot;Nacional&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb436-8" data-line-number="8"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">PLmenor5000=</span><span class="st">`</span><span class="dt">PL&lt;5000</span><span class="st">`</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb436-9" data-line-number="9"><span class="st">  </span><span class="kw">lm</span>(PO2SM<span class="op">~</span>SPRIM<span class="op">+</span>PLmenor5000<span class="op">+</span>VHAC, <span class="dt">data=</span>.) -&gt;<span class="st"> </span>moli5</a>
+<a class="sourceLine" id="cb436-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb436-11" data-line-number="11"><span class="kw">stargazer</span>(moli5, rmoli5, <span class="dt">type =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">model.numbers =</span> <span class="ot">FALSE</span>, <span class="dt">title=</span><span class="st">&quot;Comparación de modelo OLS y Robusto&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+## Comparación de modelo OLS y Robusto
+## ===================================================================
+##                                         Dependent variable:        
+##                                 -----------------------------------
+##                                                PO2SM               
+##                                            OLS             robust  
+##                                                            linear  
+## -------------------------------------------------------------------
+## SPRIM                                   0.556***          0.574*** 
+##                                          (0.029)           (0.028) 
+##                                                                    
+## PLmenor5000                             0.075***          0.077*** 
+##                                          (0.009)           (0.008) 
+##                                                                    
+## VHAC                                    0.465***          0.483*** 
+##                                          (0.026)           (0.025) 
+##                                                                    
+## Constant                                16.849***         16.018***
+##                                          (0.864)           (0.843) 
+##                                                                    
+## -------------------------------------------------------------------
+## Observations                              2,457             2,457  
+## R2                                        0.502                    
+## Adjusted R2                               0.502                    
+## Residual Std. Error (df = 2453)          12.021            11.398  
+## F Statistic                     825.668*** (df = 3; 2453)          
+## ===================================================================
+## Note:                                   *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<p>El modelo robusto aumenta los coeficientes y reduce los errores estandar, aunque no en gran cuantía. En este caso interpretamos que los casos atípicos no son un problema grave.</p>
+</div>
+<div id="supuestos-de-los-modelos-lineales-problemas-y-soluciones." class="section level2">
+<h2><span class="header-section-number">6.6</span> Supuestos de los modelos lineales: problemas y soluciones.</h2>
+<ul>
+<li>Elimine los valores atípicos (outliers)
+<ul>
+<li>Es un procedimiento polémico: los valores serán atípicos, pero están en los datos.</li>
+<li>Se debe elegir entre asumir los problemas de nuestro modelo y seleccionar los datos. Si eliminamos unos datos por considerarlos atípicos ¿por qué no otros que se ponen en el camino entre nuestra hipótesis y nosotros?</li>
+</ul></li>
+<li>Ajuste una regresión robusta.
+<ul>
+<li>Las regresiones robustas otorgan un peso a cada observación, generalmente ponderan con valores menores a uno a los casos atípicos, reduciendo su influencia.</li>
+</ul></li>
+<li>Transforme sus datos.
+<ul>
+<li>Es posible que una variable con distribución sesgada esté causando los problemas. El logaritmo de esa variable posiblemente asuma una distribución más similar a una normal.</li>
+<li>Recuerde que ya no está modelando la variable original: está modelando el logaritmo de esa variable.</li>
+</ul></li>
+<li>Explore relaciones no lineales.</li>
+<li>Ignore el problema. 11 de cada 10 sociólogos lo hace.</li>
+</ul>
+</div>
+<div id="funciones-adicionales-para-modelos-lineales." class="section level2">
+<h2><span class="header-section-number">6.7</span> Funciones adicionales para modelos lineales.</h2>
+<table>
+<caption>Funciones base para consulta de modelos lineales.</caption>
+<colgroup>
+<col width="13%" />
+<col width="86%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Función</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>summary()</td>
+<td>Sumario del modelo. Coeficientes, error estandar, distribución de los residuos, prueba T</td>
+</tr>
+<tr class="even">
+<td>coeff()</td>
+<td>Coeficientes</td>
+</tr>
+<tr class="odd">
+<td>confint()</td>
+<td>Intervalos de confianza. Por defecto al 95%</td>
+</tr>
+<tr class="even">
+<td>fitted()</td>
+<td>Valores de y estimados por el modelo</td>
+</tr>
+<tr class="odd">
+<td>predict()</td>
+<td>Predicción del modelo para nuevos datos</td>
+</tr>
+<tr class="even">
+<td>residuals()</td>
+<td>Residuos</td>
+</tr>
+<tr class="odd">
+<td>anova()</td>
+<td>Análisis de varianza para uno o más modelos</td>
+</tr>
+<tr class="even">
+<td>AIC()</td>
+<td>Criterio de información de Akaike</td>
+</tr>
+<tr class="odd">
+<td>plot()</td>
+<td>Gráficos de diagnóstico</td>
+</tr>
+<tr class="even">
+<td>cooks.distance()</td>
+<td>Distancias de Cook</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Algunas funciones adicionales para consultar un modelo.</caption>
+<thead>
+<tr class="header">
+<th>Paquete</th>
+<th>Función</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>coefplot::</td>
+<td>coefplot()</td>
+<td>Gráfico de coeficientes</td>
+</tr>
+<tr class="even">
+<td>effects::</td>
+<td>effects()</td>
+<td>Efectos de las variables. Directos y con interacciones</td>
+</tr>
+<tr class="odd">
+<td>car::</td>
+<td>influencePlot()</td>
+<td>Gráfico de influencia</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="28">
+<li id="fn28"><p>Excepto, claro, que nuestros datos esté perfectamente alienados en una recta. Fuera de los manuales y libros de textos eso no existe.<a href="lineales.html#fnref28" class="footnote-back">↩</a></p></li>
+<li id="fn29"><p>De lo contrario el resultado sería cero o muy cercano a la cero.<a href="lineales.html#fnref29" class="footnote-back">↩</a></p></li>
+<li id="fn30"><p>Otro nombre para las variables independientes.<a href="lineales.html#fnref30" class="footnote-back">↩</a></p></li>
+<li id="fn31"><p>U otros<a href="lineales.html#fnref31" class="footnote-back">↩</a></p></li>
+<li id="fn32"><p>Recuerde, sin embargo, que nuestro principal objetivo aquí es explicar, no predecir. Un R<sup>2</sup> alto es bienvenido, pero el análisis de la significancia de las variables quizás sea más importante: queremos encontrar explicaciones válidas y descartar las que no lo son.<a href="lineales.html#fnref32" class="footnote-back">↩</a></p></li>
+<li id="fn33"><p>Companion to Applied Regression, desarrollada por John Fox.<a href="lineales.html#fnref33" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analisis-de-datos-categoricos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="generalizados.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["libRo.pdf", "libRo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

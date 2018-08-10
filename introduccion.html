@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R para Ciencias Sociales</title>
+  <meta name="description" content="Análisis de datos con R, con aplicación a las ciencias sociales">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R para Ciencias Sociales" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R para Ciencias Sociales" />
+  
+  <meta name="twitter:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+<meta name="author" content="Martín Paladino">
+
+
+<meta name="date" content="2018-08-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="primeros.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.0/DiagrammeR.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R para ciencias sociales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preámbulo</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#para-quien-es-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Para quién es este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#el-tidyverse"><i class="fa fa-check"></i><b>0.2</b> El <code>tidyverse</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introducción</a><ul>
+<li class="chapter" data-level="0.3" data-path="introduccion.html"><a href="introduccion.html#que-es-r"><i class="fa fa-check"></i><b>0.3</b> ¿Qué es R?</a><ul>
+<li class="chapter" data-level="0.3.1" data-path="introduccion.html"><a href="introduccion.html#el-lenguaje-de-programacion-r"><i class="fa fa-check"></i><b>0.3.1</b> El <em>lenguaje de programación R</em></a></li>
+<li class="chapter" data-level="0.3.2" data-path="introduccion.html"><a href="introduccion.html#el-interprete"><i class="fa fa-check"></i><b>0.3.2</b> El <em>intérprete</em></a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="introduccion.html"><a href="introduccion.html#instalacion-de-r-y-rstudio-en-windows."><i class="fa fa-check"></i><b>0.4</b> Instalación de R y Rstudio en Windows.</a></li>
+<li class="chapter" data-level="0.5" data-path="introduccion.html"><a href="introduccion.html#interface-de-rstudio."><i class="fa fa-check"></i><b>0.5</b> Interface de Rstudio.</a><ul>
+<li class="chapter" data-level="0.5.1" data-path="introduccion.html"><a href="introduccion.html#consola."><i class="fa fa-check"></i><b>0.5.1</b> Consola.</a></li>
+<li class="chapter" data-level="0.5.2" data-path="introduccion.html"><a href="introduccion.html#editor-de-archivos."><i class="fa fa-check"></i><b>0.5.2</b> Editor de Archivos.</a></li>
+<li class="chapter" data-level="0.5.3" data-path="introduccion.html"><a href="introduccion.html#entorno-de-trabajo."><i class="fa fa-check"></i><b>0.5.3</b> Entorno de trabajo.</a></li>
+<li class="chapter" data-level="0.5.4" data-path="introduccion.html"><a href="introduccion.html#graficos."><i class="fa fa-check"></i><b>0.5.4</b> Gráficos.</a></li>
+<li class="chapter" data-level="0.5.5" data-path="introduccion.html"><a href="introduccion.html#ayuda."><i class="fa fa-check"></i><b>0.5.5</b> Ayuda.</a></li>
+<li class="chapter" data-level="0.5.6" data-path="introduccion.html"><a href="introduccion.html#paquetes-de-extension."><i class="fa fa-check"></i><b>0.5.6</b> Paquetes de extensión.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="introduccion.html"><a href="introduccion.html#tipos-y-estructuras-de-datos"><i class="fa fa-check"></i><b>0.6</b> Tipos y estructuras de datos</a><ul>
+<li class="chapter" data-level="0.6.1" data-path="introduccion.html"><a href="introduccion.html#tipos-de-datos"><i class="fa fa-check"></i><b>0.6.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="0.6.2" data-path="introduccion.html"><a href="introduccion.html#estructuras-de-datos."><i class="fa fa-check"></i><b>0.6.2</b> Estructuras de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.7" data-path="introduccion.html"><a href="introduccion.html#orientacion-a-objetos."><i class="fa fa-check"></i><b>0.7</b> Orientación a objetos.</a></li>
+<li class="chapter" data-level="0.8" data-path="introduccion.html"><a href="introduccion.html#programacion-funcional."><i class="fa fa-check"></i><b>0.8</b> Programación funcional.</a></li>
+<li class="chapter" data-level="0.9" data-path="introduccion.html"><a href="introduccion.html#vocabulario."><i class="fa fa-check"></i><b>0.9</b> Vocabulario.</a></li>
+<li class="chapter" data-level="0.10" data-path="introduccion.html"><a href="introduccion.html#funciones-y-librerias-de-funciones."><i class="fa fa-check"></i><b>0.10</b> Funciones y librerías de funciones.</a></li>
+<li class="chapter" data-level="0.11" data-path="introduccion.html"><a href="introduccion.html#convenciones-de-estilo-de-este-documento."><i class="fa fa-check"></i><b>0.11</b> Convenciones de estilo de este documento.</a></li>
+<li class="chapter" data-level="0.12" data-path="introduccion.html"><a href="introduccion.html#bloques-de-codigo-y-comentarios."><i class="fa fa-check"></i><b>0.12</b> Bloques de código y comentarios.</a></li>
+<li class="chapter" data-level="0.13" data-path="introduccion.html"><a href="introduccion.html#uso-de-mayusculas."><i class="fa fa-check"></i><b>0.13</b> Uso de mayúsculas.</a></li>
+<li class="chapter" data-level="0.14" data-path="introduccion.html"><a href="introduccion.html#sobre-el-estilo-de-programacion-en-r."><i class="fa fa-check"></i><b>0.14</b> Sobre el estilo de programación en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="primeros.html"><a href="primeros.html"><i class="fa fa-check"></i><b>1</b> Primeros pasos en R</a><ul>
+<li class="chapter" data-level="1.1" data-path="primeros.html"><a href="primeros.html#crear-un-proyecto."><i class="fa fa-check"></i><b>1.1</b> Crear un proyecto.</a></li>
+<li class="chapter" data-level="1.2" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-operadores-y-operandos."><i class="fa fa-check"></i><b>1.2</b> Sintaxis de R: operadores y operandos.</a></li>
+<li class="chapter" data-level="1.3" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-funciones-y-argumentos."><i class="fa fa-check"></i><b>1.3</b> Sintaxis de R: funciones y argumentos.</a></li>
+<li class="chapter" data-level="1.4" data-path="primeros.html"><a href="primeros.html#vectores-y-atributos-de-los-vectores."><i class="fa fa-check"></i><b>1.4</b> Vectores y atributos de los vectores.</a></li>
+<li class="chapter" data-level="1.5" data-path="primeros.html"><a href="primeros.html#manipulacion-de-datos."><i class="fa fa-check"></i><b>1.5</b> Manipulación de datos.</a></li>
+<li class="chapter" data-level="1.6" data-path="primeros.html"><a href="primeros.html#funcion-para-calcular-una-mediana-con-funciones-primitivas-de-r."><i class="fa fa-check"></i><b>1.6</b> Función para calcular una mediana con funciones primitivas de R.</a></li>
+<li class="chapter" data-level="1.7" data-path="primeros.html"><a href="primeros.html#manipulacion-de-estructuras-de-datos."><i class="fa fa-check"></i><b>1.7</b> Manipulación de estructuras de datos.</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="primeros.html"><a href="primeros.html#magia"><i class="fa fa-check"></i><b>1.7.1</b> Magia</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="primeros.html"><a href="primeros.html#sobre-los-archivos-de-sintaxis."><i class="fa fa-check"></i><b>1.8</b> Sobre los archivos de sintaxis.</a></li>
+<li class="chapter" data-level="1.9" data-path="primeros.html"><a href="primeros.html#anexo"><i class="fa fa-check"></i><b>1.9</b> Anexo</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="primeros.html"><a href="primeros.html#operadores-binarios-de-r"><i class="fa fa-check"></i><b>1.9.1</b> Operadores binarios de R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html"><i class="fa fa-check"></i><b>2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#introduccion-alcances-del-problema."><i class="fa fa-check"></i><b>2.1</b> Introducción: alcances del problema.</a></li>
+<li class="chapter" data-level="2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#investigacion-reproducible.-1"><i class="fa fa-check"></i><b>2.2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#ventajas-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.1</b> Ventajas de la investigación reproducible.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#desafios-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.2</b> Desafíos de la investigación reproducible.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#filosofia-programacion-funcional-con-inmutabilidad-de-datos-transparencia-referencial-y-funciones-puras."><i class="fa fa-check"></i><b>2.3</b> Filosofía: programación funcional con inmutabilidad de datos, transparencia referencial y funciones puras.</a></li>
+<li class="chapter" data-level="2.4" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#hagamos-pizza-en-r."><i class="fa fa-check"></i><b>2.4</b> Hagamos pizza en R.</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-el-asignador.-pizzas-de-hoy-y-de-ayer."><i class="fa fa-check"></i><b>2.4.1</b> Pizzería “El asignador”. Pizzas de hoy y de ayer.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-la-funcional-clasica.-el-cambio-se-lo-da-en-parentesis."><i class="fa fa-check"></i><b>2.4.2</b> Pizzería La funcional clásica. El cambio se lo da en paréntesis.</a></li>
+<li class="chapter" data-level="2.4.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-magrittr-la-mas-del-rumbo"><i class="fa fa-check"></i><b>2.4.3</b> Pizzería magrittr ¡La más %&gt;% del rumbo!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="manejo.html"><a href="manejo.html"><i class="fa fa-check"></i><b>3</b> Manejo da datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="manejo.html"><a href="manejo.html#el-objeto-de-este-documento."><i class="fa fa-check"></i><b>3.1</b> El objeto de este documento.</a></li>
+<li class="chapter" data-level="3.2" data-path="manejo.html"><a href="manejo.html#manipulacion-de-datos-con-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Manipulación de datos con <code>tidyverse::</code></a></li>
+<li class="chapter" data-level="3.3" data-path="manejo.html"><a href="manejo.html#la-forma-de-los-datos."><i class="fa fa-check"></i><b>3.3</b> La forma de los datos.</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="manejo.html"><a href="manejo.html#sumarios-de-datos-o-base-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> ¿Sumarios de datos o base de datos?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="manejo.html"><a href="manejo.html#datos-rectangulares."><i class="fa fa-check"></i><b>3.4</b> Datos rectangulares.</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="manejo.html"><a href="manejo.html#datos-prolijos-tidy-data"><i class="fa fa-check"></i><b>3.4.1</b> Datos prolijos (tidy data)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="manejo.html"><a href="manejo.html#reformateo-de-datos."><i class="fa fa-check"></i><b>3.4.2</b> Reformateo de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="manejo.html"><a href="manejo.html#manejo-de-datos-con-dplyr"><i class="fa fa-check"></i><b>3.5</b> Manejo de datos con <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="manejo.html"><a href="manejo.html#verbos-basicos-de-dplyr"><i class="fa fa-check"></i><b>3.5.1</b> Verbos básicos de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.5.2" data-path="manejo.html"><a href="manejo.html#uso-de-la-de-sintaxis-de-dplyr"><i class="fa fa-check"></i><b>3.5.2</b> Uso de la de sintaxis de <code>dplyr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="manejo.html"><a href="manejo.html#uso-avanzado-de-dplyr"><i class="fa fa-check"></i><b>3.6</b> Uso avanzado de <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.6.1" data-path="manejo.html"><a href="manejo.html#alternar-entre-formato-largo-y-ancho."><i class="fa fa-check"></i><b>3.6.1</b> Alternar entre formato largo y ancho.</a></li>
+<li class="chapter" data-level="3.6.2" data-path="manejo.html"><a href="manejo.html#seleccionar-las-columnas-que-cumplen-determinada-condicion."><i class="fa fa-check"></i><b>3.6.2</b> Seleccionar las columnas que cumplen determinada condición.</a></li>
+<li class="chapter" data-level="3.6.3" data-path="manejo.html"><a href="manejo.html#filtrar-por-mas-de-una-condicion-o-dentro-de-un-conjunto."><i class="fa fa-check"></i><b>3.6.3</b> Filtrar por más de una condición o dentro de un conjunto.</a></li>
+<li class="chapter" data-level="3.6.4" data-path="manejo.html"><a href="manejo.html#transformacion-avanzada-de-datos."><i class="fa fa-check"></i><b>3.6.4</b> Transformacion avanzada de datos.</a></li>
+<li class="chapter" data-level="3.6.5" data-path="manejo.html"><a href="manejo.html#sumarios-avanzados."><i class="fa fa-check"></i><b>3.6.5</b> Sumarios avanzados.</a></li>
+<li class="chapter" data-level="3.6.6" data-path="manejo.html"><a href="manejo.html#funciones-avanzadas-de-combinacion-de-bases-de-datos."><i class="fa fa-check"></i><b>3.6.6</b> Funciones avanzadas de combinación de bases de datos.</a></li>
+<li class="chapter" data-level="3.6.7" data-path="manejo.html"><a href="manejo.html#operadores-avanzados-de-magrittr"><i class="fa fa-check"></i><b>3.6.7</b> Operadores avanzados de <code>magrittr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="manejo.html"><a href="manejo.html#limites-de-dplyr"><i class="fa fa-check"></i><b>3.7</b> Límites de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.8" data-path="manejo.html"><a href="manejo.html#manipulacion-con-dplyren-la-practica.-flujo-de-trabajo."><i class="fa fa-check"></i><b>3.8</b> Manipulación con <code>dplyr::</code>en la práctica. Flujo de trabajo.</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="manejo.html"><a href="manejo.html#implementacion-en-dplyr-de-un-analisis-exploratorio-de-la-base-de-datos-indice-de-marginacion-del-conapo."><i class="fa fa-check"></i><b>3.8.1</b> Implementación en dplyr:: de un análisis exploratorio de la base de datos Índice de marginación del CONAPO.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graficos.html"><a href="graficos.html"><i class="fa fa-check"></i><b>4</b> Gráficos con R y ggplot</a><ul>
+<li class="chapter" data-level="4.1" data-path="graficos.html"><a href="graficos.html#acerca-de-este-documento."><i class="fa fa-check"></i><b>4.1</b> Acerca de este documento.</a></li>
+<li class="chapter" data-level="4.2" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos."><i class="fa fa-check"></i><b>4.2</b> La gramática de los gráficos.</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="graficos.html"><a href="graficos.html#filosofia."><i class="fa fa-check"></i><b>4.2.1</b> Filosofía.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos-aplicada-en-ggplot."><i class="fa fa-check"></i><b>4.3</b> La gramática de los gráficos aplicada en <code>ggplot()</code>.</a></li>
+<li class="chapter" data-level="4.4" data-path="graficos.html"><a href="graficos.html#la-base-de-datos."><i class="fa fa-check"></i><b>4.4</b> La base de datos.</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="graficos.html"><a href="graficos.html#indice-de-marginacion-por-municipios-1990-2015."><i class="fa fa-check"></i><b>4.4.1</b> Índice de marginación por municipios 1990-2015.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="graficos.html"><a href="graficos.html#descripcion-rapida-de-la-base-de-datos."><i class="fa fa-check"></i><b>4.5</b> Descripción rápida de la base de datos.</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="graficos.html"><a href="graficos.html#nombres-cortos-y-largos."><i class="fa fa-check"></i><b>4.5.1</b> Nombres cortos y largos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="graficos.html"><a href="graficos.html#grafico-basico."><i class="fa fa-check"></i><b>4.6</b> Gráfico básico.</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="graficos.html"><a href="graficos.html#construccion-de-un-grafico-de-barras-paso-a-paso."><i class="fa fa-check"></i><b>4.6.1</b> Construcción de un gráfico de barras paso a paso.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="graficos.html"><a href="graficos.html#personalizacion-de-grafico."><i class="fa fa-check"></i><b>4.7</b> Personalización de gráfico.</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="graficos.html"><a href="graficos.html#orden-manual-de-las-categorias."><i class="fa fa-check"></i><b>4.7.1</b> Orden manual de las categorías.</a></li>
+<li class="chapter" data-level="4.7.2" data-path="graficos.html"><a href="graficos.html#orden-automatico-de-categorias."><i class="fa fa-check"></i><b>4.7.2</b> Orden automático de categorías.</a></li>
+<li class="chapter" data-level="4.7.3" data-path="graficos.html"><a href="graficos.html#titulo-subtitulo-titulos-de-ejes-vineta"><i class="fa fa-check"></i><b>4.7.3</b> Título, subtítulo, títulos de ejes, viñeta</a></li>
+<li class="chapter" data-level="4.7.4" data-path="graficos.html"><a href="graficos.html#estilos-visuales."><i class="fa fa-check"></i><b>4.7.4</b> Estilos visuales.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="graficos.html"><a href="graficos.html#graficos-intermedios-mas-de-una-serie-de-datos"><i class="fa fa-check"></i><b>4.8</b> Gráficos intermedios (más de una serie de datos)</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="graficos.html"><a href="graficos.html#datos-formato-de-datos-largo-y-ancho."><i class="fa fa-check"></i><b>4.8.1</b> Datos Formato de datos largo y ancho.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="graficos.html"><a href="graficos.html#grafico-de-barras-lado-a-lado."><i class="fa fa-check"></i><b>4.8.2</b> Gráfico de barras lado a lado.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="graficos.html"><a href="graficos.html#graficos-multipanel."><i class="fa fa-check"></i><b>4.8.3</b> Gráficos multipanel.</a></li>
+<li class="chapter" data-level="4.8.4" data-path="graficos.html"><a href="graficos.html#grafico-de-punto."><i class="fa fa-check"></i><b>4.8.4</b> Gráfico de punto.</a></li>
+<li class="chapter" data-level="4.8.5" data-path="graficos.html"><a href="graficos.html#grafico-de-punto-y-linea."><i class="fa fa-check"></i><b>4.8.5</b> Gráfico de punto y línea.</a></li>
+<li class="chapter" data-level="4.8.6" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion."><i class="fa fa-check"></i><b>4.8.6</b> Gráfico de dispersión.</a></li>
+<li class="chapter" data-level="4.8.7" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-en-paneles."><i class="fa fa-check"></i><b>4.8.7</b> Gráfico de dispersión en paneles.</a></li>
+<li class="chapter" data-level="4.8.8" data-path="graficos.html"><a href="graficos.html#grafico-de-caja."><i class="fa fa-check"></i><b>4.8.8</b> Gráfico de caja.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="graficos.html"><a href="graficos.html#personalizacion-avanzada-de-graficos."><i class="fa fa-check"></i><b>4.9</b> Personalización avanzada de gráficos.</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="graficos.html"><a href="graficos.html#etiquetas-y-elementos-de-texto."><i class="fa fa-check"></i><b>4.9.1</b> Etiquetas y elementos de texto.</a></li>
+<li class="chapter" data-level="4.9.2" data-path="graficos.html"><a href="graficos.html#ajuste-del-elemento-texto."><i class="fa fa-check"></i><b>4.9.2</b> Ajuste del elemento texto.</a></li>
+<li class="chapter" data-level="4.9.3" data-path="graficos.html"><a href="graficos.html#posicion-de-las-leyendas."><i class="fa fa-check"></i><b>4.9.3</b> Posición de las leyendas.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="graficos.html"><a href="graficos.html#escalas."><i class="fa fa-check"></i><b>4.10</b> Escalas.</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="graficos.html"><a href="graficos.html#escalas-y-sistemas-de-coordenadas"><i class="fa fa-check"></i><b>4.10.1</b> Escalas y sistemas de coordenadas</a></li>
+<li class="chapter" data-level="4.10.2" data-path="graficos.html"><a href="graficos.html#ajuste-manual-de-intervalos-de-escala."><i class="fa fa-check"></i><b>4.10.2</b> Ajuste manual de intervalos de escala.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="graficos.html"><a href="graficos.html#transformacion-de-escalas"><i class="fa fa-check"></i><b>4.10.3</b> Transformación de escalas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="graficos.html"><a href="graficos.html#sistemas-de-coordenadas."><i class="fa fa-check"></i><b>4.11</b> Sistemas de coordenadas.</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="graficos.html"><a href="graficos.html#coordenadas-polares."><i class="fa fa-check"></i><b>4.11.1</b> Coordenadas polares.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="graficos.html"><a href="graficos.html#fortificar-nuestros-graficos-con-datos-de-un-modelo"><i class="fa fa-check"></i><b>4.12</b> Fortificar nuestros gráficos con datos de un modelo</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="graficos.html"><a href="graficos.html#rectas-de-ajuste"><i class="fa fa-check"></i><b>4.12.1</b> Rectas de ajuste</a></li>
+<li class="chapter" data-level="4.12.2" data-path="graficos.html"><a href="graficos.html#intervalos-de-confianza-y-barras-de-error."><i class="fa fa-check"></i><b>4.12.2</b> Intervalos de confianza y barras de error.</a></li>
+<li class="chapter" data-level="4.12.3" data-path="graficos.html"><a href="graficos.html#etiquetado-de-casos."><i class="fa fa-check"></i><b>4.12.3</b> Etiquetado de casos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="graficos.html"><a href="graficos.html#extensiones-a-ggplot2"><i class="fa fa-check"></i><b>4.13</b> Extensiones a <code>ggplot2::</code></a></li>
+<li class="chapter" data-level="4.14" data-path="graficos.html"><a href="graficos.html#etiquetas"><i class="fa fa-check"></i><b>4.14</b> Etiquetas</a><ul>
+<li class="chapter" data-level="4.14.1" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-con-histogramas-marginales."><i class="fa fa-check"></i><b>4.14.1</b> Gráfico de dispersión con histogramas marginales.</a></li>
+<li class="chapter" data-level="4.14.2" data-path="graficos.html"><a href="graficos.html#graficos-de-proporciones-jerarquicas."><i class="fa fa-check"></i><b>4.14.2</b> Gráficos de proporciones jerárquicas.</a></li>
+<li class="chapter" data-level="4.14.3" data-path="graficos.html"><a href="graficos.html#im-feeling-lucky"><i class="fa fa-check"></i><b>4.14.3</b> I’m feeling lucky…</a></li>
+<li class="chapter" data-level="4.14.4" data-path="graficos.html"><a href="graficos.html#relaciones-multivariadas."><i class="fa fa-check"></i><b>4.14.4</b> Relaciones multivariadas.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html"><i class="fa fa-check"></i><b>5</b> Análisis de datos categóricos</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#introduccion-1"><i class="fa fa-check"></i><b>5.1</b> Introducción</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#datos-categoricos"><i class="fa fa-check"></i><b>5.1.1</b> Datos categóricos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas"><i class="fa fa-check"></i><b>5.2</b> Tablas</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-de-dos-dimensiones."><i class="fa fa-check"></i><b>5.2.1</b> Tablas de contingencia de dos dimensiones.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-en-r."><i class="fa fa-check"></i><b>5.2.2</b> Tablas de contingencia en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-hipotesis-de-independencia-estadistica-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.3</b> Prueba de hipótesis de independencia estadística para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#el-modelo-de-independencia."><i class="fa fa-check"></i><b>5.3.1</b> El modelo de independencia.</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-independencia-para-una-tabla-bidimensional."><i class="fa fa-check"></i><b>5.3.2</b> Prueba de independencia para una tabla bidimensional.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-de-los-residuos."><i class="fa fa-check"></i><b>5.4</b> Análisis de los residuos.</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-chi2-en-r."><i class="fa fa-check"></i><b>5.4.1</b> Prueba <span class="math inline">\(\chi\)</span><sup>2</sup> en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#metodos-graficos-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.5</b> Métodos gráficos para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-loglineales-para-datos-categoricos."><i class="fa fa-check"></i><b>5.5.1</b> Modelos loglineales para datos categóricos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-practico-de-datos-categoricos."><i class="fa fa-check"></i><b>5.6</b> Análisis práctico de datos categóricos.</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-base-de-datos.-1"><i class="fa fa-check"></i><b>5.6.1</b> La base de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#genero-y-partido-politico."><i class="fa fa-check"></i><b>5.7</b> Género y partido político.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lineales.html"><a href="lineales.html"><i class="fa fa-check"></i><b>6</b> Modelos lineales</a><ul>
+<li class="chapter" data-level="6.1" data-path="lineales.html"><a href="lineales.html#introduccion-2"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.2" data-path="lineales.html"><a href="lineales.html#ajuste-de-modelo-lineales-con-lm"><i class="fa fa-check"></i><b>6.2</b> Ajuste de modelo lineales con <code>lm()</code></a><ul>
+<li class="chapter" data-level="6.2.1" data-path="lineales.html"><a href="lineales.html#sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.1</b> Sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.2" data-path="lineales.html"><a href="lineales.html#interpretacion-basica-del-sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.2</b> Interpretación básica del sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.3" data-path="lineales.html"><a href="lineales.html#intervalos-de-confianza."><i class="fa fa-check"></i><b>6.2.3</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="6.2.4" data-path="lineales.html"><a href="lineales.html#valores-estimados-y-residuos."><i class="fa fa-check"></i><b>6.2.4</b> Valores estimados y residuos.</a></li>
+<li class="chapter" data-level="6.2.5" data-path="lineales.html"><a href="lineales.html#prediccion-del-modelo."><i class="fa fa-check"></i><b>6.2.5</b> Predicción del modelo.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-mas-de-una-variable-independiente."><i class="fa fa-check"></i><b>6.3</b> Modelos lineales con más de una variable independiente.</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="lineales.html"><a href="lineales.html#exploracion-de-datos-multivariados."><i class="fa fa-check"></i><b>6.3.1</b> Exploración de datos multivariados.</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lineales.html"><a href="lineales.html#especificacion-de-modelos-con-multiples-variables-independientes."><i class="fa fa-check"></i><b>6.3.2</b> Especificación de modelos con múltiples variables independientes.</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lineales.html"><a href="lineales.html#comparar-modelos-lineales-multiples."><i class="fa fa-check"></i><b>6.3.3</b> Comparar modelos lineales múltiples.</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.4</b> Imprimir un sumario de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-formateado-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.5</b> Imprimir un sumario formateado de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.6" data-path="lineales.html"><a href="lineales.html#anova-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.6</b> ANOVA de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.7" data-path="lineales.html"><a href="lineales.html#criterio-de-informacion-de-akaike."><i class="fa fa-check"></i><b>6.3.7</b> Criterio de información de Akaike.</a></li>
+<li class="chapter" data-level="6.3.8" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-variables-independientes-categoricas."><i class="fa fa-check"></i><b>6.3.8</b> Modelos lineales con variables independientes categóricas.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lineales.html"><a href="lineales.html#supuestos-de-un-modelo-lineal."><i class="fa fa-check"></i><b>6.4</b> Supuestos de un modelo lineal.</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="lineales.html"><a href="lineales.html#normalidad."><i class="fa fa-check"></i><b>6.4.1</b> Normalidad.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lineales.html"><a href="lineales.html#independencia."><i class="fa fa-check"></i><b>6.4.2</b> Independencia.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lineales.html"><a href="lineales.html#linealidad."><i class="fa fa-check"></i><b>6.4.3</b> Linealidad.</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lineales.html"><a href="lineales.html#homocedasticidad."><i class="fa fa-check"></i><b>6.4.4</b> Homocedasticidad.</a></li>
+<li class="chapter" data-level="6.4.5" data-path="lineales.html"><a href="lineales.html#casos-atipicos."><i class="fa fa-check"></i><b>6.4.5</b> Casos atípicos.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lineales.html"><a href="lineales.html#regresion-robusta."><i class="fa fa-check"></i><b>6.5</b> Regresión robusta.</a></li>
+<li class="chapter" data-level="6.6" data-path="lineales.html"><a href="lineales.html#supuestos-de-los-modelos-lineales-problemas-y-soluciones."><i class="fa fa-check"></i><b>6.6</b> Supuestos de los modelos lineales: problemas y soluciones.</a></li>
+<li class="chapter" data-level="6.7" data-path="lineales.html"><a href="lineales.html#funciones-adicionales-para-modelos-lineales."><i class="fa fa-check"></i><b>6.7</b> Funciones adicionales para modelos lineales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="generalizados.html"><a href="generalizados.html"><i class="fa fa-check"></i><b>7</b> Modelos lineales generalizados</a><ul>
+<li class="chapter" data-level="7.1" data-path="generalizados.html"><a href="generalizados.html#introduccion."><i class="fa fa-check"></i><b>7.1</b> Introducción.</a></li>
+<li class="chapter" data-level="7.2" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-con-glm"><i class="fa fa-check"></i><b>7.2</b> Ajuste de modelos logit con <code>glm()</code></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-los-datos."><i class="fa fa-check"></i><b>7.2.1</b> Presentación de los datos.</a></li>
+<li class="chapter" data-level="7.2.2" data-path="generalizados.html"><a href="generalizados.html#un-modelo-lineal-con-glm"><i class="fa fa-check"></i><b>7.2.2</b> Un modelo lineal con <code>glm()</code></a></li>
+<li class="chapter" data-level="7.2.3" data-path="generalizados.html"><a href="generalizados.html#la-ordenada-al-origen-de-un-modelo-logit."><i class="fa fa-check"></i><b>7.2.3</b> La ordenada al origen de un modelo logit.</a></li>
+<li class="chapter" data-level="7.2.4" data-path="generalizados.html"><a href="generalizados.html#estimacion-de-beta_1"><i class="fa fa-check"></i><b>7.2.4</b> Estimación de <span class="math inline">\(\beta_1\)</span></a></li>
+<li class="chapter" data-level="7.2.5" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-dos-variables-independientes."><i class="fa fa-check"></i><b>7.2.5</b> Modelo logit con dos variables independientes.</a></li>
+<li class="chapter" data-level="7.2.6" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-multiples-variables-dependientes."><i class="fa fa-check"></i><b>7.2.6</b> Modelo logit con múltiples variables dependientes.</a></li>
+<li class="chapter" data-level="7.2.7" data-path="generalizados.html"><a href="generalizados.html#pruebas-de-significancia."><i class="fa fa-check"></i><b>7.2.7</b> Pruebas de significancia.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-resultados."><i class="fa fa-check"></i><b>7.3</b> Presentación de resultados.</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="generalizados.html"><a href="generalizados.html#intervalos-de-confianza.-1"><i class="fa fa-check"></i><b>7.3.1</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="7.3.2" data-path="generalizados.html"><a href="generalizados.html#grafico-de-coeficientes."><i class="fa fa-check"></i><b>7.3.2</b> Gráfico de coeficientes.</a></li>
+<li class="chapter" data-level="7.3.3" data-path="generalizados.html"><a href="generalizados.html#tabla-y-grafico-de-efectos-totales-promedio."><i class="fa fa-check"></i><b>7.3.3</b> Tabla y gráfico de efectos totales promedio.</a></li>
+<li class="chapter" data-level="7.3.4" data-path="generalizados.html"><a href="generalizados.html#sumario-de-efectos-marginales."><i class="fa fa-check"></i><b>7.3.4</b> Sumario de efectos marginales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="generalizados.html"><a href="generalizados.html#modelos-ligit-multinomiales."><i class="fa fa-check"></i><b>7.4</b> Modelos ligit multinomiales.</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-multinomiales-com-multinom"><i class="fa fa-check"></i><b>7.4.1</b> Ajuste de modelos logit multinomiales com <code>multinom()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="generalizados.html"><a href="generalizados.html#anexo-i.-probabilidades-y-razones-de-probabilidad."><i class="fa fa-check"></i><b>7.5</b> Anexo I. Probabilidades y razones de probabilidad.</a></li>
+<li class="chapter" data-level="7.6" data-path="generalizados.html"><a href="generalizados.html#anexo-ii.-asterisco-sobre-los-asteriscos."><i class="fa fa-check"></i><b>7.6</b> Anexo II. Asterisco sobre los asteriscos.</a></li>
+<li class="chapter" data-level="7.7" data-path="generalizados.html"><a href="generalizados.html#anexo-iii.-tipos-de-variables-independiente-y-modelo-lineal-apropiado."><i class="fa fa-check"></i><b>7.7</b> Anexo III. Tipos de variables independiente y modelo lineal apropiado.</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="martinpaladino.github.com" target="blank">Martín Paladino</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R para Ciencias Sociales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduccion" class="section level1 unnumbered">
+<h1>Introducción</h1>
+<div id="que-es-r" class="section level2">
+<h2><span class="header-section-number">0.3</span> ¿Qué es R?</h2>
+<p>R es una plataforma de software para análisis de datos, con especial énfasis en el análisis estadístico. Como es una plataforma la interacción entre R y el usuario es diferente a la que llevamos a cabo cuando utilizamos una aplicación. R no es una aplicación o app. Una aplicación hace relativamente pocas cosas y hay caminos bien definidos para hacerlas. En general una aplicación tiene una sola forma de hacer algo, en R hay muchas formas de hacer lo mismo y, si ninguna le convence, puede crear la suya. Por eso decimos que R es una plataforma, porque es un <em>programa para hacer programas</em>. No se asuste, es más fácil de lo que parece, aunque más difícil que manejar una app.</p>
+<p>Quizás valga la pena aclarar de qué hablamos cuando hablamos de R, ya que significa dos cosas:</p>
+<div id="el-lenguaje-de-programacion-r" class="section level3">
+<h3><span class="header-section-number">0.3.1</span> El <em>lenguaje de programación R</em></h3>
+<p>Como tal es una <strong>especificación sintáctica</strong> para pasar comandos a una computadora. Como lenguaje no existe sino idealmente, como una especificación descripta en un libro. Del mismo modo el castellano existe idealmente, hasta que lo hablamos o escribimos y alguien nos entiende. Aprender a usar R es aprender a “hablar” este lenguaje, conocer sus convenciones y aplicarlas de manera tan rigurosa como creativa.<br />
+Puntualmente R es un DSL, Domain Specific Language, o Leguaje de Dominio Específico. A diferencia de los lenguajes de programación generales (como C, C++, Java o Scheme)[^1^](#fn1){#fnref1 .footnoteRef} R fue diseñado desde sus orígenes para el análisis de datos. Esto le resta algo de flexibilidad, pero lo dota de herramientas específicas para el análisis de datos que nos facilitan muchísimo el trabajo. Cuando decimos que es “menos flexible” lo decimos con respecto a un lenguaje general, en comparación de otros lenguajes de análisis de datos como Stata o SPSS o el mismo SAS, R es algunos ordenes de magnitud más flexible.</p>
+</div>
+<div id="el-interprete" class="section level3">
+<h3><span class="header-section-number">0.3.2</span> El <em>intérprete</em></h3>
+<p>El intérprete de R es el software que ejecuta el código escrito en lenguaje R. Se trata de un <em>programa</em> al que pasamos instrucciones escritas en lenguaje R y que es capaz de evaluarlas, procesarlas y regresarnos un resultado. En este sentido es posible –y necesario– “instalar” R en nuestra computadora. El intérprete estándar de R se llama… R y es el que utilizaremos, nosotros y millones de personas que tienen la necesidad de analizar datos con un plataforma flexible, poderosa y gratuita.
+El desarrollo del intérprete R está a cargo de la <a href="https://www.r-project.org/foundation/">R Foundation</a>, una organización sin fines de lucro que se encarga de organizar el trabajo de miles de voluntarios que crean y mejoran permanentemente a este programa. Voluntarios no significa aficionados: algunos de los programadores más talentosos del mundo y líderes en sus campos de investigación donan su tiempo a la R Foundation y producen un software de gran calidad.
+El intérprete de R se distribuye bajo la licencia GNU/GPL, la más estricta de las licencias de código abierto. Por eso R es software libre y nunca dejará de serlo. R es libre en dos sentidos: es completamente gratuito y el código fuente está disponible para que cualquier persona lo revise, valide o modifique. Si le preocupa la validez de los resultados de un software creado por voluntarios tenga en cuenta que, al ser de fuente abierta, el código de R está auditado por miles de personas: la comunidad de programadores R.
+Como si esto fuera poco el entorno de R es multiplataforma. Tiene versiones estables y fáciles de instalar para los principales sistemas operativos: Windows, macOS y Linux.
+El intérprete de R se encarga de ejecutar el código, pero usarlo directamente no es una experiencia amigable: solamente nos ofrece un <em>prompt</em> en el que introducimos instrucciones con el teclado. Por suerte existe <a href="https://www.rstudio.com/">Rstudio</a>, un entorno de trabajo para R que organiza el flujo de trabajo y facilita la interacción con el intérprete, al punto que jamás lo veremos personalmente. Rstudio es el mensajero que se encarga de facilitar la comunicación con R y también es software libre, gratuito y multiplataforma.</p>
+</div>
+</div>
+<div id="instalacion-de-r-y-rstudio-en-windows." class="section level2">
+<h2><span class="header-section-number">0.4</span> Instalación de R y Rstudio en Windows.</h2>
+<p>Por sí mismos R es muy difícil y Rstudio no hace nada. Pero juntos… hacen maravillas. En este apartado le daremos las instrucciones para instalar R y Rstudio en Windows, aunque no es complicado hacerlo para macOS.
+1. Descargue la última versión de R para Windows. A la fecha la última versión es la 3.5.1
+- Para Windows descárguela en (<a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a>). Busque el enlace de descarga en esa página.
+- El nombre del archivo instalador es R-3.4.0-win.exe. Recuerde la ubicación de este archivo.
+2. Ejecute el archivo <code>R-3.5.1-win.exe</code>. Quizás Windows le de una advertencia de que el software que quiere instalar no es seguro. Ignórela con toda confianza: si descargó R del repositorio oficial no tiene nada que temer.
+- Si instala R en la ubicación por defecto no habrá problemas, si cambia el directorio de instalación recuerde la ubicación: Rstudio la solicitará.
+3. Descargue la última versión estable de Rstudio Desktop. A la fecha la última versión es la RStudio 1.1.456.
+- La encontrará en (<a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a>). Busque la versión Rstudio Desktop - Open Source License.
+- El archivo instalador se llama RStudio-1.0.143.exe.
+4. Ejecute el archivo <code>RStudio-1.1.456.exe</code>
+- Si instaló R en la ubicación por defecto Rstudio lo notará y el proceso de instalación estará listo.
+5. Abra la aplicación Rstudio desde el menú de inicio. No es necesario abrir R, Rstudio lo hace por nosotros.</p>
+</div>
+<div id="interface-de-rstudio." class="section level2">
+<h2><span class="header-section-number">0.5</span> Interface de Rstudio.</h2>
+<p>¡Bienvenido! Ya tiene R funcionando en su computadora y una interface que le facilitará el trabajo. Dado que interactuamos con R a través de Rstudio vale la pena ver qué es lo que hay. Si nunca usó un Entorno Integrado de Desarrollo quizás le llame la atención lo que ve y no sepa por dónde empezar. Veamos la interface de Rstudio.</p>
+<div class="figure">
+<img src="imagenes/interfacerstudio.png" alt="Interface" />
+<p class="caption">Interface</p>
+</div>
+<div id="consola." class="section level3">
+<h3><span class="header-section-number">0.5.1</span> Consola.</h3>
+<p>En su forma más simple la consola funciona como una calculadora y acepta los operadores aritméticos convencionales: <code>+</code>,<code>-</code>,<code>*</code>,<code>/</code>,<code>^</code>, este último para elevar un número a una potencia.
+Las instrucciones que pasamos a la consola <strong>siempre</strong> nos regresan un resultado. Si hicimos algo mal ese resultado será un <em>mensaje de error</em> que nos señala que el código no es ejecutable en su forma actual. Si quiere ver su primer mensaje de error haga la prueba intentando sumar dos letras introduciendo <code>&quot;a&quot;+&quot;b&quot;</code> . No se pueden sumar dos letras y R nos los indica: el tipo de datos es inválido.
+Para corregir un error o repetir una instrucción puede navegar el historial de instrucciones usando las flechas del teclado: <code>Arriba</code> para regresar a la línea anterior, <code>Abajo</code> para una línea posterior. Si quiere ver los resultados que quedaron más arriba puede <code>Página Arriba</code> y <code>Página abajo</code> para regresar. Si quiere eliminar lo que está escribiendo y regresar a un punto de entrada limpio pulse <code>Escape</code>.</p>
+<blockquote>
+<p>Hágase amigo de su teclado. Analizando datos con R usará muchísimo el teclado y casi nada el mouse. De hecho usaremos muchos símbolos que posiblemente no haya usado antes. Al principio le llevará un poco de tiempo ubicarlos en el teclado, con la práctica los encontrará rápidamente y notará que trabajo mucho más rápido si no saca las manos del teclado y la vista de la pantalla.<br />
+</p>
+<p>Ni las instrucciones que le damos a R en la consola ni los resultados se guardan, así que no le recomiendo hacer el análisis de datos dando instrucciones en la consola. Mejor organícelas en un archivo de código usando el editor integrado de Rstudio.</p>
+</blockquote>
+</div>
+<div id="editor-de-archivos." class="section level3">
+<h3><span class="header-section-number">0.5.2</span> Editor de Archivos.</h3>
+<p>Rstudio tiene un editor de archivos de texto, en apariencia similar a notepad o alguna aplicación por el estilo, sólo que muchísimo más poderoso y específicamente diseñado para trabajar con la sintaxis de R. Para trabajar con el editor es necesario crear un archivo, y puede hacerlo desde el Menú de Rstudio. Vaya a File-&gt;New File-&gt;R Script para crear un archivo de código R o pulse simultáneamente <code>Ctrl-Shift-N</code>. Así habrá creado un archivo, que no tiene título todavía. Para guardarlo vaya al Menú File-&gt;Save o directamente presiones <code>Ctrl-s</code>. La primera vez que guarde un archivo nuevo Rstudio le pedirá que especifique una ubicación y un nombre, como cualquier otro programa. La extensión de los archivos de código R es <code>.r</code> y RStudio la asignará de manera automática.</p>
+<blockquote>
+<p>Piense en el nombre que le va a dar a los archivos, su yo del futuro se lo agradecerá. Si está haciendo un ejercicio y al archivo lo llama <code>ejercicio</code> en el momento recordará de qué se trata. En unos meses <em>no</em>.</p>
+</blockquote>
+<p>No es necesario copiar y pegar las instrucciones en la consola para ejecutarlas. Desde el editor de texto ubíquese en la línea que quiere ejecutar y presiones <code>Ctrl-Enter</code> para que se ejecute. En el editor <code>Enter</code> no ejecuta el código, crea una nueva línea. Si quiere ejecutar una secuencia de instrucciones márquelas con el mouse y luego presione <code>Ctrl-Enter</code>.</p>
+</div>
+<div id="entorno-de-trabajo." class="section level3">
+<h3><span class="header-section-number">0.5.3</span> Entorno de trabajo.</h3>
+<p>A medida que vaya desarrollando su análisis con R irá creando objetos en los que se almacenan las bases de datos y los resultados del análisis. Esos objetos no se guardan en el disco rígido, existen solamente en la memoria RAM y, cuando les hemos asignado un nombre, aparecen en el apartado <code>Entorno de trabajo</code> de Rstudio. Un entorno de trabajo desprolijo es un problema tarde o temprano. En su escritorio no guarda todos los expedientes, artículos o cualquier material con el que haya trabajado a lo largo de su vida. En R tampoco debería hacerlo. Para facilitarnos la prolijidad en el trabajo R y Rstudio se organizan por proyectos. Es una forma simple e intuitiva de tener juntos todos los recursos que necesitamos para un análisis (bases de datos, archivos de código, manuales de referencia, informes) y solamente esos. Para crear un proyecto nuevo vaya al Menú File-&gt; New Project y luego selecciones la carpeta en la que guardará el proyecto y el nombre que le dará. Al crear y luego guardar un proyecto podrá dejar de trabajar y cerrar Rstudio sabiendo que puede volver a abrirlo y encontrar todo exactamente como lo dejó. Si guarda el proyecto en DropBox puede seguir trabajando en otra computadora.</p>
+<blockquote>
+<p>Cuando analizamos datos nos interesa el resultado del análisis y no tanto el proceso que nos lleva a ese resultado. No ajusto un modelo lineal para conservar la forma en que lo hice, lo hago para conocer los coeficientes, errores y estadísticos de diagnóstico. Sin embargo considere lo siguiente: es trivialmente fácil y lleva fracciones de segundo producir nuevamente los resultados a partir de las instrucciones, pero es prácticamente imposible reproducir las instrucciones a partir de los resultados. Por eso le recomiendo enfáticamente <em>no</em> guardar los resultados y guardar <em>siempre</em> en un archivo el código que los produce. Con el código podrá producir los resultados cada vez que los necesite y tendrá la posibilidad de corregir errores o profundizar su análisis.</p>
+</blockquote>
+</div>
+<div id="graficos." class="section level3">
+<h3><span class="header-section-number">0.5.4</span> Gráficos.</h3>
+<p>Una de las características más potentes y gratificantes de R es la capacidad de hacer gráficos avanzados. Para visualizar esos gráficos Rstudio tiene un área de gráficos. Usamos la consola para pedir a R que produzca un gráfico, pero la salida está en un área aparte. Para probar una salida de gráficos ingrese en la consola <code>plot(iris)</code>: con esta simple instrucción R produce un gráfico con todos los cruces de variables del conjunto de datos <code>iris</code> y Rstudio lo muestra en el área de gráficos . Para verlo en una ventaja aparte con mayor tamaño presiones <code>Zoom</code> en el área de gráficos, para exportar el gráfico a .pdf o como archivo de imagen use el ícono <code>Export</code>.</p>
+</div>
+<div id="ayuda." class="section level3">
+<h3><span class="header-section-number">0.5.5</span> Ayuda.</h3>
+<p>Todas las funciones de R están documentadas internamente, es decir, puede consultar el manual de cada función sin salir de Rstudio. Para ver la ayuda de una función introduzca en la consola <code>help(nombre de la función)</code>. Por ejemplo, para saber qué es <code>iris</code>, el conjunto de datos que acabamos de graficar, introduzca <code>help(iris)</code>. Verá que es un conjunto de datos compilado por Edgdar Anderson y utilizado por el biólogo y estadístico Ronald Fisher para desarrollar y demostrar el Análisis Lineal Discriminante. Para consultar el manual de la operación de la función <code>sd()</code>, que estima la desviación estándar de una variable, introduzca en la consola <code>help(sd)</code>. El formato de los manuales internos de R es más o menos el mismo en todos los casos: una descripción de la función, la sintaxis de uso, los argumentos (opciones) que podemos incluir, quizás algunos detalles y ejemplos de uso.</p>
+</div>
+<div id="paquetes-de-extension." class="section level3">
+<h3><span class="header-section-number">0.5.6</span> Paquetes de extensión.</h3>
+<p>El R que hemos instalado tiene muchas capacidades de análisis, pero no es suficiente o no contiene las mejores herramientas. Sin embargo podemos ampliar la funcionalidad de R a través de paquetes que son tan libres y gratuitos como R y muy fáciles de instalar. De hecho, no es necesario salir de Rstudio para hacerlo. En la misma zona en la que aparecen los gráficos y los manuales encontrará la pestaña <code>Packages</code> con una lista de los paquetes instalados y una opción para instalar otros. Esos paquetes extra se instalan directamente desde CRAN, Comprehensive R Archive Network, un repositorio en línea de extensiones para R. En la actualidad CRAN alberga más de 10,000 paquetes que van desde funciones muy simples hasta extensiones completas que permiten a R funcionar como un software de Sistemas de Información Geográfica. Algunos paquetes requieren otros paquetes, pero no se preocupe, R se encarga de administrar las dependencias y en pocos minutos tendrá a su disposición la función que necesita. Con solo estar conectado a Internet R se encarga de descargar desde CRAN el software necesario, sin hacer preguntas. Es similar al AppStore de Apple, sólo que cuando AppStore abrió sus puertas CRAN ya tenía 3 años sirviendo a la comunidad de R. Pruebe instalar el paquete <code>tidyverse</code> desde el área de paquetes de Rstudio usando <code>Install</code> o directamente desde la consola con <code>install.packages(tidyverse)</code> y verá que el resultado es el mismo. El paquete <code>tidyverse</code> es un caso curioso: es un paquete de paquetes. Lo emplearemos con frecuencia.</p>
+<blockquote>
+<p>¿Por qué no se incluyen directamente los paquetes en la distribución de R? Es una buena pregunta y tiene dos buenas respuestas: porque el ciclo de desarrollo y publicación de software de los paquetes quedaría atado al ciclo de desarrollo y publicación de R, es decir, para adquirir una nueva funcionalidad que ya está lista en un paquete deberíamos esperar a que se publique una nueva versión de R. Y porque hay miles de paquetes y si los incluyéramos todos en la distribución de R sería gigantesca y cargaría muchos programas que jamás utilizaremos. R es usado por biólogos, economistas, lingüistas, analistas financieros, sociólogos, geógrafos y un largo etc. y no todos usamos las mismas funciones. Si quiere piense en R más como un sistema operativo que como un programa en sí mismo: es la base sobre la que se ejecutan programas, esos programas son funciones y esas funciones se distribuyen en paquetes.</p>
+</blockquote>
+</div>
+</div>
+<div id="tipos-y-estructuras-de-datos" class="section level2">
+<h2><span class="header-section-number">0.6</span> Tipos y estructuras de datos</h2>
+<p>Con R funcionando en nuestra computadora seguramente querremos empezar a usarlo y en realidad ya lo hemos hecho. Sin embargo es buena idea conocer algunas peculiaridades de este lenguaje, ya que funciona de manera diferente al software de análisis de datos al que estamos acostumbrados. Antes de tener una base de datos es necesario saber qué hace R con los datos y como los almacena. En otras palabras, es necesario conocer qué tipos, estructuras y clases de datos maneja R. R implementa tipos y estructuras de datos visibles para el usuario. Esta característica lo dota de una flexibilidad completa: literalmente puede hacer cualquier operación con los datos. Al mismo tiempo hace algo complicados los primeros pasos. Familiarizarse con los tipos y estructuras de datos de R es un paso fundamental, ya que las usaremos todo el tiempo. Los tipos de datos definen qué podemos hacer con determinado registro y la estructura como hacerlo.</p>
+<div id="tipos-de-datos" class="section level3">
+<h3><span class="header-section-number">0.6.1</span> Tipos de datos</h3>
+<p>Para un ser humano es muy fácil distinguir uno de <em>uno</em>. Uno más uno es dos y ‘uno busca lleno de esperanzas, el camino que sus sueños…’. Para R, no es tan fácil. Para evitar cualquier ambigüedad y saber qué operaciones pueden llevarse a cabo con cada dato, R maneja de manera estricta algunos tipos de datos. En la mayoría de los casos R detectará el tipo de dato que estamos utilizando y lo manejará de manera acorde. En el ejemplo de la suma que vimos unos párrafos más arriba R detectó que <code>2</code> era un número y nos regresó el resultado. Cuando intentamos hacerlo con letras nos regresó un error. Para saber a qué tipo pertenece un objeto en R –y veremos que los números son objetos en R– utilizamos la función <code>typeof(x)</code>, dónde <code>x</code> es el objeto sobre el que estamos consultando.</p>
+<div id="numerico" class="section level4">
+<h4><span class="header-section-number">0.6.1.1</span> Numérico</h4>
+<p>Dado que haremos análisis cuantitativo el tipo principal de datos es el numérico. Este corresponde a los números y su característica más importante es que nos permite realizar operaciones aritméticas. Internamente R maneja dos tipos de números, los enteros, que pertenecen al tipo <code>integer</code> y los que admiten valores prácticamente infinitos entre los enteros llamados <code>double</code>. Así, 1 pertenece al tipo <code>integer</code> y 1.0001 pertenece al tipo <code>double</code>. Cuando introducimos un número R le asigna el tipo <code>double</code> por defecto y en la mayoría de los casos no hay problema con dejarlo así.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">typeof</span>(<span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">typeof</span>(1L)</a></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>Para el análisis de datos es importante saber que el tipo numérico corresponde a las variables continuas: de intervalos iguales o cocientes y razones. Si tenemos variables medidas en esos niveles debemos asegurarnos que R los identifique correctamente como del tipo numérico.</p>
+</div>
+<div id="caracter" class="section level4">
+<h4><span class="header-section-number">0.6.1.2</span> Carácter</h4>
+<p>El segundo tipo básico corresponde a los caracteres, cualquier símbolo representable en R. Va desde las letras del alfabeto hasta los números, pasando por símbolos como <code>¬</code> o <code>¿</code>, hasta los emojis. Esta es la manera primaria en la que R almacena texto. Dado que un número como el 1 puede ser tanto numérico como carácter, R nos pide un paso extra: que cuando le pasemos un carácter <em>usemos comillas</em> para alertarlo sobre nuestras intenciones. Entonces <code>1</code> y <code>&quot;1&quot;</code> son completamente diferentes, el primero podemos sumarlo, al segundo no sumarlo. Hagamos la prueba usando la función <code>paste()</code>, que pega caracteres creando cadenas más largas.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">typeof</span>(<span class="st">&quot;a&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">typeof</span>(<span class="st">&quot;1&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">typeof</span>(<span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">typeof</span>(<span class="st">&quot;Ciudad de México&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">paste</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;1&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;1 1&quot;</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">sum</span>(<span class="dv">1</span>,<span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Podemos utilizar al tipo carácter para variables categóricas o nominales: cada código de una variable es una cadena de caracteres. Así “Ciudad de México” podría estar en una base de datos para indicar el lugar de nacimiento o residencia de una persona. Sin embargo R tiene una mejor solución para ese tipo de variables. A menos que estemos interesados en el análisis de corpus de textos o necesitemos capacidades avanzadas de manipulación de cadenas de caracteres no los usaremos con frecuencia, pero es importante saber que existen.</p>
+</div>
+<div id="factor" class="section level4">
+<h4><span class="header-section-number">0.6.1.3</span> Factor</h4>
+<p>Los factores son un tipo de datos curioso y exclusivo de R: son al mismo tiempo numéricos y caracteres o, mejor dicho, números con etiquetas de texto. Son un tipo de datos ampliamente utilizado en el análisis, pues lo usamos para codificar variables categóricas, tanto nominales como ordinales. A diferencia de los caracteres que pueden tener cualquier combinación de letras y símbolos. los factores solamente admiten un número finito de <em>niveles</em> o categorías. Por ejemplo, si estamos utilizando el tipo factor para codificar las Entidades Federativas de México dicho factor admitirá solamente 32 niveles o categorías, una por Entidad. Esto nos generará más adelante algunos dolores de cabeza y también satisfacciones. Sabiendo que la variable “Entidad” sólo puede tener 32 niveles si, viendo un sumario de los datos, encontramos que hay 35 sabremos que algo salió mal y lo podremos corregir a tiempo.
+El nombre le resultará curioso ¿por qué factor? Porque así se llaman en contextos experimentales a la variables categóricas, piense por ejemplo en el ANOVA de un factor. Es <em>ese</em> factor.</p>
+</div>
+<div id="logicos" class="section level4">
+<h4><span class="header-section-number">0.6.1.4</span> Lógicos</h4>
+<p>Los valores lógicos son valores especiales que usamos para especificar o consultar estados del programa. Nos comunican el resultado de las operaciones lógicas que realizamos adquiriendo dos valores: <code>TRUE</code> y <code>FALSE</code>. Por ejemplo, para evaluar igualdad en R utilizamos el operador <code>==</code> (<em>dos</em> signos igual).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="dv">1</span><span class="op">==</span><span class="dv">1</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="dv">2</span><span class="op">==</span><span class="dv">1</span> </a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>R dispone de un tipo de valor lógico distinto de <code>TRUE</code> y <code>FALSE</code> que es <code>NA</code>. NA es otro tipo de datos específico de R y es de gran utilidad: nos permite señalar de manera inequívoca casos perdidos, ausencia de información en una estructura de datos. En lugar de utilizar valores poco frecuentes como -999999 o algo por el estilo R reservó el valor lógico especial <code>NA</code> para los missing. <code>NA</code> significa, literalmente, <em>not available</em>: no disponible. Lamentablemente en todos los casos reales de análisis de datos siempre tendremos que lidiar con casos perdidos, así que mejor tener una forma clara de identificarlos.</p>
+</div>
+</div>
+<div id="estructuras-de-datos." class="section level3">
+<h3><span class="header-section-number">0.6.2</span> Estructuras de datos.</h3>
+<p>Los tipos de datos tienen que aplicarse sobre algo y ese algo son las <strong>estructuras de datos</strong>. Una estructura de datos es una forma de almacenar información que es conocida tanto por usuario como por el programa. Especifica la manera en que almacenamos los datos, cuales son válidas y cuáles no, y de qué forma podemos consultarlos. La mayoría de los paquetes de análisis de datos ocultan al usuario las estructuras de datos subyacentes, pero R nos quiere digitalmente cultos y nos obliga a conocer de manera más profunda como funciona una computadora. Todos los lenguajes de programación definen un conjunto de estructuras de datos. Lo más relevante de una estructura de datos es que nos permite aplicar algunos métodos conocidos para hacer subconjuntos, dividir las información de la manera necesaria para nuestros propósitos. R tiene dos estructuras primitivas de datos, que se combinan para producir otras.</p>
+<div id="vector" class="section level4">
+<h4><span class="header-section-number">0.6.2.1</span> Vector</h4>
+<p>La estructura de datos fundamental de R es el vector. Un vector es una serie ordenada de valores, que deben ser todos del mismo tipo (numéricos, caracteres, factores, lógicos, no importa cuál, importa que sean de un sólo tipo en un vector dado). En términos estadísticos <strong>una variable es un vector</strong>: una serie de valores ordenada –qué orden en particular no importa. Al estar ordenados podemos consultar un valor determinado por su posición en el vector. Así para el vector numérico <span class="math inline">\(a=[5,8,11,17])\)</span> la posición 2 la ocupa el número 8 y el largo total del vector es 4. En R sólo existen los vectores, no existen escalares como tales. Para R un único número es un vector de largo 1. Esto tiene algunas consecuencias interesantes para las operaciones aritméticas: en R por defecto están vectorizadas. Entonces retomando el vector <span class="math inline">\(a\)</span> que acabamos de definir si lo multiplicamos por 2 obtendremos que $2a=[10, 16, 22, 34]). En R no es necesario repetir una operación para cada par de valores (lo que hacemos, por ejemplo, en Excel cuando copiamos una fórmula). Por defecto realiza la operación a lo largo del vector o vectores. Los vectores son unidimensionales: basta con un sólo número de índice para recuperar un registro.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">11</span>, <span class="dv">17</span>)</a></code></pre></div>
+<pre><code>## [1]  5  8 11 17</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">11</span>, <span class="dv">17</span>)<span class="op">*</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 10 16 22 34</code></pre>
+</div>
+<div id="matriz" class="section level4">
+<h4><span class="header-section-number">0.6.2.2</span> Matriz</h4>
+<p>Una matriz son dos vectores emparejados, lo que da como resultado una estructura de datos de dos dimensiones. Una forma usual de representarnos mentalmente a una matriz es pensarla como filas y columnas. Podemos recuperar un registro dado de una matriz con dos números de índice: el de columna y el de fila. La matrices también deben contener todos sus registros en el mismo tipo. R permite operaciones matriciales, podemos sumar, restar, multiplicar o dividir una matriz por otra matriz o un escalar. Una matriz con más de dos dimensiones es un <code>array</code>, un tipo de datos muy frecuente en otros lenguajes como FORTRAN, pero menos usual en R.</p>
+</div>
+<div id="data-frame" class="section level4">
+<h4><span class="header-section-number">0.6.2.3</span> Data frame</h4>
+<p>La estructura de datos con la que interactuamos con más frecuencia es el data frame. El data.frame es la clase de estructura de datos que asociamos mentalmente con una base de datos: variables en las columnas y observaciones en las filas. Es una estructura bidimensional, pero a diferencia de las matrices admite tipos de datos heterogéneos. En un data.frame pueden convivir todos los tipos de datos: numéricos, caracteres, factores, lógicos, fechas, etc. En una base de datos de alumnos de un diplomado podríamos incluir los nombres –cadenas de caracteres–, el género –factor– y la edad –numérico. Una matriz no nos lo permitiría, pero un data.frame sí.
+La restricción más importante de un data.frame es que debe ser <strong>rectangular</strong>. Es decir, cada fila debe tener el mismo largo de las restantes filas y todas las columnas el mismo largo de las restantes columnas. Si en algún registro no tenemos información debemos utilizar el código <code>NA</code> para indicarlo explícitamente, de este modo podremos mantener la estructura de datos rectangular.
+Cuando importamos datos de Excel, SPSS, Stata o valores separados por comas (.csv) enviaremos el resultado de la lectura de esos archivos a una estructura del tipo data.frame y lo manipularemos de todas las formas posibles. El vector es el tipo de datos fundamental en R porque es la base de su capacidad de procesamiento: las operaciones matemáticas en R casi siempre implican vectores o matrices. Sin embargo para la manipulación de datos heterogéneos –distintos tipos de datos en una misma estructura– utilizamos siempre el data.frame o alguno de sus derivados como los <code>tibbles</code>. Un <code>tibble</code> es un data.frame con un comportamiento diferente, sobre todo en la manera en que imprime en pantalla. El paquete <code>tidyverse</code> implementa los <code>tibbles</code> en R y ya debería estar instalado en su computadora.</p>
+</div>
+<div id="lista" class="section level4">
+<h4><span class="header-section-number">0.6.2.4</span> Lista</h4>
+<p>Las listas son la estructura de datos más flexible de R. Dentro de una lista podemos almacenar de forma ordenada y accesible cualquier tipo de datos: más vectores, matrices, arrays, data.frames o más listas.</p>
+<p>El uso más frecuente de las listas en R es en la consulta de las cantidades de interés de un análisis o modelo. Las funciones de modelado de R producen su output como una lista en la que se almacenan los coeficientes, residuos, errores, estadísticos de prueba, etc. La flexibilidad de la estructura <code>list</code> permite hacer accesibles estos datos no rectangulares. A menos que estemos programando alguna función es poco probable que creemos listas, sin embargo las estaremos consultando todo el tiempo.</p>
+</div>
+</div>
+</div>
+<div id="orientacion-a-objetos." class="section level2">
+<h2><span class="header-section-number">0.7</span> Orientación a objetos.</h2>
+<p>R es un lenguaje orientado a objetos. Todos en R es un objeto, aún los números, y como son objetos siempre pertenecen a una clase. ‘1’ pertenecen a la clase de los numéricos, <code>pi</code> también. Los objetos existen siempre, aunque no tengan nombre, y siempre pertenecen a una clase. Las clases son la característica más relevante de los lenguajes orientados a objetos, como R, Java, C++, F# y otros. La clase de un objeto limita lo que se puede hacer y no hacer con él y le asigna determinados atributos. La orientación a objetos a permitido que R se extienda mucho más allá de los ámbitos que contemplaba originalmente. A medida que surgieron nuevas necesidades –por ejemplo, la necesidad de almacenar información geográfica– se crearon nuevos tipos de objetos.</p>
+</div>
+<div id="programacion-funcional." class="section level2">
+<h2><span class="header-section-number">0.8</span> Programación funcional.</h2>
+<p>Otra peculiaridad de R como lenguaje de programación es que tiene capacidades de programación funcional. La programación funcional es un paradigma de programación sumamente abstracto y difícil de comprender. Sin embargo en el uso aplicar este paradigma resuelve algunos problemas bien concretos, como garantizar la integridad de los datos evitando corromperlos al manipularlos. Aún si ya conoce R es posible que lo haya aprendido desde un paradigma imperativo, que es el más tradicional en este lenguaje. Sin embargo el estilo de programación de R que propongo se apoya en la programación funcional. Es el siglo XXI al fin y al cabo.</p>
+</div>
+<div id="vocabulario." class="section level2">
+<h2><span class="header-section-number">0.9</span> Vocabulario.</h2>
+<p>Algunas palabras que utilizaremos en estas guías pueden tener múltiples sentidos, dependiendo del ámbito en el que las usemos. Es preciso aclarar cuál es que le damos aquí.</p>
+<dl>
+<dt><em>Expresión</em></dt>
+<dd>Una combinación de valores, variables y operadores que un programa de computación interpreta y computa para producir un resultado. Es la unidad mínima ejecutable de código. <code>1+1</code> es una combinación de los valores <code>1</code> y <code>1</code>, unidos por el operador <code>+</code>.
+</dd>
+<dt><em>Código</em> o <em>código fuente</em></dt>
+<dd>Una colección de instrucciones/expresiones escritas en un formato legible para humanos. Un programa de computación también puede interpretar y evaluar ese código. El código produce programas, pero no es el programa. En el uso avanzado de R es es posible hacer que el programa modifique el mismo código que lo produce, por lo que es importante conservar esta distinción. El siguiente código reune 20 expresiones y, cuando es ejecutado y recibe vector x válido, regresa la mediana de de x, tanto para n para como para n impar.<code>median(x)</code> tiene un código diferente, pero ejecuta el mismo programa.[^2^](#fn2){#fnref2 .footnoteRef}
+</dd>
+</dl>
+<p><code>ifelse(length(x)%%2 == 0,</code>
+<code>(sort(x)[floor((length(x)+1)/2)] + sort(x)[ceiling((length(x)+1)/2)])/2,</code>
+<code>sort(x)[(length(x)+1)/2]</code></p>
+<dl>
+<dt><em>Guión</em> o <em>script</em></dt>
+<dd>Un archivo en que almacenamos código. Para referirnos al contenido de ese archivo usamos la palabra código. Son tan importantes que R guardó la extensión de archivo <code>.r</code> para los scrips.
+</dd>
+<dt><em>Programa</em></dt>
+<dd>Una colección de instrucciones que llevan a cabo una tarea específica cuando está siendo ejecutada por una computadora. En un lenguaje interpretado como R[^3^](#fn3){#fnref3 .footnoteRef} el programa es el código en el momento en el que está siendo ejecutado. Generalmente el programa no es legible por humanos.
+</dd>
+<dt><em>Sintaxis</em></dt>
+<dd>Conjunto de reglas que define la combinación y el orden en el uso de ciertos símbolos considerada correcta. Respetando las reglas de sintaxis podemos producir expresiones capaces de ser evaluadas por un programa. La sintaxis de R es un concepto abstracto, no muy diferente a la sintaxis de la lengua española o inglesa.[^4^](#fn4){#fnref4 .footnoteRef} La sintaxis básica de una función es R es <code>función(argumento, argumento)</code>. Es decir, el nombre de la función, seguido de un paréntesis de apertura, los argumentos que pasamos a la función separados por comas y un paréntesis de cierre.
+</dd>
+<dt><em>Función</em></dt>
+<dd>Desde el punto de vista de la ejecución, una función es un pequeño programa dentro de un programa. Desde el punto de vista del código es una conjunto de instrucciones empaquetadas a las que podemos llamar por un nombre. Las funciones se crean a partir de funciones primitivas: encadenando funciones muy simples creamos unas más complejas. Piense en las funciones como verbos: llamamos a una función para que “haga” algo sobre algunos datos. Una función tiene un input y un output. La expresión <code>sum(1,1)</code> llama a la función <code>sum()</code> –sumar– le da por input <code>1</code> y <code>1</code> y produce como output <code>2</code>.[^5^](#fn5){#fnref5 .footnoteRef} R tiene características de lenguaje de programación funcional, por lo que las funciones tienen algunos atributos curiosos y muy útiles que serán atendidos extensamente en un capítulo dedicado a las funciones.
+</dd>
+<dt><em>Objeto</em></dt>
+<dd>Un objeto puede ser una variable, estructura de datos, función o método al que un programa refiere por un identificador interno, no visible para el usuario a menos que le haya asignado un nombre. R es un lenguaje orientado a objetos, por lo que todo lo que ocurre en el entorno de ejecución refiere a un objeto, visible para el usuario o no. Todos los objetos de R pertenecen a un <em>tipo</em> (type) y a una <em>clase</em> (class). El tipo y clase delimitan lo que podemos –y lo que no podemos– hacer con un objeto. Por ejemplo, para el el valor <code>1</code> la clase es numérico y el tipo <code>double</code> (doble precisión o número pseudo-infinitos). Por lo tanto podemos hacer operaciones matemáticas sobre ese objeto. El objeto <code>&quot;Martín&quot;</code> es del tipo y clase carácter y no admite operaciones matemáticas.
+</dd>
+<dt><em>Comando</em></dt>
+<dd>Un comando es una instrucción que damos a un programa. En R no existan los comandos, sólo las funciones. Incluso para cerrar una sesión de R no hay un comando, utilizamos la función <code>q()</code>.[^6^](#fn6){#fnref6 .footnoteRef}
+</dd>
+</dl>
+</div>
+<div id="funciones-y-librerias-de-funciones." class="section level2">
+<h2><span class="header-section-number">0.10</span> Funciones y librerías de funciones.</h2>
+<p>Cada vez que vea una expresión seguida de paréntesis estaremos haciendo referencia a una función. Por ejemplo, <code>print()</code> hace referencia a la función print, que imprime en la consola –no en una impresora– el output de una función.[^7^](#fn7){#fnref7 .footnoteRef}
+Cada vez que vea una expresión seguida de <code>::</code> estaremos haciendo referencia a una librería. Por ejemplo, <code>dplyr::</code> hace referencia a la librería dplyr, que reúne varias funciones para manipulación de datos. Las librería son colecciones de funciones y cada función pertenece a una librería. <code>print()</code> pertenece a la librería <code>base::</code>. Para señalar una función y la librería a la que pertenece usamos <code>base::print()</code>. Algunas librería contienen funciones cuyos nombres existen en otras, la forma <code>librería::función()</code> evita las ambigüedades, tanto para nosotros como para R.</p>
+</div>
+<div id="convenciones-de-estilo-de-este-documento." class="section level2">
+<h2><span class="header-section-number">0.11</span> Convenciones de estilo de este documento.</h2>
+<p>Cada vez que vea texto con <code>este</code> formato nos estaremos refiriendo a una expresión literal de R, que escribimos del mismo modo que lo haríamos en la consola de R. Usualmente estaremos haciendo referencia a una función, objeto de datos o resultado. De este modo evitaremos ambigüedades, distinguiendo, por ejemplo, a la palabra datos del objeto al que hemos asignado el nombre <code>datos</code> en el entorno de R.</p>
+</div>
+<div id="bloques-de-codigo-y-comentarios." class="section level2">
+<h2><span class="header-section-number">0.12</span> Bloques de código y comentarios.</h2>
+<p>Cada vez que encuentre bloques completos con el formato del párrafo siguiente estaremos mostrando código de R y (posiblemente) la salida en consola que produce ese código. Al darle este formato eliminamos cualquier otro y facilitamos copiar y pegar el código desde el documento a la consola. Con toda confianza copie y pegue el código que encuentre con este formato, debería ejecutarse sin problemas en R.
+<code>R &lt;- c(&quot;Lenguaje&quot;, &quot;Entorno&quot;)  #Creo el objeto R como un vector con dos valores: lenguaje y entorno.</code>
+Dentro del código puede haber comentarios, antecedidos por el símbolo <code>#</code>. R identifica el numeral y no intentará ejecutar los comentarios. Los comentarios sirven para agregar información al código: dividirlo en secciones para darle mejor estructura, explicar qué hace un línea de código o por qué hacemos determinada operación. Demasiados comentarios y se dificulta leer el código, muy pocos comentarios y cuando regresemos a trabajar con código que escribimos hace unos meses nos costará entender qué estamos haciendo. Como programador deberá encontrar un balance. En este <del>documento</del> libro el código tiene muchos comentarios, quizás demasiados. La intención es ofrecer al lector una explicación pormenorizada de qué hace el código que vamos introduciendo, sobre todo cuando introducimos una función o usamos una ya conocida de un modo diferente. Preste atención a los comentarios, algunas operaciones están explicadas allí y no en otra parte.</p>
+</div>
+<div id="uso-de-mayusculas." class="section level2">
+<h2><span class="header-section-number">0.13</span> Uso de mayúsculas.</h2>
+<p>A R le importan las mayúsculas y minúsculas, pero no le importan los espacios. <code>México</code> y <code>méxico</code> son dos expresiones completamente diferentes en R. Preste atención a estos detalles, la mayoría de los errores se producen por nombres mal escritos. Como se encargará de poner nombre a la mayoría de los objetos trate de seguir una convención: use mayúsculas siempre o no las use nunca. Sin embargo <code>1+1</code> y <code>1 + 1</code> son expresiones completamente equivalentes en R. Cuando interpreta el codigo R elimina los espacios. Separe las expresiones con espacios para hacer más legible a su código, pero no se preocupe por el efecto de estos espacios. No tienen ninguno.[^8^](#fn8){#fnref8 .footnoteRef}</p>
+<blockquote>
+<p>Nota breve sobre las funciones. Nuestra interacción con R se basa en las funciones. Como R es un lenguaje y no un programa en sentido estricto no le introducimos comandos. En R no existen los comandos y puede hablar sobre R sin usar esa palabra. Existen las funciones. Nada más. Más adelante profundizaremos sobre las funciones en R y aprenderemos a programar las nuestras, por ahora es importante saber que una función recibe un input y produce un output. Siempre. Cuando una función falla por algún motivo nos devuelve un output especial: un mensaje de error. Si no hay mensaje de error hay un resultado que podemos visualizar en pantalla, asignar un nombre o pasar como input de otra función.</p>
+</blockquote>
+<blockquote>
+<p>Nota breve sobre los errores. Los mensajes de error deberían darnos alguna indicación de que es lo que ha fallado, para facilitar la corrección. No siempre es el caso. Dependiendo de la función con la que estemos trabajando los mensajes de error van desde salidas muy útiles que señalan con claridad la causa del error hasta expresiones crípticas como <code>object of class clossure is not subsettable</code>.[^9^](#fn9){#fnref9 .footnoteRef} Preste atención a la salida en consola: allí podrá saber si la función está operando correctamente o produciendo un error, mensaje o advertencia. Como el código se ejecuta en una secuencia precisa generalmente el siguiente depende del anterior. Dicho de otro modo, si se produce un error en una línea de código es muy posible que se produzcan errores en líneas posteriores, que esperan un resultado que no obtienen. Cuando su código falle comience por arreglar la línea que produjo el primer mensaje de error. Más adelante introduciremos modalidades de programación que reducen drásticamente la cantidad de errores que producimos y reducen la interdependencia del código, de modo que un error no hace fracasar a todo el programa.</p>
+</blockquote>
+</div>
+<div id="sobre-el-estilo-de-programacion-en-r." class="section level2">
+<h2><span class="header-section-number">0.14</span> Sobre el estilo de programación en R.</h2>
+<p>Si en R hay muchas formas de hacer lo mismo ¿Cuál elegimos? Dependerá de usted. Cuatro criterios que ayudan a elegir cuál es la mejor opción son la inteligibilidad, flexibilidad, robustez y velocidad de ejecución, en orden de importancia.
+Trate de escribir código <em>inteligible</em>, es decir, que sea fácil de entender para usted, que es un ser humano. Mantenga las cosas simples. Las computadoras son muy potentes y en general ejecutan el código muy rápidamente. No tiene caso escribir un código críptico que nos ahorra algunas décimas de segundo en la ejecución y nos detiene varios minutos cuando tratamos de entender qué es lo que hace. <em>Flexible</em> significa que el código sirve para problema puntual que está resolviendo cuando lo escribimos y, en lo posible, para problemas similares. Así podrá reutilizar su propio código en otros análisis. <em>Robusto</em> significa que si falla nos indicará de manera clara por qué o dónde falló y que al fallar no hará fracasar al código siguiente. Procure que su programa no sea demasiado interdependiente. Esta preocupación se hará más acuciante a medida que aumente la complejidad de los problemas que está tratando de resolver.</p>
+<p>Al principio concéntrese en trabajar con código que entienda, aún si no ha sido quién lo escribió. Si tiene dos opciones igualmente buenas –inteligibles, flexibles y robustas– elija la que se ejecuta en menor tiempo.</p>
+<p>Si utiliza fuentes de código de terceros, por ejemplo, el contenido en los paquetes de R, revise la ayuda de cada función para saber qué hace la función que está utilizando. Si está utilizando código de dominio público –como el que está en las respuestas a preguntas sobre R en <a href="http://stackoverflow.com/questions/tagged/r">Stackoverflow</a>, revise con cuidado la pregunta y los comentarios para saber qué problema están resolviendo.</p>
+<p>Happy hacking!</p>
+<ol style="list-style-type: decimal">
+<li><p>Scheme y Lisp tuvieron gran influencia en S, el lenguaje en el que se basa R.<a href="index.html#fnref1">↩</a></p></li>
+<li><p>No se preocupe, es posible que nunca tenga que escribir o leer un código tan complicado.<a href="index.html#fnref2">↩</a></p></li>
+<li><p>Es decir, un lenguaje que no produce programas directamente ejecutables, sino que ejecuta código produciendo el programa en tiempo real.<a href="investigacion-reproducible-.html#fnref3">↩</a></p></li>
+<li><p>Por este motivo nunca podré enviarle “la sintaxis” adjunta por correo electrónico. En el mejor de los casos le podría enviar un manual de sintaxis, pero aún así sería discutible que le esté enviando la sintaxis: le estaría enviando un manual. Con mucho gusto le envío el script.<a href="investigacion-reproducible-.html#fnref4">↩</a></p></li>
+<li><p>El ejemplo de <code>1+1</code> también es una función, aunque la sintaxis es diferente. Para facilitarnos las cosas R incluye operadores binarios como el signo <code>+</code> que funcionan como atajos sintácticos. R traduce <code>1+1</code> a <code>sum(1,1)</code> y evalúa a éste último.<a href="investigacion-reproducible-.html#fnref5">↩</a></p></li>
+<li><p>Las interfaces de usuario del software general –digamos, Excel– ofuscan la distinción entre funciones y comandos: allí existen los menús y una opción en un menú puede referir internamente a un función o un comando. La diferencia técnica, desde el punto de vista del software, entre un comando y una función es que el primero cambia el estado de un programa, mientras que el segundo crea un estado nuevo.<a href="investigacion-reproducible-.html#fnref6">↩</a></p></li>
+<li><p>No se preocupe mucho por print, generalmente las restantes funciones de R la llaman silenciosamente y por defecto imprimen algo o el output en la consola.<a href="manejo.html#fnref7">↩</a></p></li>
+<li><p>A diferencia de otros lenguajes de programación como Python en los que los espacios juegan un papel fundamental para organizar el código.<a href="manejo.html#fnref8">↩</a></p></li>
+<li><p>Tampoco es tan inútil: este mensaje de error le indica que está tratando a una expresión ejecutable de R como si fueran datos. Revise su código, probablemente olvidó poner paréntesis después del nombre de una función.<a href="manejo.html#fnref9">↩</a></p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="primeros.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["libRo.pdf", "libRo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

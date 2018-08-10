@@ -1,0 +1,2156 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R para Ciencias Sociales</title>
+  <meta name="description" content="Análisis de datos con R, con aplicación a las ciencias sociales">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R para Ciencias Sociales" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R para Ciencias Sociales" />
+  
+  <meta name="twitter:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+<meta name="author" content="Martín Paladino">
+
+
+<meta name="date" content="2018-08-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="graficos.html">
+<link rel="next" href="lineales.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.0/DiagrammeR.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R para ciencias sociales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preámbulo</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#para-quien-es-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Para quién es este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#el-tidyverse"><i class="fa fa-check"></i><b>0.2</b> El <code>tidyverse</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introducción</a><ul>
+<li class="chapter" data-level="0.3" data-path="introduccion.html"><a href="introduccion.html#que-es-r"><i class="fa fa-check"></i><b>0.3</b> ¿Qué es R?</a><ul>
+<li class="chapter" data-level="0.3.1" data-path="introduccion.html"><a href="introduccion.html#el-lenguaje-de-programacion-r"><i class="fa fa-check"></i><b>0.3.1</b> El <em>lenguaje de programación R</em></a></li>
+<li class="chapter" data-level="0.3.2" data-path="introduccion.html"><a href="introduccion.html#el-interprete"><i class="fa fa-check"></i><b>0.3.2</b> El <em>intérprete</em></a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="introduccion.html"><a href="introduccion.html#instalacion-de-r-y-rstudio-en-windows."><i class="fa fa-check"></i><b>0.4</b> Instalación de R y Rstudio en Windows.</a></li>
+<li class="chapter" data-level="0.5" data-path="introduccion.html"><a href="introduccion.html#interface-de-rstudio."><i class="fa fa-check"></i><b>0.5</b> Interface de Rstudio.</a><ul>
+<li class="chapter" data-level="0.5.1" data-path="introduccion.html"><a href="introduccion.html#consola."><i class="fa fa-check"></i><b>0.5.1</b> Consola.</a></li>
+<li class="chapter" data-level="0.5.2" data-path="introduccion.html"><a href="introduccion.html#editor-de-archivos."><i class="fa fa-check"></i><b>0.5.2</b> Editor de Archivos.</a></li>
+<li class="chapter" data-level="0.5.3" data-path="introduccion.html"><a href="introduccion.html#entorno-de-trabajo."><i class="fa fa-check"></i><b>0.5.3</b> Entorno de trabajo.</a></li>
+<li class="chapter" data-level="0.5.4" data-path="introduccion.html"><a href="introduccion.html#graficos."><i class="fa fa-check"></i><b>0.5.4</b> Gráficos.</a></li>
+<li class="chapter" data-level="0.5.5" data-path="introduccion.html"><a href="introduccion.html#ayuda."><i class="fa fa-check"></i><b>0.5.5</b> Ayuda.</a></li>
+<li class="chapter" data-level="0.5.6" data-path="introduccion.html"><a href="introduccion.html#paquetes-de-extension."><i class="fa fa-check"></i><b>0.5.6</b> Paquetes de extensión.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="introduccion.html"><a href="introduccion.html#tipos-y-estructuras-de-datos"><i class="fa fa-check"></i><b>0.6</b> Tipos y estructuras de datos</a><ul>
+<li class="chapter" data-level="0.6.1" data-path="introduccion.html"><a href="introduccion.html#tipos-de-datos"><i class="fa fa-check"></i><b>0.6.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="0.6.2" data-path="introduccion.html"><a href="introduccion.html#estructuras-de-datos."><i class="fa fa-check"></i><b>0.6.2</b> Estructuras de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.7" data-path="introduccion.html"><a href="introduccion.html#orientacion-a-objetos."><i class="fa fa-check"></i><b>0.7</b> Orientación a objetos.</a></li>
+<li class="chapter" data-level="0.8" data-path="introduccion.html"><a href="introduccion.html#programacion-funcional."><i class="fa fa-check"></i><b>0.8</b> Programación funcional.</a></li>
+<li class="chapter" data-level="0.9" data-path="introduccion.html"><a href="introduccion.html#vocabulario."><i class="fa fa-check"></i><b>0.9</b> Vocabulario.</a></li>
+<li class="chapter" data-level="0.10" data-path="introduccion.html"><a href="introduccion.html#funciones-y-librerias-de-funciones."><i class="fa fa-check"></i><b>0.10</b> Funciones y librerías de funciones.</a></li>
+<li class="chapter" data-level="0.11" data-path="introduccion.html"><a href="introduccion.html#convenciones-de-estilo-de-este-documento."><i class="fa fa-check"></i><b>0.11</b> Convenciones de estilo de este documento.</a></li>
+<li class="chapter" data-level="0.12" data-path="introduccion.html"><a href="introduccion.html#bloques-de-codigo-y-comentarios."><i class="fa fa-check"></i><b>0.12</b> Bloques de código y comentarios.</a></li>
+<li class="chapter" data-level="0.13" data-path="introduccion.html"><a href="introduccion.html#uso-de-mayusculas."><i class="fa fa-check"></i><b>0.13</b> Uso de mayúsculas.</a></li>
+<li class="chapter" data-level="0.14" data-path="introduccion.html"><a href="introduccion.html#sobre-el-estilo-de-programacion-en-r."><i class="fa fa-check"></i><b>0.14</b> Sobre el estilo de programación en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="primeros.html"><a href="primeros.html"><i class="fa fa-check"></i><b>1</b> Primeros pasos en R</a><ul>
+<li class="chapter" data-level="1.1" data-path="primeros.html"><a href="primeros.html#crear-un-proyecto."><i class="fa fa-check"></i><b>1.1</b> Crear un proyecto.</a></li>
+<li class="chapter" data-level="1.2" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-operadores-y-operandos."><i class="fa fa-check"></i><b>1.2</b> Sintaxis de R: operadores y operandos.</a></li>
+<li class="chapter" data-level="1.3" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-funciones-y-argumentos."><i class="fa fa-check"></i><b>1.3</b> Sintaxis de R: funciones y argumentos.</a></li>
+<li class="chapter" data-level="1.4" data-path="primeros.html"><a href="primeros.html#vectores-y-atributos-de-los-vectores."><i class="fa fa-check"></i><b>1.4</b> Vectores y atributos de los vectores.</a></li>
+<li class="chapter" data-level="1.5" data-path="primeros.html"><a href="primeros.html#manipulacion-de-datos."><i class="fa fa-check"></i><b>1.5</b> Manipulación de datos.</a></li>
+<li class="chapter" data-level="1.6" data-path="primeros.html"><a href="primeros.html#funcion-para-calcular-una-mediana-con-funciones-primitivas-de-r."><i class="fa fa-check"></i><b>1.6</b> Función para calcular una mediana con funciones primitivas de R.</a></li>
+<li class="chapter" data-level="1.7" data-path="primeros.html"><a href="primeros.html#manipulacion-de-estructuras-de-datos."><i class="fa fa-check"></i><b>1.7</b> Manipulación de estructuras de datos.</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="primeros.html"><a href="primeros.html#magia"><i class="fa fa-check"></i><b>1.7.1</b> Magia</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="primeros.html"><a href="primeros.html#sobre-los-archivos-de-sintaxis."><i class="fa fa-check"></i><b>1.8</b> Sobre los archivos de sintaxis.</a></li>
+<li class="chapter" data-level="1.9" data-path="primeros.html"><a href="primeros.html#anexo"><i class="fa fa-check"></i><b>1.9</b> Anexo</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="primeros.html"><a href="primeros.html#operadores-binarios-de-r"><i class="fa fa-check"></i><b>1.9.1</b> Operadores binarios de R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html"><i class="fa fa-check"></i><b>2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#introduccion-alcances-del-problema."><i class="fa fa-check"></i><b>2.1</b> Introducción: alcances del problema.</a></li>
+<li class="chapter" data-level="2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#investigacion-reproducible.-1"><i class="fa fa-check"></i><b>2.2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#ventajas-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.1</b> Ventajas de la investigación reproducible.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#desafios-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.2</b> Desafíos de la investigación reproducible.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#filosofia-programacion-funcional-con-inmutabilidad-de-datos-transparencia-referencial-y-funciones-puras."><i class="fa fa-check"></i><b>2.3</b> Filosofía: programación funcional con inmutabilidad de datos, transparencia referencial y funciones puras.</a></li>
+<li class="chapter" data-level="2.4" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#hagamos-pizza-en-r."><i class="fa fa-check"></i><b>2.4</b> Hagamos pizza en R.</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-el-asignador.-pizzas-de-hoy-y-de-ayer."><i class="fa fa-check"></i><b>2.4.1</b> Pizzería “El asignador”. Pizzas de hoy y de ayer.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-la-funcional-clasica.-el-cambio-se-lo-da-en-parentesis."><i class="fa fa-check"></i><b>2.4.2</b> Pizzería La funcional clásica. El cambio se lo da en paréntesis.</a></li>
+<li class="chapter" data-level="2.4.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-magrittr-la-mas-del-rumbo"><i class="fa fa-check"></i><b>2.4.3</b> Pizzería magrittr ¡La más %&gt;% del rumbo!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="manejo.html"><a href="manejo.html"><i class="fa fa-check"></i><b>3</b> Manejo da datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="manejo.html"><a href="manejo.html#el-objeto-de-este-documento."><i class="fa fa-check"></i><b>3.1</b> El objeto de este documento.</a></li>
+<li class="chapter" data-level="3.2" data-path="manejo.html"><a href="manejo.html#manipulacion-de-datos-con-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Manipulación de datos con <code>tidyverse::</code></a></li>
+<li class="chapter" data-level="3.3" data-path="manejo.html"><a href="manejo.html#la-forma-de-los-datos."><i class="fa fa-check"></i><b>3.3</b> La forma de los datos.</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="manejo.html"><a href="manejo.html#sumarios-de-datos-o-base-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> ¿Sumarios de datos o base de datos?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="manejo.html"><a href="manejo.html#datos-rectangulares."><i class="fa fa-check"></i><b>3.4</b> Datos rectangulares.</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="manejo.html"><a href="manejo.html#datos-prolijos-tidy-data"><i class="fa fa-check"></i><b>3.4.1</b> Datos prolijos (tidy data)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="manejo.html"><a href="manejo.html#reformateo-de-datos."><i class="fa fa-check"></i><b>3.4.2</b> Reformateo de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="manejo.html"><a href="manejo.html#manejo-de-datos-con-dplyr"><i class="fa fa-check"></i><b>3.5</b> Manejo de datos con <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="manejo.html"><a href="manejo.html#verbos-basicos-de-dplyr"><i class="fa fa-check"></i><b>3.5.1</b> Verbos básicos de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.5.2" data-path="manejo.html"><a href="manejo.html#uso-de-la-de-sintaxis-de-dplyr"><i class="fa fa-check"></i><b>3.5.2</b> Uso de la de sintaxis de <code>dplyr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="manejo.html"><a href="manejo.html#uso-avanzado-de-dplyr"><i class="fa fa-check"></i><b>3.6</b> Uso avanzado de <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.6.1" data-path="manejo.html"><a href="manejo.html#alternar-entre-formato-largo-y-ancho."><i class="fa fa-check"></i><b>3.6.1</b> Alternar entre formato largo y ancho.</a></li>
+<li class="chapter" data-level="3.6.2" data-path="manejo.html"><a href="manejo.html#seleccionar-las-columnas-que-cumplen-determinada-condicion."><i class="fa fa-check"></i><b>3.6.2</b> Seleccionar las columnas que cumplen determinada condición.</a></li>
+<li class="chapter" data-level="3.6.3" data-path="manejo.html"><a href="manejo.html#filtrar-por-mas-de-una-condicion-o-dentro-de-un-conjunto."><i class="fa fa-check"></i><b>3.6.3</b> Filtrar por más de una condición o dentro de un conjunto.</a></li>
+<li class="chapter" data-level="3.6.4" data-path="manejo.html"><a href="manejo.html#transformacion-avanzada-de-datos."><i class="fa fa-check"></i><b>3.6.4</b> Transformacion avanzada de datos.</a></li>
+<li class="chapter" data-level="3.6.5" data-path="manejo.html"><a href="manejo.html#sumarios-avanzados."><i class="fa fa-check"></i><b>3.6.5</b> Sumarios avanzados.</a></li>
+<li class="chapter" data-level="3.6.6" data-path="manejo.html"><a href="manejo.html#funciones-avanzadas-de-combinacion-de-bases-de-datos."><i class="fa fa-check"></i><b>3.6.6</b> Funciones avanzadas de combinación de bases de datos.</a></li>
+<li class="chapter" data-level="3.6.7" data-path="manejo.html"><a href="manejo.html#operadores-avanzados-de-magrittr"><i class="fa fa-check"></i><b>3.6.7</b> Operadores avanzados de <code>magrittr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="manejo.html"><a href="manejo.html#limites-de-dplyr"><i class="fa fa-check"></i><b>3.7</b> Límites de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.8" data-path="manejo.html"><a href="manejo.html#manipulacion-con-dplyren-la-practica.-flujo-de-trabajo."><i class="fa fa-check"></i><b>3.8</b> Manipulación con <code>dplyr::</code>en la práctica. Flujo de trabajo.</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="manejo.html"><a href="manejo.html#implementacion-en-dplyr-de-un-analisis-exploratorio-de-la-base-de-datos-indice-de-marginacion-del-conapo."><i class="fa fa-check"></i><b>3.8.1</b> Implementación en dplyr:: de un análisis exploratorio de la base de datos Índice de marginación del CONAPO.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graficos.html"><a href="graficos.html"><i class="fa fa-check"></i><b>4</b> Gráficos con R y ggplot</a><ul>
+<li class="chapter" data-level="4.1" data-path="graficos.html"><a href="graficos.html#acerca-de-este-documento."><i class="fa fa-check"></i><b>4.1</b> Acerca de este documento.</a></li>
+<li class="chapter" data-level="4.2" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos."><i class="fa fa-check"></i><b>4.2</b> La gramática de los gráficos.</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="graficos.html"><a href="graficos.html#filosofia."><i class="fa fa-check"></i><b>4.2.1</b> Filosofía.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos-aplicada-en-ggplot."><i class="fa fa-check"></i><b>4.3</b> La gramática de los gráficos aplicada en <code>ggplot()</code>.</a></li>
+<li class="chapter" data-level="4.4" data-path="graficos.html"><a href="graficos.html#la-base-de-datos."><i class="fa fa-check"></i><b>4.4</b> La base de datos.</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="graficos.html"><a href="graficos.html#indice-de-marginacion-por-municipios-1990-2015."><i class="fa fa-check"></i><b>4.4.1</b> Índice de marginación por municipios 1990-2015.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="graficos.html"><a href="graficos.html#descripcion-rapida-de-la-base-de-datos."><i class="fa fa-check"></i><b>4.5</b> Descripción rápida de la base de datos.</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="graficos.html"><a href="graficos.html#nombres-cortos-y-largos."><i class="fa fa-check"></i><b>4.5.1</b> Nombres cortos y largos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="graficos.html"><a href="graficos.html#grafico-basico."><i class="fa fa-check"></i><b>4.6</b> Gráfico básico.</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="graficos.html"><a href="graficos.html#construccion-de-un-grafico-de-barras-paso-a-paso."><i class="fa fa-check"></i><b>4.6.1</b> Construcción de un gráfico de barras paso a paso.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="graficos.html"><a href="graficos.html#personalizacion-de-grafico."><i class="fa fa-check"></i><b>4.7</b> Personalización de gráfico.</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="graficos.html"><a href="graficos.html#orden-manual-de-las-categorias."><i class="fa fa-check"></i><b>4.7.1</b> Orden manual de las categorías.</a></li>
+<li class="chapter" data-level="4.7.2" data-path="graficos.html"><a href="graficos.html#orden-automatico-de-categorias."><i class="fa fa-check"></i><b>4.7.2</b> Orden automático de categorías.</a></li>
+<li class="chapter" data-level="4.7.3" data-path="graficos.html"><a href="graficos.html#titulo-subtitulo-titulos-de-ejes-vineta"><i class="fa fa-check"></i><b>4.7.3</b> Título, subtítulo, títulos de ejes, viñeta</a></li>
+<li class="chapter" data-level="4.7.4" data-path="graficos.html"><a href="graficos.html#estilos-visuales."><i class="fa fa-check"></i><b>4.7.4</b> Estilos visuales.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="graficos.html"><a href="graficos.html#graficos-intermedios-mas-de-una-serie-de-datos"><i class="fa fa-check"></i><b>4.8</b> Gráficos intermedios (más de una serie de datos)</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="graficos.html"><a href="graficos.html#datos-formato-de-datos-largo-y-ancho."><i class="fa fa-check"></i><b>4.8.1</b> Datos Formato de datos largo y ancho.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="graficos.html"><a href="graficos.html#grafico-de-barras-lado-a-lado."><i class="fa fa-check"></i><b>4.8.2</b> Gráfico de barras lado a lado.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="graficos.html"><a href="graficos.html#graficos-multipanel."><i class="fa fa-check"></i><b>4.8.3</b> Gráficos multipanel.</a></li>
+<li class="chapter" data-level="4.8.4" data-path="graficos.html"><a href="graficos.html#grafico-de-punto."><i class="fa fa-check"></i><b>4.8.4</b> Gráfico de punto.</a></li>
+<li class="chapter" data-level="4.8.5" data-path="graficos.html"><a href="graficos.html#grafico-de-punto-y-linea."><i class="fa fa-check"></i><b>4.8.5</b> Gráfico de punto y línea.</a></li>
+<li class="chapter" data-level="4.8.6" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion."><i class="fa fa-check"></i><b>4.8.6</b> Gráfico de dispersión.</a></li>
+<li class="chapter" data-level="4.8.7" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-en-paneles."><i class="fa fa-check"></i><b>4.8.7</b> Gráfico de dispersión en paneles.</a></li>
+<li class="chapter" data-level="4.8.8" data-path="graficos.html"><a href="graficos.html#grafico-de-caja."><i class="fa fa-check"></i><b>4.8.8</b> Gráfico de caja.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="graficos.html"><a href="graficos.html#personalizacion-avanzada-de-graficos."><i class="fa fa-check"></i><b>4.9</b> Personalización avanzada de gráficos.</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="graficos.html"><a href="graficos.html#etiquetas-y-elementos-de-texto."><i class="fa fa-check"></i><b>4.9.1</b> Etiquetas y elementos de texto.</a></li>
+<li class="chapter" data-level="4.9.2" data-path="graficos.html"><a href="graficos.html#ajuste-del-elemento-texto."><i class="fa fa-check"></i><b>4.9.2</b> Ajuste del elemento texto.</a></li>
+<li class="chapter" data-level="4.9.3" data-path="graficos.html"><a href="graficos.html#posicion-de-las-leyendas."><i class="fa fa-check"></i><b>4.9.3</b> Posición de las leyendas.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="graficos.html"><a href="graficos.html#escalas."><i class="fa fa-check"></i><b>4.10</b> Escalas.</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="graficos.html"><a href="graficos.html#escalas-y-sistemas-de-coordenadas"><i class="fa fa-check"></i><b>4.10.1</b> Escalas y sistemas de coordenadas</a></li>
+<li class="chapter" data-level="4.10.2" data-path="graficos.html"><a href="graficos.html#ajuste-manual-de-intervalos-de-escala."><i class="fa fa-check"></i><b>4.10.2</b> Ajuste manual de intervalos de escala.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="graficos.html"><a href="graficos.html#transformacion-de-escalas"><i class="fa fa-check"></i><b>4.10.3</b> Transformación de escalas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="graficos.html"><a href="graficos.html#sistemas-de-coordenadas."><i class="fa fa-check"></i><b>4.11</b> Sistemas de coordenadas.</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="graficos.html"><a href="graficos.html#coordenadas-polares."><i class="fa fa-check"></i><b>4.11.1</b> Coordenadas polares.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="graficos.html"><a href="graficos.html#fortificar-nuestros-graficos-con-datos-de-un-modelo"><i class="fa fa-check"></i><b>4.12</b> Fortificar nuestros gráficos con datos de un modelo</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="graficos.html"><a href="graficos.html#rectas-de-ajuste"><i class="fa fa-check"></i><b>4.12.1</b> Rectas de ajuste</a></li>
+<li class="chapter" data-level="4.12.2" data-path="graficos.html"><a href="graficos.html#intervalos-de-confianza-y-barras-de-error."><i class="fa fa-check"></i><b>4.12.2</b> Intervalos de confianza y barras de error.</a></li>
+<li class="chapter" data-level="4.12.3" data-path="graficos.html"><a href="graficos.html#etiquetado-de-casos."><i class="fa fa-check"></i><b>4.12.3</b> Etiquetado de casos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="graficos.html"><a href="graficos.html#extensiones-a-ggplot2"><i class="fa fa-check"></i><b>4.13</b> Extensiones a <code>ggplot2::</code></a></li>
+<li class="chapter" data-level="4.14" data-path="graficos.html"><a href="graficos.html#etiquetas"><i class="fa fa-check"></i><b>4.14</b> Etiquetas</a><ul>
+<li class="chapter" data-level="4.14.1" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-con-histogramas-marginales."><i class="fa fa-check"></i><b>4.14.1</b> Gráfico de dispersión con histogramas marginales.</a></li>
+<li class="chapter" data-level="4.14.2" data-path="graficos.html"><a href="graficos.html#graficos-de-proporciones-jerarquicas."><i class="fa fa-check"></i><b>4.14.2</b> Gráficos de proporciones jerárquicas.</a></li>
+<li class="chapter" data-level="4.14.3" data-path="graficos.html"><a href="graficos.html#im-feeling-lucky"><i class="fa fa-check"></i><b>4.14.3</b> I’m feeling lucky…</a></li>
+<li class="chapter" data-level="4.14.4" data-path="graficos.html"><a href="graficos.html#relaciones-multivariadas."><i class="fa fa-check"></i><b>4.14.4</b> Relaciones multivariadas.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html"><i class="fa fa-check"></i><b>5</b> Análisis de datos categóricos</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#introduccion-1"><i class="fa fa-check"></i><b>5.1</b> Introducción</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#datos-categoricos"><i class="fa fa-check"></i><b>5.1.1</b> Datos categóricos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas"><i class="fa fa-check"></i><b>5.2</b> Tablas</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-de-dos-dimensiones."><i class="fa fa-check"></i><b>5.2.1</b> Tablas de contingencia de dos dimensiones.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-en-r."><i class="fa fa-check"></i><b>5.2.2</b> Tablas de contingencia en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-hipotesis-de-independencia-estadistica-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.3</b> Prueba de hipótesis de independencia estadística para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#el-modelo-de-independencia."><i class="fa fa-check"></i><b>5.3.1</b> El modelo de independencia.</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-independencia-para-una-tabla-bidimensional."><i class="fa fa-check"></i><b>5.3.2</b> Prueba de independencia para una tabla bidimensional.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-de-los-residuos."><i class="fa fa-check"></i><b>5.4</b> Análisis de los residuos.</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-chi2-en-r."><i class="fa fa-check"></i><b>5.4.1</b> Prueba <span class="math inline">\(\chi\)</span><sup>2</sup> en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#metodos-graficos-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.5</b> Métodos gráficos para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-loglineales-para-datos-categoricos."><i class="fa fa-check"></i><b>5.5.1</b> Modelos loglineales para datos categóricos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-practico-de-datos-categoricos."><i class="fa fa-check"></i><b>5.6</b> Análisis práctico de datos categóricos.</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-base-de-datos.-1"><i class="fa fa-check"></i><b>5.6.1</b> La base de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#genero-y-partido-politico."><i class="fa fa-check"></i><b>5.7</b> Género y partido político.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lineales.html"><a href="lineales.html"><i class="fa fa-check"></i><b>6</b> Modelos lineales</a><ul>
+<li class="chapter" data-level="6.1" data-path="lineales.html"><a href="lineales.html#introduccion-2"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.2" data-path="lineales.html"><a href="lineales.html#ajuste-de-modelo-lineales-con-lm"><i class="fa fa-check"></i><b>6.2</b> Ajuste de modelo lineales con <code>lm()</code></a><ul>
+<li class="chapter" data-level="6.2.1" data-path="lineales.html"><a href="lineales.html#sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.1</b> Sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.2" data-path="lineales.html"><a href="lineales.html#interpretacion-basica-del-sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.2</b> Interpretación básica del sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.3" data-path="lineales.html"><a href="lineales.html#intervalos-de-confianza."><i class="fa fa-check"></i><b>6.2.3</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="6.2.4" data-path="lineales.html"><a href="lineales.html#valores-estimados-y-residuos."><i class="fa fa-check"></i><b>6.2.4</b> Valores estimados y residuos.</a></li>
+<li class="chapter" data-level="6.2.5" data-path="lineales.html"><a href="lineales.html#prediccion-del-modelo."><i class="fa fa-check"></i><b>6.2.5</b> Predicción del modelo.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-mas-de-una-variable-independiente."><i class="fa fa-check"></i><b>6.3</b> Modelos lineales con más de una variable independiente.</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="lineales.html"><a href="lineales.html#exploracion-de-datos-multivariados."><i class="fa fa-check"></i><b>6.3.1</b> Exploración de datos multivariados.</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lineales.html"><a href="lineales.html#especificacion-de-modelos-con-multiples-variables-independientes."><i class="fa fa-check"></i><b>6.3.2</b> Especificación de modelos con múltiples variables independientes.</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lineales.html"><a href="lineales.html#comparar-modelos-lineales-multiples."><i class="fa fa-check"></i><b>6.3.3</b> Comparar modelos lineales múltiples.</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.4</b> Imprimir un sumario de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-formateado-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.5</b> Imprimir un sumario formateado de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.6" data-path="lineales.html"><a href="lineales.html#anova-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.6</b> ANOVA de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.7" data-path="lineales.html"><a href="lineales.html#criterio-de-informacion-de-akaike."><i class="fa fa-check"></i><b>6.3.7</b> Criterio de información de Akaike.</a></li>
+<li class="chapter" data-level="6.3.8" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-variables-independientes-categoricas."><i class="fa fa-check"></i><b>6.3.8</b> Modelos lineales con variables independientes categóricas.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lineales.html"><a href="lineales.html#supuestos-de-un-modelo-lineal."><i class="fa fa-check"></i><b>6.4</b> Supuestos de un modelo lineal.</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="lineales.html"><a href="lineales.html#normalidad."><i class="fa fa-check"></i><b>6.4.1</b> Normalidad.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lineales.html"><a href="lineales.html#independencia."><i class="fa fa-check"></i><b>6.4.2</b> Independencia.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lineales.html"><a href="lineales.html#linealidad."><i class="fa fa-check"></i><b>6.4.3</b> Linealidad.</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lineales.html"><a href="lineales.html#homocedasticidad."><i class="fa fa-check"></i><b>6.4.4</b> Homocedasticidad.</a></li>
+<li class="chapter" data-level="6.4.5" data-path="lineales.html"><a href="lineales.html#casos-atipicos."><i class="fa fa-check"></i><b>6.4.5</b> Casos atípicos.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lineales.html"><a href="lineales.html#regresion-robusta."><i class="fa fa-check"></i><b>6.5</b> Regresión robusta.</a></li>
+<li class="chapter" data-level="6.6" data-path="lineales.html"><a href="lineales.html#supuestos-de-los-modelos-lineales-problemas-y-soluciones."><i class="fa fa-check"></i><b>6.6</b> Supuestos de los modelos lineales: problemas y soluciones.</a></li>
+<li class="chapter" data-level="6.7" data-path="lineales.html"><a href="lineales.html#funciones-adicionales-para-modelos-lineales."><i class="fa fa-check"></i><b>6.7</b> Funciones adicionales para modelos lineales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="generalizados.html"><a href="generalizados.html"><i class="fa fa-check"></i><b>7</b> Modelos lineales generalizados</a><ul>
+<li class="chapter" data-level="7.1" data-path="generalizados.html"><a href="generalizados.html#introduccion."><i class="fa fa-check"></i><b>7.1</b> Introducción.</a></li>
+<li class="chapter" data-level="7.2" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-con-glm"><i class="fa fa-check"></i><b>7.2</b> Ajuste de modelos logit con <code>glm()</code></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-los-datos."><i class="fa fa-check"></i><b>7.2.1</b> Presentación de los datos.</a></li>
+<li class="chapter" data-level="7.2.2" data-path="generalizados.html"><a href="generalizados.html#un-modelo-lineal-con-glm"><i class="fa fa-check"></i><b>7.2.2</b> Un modelo lineal con <code>glm()</code></a></li>
+<li class="chapter" data-level="7.2.3" data-path="generalizados.html"><a href="generalizados.html#la-ordenada-al-origen-de-un-modelo-logit."><i class="fa fa-check"></i><b>7.2.3</b> La ordenada al origen de un modelo logit.</a></li>
+<li class="chapter" data-level="7.2.4" data-path="generalizados.html"><a href="generalizados.html#estimacion-de-beta_1"><i class="fa fa-check"></i><b>7.2.4</b> Estimación de <span class="math inline">\(\beta_1\)</span></a></li>
+<li class="chapter" data-level="7.2.5" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-dos-variables-independientes."><i class="fa fa-check"></i><b>7.2.5</b> Modelo logit con dos variables independientes.</a></li>
+<li class="chapter" data-level="7.2.6" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-multiples-variables-dependientes."><i class="fa fa-check"></i><b>7.2.6</b> Modelo logit con múltiples variables dependientes.</a></li>
+<li class="chapter" data-level="7.2.7" data-path="generalizados.html"><a href="generalizados.html#pruebas-de-significancia."><i class="fa fa-check"></i><b>7.2.7</b> Pruebas de significancia.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-resultados."><i class="fa fa-check"></i><b>7.3</b> Presentación de resultados.</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="generalizados.html"><a href="generalizados.html#intervalos-de-confianza.-1"><i class="fa fa-check"></i><b>7.3.1</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="7.3.2" data-path="generalizados.html"><a href="generalizados.html#grafico-de-coeficientes."><i class="fa fa-check"></i><b>7.3.2</b> Gráfico de coeficientes.</a></li>
+<li class="chapter" data-level="7.3.3" data-path="generalizados.html"><a href="generalizados.html#tabla-y-grafico-de-efectos-totales-promedio."><i class="fa fa-check"></i><b>7.3.3</b> Tabla y gráfico de efectos totales promedio.</a></li>
+<li class="chapter" data-level="7.3.4" data-path="generalizados.html"><a href="generalizados.html#sumario-de-efectos-marginales."><i class="fa fa-check"></i><b>7.3.4</b> Sumario de efectos marginales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="generalizados.html"><a href="generalizados.html#modelos-ligit-multinomiales."><i class="fa fa-check"></i><b>7.4</b> Modelos ligit multinomiales.</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-multinomiales-com-multinom"><i class="fa fa-check"></i><b>7.4.1</b> Ajuste de modelos logit multinomiales com <code>multinom()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="generalizados.html"><a href="generalizados.html#anexo-i.-probabilidades-y-razones-de-probabilidad."><i class="fa fa-check"></i><b>7.5</b> Anexo I. Probabilidades y razones de probabilidad.</a></li>
+<li class="chapter" data-level="7.6" data-path="generalizados.html"><a href="generalizados.html#anexo-ii.-asterisco-sobre-los-asteriscos."><i class="fa fa-check"></i><b>7.6</b> Anexo II. Asterisco sobre los asteriscos.</a></li>
+<li class="chapter" data-level="7.7" data-path="generalizados.html"><a href="generalizados.html#anexo-iii.-tipos-de-variables-independiente-y-modelo-lineal-apropiado."><i class="fa fa-check"></i><b>7.7</b> Anexo III. Tipos de variables independiente y modelo lineal apropiado.</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="martinpaladino.github.com" target="blank">Martín Paladino</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R para Ciencias Sociales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analisis-de-datos-categoricos" class="section level1">
+<h1><span class="header-section-number">Capítulo 5</span> Análisis de datos categóricos</h1>
+<div id="introduccion-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Introducción</h2>
+<p>Este documento presenta algunos métodos básicos para el análisis de datos categóricos y las funciones de R que nos permiten llevarlos a cabo. Nos concentraremos en la creación de tablas de contingencia, ajuste de modelos de independencia <span class="math inline">\(\chi\)</span><sup>2</sup>2 y loglineales y medidas de asociación para variables categóricas nominales, además de algunos métodos gráficos para visualizar datos categóricos.
+Otros métodos más avanzados serán cubiertos en documentos posteriores, puntualmente los métodos de modelado lineal –modelos logit–, reducción de la dimensionalidad –Análisis de Correspondencias Múltiples– e inferencia de variables latentes –Análisis de Clases de Latentes. Sin embargo su comprensión y aplicación reposan en el conocimiento de los métodos básicos.</p>
+<div id="datos-categoricos" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Datos categóricos</h3>
+<p>Entendemos por datos categóricos a aquellos que definen la pertenencia de un objeto estadístico a una categoría o clase de acuerdo a alguno de sus atributos. De acuerdo con el nivel de medición los datos categóricos corresponden a las variables medidas en escalas nominales u ordinales, aunque aquí nos centraremos en las nominales. Una variable nominal asigna pertenencia a una categoría excluyente, es decir, señala una igualdad o diferencia. En términos lógicos la única operación que podemos realizar es <code>a=b</code> o <code>a</code><span class="math inline">\(\neq\)</span><code>b</code>. En el caso de las ordinales existe una magnitud, algunas categorías tienen más y otras tienen menos de algún atributo, por lo que es posible hacer operaciones como <code>a&gt;b</code> o <code>a&lt;b</code>. Sin embargo esa magnitud expresa una distancia desconocida.</p>
+<table>
+<caption>Niveles de medición. Adaptado de Stevens, 1946.</caption>
+<thead>
+<tr class="header">
+<th>Escala de Medición</th>
+<th>Propiedad Sistema Numérico</th>
+<th>Operación Matemática</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nominal</td>
+<td>Identidad</td>
+<td>Contar Frecuencias</td>
+<td>Sexo</td>
+</tr>
+<tr class="even">
+<td>Ordinal</td>
+<td>Magnitud</td>
+<td>Ordenar</td>
+<td>NSE</td>
+</tr>
+<tr class="odd">
+<td>Intervalo</td>
+<td>Distancia</td>
+<td>Suma, Resta</td>
+<td>Calificaciones del Mora</td>
+</tr>
+<tr class="even">
+<td>Razón</td>
+<td>Cero indica ausencia de valor</td>
+<td>Multiplicación, División</td>
+<td>Ingreso, Edad</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="tablas" class="section level2">
+<h2><span class="header-section-number">5.2</span> Tablas</h2>
+<p>En su forma directa una variable categórica es un vector de nombres de categorías.</p>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb332-2" data-line-number="2"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb332-3" data-line-number="3">genero &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">`</span><span class="dt">Género</span><span class="st">`</span>=<span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;LGBT&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>)) </a>
+<a class="sourceLine" id="cb332-4" data-line-number="4"><span class="kw">kable</span>(genero, <span class="dt">caption=</span><span class="st">&quot;Variable Género&quot;</span>) </a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-52">Table 5.1: </span>Variable Género</caption>
+<thead>
+<tr class="header">
+<th align="left">Género</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">F</td>
+</tr>
+<tr class="even">
+<td align="left">M</td>
+</tr>
+<tr class="odd">
+<td align="left">LGBT</td>
+</tr>
+<tr class="even">
+<td align="left">M</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+</tr>
+<tr class="odd">
+<td align="left">F</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+</tr>
+<tr class="even">
+<td align="left">M</td>
+</tr>
+</tbody>
+</table>
+<p>Sin embargo para tratar a las variables categóricas con generalmente recurrimos a conteos. Esos conteos tienen la forma de y reciben el nombre de tablas. La tabla de conteos de <em>una</em> variable categórica tiene dos filas: una con las categorías de la variable y otra con la frecuencia o cantidad de veces que se observa esa categoría.</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1"><span class="kw">table</span>(genero) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb333-2" data-line-number="2"><span class="st">  </span><span class="kw">kable</span>(., <span class="dt">caption=</span><span class="st">&quot;Tabla de conteos de la variable Género&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-53">Table 5.2: </span>Tabla de conteos de la variable Género</caption>
+<thead>
+<tr class="header">
+<th align="left">genero</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">F</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">LGBT</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+<td align="right">5</td>
+</tr>
+</tbody>
+</table>
+<p>Adicionalmente podemos expresar expresar expresar esos mismos datos como proporciones del total.</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1"><span class="kw">table</span>(genero) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb334-2" data-line-number="2"><span class="st">  </span><span class="kw">prop.table</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb334-3" data-line-number="3"><span class="st">  </span><span class="kw">kable</span>(., <span class="dt">caption=</span><span class="st">&quot;Tabla de conteos de la variable Género&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-54">Table 5.3: </span>Tabla de conteos de la variable Género</caption>
+<thead>
+<tr class="header">
+<th align="left">genero</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">F</td>
+<td align="right">0.4</td>
+</tr>
+<tr class="even">
+<td align="left">LGBT</td>
+<td align="right">0.1</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+<td align="right">0.5</td>
+</tr>
+</tbody>
+</table>
+<p>¿Por qué pudimos expresar a los conteos como proporciones, lo que cuál implica realizar una división, operación matemática imposible para las variables nominales? Porque no realizamos la operación la operación sobre la variable, lo hacemos los conteos de la variable. Nos es posible dividir masculino entre género, pero podemos dividir 5 entre 10.</p>
+<div id="tablas-de-contingencia-de-dos-dimensiones." class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Tablas de contingencia de dos dimensiones.</h3>
+<p>Las tablas de una sola variable son útiles para conocer la distribución univariada de una variable categórica, expresada en cantidades o proporciones. Sin embargo el análisis de datos categóricos generalmente implica trabajar con más de una variable. Con más de una variable también podemos trabajar con tablas, a las que llamaremos tablas de contingencia.<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a> En función de la cantidad de variables que contemos en una tabla de contingencia definiremos el número de dimensiones de la tabla. Así, la Tabla 2 es una tabla de una dimensión. Una tabla de contingencia tiene 2 o más dimensiones. Es importante no confundir el <em>número de categorías</em> de las variables con el <em>número de dimensiones</em> de la tabla.</p>
+<p>Para tablas de contingencia bidimensionales visualmente las dimensiones se nos presentan como filas y columnas. En la intersección de cada fila y columna hay una celda que registra el conteo de las observaciones que pertenecen a ambas categorías. En términos de conjuntos, el conteo de objetos en la intersección de A y B. Nótese que la tabla debe incluir todas las intersecciones posibles, dadas por las categorías de la variable, aun cuando no haya observación en ese conjunto de datos en particular. Se les asigna el conteo correspondiente: 0.</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" data-line-number="1">edad &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">32</span>, <span class="dv">19</span>, <span class="dv">42</span>, <span class="dv">56</span>, <span class="dv">19</span>, <span class="dv">32</span>, <span class="dv">20</span>,  <span class="dv">56</span>, <span class="dv">56</span>)</a>
+<a class="sourceLine" id="cb335-2" data-line-number="2"><span class="kw">cbind</span>(genero, edad) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb335-3" data-line-number="3"><span class="st">  </span><span class="kw">table</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb335-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>(., <span class="dt">caption=</span><span class="st">&quot;Tabla de contingencia para género y edad&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-55">Table 5.4: </span>Tabla de contingencia para género y edad</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">19</th>
+<th align="right">20</th>
+<th align="right">32</th>
+<th align="right">42</th>
+<th align="right">56</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>F</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>LGBT</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>M</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
+<p>Para tablas de contingencia bidimensionales también es posible expresar los conteos como proporciones, pero en este caso podemos calcular diferentes tipos de proporciones: sobre el total, sobre las filas o sobre las columnas.</p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1">edad &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">32</span>, <span class="dv">19</span>, <span class="dv">42</span>, <span class="dv">56</span>, <span class="dv">19</span>, <span class="dv">32</span>, <span class="dv">20</span>,  <span class="dv">56</span>, <span class="dv">56</span>)</a>
+<a class="sourceLine" id="cb336-2" data-line-number="2"><span class="kw">cbind</span>(genero, edad) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb336-3" data-line-number="3"><span class="st">  </span><span class="kw">table</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb336-4" data-line-number="4"><span class="st">  </span><span class="kw">prop.table</span>(.) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb336-5" data-line-number="5"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;Proporciones sobre el total&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-56">Table 5.5: </span>Proporciones sobre el total</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">19</th>
+<th align="right">20</th>
+<th align="right">32</th>
+<th align="right">42</th>
+<th align="right">56</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>F</td>
+<td align="right">0.1</td>
+<td align="right">0.2</td>
+<td align="right">0.1</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td>LGBT</td>
+<td align="right">0.1</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td>M</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.1</td>
+<td align="right">0.1</td>
+<td align="right">0.3</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1"><span class="kw">cbind</span>(genero, edad) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb337-2" data-line-number="2"><span class="st">  </span><span class="kw">table</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb337-3" data-line-number="3"><span class="st">  </span><span class="kw">prop.table</span>(.,<span class="dv">1</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb337-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;Proporciones sobre las filas&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-56">Table 5.5: </span>Proporciones sobre las filas</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">19</th>
+<th align="right">20</th>
+<th align="right">32</th>
+<th align="right">42</th>
+<th align="right">56</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>F</td>
+<td align="right">0.25</td>
+<td align="right">0.5</td>
+<td align="right">0.25</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td>LGBT</td>
+<td align="right">1.00</td>
+<td align="right">0.0</td>
+<td align="right">0.00</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td>M</td>
+<td align="right">0.00</td>
+<td align="right">0.0</td>
+<td align="right">0.20</td>
+<td align="right">0.2</td>
+<td align="right">0.6</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1"><span class="kw">cbind</span>(genero, edad) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb338-2" data-line-number="2"><span class="st">  </span><span class="kw">table</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb338-3" data-line-number="3"><span class="st">  </span><span class="kw">prop.table</span>(.,<span class="dv">2</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb338-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;Proporciones sobre las columnas&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-56">Table 5.5: </span>Proporciones sobre las columnas</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">19</th>
+<th align="right">20</th>
+<th align="right">32</th>
+<th align="right">42</th>
+<th align="right">56</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>F</td>
+<td align="right">0.5</td>
+<td align="right">1</td>
+<td align="right">0.5</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>LGBT</td>
+<td align="right">0.5</td>
+<td align="right">0</td>
+<td align="right">0.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>M</td>
+<td align="right">0.0</td>
+<td align="right">0</td>
+<td align="right">0.5</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tablas-de-contingencia-en-r." class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Tablas de contingencia en R.</h3>
+<p>En R la función básica para obtener tablas de conteos –incluyendo tablas de contingencia– es <code>table()</code>. Es importante mencionar que la función <code>table()</code> no está pensada primariamente para el análisis visual de tablas, aunque podamos hacerlo. Produce solamente la tabla con los conteos con determinada estructura, de modo que podamos proseguir el análisis pasando esa tabla a otras funciones. Existen librerías con funciones para producir tablas de contingencias similares a las que ofrecen otros paquetes de software estadístico como SPSS, que incluyen además de los conteos proporciones sobre el total, filas, columnas, conteos marginales, residuales, modelos de independencia, etc. La aproximación de <code>table()</code> es de múltiples pasos, primero obtenemos la tabla y después realizamos, sobre esa estructura de datos, realizamos las demás operaciones. Existen funciones que imitan el estilo verboso de esos paquetes, como <code>gmodels::CrossTable()</code>. En mi opinión la sintaxis complicada de estas funciones y el exceso de información no las hacen recomendables.</p>
+<div id="tablas-de-contingencia-con-table" class="section level4">
+<h4><span class="header-section-number">5.2.2.1</span> Tablas de contingencia con <code>table()</code></h4>
+<p>Esta función recibe como input 1 o más vectores de las clases factor, caracter o numérico. A estos últimos los coerciona a factor para poder operar sobre ellos. Los vectores deben tener el mismo largo.
+Nos regresa un objeto de la clase <code>table</code>, una estructura de datos especial para tablas. Dado que esta estructura forma parte de <code>base::</code> muchas funciones la reciben como input. Crear la tabla con <code>table()</code> usualmente es es un paso intermedio en el análisis, no el uotput final.</p>
+<p>La sintaxis de <code>table()</code> es <code>table(x, y, useNA= c(&quot;no&quot;, &quot;ifany&quot;, &quot;always&quot;))</code>, donde <code>x</code> y <code>y</code> son vectores y <code>useNA=</code> define el modo en que trataremos con los casos perdidos. <code>&quot;no&quot;</code> los excluye del conteo, <code>&quot;ifany&quot;</code> los incluye cuando están observados y <code>&quot;always&quot;</code> los incluye siempre en la tabla, aunque el conteo sea 0. Por defecto excluye a los NA del conteo. Dependerá de nuestro interés analítico incluir o no los casos perdidos en la tabla, en caso de hacerlo aparecerán como una nueva categoría de las variables.</p>
+<p><code>table()</code> nos regresa un objeto de la clase <code>table</code>. Al tener esta clase muchas otras funciones pueden reconocer que es una tabla de contingencia y hacer operaciones. <code>chisq.test()</code> para pruebas <span class="math inline">\(\chi\)</span><sup>2</sup>2, <code>ca::ca()</code> para Análisis de Correspondencia, <code>vcd::mosaic()</code> para gráficos de mosaicos, entre otras, reciben como input un objeto de la clase <code>table</code>. También existe un método genérico <code>summary()</code> para tablas de contingencia, que regresa información sumaria sobre el objeto incluyendo una prueba de <span class="math inline">\(\chi\)</span><sup>2</sup>.</p>
+<p>La estructura de datos que subyace a los objetos <code>table</code> es el <code>array</code>, una matriz que puede tener más de dos dimensiones.<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a> Los arrays producidos por <code>table()</code> tiene tantas dimensiones como variables hayamos incluido en la tabla. Al ser un array podemos hacer todas las operaciones –matemáticas y de manipulación– que podemos hacer con esa estructura: todas las operaciones algebraicas entre matrices y con escalares como sumas, restas, etc.; extraer subconjuntos con <code>[,,,]</code>, etc. Cuando decimos que en R una tabla es un insumo para seguir trabajando lo decimos en serio.</p>
+<p>Ese array tiene el atributo <code>dimnames()</code> con los nombres de filas, columnas, etc. tomados de los niveles del factor de las variables originales. Sin embargo al ser un atributo no están <em>en</em> la estructura de datos, la acompañan. El tipo de datos es numérico, así que nunca tendremos problemas para las operaciones matemáticas.</p>
+</div>
+<div id="proporciones-y-sumas-marginales-para-una-tabla-de-contingencia." class="section level4">
+<h4><span class="header-section-number">5.2.2.2</span> Proporciones y sumas marginales para una tabla de contingencia.</h4>
+<p>Cuando analizamos tablas de contingencia las proporciones marginales –totales, de fila o columna– facilitan la visualización de las diferencias. La función <code>prop.table()</code> se encarga de calcularlos. Esta función recibe como input una tabla y regresa otra, con las proporciones en lugar de los conteos.</p>
+<p>La sintaxis de <code>prop.table()</code> es <code>prop.table(x, márgen)</code>, donde <code>x</code> es un objeto de la clase <code>table</code> y margen es un número del 0 al 2 que indica el margen sobre el que se computará la proporción: <code>0</code> para el total de la tabla, <code>1</code> para las filas y <code>2</code> para la columnas. Para tablas de más de dos dimensiones podemos usar números mayores.</p>
+<p>Si queremos obtener los perfiles de fila o columna podemos usar <code>margin.table()</code>, que regresa un vector con los perfiles marginales.
+La sintaxis de <code>margin.table()</code> es <code>margin.table(x, márgen)</code>, donde x es un objeto de la clase <code>table</code> y margen un número del <code>1</code> al <code>2</code>: uno para las sumas marginales de las filas y 2 para las columnas. Nos regresa un vector.</p>
+<p>Si queremos agregar a la tabla las sumas marginales usamos la función <code>addmargins()</code>, con la sintaxis <code>addmargins(x, c(margen, margen))</code>. El vector de márgenes creado con <code>c()</code> observa las mismas reglas ya expuestas. Nos regresa un objeto de la clase <code>table</code> con las mismas dimensiones del original al que ha agregado una fila y/o una columna para las sumas marginales.</p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1"><span class="co">#Dos vectores de: variables categóricas.  </span></a>
+<a class="sourceLine" id="cb339-2" data-line-number="2">rock &lt;-<span class="st">   </span><span class="kw">c</span>(<span class="st">&quot;Sí&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Sí&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Sí&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>)</a>
+<a class="sourceLine" id="cb339-3" data-line-number="3">cumbia &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Sí&quot;</span>, <span class="st">&quot;Sí&quot;</span>, <span class="st">&quot;Sí&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Sí&quot;</span>, <span class="st">&quot;Sí&quot;</span>, <span class="st">&quot;Sí&quot;</span>, <span class="st">&quot;Sí&quot;</span>)</a>
+<a class="sourceLine" id="cb339-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb339-5" data-line-number="5"><span class="co">#Tablas univariadas (conteos).</span></a>
+<a class="sourceLine" id="cb339-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb339-7" data-line-number="7"><span class="kw">table</span>(rock)</a></code></pre></div>
+<pre><code>## rock
+## No Sí 
+##  7  3</code></pre>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1"><span class="kw">table</span>(cumbia)</a></code></pre></div>
+<pre><code>## cumbia
+## No Sí 
+##  3  7</code></pre>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" data-line-number="1"><span class="co">#Tabla de contingencia. </span></a>
+<a class="sourceLine" id="cb343-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb343-3" data-line-number="3"><span class="kw">table</span>(rock, cumbia)</a></code></pre></div>
+<pre><code>##     cumbia
+## rock No Sí
+##   No  1  6
+##   Sí  2  1</code></pre>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1"><span class="co">#Tabla de contengencia con proporciones marginales por filas. </span></a>
+<a class="sourceLine" id="cb345-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb345-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="kw">table</span>(rock, cumbia) <span class="co">#Asigno un nombre a la resultante de table() </span></a>
+<a class="sourceLine" id="cb345-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb345-5" data-line-number="5"><span class="kw">prop.table</span>(x)            <span class="co">#Por defecto proporciones totales. </span></a></code></pre></div>
+<pre><code>##     cumbia
+## rock  No  Sí
+##   No 0.1 0.6
+##   Sí 0.2 0.1</code></pre>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" data-line-number="1"><span class="kw">prop.table</span>(x, <span class="dv">1</span>)         <span class="co">#1: proporciones de fila.</span></a></code></pre></div>
+<pre><code>##     cumbia
+## rock        No        Sí
+##   No 0.1428571 0.8571429
+##   Sí 0.6666667 0.3333333</code></pre>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1"><span class="kw">prop.table</span>(x, <span class="dv">2</span>)<span class="op">*</span><span class="dv">100</span>     <span class="co">#Dos: proporciones porcentuales de columnas. </span></a></code></pre></div>
+<pre><code>##     cumbia
+## rock       No       Sí
+##   No 33.33333 85.71429
+##   Sí 66.66667 14.28571</code></pre>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1"><span class="co">#Sumas marginales: </span></a>
+<a class="sourceLine" id="cb351-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb351-3" data-line-number="3"><span class="kw">margin.table</span>(x, <span class="dv">1</span>)      <span class="co">#Filas</span></a></code></pre></div>
+<pre><code>## rock
+## No Sí 
+##  7  3</code></pre>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1"><span class="kw">margin.table</span>(x, <span class="dv">2</span>)      <span class="co">#Columnas</span></a></code></pre></div>
+<pre><code>## cumbia
+## No Sí 
+##  3  7</code></pre>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" data-line-number="1"><span class="co">#Tabla con marginales adosados. </span></a>
+<a class="sourceLine" id="cb355-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb355-3" data-line-number="3"><span class="kw">addmargins</span>(x, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a></code></pre></div>
+<pre><code>##      cumbia
+## rock  No Sí Sum
+##   No   1  6   7
+##   Sí   2  1   3
+##   Sum  3  7  10</code></pre>
+</div>
+</div>
+</div>
+<div id="prueba-de-hipotesis-de-independencia-estadistica-para-tablas-de-contingencia." class="section level2">
+<h2><span class="header-section-number">5.3</span> Prueba de hipótesis de independencia estadística para tablas de contingencia.</h2>
+<p>Como vimos en las tablas del ejemplo anterior los oyentes de rock y cumbia parecen no ser las mismas personas: quién escucha rock tiene una probabilidad baja de escuchar cumbia y viceversa. Si cumbia y rock fueran variables medidas en la escala razón podríamos estimar el coeficiente de correlación, pero como son variables categóricas no es posible. Lo que sí podemos es verificar si hay alguna tipo de relación entre esas variables comparando los datos observados con una tabla ideal que presenta la distribución que recíproca que tendrían esas variables si estuvieran distribuidas al azar. Es decir, si escuchar cumbia no afectara la probabilidad de escuchar rock y viceversa. Esa tabla ideal no existe, pero podemos crearla y llamarla <em>modelo de independencia</em>: nos indica la forma que tendrían los conteos si las variables fueran independientes. Si la tabla observada tiene una gran divergencia con respecto al modelo de independencia podríamos afirmar que no hay independencia entre filas y columnas: hay algo que no es el azar que está incidiendo en su distribución.</p>
+<div id="el-modelo-de-independencia." class="section level3">
+<h3><span class="header-section-number">5.3.1</span> El modelo de independencia.</h3>
+<p>Acompáñeme a un situación hipotética. <a href="https://xkcd.com/1725/">Rexthor, the dog-bearer</a>, una criatura mitológica y malvada que acecha a los analistas cualitativos nos ha robado una tabla de contingencia, pero ha olvidado llevarse las sumas marginales. Empecemos por agradecer que fue Rexthor y no <a href="https://xkcd.com/1638/">\\\\\\\\\\\…</a> y luego preguntémonos cómo podríamos reconstruir la tabla original con esos datos. La respuesta es: ninguna manera. Sin embargo podríamos crear una tabla completa en la que se respeten las sumas marginales y se aproxime -más o menos, nunca lo sabremos– a la tabla original.</p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" data-line-number="1"><span class="co">#Función para estimar valores esperados. </span></a>
+<a class="sourceLine" id="cb357-2" data-line-number="2">esperados &lt;-<span class="st"> </span><span class="cf">function</span> (x) {</a>
+<a class="sourceLine" id="cb357-3" data-line-number="3">  res =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">length</span>(x)), <span class="dt">ncol=</span><span class="kw">ncol</span>(x)) </a>
+<a class="sourceLine" id="cb357-4" data-line-number="4"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(x)) {</a>
+<a class="sourceLine" id="cb357-5" data-line-number="5">  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(x)) {</a>
+<a class="sourceLine" id="cb357-6" data-line-number="6">    res[i,j] =<span class="st"> </span>(<span class="kw">margin.table</span>(x, <span class="dv">1</span>)[i] <span class="op">*</span><span class="st"> </span><span class="kw">margin.table</span>(x, <span class="dv">2</span>)[j])<span class="op">/</span><span class="kw">sum</span>(x) }}</a>
+<a class="sourceLine" id="cb357-7" data-line-number="7">  <span class="kw">return</span>(res)}</a>
+<a class="sourceLine" id="cb357-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb357-9" data-line-number="9"><span class="co">#Código para ejemplo: Ya no lo voy usar.</span></a>
+<a class="sourceLine" id="cb357-10" data-line-number="10"><span class="kw">addmargins</span>(x, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) -&gt;<span class="st"> </span>rexthor</a>
+<a class="sourceLine" id="cb357-11" data-line-number="11">rexthor[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb357-12" data-line-number="12"><span class="co">#dimnames(rexthor) &lt;- dimnames(x)                     #Perdió los nombres al coercinarla a matríz. </span></a>
+<a class="sourceLine" id="cb357-13" data-line-number="13"><span class="kw">kable</span>(<span class="kw">ftable</span>(rexthor), <span class="dt">caption=</span><span class="st">&quot;La tabla robada&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-58">Table 5.6: </span>La tabla robada</caption>
+<tbody>
+<tr class="odd">
+<td align="right">No</td>
+<td align="right">No</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">Sí</td>
+<td align="right">No</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">Sum</td>
+<td align="right">No</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">No</td>
+<td align="right">Sí</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">Sí</td>
+<td align="right">Sí</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">Sum</td>
+<td align="right">Sí</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="right">No</td>
+<td align="right">Sum</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="right">Sí</td>
+<td align="right">Sum</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">Sum</td>
+<td align="right">Sum</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+<p>¿Cómo lo hacemos? La forma más simple es multiplicar los conteos marginales para cada celda y luego dividirlos por la n, el total de observaciones. Las proporciones marginales indican la probabilidad de que un objeto –en el sentido estadístico– pertenezca a cierta categoría. En cada celda ubicamos el conteo según la probabilidad conjunta de la categoría de las filas y de la de las columnas. Por las proporciones marginales de la tabla robada sabemos sabemos que una observación tiene una probabilidad de 0.6 de no escuchar rock y <span class="math inline">\(P=0.3\)</span> de no escuchar cumbia. Es decir, una probabilidad conjunta de 0.18 obtenida al multiplica 0.6 y 0.3.
+Podemos describir a ese valor como <span class="math inline">\(P(Rock_{no}|Cumbia_{no})\)</span>: la probabilidad de no escuchar rock ni cumbia.</p>
+<p>En esta tabla las probabilidades marginales son conocidas, pero las centrales no. Estamos usando un criterio para construirla: que las probabilidades marginales tienen información suficiente para crear la tabla y que cualquier otra variación es producto del azar. Según nuestro supuesto las únicas variables que afectan la probabilidad de cada celda son ellas mismas, el resto es azar. Este modelo reconstruye los conteos asumiendo que esas variables son independientes en su distribución, es decir, dependen solamente de ellas mismas. Por eso lo llamamos modelo de independencia: son la reconstrucción ideal de una distribución de probabilidades conjuntas en el que ambas variables son independientes.</p>
+<p>Veamos, pues, que conteos produce el modelo de independencia para la tabla robada.</p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1">espe &lt;-<span class="st"> </span><span class="kw">esperados</span>(x)</a>
+<a class="sourceLine" id="cb358-2" data-line-number="2"><span class="kw">kable</span>(<span class="kw">ftable</span>(espe), <span class="dt">caption=</span><span class="st">&quot;Frecuencias esperadas bajo el supuesto de independencia estadística&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning in l + padding: longitud de objeto mayor no es múltiplo de la
+## longitud de uno menor</code></pre>
+<pre><code>## Warning in w * (side == &quot;left&quot;): longitud de objeto mayor no es múltiplo de
+## la longitud de uno menor</code></pre>
+<pre><code>## Warning in w1 * (side == &quot;both&quot;): longitud de objeto mayor no es múltiplo
+## de la longitud de uno menor</code></pre>
+<pre><code>## Warning in w * (side == &quot;right&quot;): longitud de objeto mayor no es múltiplo
+## de la longitud de uno menor</code></pre>
+<pre><code>## Warning in (w - w1) * (side == &quot;both&quot;): longitud de objeto mayor no es
+## múltiplo de la longitud de uno menor</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-59">Table 5.7: </span>Frecuencias esperadas bajo el supuesto de independencia estadística</caption>
+<tbody>
+<tr class="odd">
+<td align="right">A</td>
+<td align="right">A</td>
+<td align="right">2.1</td>
+</tr>
+<tr class="even">
+<td align="right">B</td>
+<td align="right">A</td>
+<td align="right">0.9</td>
+</tr>
+<tr class="odd">
+<td align="right">A</td>
+<td align="right">B</td>
+<td align="right">4.9</td>
+</tr>
+<tr class="even">
+<td align="right">B</td>
+<td align="right">B</td>
+<td align="right">2.1</td>
+</tr>
+</tbody>
+</table>
+<p>Agradezcamos la amabilidad de Rexthor, the dog-bearer, que nos ha regresado la tabla original. Ahora podemos comparar cuan buena era la predicción de nuestro modelo. Directamente computaremos la diferencia entre los valores centrales de la tabla –los marginales ya sabemos que son iguales.</p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" data-line-number="1">residuos_crudos &lt;-<span class="st"> </span>x<span class="op">-</span><span class="kw">esperados</span>(x)</a>
+<a class="sourceLine" id="cb364-2" data-line-number="2"><span class="kw">kable</span>(residuos_crudos, <span class="dt">caption=</span><span class="st">&quot;Residuales crudos&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-60">Table 5.8: </span>Residuales crudos</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">No</th>
+<th align="right">Sí</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="right">-1.1</td>
+<td align="right">1.1</td>
+</tr>
+<tr class="even">
+<td>Sí</td>
+<td align="right">1.1</td>
+<td align="right">-1.1</td>
+</tr>
+</tbody>
+</table>
+<p>El modelo exageró el número de de personas que no escuchar cumbia o rock y el número de personas que escuchan ambos, y subestimó el número de personas que escuchan uno u otro. A esas divergencias entre el valor esperado –que el que el modelo había predicho– y el valor observado –el de la tabla original– es el error del modelo, a los que llamamos residuos crudos y son un paso intermedio, pero no tienen gran utilidad. Si quisiéramos obtener un estadístico que resumiera en un número la diferencia la suma de los residuos crudos siempre nos daría 0, lo cuál no es muy informativo.
+Karl Pearson resolvió este problema matemático con el estadístico <span class="math inline">\(\chi\)</span><sup>2</sup>. Al elevar al cuadrado los residuos se soluciona el problema de los signos positivos y negativos: cualquier número elevado al cuadrado es positivo. Al dividir la diferencia al cuadrado por el valor esperado se logra un efecto de normalización.
+Para obtener el estadístico usamos la formula <span class="math inline">\(\chi^2=\frac{\sum(O-E)^2}{E}\)</span>.</p>
+<p>Aplicando la formula del estadístico <span class="math inline">\(\chi\)</span><sup>2</sup>2 para nuestra tabla encontramos que el valor para nuestra tabla es 2.7437642. Para otras tablas podría ser un número mayor o menor, dependiendo de la divergencia entre datos observados y esperados.</p>
+</div>
+<div id="prueba-de-independencia-para-una-tabla-bidimensional." class="section level3">
+<h3><span class="header-section-number">5.3.2</span> Prueba de independencia para una tabla bidimensional.</h3>
+<p>Conociendo el estadístico <span class="math inline">\(\chi\)</span><sup>2</sup> tenemos una medida sintética de la desviación entre los conteos que arrojó el modelo de independencia y los de la tabla observada. Como mencionamos previamente la tabla que obtenemos a partir del modelo de independencia no es la única tabla al azar posible, sólo la más probable. Podría ser interesante <em>estimar la probabilidad de obtener una tabla como la observada bajo condiciones de independencia</em>. Esto es lo que hacemos cuando realizamos una prueba de hipótesis de independencia estadística para una tabla de contingencia: estimar la probabilidad de nuestra tabla dada la hipótesis de independencia entre filas y columnas. Es preciso tener muy claro que <em>no estamos estimando la probabilidad de nuestra hipótesis dados los datos</em>, estamos haciendo exactamente lo contrario.</p>
+<p>Para estimar la probabilidad de nuestros datos dada la hipótesis de independencia usamos la distribución <span class="math inline">\(\chi\)</span><sup>2</sup>, que se resume en una tabla que asigna una probabilidad a cada valor del estadístico <span class="math inline">\(\chi\)</span><sup>2</sup>. Resta solventar otro problema. El estadístico <span class="math inline">\(\chi\)</span><sup>2</sup> es sintético, quizás demasiado sintético. Nuestra tabla es de 2x2 y podemos esperar que, todas las cosas igual, produzca siempre menos residuos que una tabla con más celdas, por un efecto simplemente matemático. Para corregir este problema la distribución <span class="math inline">\(\chi\)</span><sup>2</sup> estipula grados de libertad, que corrigen las probabilidades por el tamaño de la tabla. Los grados de libertad se calculan usando la fórmula <span class="math inline">\(gl=(filas-1)(columnas-1)\)</span>. El número de filas menos uno multiplicado por el número de columnas menos uno, es decir, tenemos un grado de libertad. Con el valor del estadístico <span class="math inline">\(\chi\)</span><sup>2</sup> y el valor de los grados de libertad podemos estimar la probabilidad de la tabla observada bajo condiciones de independencia estadística. En este caso es 0.0976345, este es nuestro p-value. Dependiendo del criterio que usemos para la prueba de hipótesis rechazamos o no la hipótesis de nulidad.</p>
+<blockquote>
+<p>Nota general sobre las pruebas de hipótesis.<br />
+Las pruebas de hipótesis son una de las operaciones estadísticas más importantes, hay pocas dudas al respecto. Sin embargo es de la mayor importancia no ritualizarlas, reduciéndolas a verificar si el p-value es menor a 0.001 –¡tiene tres asteriscos! ¡es ciencia<sup>TM</sup>!– ni interpretarlas como lo que no son –una prueba de <em>nuestra</em> hipótesis sustantiva de investigación.
+En el marco frecuentista en el que nos estamos ubicamos una prueba de hipótesis sólo nos informa sobre la probabilidad de nuestros datos dada una hipótesis de nulidad, formalmente <span class="math inline">\(p(D|H0)\)</span>, donde H0 es la hipótesis de nulidad a la que podemos aceptar o rechazar. Esto no es igual a <span class="math inline">\(p(H~0~|D)\)</span>, la probabilidad de la hipótesis de nulidad dados nuestros datos. Y tampoco nos dice mucho sobre la calidad de la hipótesis de nulidad. Si nuestra hipótesis de nulidad es lisa y llanamente disparatada nuestros datos siempre tendrán una probabilidad muy baja de ocurrir <em>dada esa hipótesis disparatada</em>, pero en el mundo quien sabe. Siempre que sea posible es una buena práctica probar nuestros datos contra una hipótesis informada. La hipótesis de nulidad formulada como independencia estadística que probamos más arriba es bastante razonable, pero una hipótesis más sólida surgida de una teoría sustantiva sería muchísimo mejor. Nuestra hipótesis de nulidad podría ser cumbia y rock no son independientes, pero las probabilidades de escuchar ambos géneros musicales son mayores que 0.2. En ese caso haríamos una prueba de hipótesis más sólida.</p>
+</blockquote>
+</div>
+</div>
+<div id="analisis-de-los-residuos." class="section level2">
+<h2><span class="header-section-number">5.4</span> Análisis de los residuos.</h2>
+<p>Aunque las pruebas de hipótesis de independencia estadística nos dan un criterio para considerar si hay o no una relación entre las variables que hemos tabulado el análisis de datos categóricos no se detiene allí. Si queremos saber cuáles categorías son las más divergentes –es decir, en cuáles es mayor la diferencia entre valores esperados y observados– podemos observar como se distribuyen los residuos.
+Los residuos crudos que elaboramos anteriormente nos dan una idea de las diferencias entre valores observados y esperados, pero es difícil compararlos de manera directa ya que no son sensibles a los tamaños de fila o columna. En nuestro caso todos los residuos son 1.1 o -1.1, pero no sabemos si un residuo de 1.1 eso es mucho o poco. Para nuestra tabla, con sólo 10 observaciones, es una divergencia bastante grande, pero esos mismos números para una para una tabla con conteos en el orden de los miles sería muy poco. Para solucionar este problema Karl Pearson ideó una fórmula que estandariza los residuos según la cuál <span class="math inline">\(Residuales Estandarizados=\frac{(O-E)}{\sqrt{E}}\)</span>. De este modo obtenemos los Residuales de Pearson.</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1"><span class="kw">kable</span> ((x<span class="op">-</span><span class="kw">esperados</span>(x))<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">esperados</span>(x)), <span class="dt">caption=</span><span class="st">&quot;Residuales de Pearson&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-61">Table 5.9: </span>Residuales de Pearson</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">No</th>
+<th align="right">Sí</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="right">-0.7590721</td>
+<td align="right">0.4969293</td>
+</tr>
+<tr class="even">
+<td>Sí</td>
+<td align="right">1.1595018</td>
+<td align="right">-0.7590721</td>
+</tr>
+</tbody>
+</table>
+<div id="prueba-chi2-en-r." class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Prueba <span class="math inline">\(\chi\)</span><sup>2</sup> en R.</h3>
+<div id="pruebas-de-independencia-con-chisq.test" class="section level4">
+<h4><span class="header-section-number">5.4.1.1</span> Pruebas de independencia con <code>chisq.test()</code></h4>
+<p>La función <code>chisq.test()</code> de R realiza todos los pasos que hemos llevado a cabo de una manera muy simple y, dado que incluye algunos factores de corrección que no hemos considerado en el desarrollo anterior, más preciso. La sintaxis básica es <code>chisq.test(x, correct=TRUE)</code>, donde <code>x</code> es un objeto de la clase <code>table</code> y <code>correct=</code> es un valor lógico que señala si se hará la corrección de Yates (TRUE, por defecto) o no (FALSE, opcional).<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a> En consola nos regresa un sumario de la prueba de hipótesis, pero podemos guardar el objeto completo resultante. Este pertenece a las clases <code>htest</code> y <code>list</code> y contiene información muy detallada sobre el modelo.</p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" data-line-number="1"><span class="kw">chisq.test</span>(x)                     <span class="co">#Donde x es la tabla de cumbieros y rockeros. </span></a></code></pre></div>
+<pre><code>## Warning in chisq.test(x): Chi-squared approximation may be incorrect</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  x
+## X-squared = 0.81633, df = 1, p-value = 0.3663</code></pre>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" data-line-number="1"><span class="kw">chisq.test</span>(x, <span class="dt">correct=</span><span class="ot">FALSE</span>)      <span class="co">#Sin la corrección de Yates. </span></a></code></pre></div>
+<pre><code>## Warning in chisq.test(x, correct = FALSE): Chi-squared approximation may be
+## incorrect</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  x
+## X-squared = 2.7438, df = 1, p-value = 0.09763</code></pre>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" data-line-number="1"><span class="kw">str</span>(<span class="kw">chisq.test</span>(x, <span class="dt">correct=</span><span class="ot">FALSE</span>))</a></code></pre></div>
+<pre><code>## Warning in chisq.test(x, correct = FALSE): Chi-squared approximation may be
+## incorrect</code></pre>
+<pre><code>## List of 9
+##  $ statistic: Named num 2.74
+##   ..- attr(*, &quot;names&quot;)= chr &quot;X-squared&quot;
+##  $ parameter: Named int 1
+##   ..- attr(*, &quot;names&quot;)= chr &quot;df&quot;
+##  $ p.value  : num 0.0976
+##  $ method   : chr &quot;Pearson&#39;s Chi-squared test&quot;
+##  $ data.name: chr &quot;x&quot;
+##  $ observed : &#39;table&#39; int [1:2, 1:2] 1 2 6 1
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ rock  : chr [1:2] &quot;No&quot; &quot;Sí&quot;
+##   .. ..$ cumbia: chr [1:2] &quot;No&quot; &quot;Sí&quot;
+##  $ expected : num [1:2, 1:2] 2.1 0.9 4.9 2.1
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ rock  : chr [1:2] &quot;No&quot; &quot;Sí&quot;
+##   .. ..$ cumbia: chr [1:2] &quot;No&quot; &quot;Sí&quot;
+##  $ residuals: &#39;table&#39; num [1:2, 1:2] -0.759 1.16 0.497 -0.759
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ rock  : chr [1:2] &quot;No&quot; &quot;Sí&quot;
+##   .. ..$ cumbia: chr [1:2] &quot;No&quot; &quot;Sí&quot;
+##  $ stdres   : &#39;table&#39; num [1:2, 1:2] -1.66 1.66 1.66 -1.66
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ rock  : chr [1:2] &quot;No&quot; &quot;Sí&quot;
+##   .. ..$ cumbia: chr [1:2] &quot;No&quot; &quot;Sí&quot;
+##  - attr(*, &quot;class&quot;)= chr &quot;htest&quot;</code></pre>
+</div>
+<div id="pruebas-de-independencia-paso-a-paso." class="section level4">
+<h4><span class="header-section-number">5.4.1.2</span> Pruebas de independencia paso a paso.</h4>
+<p>Aunque <code>chisq.test()</code> nos regresa una prueba de independencia muy detallada puede valer la pena el código completo con el que podemos producir esos mismos resultados. Quizás le resulte más clara la sintaxis de R que la notación matemática o quiera tomar alguno de los pasos intermedios para realizar una prueba de hipótesis diferente.
+La función más importante que definiremos es <code>esperados()</code>, una función que recibe una tabla de conteos y regresa los conteos esperados dado el modelo de independencia entre filas y columnas.</p>
+</div>
+<div id="conteos-esperados." class="section level4">
+<h4><span class="header-section-number">5.4.1.3</span> Conteos esperados.</h4>
+<p>Los conteos esperados se obtienen multiplicando las suma marginales correspondientes a una celda y dividiéndola por la n.</p>
+<p><span class="math inline">\(E=\frac{\sum(fila)\sum(columna)}{n}\)</span></p>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb375-1" data-line-number="1"><span class="co">#Función para calcular conteos esperados. </span></a>
+<a class="sourceLine" id="cb375-2" data-line-number="2">esperados &lt;-<span class="st"> </span><span class="cf">function</span> (x) {                         <span class="co">#Defino la función con un sólo argumento: x, que es una tabla. </span></a>
+<a class="sourceLine" id="cb375-3" data-line-number="3">  <span class="kw">stopifnot</span>(<span class="kw">is.table</span>(x))                            <span class="co">#Produce un error si el objeto x no es una tabla. </span></a>
+<a class="sourceLine" id="cb375-4" data-line-number="4">  E =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">length</span>(x)), <span class="dt">ncol=</span><span class="kw">ncol</span>(x))       <span class="co">#Crea una matríz vacía.</span></a>
+<a class="sourceLine" id="cb375-5" data-line-number="5"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(x)) {                               <span class="co">#Para cada fila</span></a>
+<a class="sourceLine" id="cb375-6" data-line-number="6">  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(x)) {                             <span class="co">#Para cada columna.</span></a>
+<a class="sourceLine" id="cb375-7" data-line-number="7">    E[i,j] =<span class="st"> </span>(<span class="kw">margin.table</span>(x, <span class="dv">1</span>)[i] <span class="op">*</span><span class="st"> </span><span class="kw">margin.table</span>(x, <span class="dv">2</span>)[j])<span class="op">/</span><span class="kw">sum</span>(x) }}  <span class="co">#Imputa los conteos.</span></a>
+<a class="sourceLine" id="cb375-8" data-line-number="8">  <span class="kw">dimnames</span>(E) &lt;-<span class="st"> </span><span class="kw">dimnames</span>(x)                        <span class="co">#Recupera los nombres de x</span></a>
+<a class="sourceLine" id="cb375-9" data-line-number="9">  <span class="kw">return</span>(E)}                                        <span class="co">#Regresa la tabla con los conteos esperados.</span></a></code></pre></div>
+</div>
+<div id="estadistico-chi-cuadrado-para-la-tabla-x." class="section level4">
+<h4><span class="header-section-number">5.4.1.4</span> Estadístico chi cuadrado para la tabla x.</h4>
+<p><span class="math inline">\(\chi^2=\sum\frac{(E-O)^2}{E}\)</span></p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" data-line-number="1"><span class="kw">sum</span>(                       <span class="co">#Sumatoria</span></a>
+<a class="sourceLine" id="cb376-2" data-line-number="2">  ((x<span class="op">-</span><span class="kw">esperados</span>(x))<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="st">    </span><span class="co">#De los residuos al cuadrado...</span></a>
+<a class="sourceLine" id="cb376-3" data-line-number="3"><span class="st">    </span><span class="kw">esperados</span>(x))          <span class="co">#Entre los valores esperados</span></a></code></pre></div>
+<pre><code>## [1] 2.743764</code></pre>
+</div>
+<div id="p-value-para-la-prueba-de-independencia-estadistica." class="section level4">
+<h4><span class="header-section-number">5.4.1.5</span> p-value para la prueba de independencia estadística.</h4>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" data-line-number="1"><span class="dv">1</span><span class="op">-</span><span class="st">              </span><span class="co">#pchisq regresa la probabilidad acumulada, la invertimos con -1</span></a>
+<a class="sourceLine" id="cb378-2" data-line-number="2"><span class="st">  </span><span class="kw">pchisq</span>(       <span class="co">#Estima la probabilidad de un número en una distribución chi^2</span></a>
+<a class="sourceLine" id="cb378-3" data-line-number="3">         <span class="kw">sum</span>(((x<span class="op">-</span><span class="kw">esperados</span>(x))<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="kw">esperados</span>(x)),  <span class="co">#Estadístico chi^2 para la tabla x</span></a>
+<a class="sourceLine" id="cb378-4" data-line-number="4">         (<span class="kw">nrow</span>(x)<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>(<span class="kw">ncol</span>(x)<span class="op">-</span><span class="dv">1</span>)                  <span class="co">#Gracos de libertad.</span></a>
+<a class="sourceLine" id="cb378-5" data-line-number="5">         )</a></code></pre></div>
+<pre><code>## [1] 0.09763454</code></pre>
+</div>
+<div id="residuales-de-pearson." class="section level4">
+<h4><span class="header-section-number">5.4.1.6</span> Residuales de Pearson.</h4>
+<p><span class="math inline">\(Residuales Estandarizados=\frac{(O-E)}{\sqrt{E}}\)</span></p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" data-line-number="1">(x<span class="op">-</span><span class="kw">esperados</span>(x))<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">esperados</span>(x))</a></code></pre></div>
+<pre><code>##     cumbia
+## rock         No         Sí
+##   No -0.7590721  0.4969293
+##   Sí  1.1595018 -0.7590721</code></pre>
+</div>
+</div>
+</div>
+<div id="metodos-graficos-para-tablas-de-contingencia." class="section level2">
+<h2><span class="header-section-number">5.5</span> Métodos gráficos para tablas de contingencia.</h2>
+<p>La librería <code>vcd::</code>, Visualizing Cathegorical Data, ofrece varios métodos visuales para la exploración de tablas de contingencia.
+Los más importantes son <code>mosaic()</code>, que produce un gráfico de mosaico fortificado con información del modelo de independencia y <code>assoc()</code> para visualizar la distribución de los residuales de Pearson.
+No existe un equivalente a estas funciones dentro de <code>ggplot2::</code>.</p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" data-line-number="1"><span class="kw">library</span>(vcd)</a></code></pre></div>
+<pre><code>## Loading required package: grid</code></pre>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" data-line-number="1"><span class="kw">mosaic</span>(x)        <span class="co">#Gráfico de mosaico básico. </span></a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb385-1" data-line-number="1"><span class="kw">mosaic</span>(x, </a>
+<a class="sourceLine" id="cb385-2" data-line-number="2">       <span class="dt">shade=</span>T, <span class="co">#Fortifico con el modelo de independencia. </span></a>
+<a class="sourceLine" id="cb385-3" data-line-number="3">       <span class="dt">main=</span><span class="st">&quot;Asociación entre gusto por cumbia y rock&quot;</span>, <span class="co">#Pongo títulos con main=&quot;&quot;</span></a>
+<a class="sourceLine" id="cb385-4" data-line-number="4">       <span class="dt">sub =</span> <span class="st">&quot;Mosaico&quot;</span>)  </a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-67-2.png" width="672" /></p>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" data-line-number="1"><span class="kw">assoc</span>(x)    <span class="co">#Análisis de los residuales de Pearson. </span></a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-67-3.png" width="672" /></p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb387-1" data-line-number="1"><span class="kw">assoc</span>(x, </a>
+<a class="sourceLine" id="cb387-2" data-line-number="2">      <span class="dt">shade=</span>T, </a>
+<a class="sourceLine" id="cb387-3" data-line-number="3">      <span class="dt">main=</span><span class="st">&quot;Asociación entre el gusto por la cumbia y el rock&quot;</span>, </a>
+<a class="sourceLine" id="cb387-4" data-line-number="4">      <span class="dt">sub=</span><span class="st">&quot;Residuales de Pearson&quot;</span>)</a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-67-4.png" width="672" /></p>
+<div id="modelos-loglineales-para-datos-categoricos." class="section level3">
+<h3><span class="header-section-number">5.5.1</span> Modelos loglineales para datos categóricos.</h3>
+</div>
+</div>
+<div id="analisis-practico-de-datos-categoricos." class="section level2">
+<h2><span class="header-section-number">5.6</span> Análisis práctico de datos categóricos.</h2>
+<p>Este documento acompaña al más teórico <a href="https://martinpaladino.github.io/Datos_categoricos.html">Introducción al análisis de datos categóricos con R</a>. Presenta un ejemplo práctico de análisis exploratorio de datos categóricos con una base de datos real, la que prepara el Instituto Nacional para el Federalismo y el Desarrollo Municipal compilando información sobre presidentes municipales en México. Se trabajan paralelamente los problemas de análisis de datos con los de manipulación de datos que surgen con frecuencia en el análisis.</p>
+<div id="la-base-de-datos.-1" class="section level3">
+<h3><span class="header-section-number">5.6.1</span> La base de datos.</h3>
+<p>La base de datos primaria sobre la que trabajaremos es elaborada por el Sistema Nacional de Información Municipal y está disponible en formato .csv en <a href="http://www.snim.rami.gob.mx/" class="uri">http://www.snim.rami.gob.mx/</a></p>
+<p>Trabajaremos especialmente con dos variables, el género de las y los presidentes municipales y el partido político al que representan.</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" data-line-number="1"><span class="co">#Importación de la base de datos. </span></a>
+<a class="sourceLine" id="cb388-2" data-line-number="2"><span class="kw">library</span>(stringr)</a>
+<a class="sourceLine" id="cb388-3" data-line-number="3">presidentes_municipales &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb388-4" data-line-number="4"><span class="st">  </span><span class="kw">read_csv</span>(<span class="st">&quot;./datos/presidentes_municipales.csv&quot;</span>, <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">ap_materno =</span> <span class="kw">col_character</span>(), <span class="dt">fecha_actualizacion =</span> <span class="kw">col_character</span>(), <span class="dt">pdo_gob_ini =</span> <span class="kw">col_character</span>()))</a>
+<a class="sourceLine" id="cb388-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb388-6" data-line-number="6">presidentes_municipales</a></code></pre></div>
+<pre><code>## # A tibble: 2,389 x 19
+##    estado  municipio  id_estado id_municipio nombre  ap_paterno ap_materno
+##    &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt;        &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;     
+##  1 Aguasc… Aguascali…         1            1 MARIA … JIMENEZ    ESQUIVEL  
+##  2 Aguasc… Asientos           1            2 LORENZ… CARRILLO   LARA      
+##  3 Aguasc… Calvillo           1            3 FRANCI… LUEVANO    MARTINEZ  
+##  4 Aguasc… Cosío              1            4 JUAN M… VILLALPAN… ADAME     
+##  5 Aguasc… Jesús Mar…         1            5 NOEL    MATA       ATILANO   
+##  6 Aguasc… Pabellón …         1            6 CUAUHT… ESCOBEDO   TEJEDA    
+##  7 Aguasc… Rincón de…         1            7 FRANCI… RIVERA     LUEVANO   
+##  8 Aguasc… San José …         1            8 MARIA … LOPEZ      GONZALEZ  
+##  9 Aguasc… Tepezalá           1            9 OMAR    ISRAEL     CAMARILLO 
+## 10 Aguasc… El Llano           1           10 RAMIRO  SALAS      PIZAÑA    
+## # ... with 2,379 more rows, and 12 more variables: sexo &lt;chr&gt;,
+## #   email_oficial &lt;chr&gt;, partido &lt;chr&gt;, descripcion &lt;chr&gt;,
+## #   integrantes &lt;chr&gt;, pdo_gob_ini &lt;chr&gt;, pdo_gob_fin &lt;chr&gt;,
+## #   direccion &lt;chr&gt;, pag_web &lt;chr&gt;, telefono &lt;chr&gt;, fax &lt;chr&gt;,
+## #   fecha_actualizacion &lt;chr&gt;</code></pre>
+</div>
+</div>
+<div id="genero-y-partido-politico." class="section level2">
+<h2><span class="header-section-number">5.7</span> Género y partido político.</h2>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" data-line-number="1"><span class="kw">table</span>(presidentes_municipales<span class="op">$</span>partido, presidentes_municipales<span class="op">$</span>sexo) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;Presidentes municipales por partido en orden alfabético.</span><span class="ch">\n</span><span class="st"> ¿Error de codificación o categoría de adscripción?&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-70">Table 5.10: </span>Presidentes municipales por partido en orden alfabético.
+¿Error de codificación o categoría de adscripción?</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">H</th>
+<th align="right">M</th>
+<th align="right"><a href="mailto:presidente@jojutla.gob.mx">presidente@jojutla.gob.mx</a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AP</td>
+<td align="right">27</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>APTS</td>
+<td align="right">8</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>C.C.</td>
+<td align="right">16</td>
+<td align="right">8</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>C.I.</td>
+<td align="right">9</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>C5M</td>
+<td align="right">73</td>
+<td align="right">9</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>CACPC</td>
+<td align="right">9</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>CAGYPT</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>CI</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>CJXT</td>
+<td align="right">7</td>
+<td align="right">3</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>COAL.</td>
+<td align="right">316</td>
+<td align="right">73</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>CPU</td>
+<td align="right">30</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>CPUCS</td>
+<td align="right">9</td>
+<td align="right">10</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>CPUGHYE</td>
+<td align="right">26</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>CPYB</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>CUHCR</td>
+<td align="right">10</td>
+<td align="right">5</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>DPDG</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>ES</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>MOR.</td>
+<td align="right">36</td>
+<td align="right">6</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PAC</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PAN</td>
+<td align="right">294</td>
+<td align="right">66</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PARTIDO SOCIALDEMÓCRATA</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td>PCHU</td>
+<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PES</td>
+<td align="right">19</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PH</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PI</td>
+<td align="right">5</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PMACH</td>
+<td align="right">10</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PMC</td>
+<td align="right">71</td>
+<td align="right">9</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PNA</td>
+<td align="right">42</td>
+<td align="right">3</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PRD</td>
+<td align="right">137</td>
+<td align="right">40</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PRI</td>
+<td align="right">341</td>
+<td align="right">97</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PRS</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PS</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PSD</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PSI</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PSIN</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PT</td>
+<td align="right">64</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PUP</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PVEM</td>
+<td align="right">61</td>
+<td align="right">18</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>QROOUNE</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>SQROO</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>UYC</td>
+<td align="right">327</td>
+<td align="right">24</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>Esta tabla tiene varios problemas.</p>
+<ol style="list-style-type: decimal">
+<li><p>La diferencia en las cantidades de municipios gobernados por partido complica dificulta la interpretación. Sería mejor expresar los conteos como proporciones de fila: ¿qué proporción de hombres y mujeres representan en el gobierno a cada partido?</p></li>
+<li><p>Tiene demasiadas filas. Hay muchos partidos pequeños que tiene sólo una presidencia municipal. Sería conveniente compactarlos en la categoría “Otros”.</p></li>
+<li><p>La categoría modal es “COAL.”, es decir, una coalición de partidos. No sabemos qué partidos la integran, así que valdría la pena recuperar la información de la columna <code>integrantes</code> en la misma base de datos.</p></li>
+</ol>
+<p>Comenzaremos por atender cada punto.</p>
+<ol style="list-style-type: decimal">
+<li>R inlcuye la función <code>prop.table()</code>, que toma como input a una tabla y regresa coo output una tabla con la misma estrucura, excepto que con los las proporciones en lugar de los conteos.
+La sintaxis básica de la función es <code>prop.table(tabla, margen)</code>. Donde tabla es un objeto de la clase tabla, creado con la función <code>table()</code> o <code>xtabs()</code> y margen es un número que señala el márgen respecto al cuál se computará la proporción. Usamos <code>1</code> para proporciones sobre filas y <code>2</code> para proporciones sobre columnas. El valor por defecto es <code>NULL</code> y calcula las proporciones sobre el total de la tabla.</li>
+</ol>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb391-1" data-line-number="1">presidentes_municipales <span class="op">%$%</span><span class="st">    </span><span class="co">#Paso los datos como un entorno de vectores.</span></a>
+<a class="sourceLine" id="cb391-2" data-line-number="2"><span class="st">  </span><span class="kw">table</span>(partido, sexo) <span class="op">%&gt;%</span><span class="st">     </span><span class="co">#Creo la tabla.  </span></a>
+<a class="sourceLine" id="cb391-3" data-line-number="3"><span class="st">  </span><span class="kw">prop.table</span>(., <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st">         </span><span class="co">#Creo las proporciones de fila. </span></a>
+<a class="sourceLine" id="cb391-4" data-line-number="4"><span class="st">  </span><span class="kw">kable</span>(., <span class="dt">caption=</span> <span class="st">&quot;Proporción de género por partido&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-71">Table 5.11: </span>Proporción de género por partido</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">H</th>
+<th align="right">M</th>
+<th align="right"><a href="mailto:presidente@jojutla.gob.mx">presidente@jojutla.gob.mx</a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AP</td>
+<td align="right">0.9310345</td>
+<td align="right">0.0689655</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>APTS</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>C.C.</td>
+<td align="right">0.6666667</td>
+<td align="right">0.3333333</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>C.I.</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>C5M</td>
+<td align="right">0.8902439</td>
+<td align="right">0.1097561</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>CACPC</td>
+<td align="right">0.9000000</td>
+<td align="right">0.1000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>CAGYPT</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>CI</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>CJXT</td>
+<td align="right">0.7000000</td>
+<td align="right">0.3000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>COAL.</td>
+<td align="right">0.8123393</td>
+<td align="right">0.1876607</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>CPU</td>
+<td align="right">0.9375000</td>
+<td align="right">0.0625000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>CPUCS</td>
+<td align="right">0.4736842</td>
+<td align="right">0.5263158</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>CPUGHYE</td>
+<td align="right">0.9285714</td>
+<td align="right">0.0714286</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>CPYB</td>
+<td align="right">0.7500000</td>
+<td align="right">0.2500000</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>CUHCR</td>
+<td align="right">0.6666667</td>
+<td align="right">0.3333333</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>DPDG</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>ES</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>MOR.</td>
+<td align="right">0.8571429</td>
+<td align="right">0.1428571</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PAC</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PAN</td>
+<td align="right">0.8166667</td>
+<td align="right">0.1833333</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PARTIDO SOCIALDEMÓCRATA</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td>PCHU</td>
+<td align="right">0.9090909</td>
+<td align="right">0.0909091</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PES</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PH</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PI</td>
+<td align="right">0.8333333</td>
+<td align="right">0.1666667</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PMACH</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PMC</td>
+<td align="right">0.8875000</td>
+<td align="right">0.1125000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PNA</td>
+<td align="right">0.9333333</td>
+<td align="right">0.0666667</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PRD</td>
+<td align="right">0.7740113</td>
+<td align="right">0.2259887</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PRI</td>
+<td align="right">0.7785388</td>
+<td align="right">0.2214612</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PRS</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PS</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PSD</td>
+<td align="right">0.8000000</td>
+<td align="right">0.2000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PSI</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PSIN</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PT</td>
+<td align="right">0.9696970</td>
+<td align="right">0.0303030</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>PUP</td>
+<td align="right">0.8000000</td>
+<td align="right">0.2000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>PVEM</td>
+<td align="right">0.7721519</td>
+<td align="right">0.2278481</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>QROOUNE</td>
+<td align="right">0.0000000</td>
+<td align="right">1.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>SQROO</td>
+<td align="right">0.0000000</td>
+<td align="right">1.0000000</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>UYC</td>
+<td align="right">0.9316239</td>
+<td align="right">0.0683761</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" style="list-style-type: decimal">
+<li>El segundo problema no es de tablas, es un problema de codificación. Es decir, necesitamos recodificar la variable <code>partido</code> de tal modo que que se reduzca el número de categorías. Una posibilidad es hacerlo manualmente con la función <code>dplyr::recode()</code>. Sin embargo la función <code>forcats::fct_lump()</code> se dedica especialmente a compactar factores pasando determinadas categorías a una residual llamada “Otros”. En lugar de especificar que categorías pasan a “Otros” le indicamos cuantas categorías queremos que queden. Consevará n-1 categorías, aquellas con mayor número de observaciones, y creará la categoría “Otros” en la que estarán todas demás reunidas.</li>
+</ol>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" data-line-number="1"><span class="kw">library</span>(forcats)</a>
+<a class="sourceLine" id="cb392-2" data-line-number="2">presidentes_municipales <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb392-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partido=</span><span class="kw">fct_lump</span>(partido, <span class="dt">n=</span><span class="dv">20</span>, <span class="dt">other_level=</span><span class="st">&quot;Otros&quot;</span>)) <span class="op">%$%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb392-4" data-line-number="4"><span class="st">  </span><span class="kw">table</span>(partido, sexo) <span class="op">%&gt;%</span><span class="st">     </span></a>
+<a class="sourceLine" id="cb392-5" data-line-number="5"><span class="st">  </span><span class="kw">prop.table</span>(., <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st">         </span></a>
+<a class="sourceLine" id="cb392-6" data-line-number="6"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;Proporción de género para 19 partidos y Otros&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-72">Table 5.12: </span>Proporción de género para 19 partidos y Otros</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">H</th>
+<th align="right">M</th>
+<th align="right"><a href="mailto:presidente@jojutla.gob.mx">presidente@jojutla.gob.mx</a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AP</td>
+<td align="right">0.9310345</td>
+<td align="right">0.0689655</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td>C.C.</td>
+<td align="right">0.6666667</td>
+<td align="right">0.3333333</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="odd">
+<td>C5M</td>
+<td align="right">0.8902439</td>
+<td align="right">0.1097561</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td>CACPC</td>
+<td align="right">0.9000000</td>
+<td align="right">0.1000000</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="odd">
+<td>CJXT</td>
+<td align="right">0.7000000</td>
+<td align="right">0.3000000</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td>COAL.</td>
+<td align="right">0.8123393</td>
+<td align="right">0.1876607</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="odd">
+<td>CPU</td>
+<td align="right">0.9375000</td>
+<td align="right">0.0625000</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td>CPUCS</td>
+<td align="right">0.4736842</td>
+<td align="right">0.5263158</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="odd">
+<td>CPUGHYE</td>
+<td align="right">0.9285714</td>
+<td align="right">0.0714286</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td>CUHCR</td>
+<td align="right">0.6666667</td>
+<td align="right">0.3333333</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="odd">
+<td>MOR.</td>
+<td align="right">0.8571429</td>
+<td align="right">0.1428571</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td>PAN</td>
+<td align="right">0.8166667</td>
+<td align="right">0.1833333</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="odd">
+<td>PCHU</td>
+<td align="right">0.9090909</td>
+<td align="right">0.0909091</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td>PES</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="odd">
+<td>PMACH</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td>PMC</td>
+<td align="right">0.8875000</td>
+<td align="right">0.1125000</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="odd">
+<td>PNA</td>
+<td align="right">0.9333333</td>
+<td align="right">0.0666667</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td>PRD</td>
+<td align="right">0.7740113</td>
+<td align="right">0.2259887</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="odd">
+<td>PRI</td>
+<td align="right">0.7785388</td>
+<td align="right">0.2214612</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td>PT</td>
+<td align="right">0.9696970</td>
+<td align="right">0.0303030</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="odd">
+<td>PVEM</td>
+<td align="right">0.7721519</td>
+<td align="right">0.2278481</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="even">
+<td>UYC</td>
+<td align="right">0.9316239</td>
+<td align="right">0.0683761</td>
+<td align="right">0.000000</td>
+</tr>
+<tr class="odd">
+<td>Otros</td>
+<td align="right">0.8888889</td>
+<td align="right">0.0952381</td>
+<td align="right">0.015873</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb393-1" data-line-number="1">presidentes_municipales <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb393-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partido=</span><span class="kw">fct_lump</span>(partido, <span class="dt">n=</span><span class="dv">10</span>, <span class="dt">other_level=</span><span class="st">&quot;Otros&quot;</span>)) <span class="op">%$%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb393-3" data-line-number="3"><span class="st">  </span><span class="kw">table</span>(partido, sexo) <span class="op">%&gt;%</span><span class="st">     </span></a>
+<a class="sourceLine" id="cb393-4" data-line-number="4"><span class="st">  </span><span class="kw">prop.table</span>(., <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st">         </span></a>
+<a class="sourceLine" id="cb393-5" data-line-number="5"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;Proporción de género para 9 partidos y Otros&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-72">Table 5.12: </span>Proporción de género para 9 partidos y Otros</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">H</th>
+<th align="right">M</th>
+<th align="right"><a href="mailto:presidente@jojutla.gob.mx">presidente@jojutla.gob.mx</a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>C5M</td>
+<td align="right">0.8902439</td>
+<td align="right">0.1097561</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>COAL.</td>
+<td align="right">0.8123393</td>
+<td align="right">0.1876607</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td>PAN</td>
+<td align="right">0.8166667</td>
+<td align="right">0.1833333</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>PMC</td>
+<td align="right">0.8875000</td>
+<td align="right">0.1125000</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td>PNA</td>
+<td align="right">0.9333333</td>
+<td align="right">0.0666667</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>PRD</td>
+<td align="right">0.7740113</td>
+<td align="right">0.2259887</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td>PRI</td>
+<td align="right">0.7785388</td>
+<td align="right">0.2214612</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>PT</td>
+<td align="right">0.9696970</td>
+<td align="right">0.0303030</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td>PVEM</td>
+<td align="right">0.7721519</td>
+<td align="right">0.2278481</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>UYC</td>
+<td align="right">0.9316239</td>
+<td align="right">0.0683761</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td>Otros</td>
+<td align="right">0.8493590</td>
+<td align="right">0.1474359</td>
+<td align="right">0.0032051</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" style="list-style-type: decimal">
+<li>El tercer problema es el más complejo, pues implica tanto problemas técnicos de manejo de cadenas de caracteres como decisiones metodológicas de imputación de datos. La variable <code>integrantes</code> tiene como valor una cadena de caracteres con las abreviaturas de los partidos integrantes de la coalición separadas por guiones medios <code>-</code>. Primero debemos ubicar en columnas separadas a cada partido integrante. Utilizaremos la librería <code>stringr::</code><a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>, que reúne varias funciones de sintaxis simple para hacer operaciones sobre cadenas de caracteres.</li>
+</ol>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" data-line-number="1"><span class="kw">library</span>(stringr)</a>
+<a class="sourceLine" id="cb394-2" data-line-number="2"><span class="co">#Conteo de partidos por coalición. </span></a>
+<a class="sourceLine" id="cb394-3" data-line-number="3"><span class="kw">str_count</span>(presidentes_municipales<span class="op">$</span>integrantes, <span class="st">&quot;-&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#str_count() nos regresa el número de veces que aparece un caracter o cadena. En este caso &#39;-&#39;. </span></a>
+<a class="sourceLine" id="cb394-4" data-line-number="4"><span class="st">  </span><span class="kw">max</span>(., <span class="dt">na.rm=</span>T)                                       <span class="co">#Máximo de partidos que forman una coalición: 6. </span></a></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" data-line-number="1"><span class="co">#Tabla partido~sexo con partidos imputados por coalición. </span></a>
+<a class="sourceLine" id="cb396-2" data-line-number="2">presidentes_municipales <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb396-3" data-line-number="3"><span class="st">  </span><span class="kw">separate</span>(integrantes, <span class="dt">into=</span>(<span class="st">&quot;cabeza_coalicion&quot;</span>)) <span class="op">%&gt;%</span><span class="st">                      </span><span class="co">#Separo la columna integrantes en 6, el máximo de partidos en una coalición. </span></a>
+<a class="sourceLine" id="cb396-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partido_coalicion=</span><span class="kw">ifelse</span>(<span class="kw">is.na</span>(cabeza_coalicion), partido, cabeza_coalicion)) <span class="op">%&gt;%</span><span class="st">    </span><span class="co">#Integra las columnas partidos y partido1. Si no es partido sólo imputo la cabeza de coalición. </span></a>
+<a class="sourceLine" id="cb396-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(partido_coalicion, sexo) <span class="op">%&gt;%</span><span class="st">                                         </span><span class="co">#Selecciono las variables. </span></a>
+<a class="sourceLine" id="cb396-6" data-line-number="6"><span class="st">  </span><span class="kw">table</span>() <span class="op">%T&gt;%</span><span class="st">                                          </span><span class="co">#Tubería en T         </span></a>
+<a class="sourceLine" id="cb396-7" data-line-number="7"><span class="st">  </span><span class="kw">print</span>() <span class="op">%&gt;%</span><span class="st">                                           </span><span class="co">#Imprimo tabla</span></a>
+<a class="sourceLine" id="cb396-8" data-line-number="8"><span class="st">  </span><span class="kw">summary</span>()                                             <span class="co">#Obtengo el sumario</span></a></code></pre></div>
+<pre><code>##                  sexo
+## partido_coalicion   H   M presidente@jojutla.gob.mx
+##             2016    0   0                         1
+##             C.I.    9   0                         0
+##             CI      2   0                         0
+##             CPU    63   1                         0
+##             DPDG    1   0                         0
+##             ES      1   0                         0
+##             MOR.   36   6                         0
+##             PAC     4   0                         0
+##             PAN   370  85                         0
+##             PCHU   10   1                         0
+##             PES    19   0                         0
+##             PH      2   0                         0
+##             PI      5   1                         0
+##             PMACH  10   0                         0
+##             PMC    71   9                         0
+##             PNA    43   3                         0
+##             PRD   203  47                         0
+##             PRI   643 171                         0
+##             PRS     3   0                         0
+##             PS      2   0                         0
+##             PSD     4   1                         0
+##             PSI     4   0                         0
+##             PSIN    2   1                         0
+##             PT     69   2                         0
+##             PUP     4   1                         0
+##             PVEM   84  34                         0
+##             UYC   327  24                         0</code></pre>
+<pre><code>## Number of cases in table: 2379 
+## Number of factors: 2 
+## Test for independence of all factors:
+##  Chisq = 2468.7, df = 52, p-value = 0
+##  Chi-squared approximation may be incorrect</code></pre>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" data-line-number="1"><span class="co">#Tabla partido~sexo con partidos imputados por coalición: 7 partidos más otros. </span></a>
+<a class="sourceLine" id="cb399-2" data-line-number="2">presidentes_municipales <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb399-3" data-line-number="3"><span class="st">  </span><span class="kw">separate</span>(integrantes, <span class="dt">into=</span>(<span class="st">&quot;cabeza_coalicion&quot;</span>)) <span class="op">%&gt;%</span><span class="st">                        </span></a>
+<a class="sourceLine" id="cb399-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partido_coalicion=</span><span class="kw">ifelse</span>(<span class="kw">is.na</span>(cabeza_coalicion), partido, cabeza_coalicion)) <span class="op">%&gt;%</span><span class="st">   </span></a>
+<a class="sourceLine" id="cb399-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partido_coalicion=</span><span class="kw">fct_lump</span>(partido_coalicion, <span class="dt">n=</span><span class="dv">8</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb399-6" data-line-number="6"><span class="st">  </span><span class="kw">select</span>(partido_coalicion, sexo) <span class="op">%&gt;%</span><span class="st">                                      </span></a>
+<a class="sourceLine" id="cb399-7" data-line-number="7"><span class="st">  </span><span class="kw">table</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb399-8" data-line-number="8"><span class="st">  </span>{. -&gt;foo; <span class="kw">kable</span>(foo);<span class="kw">plot</span>(foo, <span class="dt">shade=</span>T); <span class="kw">summary</span>(foo)}           <span class="co">#lambda</span></a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-73-1.png" width="768" /></p>
+<pre><code>## Number of cases in table: 2379 
+## Number of factors: 2 
+## Test for independence of all factors:
+##  Chisq = 95.43, df = 16, p-value = 2.472e-13
+##  Chi-squared approximation may be incorrect</code></pre>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" data-line-number="1"><span class="co">#Join con base marginación. </span></a>
+<a class="sourceLine" id="cb401-2" data-line-number="2"><span class="co">#Cargo base Marginacion. </span></a>
+<a class="sourceLine" id="cb401-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb401-4" data-line-number="4">marginacion &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb401-5" data-line-number="5">marginacion &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/Base_Indice_de_marginacion_municipal_90-15.csv&quot;</span>, </a>
+<a class="sourceLine" id="cb401-6" data-line-number="6">    <span class="dt">col_types =</span> <span class="kw">cols</span>(AÑ<span class="dt">O =</span> <span class="kw">col_character</span>(), </a>
+<a class="sourceLine" id="cb401-7" data-line-number="7">                     <span class="dt">CVE_ENT =</span> <span class="kw">col_character</span>(), </a>
+<a class="sourceLine" id="cb401-8" data-line-number="8">                     <span class="dt">CVE_MUN =</span> <span class="kw">col_character</span>(), </a>
+<a class="sourceLine" id="cb401-9" data-line-number="9">                     <span class="dt">IM =</span> <span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb401-10" data-line-number="10">                     <span class="dt">IND0A100 =</span> <span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb401-11" data-line-number="11">                     <span class="dt">LUGAR_EST =</span> <span class="kw">col_integer</span>(), </a>
+<a class="sourceLine" id="cb401-12" data-line-number="12">                     <span class="dt">LUG_NAC =</span> <span class="kw">col_integer</span>(), </a>
+<a class="sourceLine" id="cb401-13" data-line-number="13">                     <span class="dt">OVPT =</span> <span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb401-14" data-line-number="14">                     <span class="dt">OVSAE =</span> <span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb401-15" data-line-number="15">                     <span class="dt">OVSD =</span> <span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb401-16" data-line-number="16">                     <span class="dt">OVSDE =</span> <span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb401-17" data-line-number="17">                     <span class="dt">OVSDSE =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb401-18" data-line-number="18">                     <span class="dt">OVSEE =</span> <span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb401-19" data-line-number="19">                     <span class="st">`</span><span class="dt">PL&lt;5000</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb401-20" data-line-number="20">                     <span class="dt">PO2SM =</span> <span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb401-21" data-line-number="21">                     <span class="dt">SPRIM =</span> <span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb401-22" data-line-number="22">                     <span class="dt">VHAC =</span> <span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb401-23" data-line-number="23">                     <span class="dt">VP =</span> <span class="kw">col_integer</span>())) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb401-24" data-line-number="24"><span class="st">  </span><span class="kw">rename</span>(<span class="st">&quot;CVEMUN&quot;</span> =<span class="st"> </span>CVE_MUN)</a>
+<a class="sourceLine" id="cb401-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb401-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb401-27" data-line-number="27"><span class="co">#Relación partidos/sexo condicional a GM. Gráfico. </span></a>
+<a class="sourceLine" id="cb401-28" data-line-number="28">presidentes_municipales <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb401-29" data-line-number="29"><span class="st">  </span><span class="kw">arreglar_y_unir</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb401-30" data-line-number="30"><span class="st">  </span><span class="kw">select</span>(partido_coalicion, sexo, GM) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb401-31" data-line-number="31"><span class="st">  </span><span class="kw">group_by</span>(partido_coalicion, sexo, GM) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb401-32" data-line-number="32"><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb401-33" data-line-number="33"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y=</span>n, <span class="dt">x=</span>partido_coalicion, <span class="dt">fill=</span>sexo)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb401-34" data-line-number="34"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb401-35" data-line-number="35"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>GM) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb401-36" data-line-number="36"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb401-37" data-line-number="37"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>, <span class="dt">size=</span><span class="dv">5</span>))</a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-73-2.png" width="768" /></p>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" data-line-number="1"><span class="co">#Relación partidos/sexo condicional a GM. Descomposición chi^2</span></a>
+<a class="sourceLine" id="cb402-2" data-line-number="2"><span class="co">#Cortesía de Marius@stackoverflow</span></a>
+<a class="sourceLine" id="cb402-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb402-4" data-line-number="4">presidentes_municipales <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arreglar_y_unir</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb402-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(GM, sexo, partido_coalicion) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb402-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partido_coalicion=</span><span class="kw">fct_lump</span>(partido_coalicion, <span class="dt">n=</span><span class="dv">7</span>))  <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb402-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(GM) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb402-8" data-line-number="8"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">pvalue=</span> <span class="kw">chisq.test</span>(sexo, partido_coalicion)<span class="op">$</span>p.value) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb402-9" data-line-number="9"><span class="st">  </span><span class="kw">kable</span>(., <span class="dt">caption=</span><span class="st">&quot;Independencia estadística condicional al Grado de Marginación&quot;)</span></a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-73">Table 5.13: </span>Independencia estadística condicional al Grado de Marginación</caption>
+<thead>
+<tr class="header">
+<th align="left">GM</th>
+<th align="right">pvalue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alto</td>
+<td align="right">0.0e+00</td>
+</tr>
+<tr class="even">
+<td align="left">Bajo</td>
+<td align="right">0.0e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">Medio</td>
+<td align="right">0.0e+00</td>
+</tr>
+<tr class="even">
+<td align="left">Muy alto</td>
+<td align="right">0.0e+00</td>
+</tr>
+<tr class="odd">
+<td align="left">Muy bajo</td>
+<td align="right">5.9e-06</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" data-line-number="1"><span class="co">#Relación partidos/sexo condicional a ruralidad. </span></a>
+<a class="sourceLine" id="cb403-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb403-3" data-line-number="3">presidentes_municipales <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arreglar_y_unir</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb403-4" data-line-number="4"><span class="st">  </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">PL&lt;5000</span><span class="st">`</span>, sexo, partido_coalicion) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb403-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partido_coalicion=</span><span class="kw">fct_lump</span>(partido_coalicion, <span class="dt">n=</span><span class="dv">7</span>))  <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb403-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rural=</span><span class="kw">ifelse</span>(<span class="st">`</span><span class="dt">PL&lt;5000</span><span class="st">`</span><span class="op">&gt;</span><span class="dv">90</span>, <span class="st">&quot;Sí&quot;</span>, <span class="st">&quot;No&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb403-7" data-line-number="7"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span><span class="st">`</span><span class="dt">PL&lt;5000</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb403-8" data-line-number="8"><span class="st">  </span><span class="kw">nest</span> (<span class="op">-</span>rural) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb403-9" data-line-number="9"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">tabla=</span><span class="kw">map</span>(data, <span class="op">~</span><span class="kw">table</span>(.))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb403-10" data-line-number="10"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">valorp=</span><span class="kw">map</span>(tabla, <span class="op">~</span><span class="kw">chisq.test</span>(.)<span class="op">$</span>p.value)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb403-11" data-line-number="11"><span class="st">    </span><span class="kw">select</span>(rural, valorp) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb403-12" data-line-number="12"><span class="st">  </span><span class="kw">unnest</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb403-13" data-line-number="13"><span class="st">  </span><span class="kw">kable</span>(., <span class="dt">caption=</span><span class="st">&quot;Independencia estadística condicional a Ruralidad&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-73">Table 5.13: </span>Independencia estadística condicional a Ruralidad</caption>
+<thead>
+<tr class="header">
+<th align="left">rural</th>
+<th align="right">valorp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">No</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Sí</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="24">
+<li id="fn24"><p>preferimos ese términos a tablas cruzadas. Sueno mucho más culto y las cruzadas terminaron en el Siglo XIII.<a href="analisis-de-datos-categoricos.html#fnref24" class="footnote-back">↩</a></p></li>
+<li id="fn25"><p>Datos curiosos: cuando el array es de una dimensión también pertenece a la clase vector, cuando tiene dos dimensiones también pertenece a la clase matriz o <code>matrix</code>.<a href="analisis-de-datos-categoricos.html#fnref25" class="footnote-back">↩</a></p></li>
+<li id="fn26"><p>Dado que no todos los programas estadísticos realizan la corrección de Yates puede ser útil eliminar esta opción para obtener resultados consistentes.<a href="analisis-de-datos-categoricos.html#fnref26" class="footnote-back">↩</a></p></li>
+<li id="fn27"><p>¿Adivinen quién la escribió?<a href="analisis-de-datos-categoricos.html#fnref27" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="graficos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lineales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["libRo.pdf", "libRo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

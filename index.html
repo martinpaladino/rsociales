@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R para Ciencias Sociales</title>
+  <meta name="description" content="Análisis de datos con R, con aplicación a las ciencias sociales">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R para Ciencias Sociales" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R para Ciencias Sociales" />
+  
+  <meta name="twitter:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+<meta name="author" content="Martín Paladino">
+
+
+<meta name="date" content="2018-08-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="introduccion.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.0/DiagrammeR.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R para ciencias sociales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preámbulo</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#para-quien-es-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Para quién es este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#el-tidyverse"><i class="fa fa-check"></i><b>0.2</b> El <code>tidyverse</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introducción</a><ul>
+<li class="chapter" data-level="0.3" data-path="introduccion.html"><a href="introduccion.html#que-es-r"><i class="fa fa-check"></i><b>0.3</b> ¿Qué es R?</a><ul>
+<li class="chapter" data-level="0.3.1" data-path="introduccion.html"><a href="introduccion.html#el-lenguaje-de-programacion-r"><i class="fa fa-check"></i><b>0.3.1</b> El <em>lenguaje de programación R</em></a></li>
+<li class="chapter" data-level="0.3.2" data-path="introduccion.html"><a href="introduccion.html#el-interprete"><i class="fa fa-check"></i><b>0.3.2</b> El <em>intérprete</em></a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="introduccion.html"><a href="introduccion.html#instalacion-de-r-y-rstudio-en-windows."><i class="fa fa-check"></i><b>0.4</b> Instalación de R y Rstudio en Windows.</a></li>
+<li class="chapter" data-level="0.5" data-path="introduccion.html"><a href="introduccion.html#interface-de-rstudio."><i class="fa fa-check"></i><b>0.5</b> Interface de Rstudio.</a><ul>
+<li class="chapter" data-level="0.5.1" data-path="introduccion.html"><a href="introduccion.html#consola."><i class="fa fa-check"></i><b>0.5.1</b> Consola.</a></li>
+<li class="chapter" data-level="0.5.2" data-path="introduccion.html"><a href="introduccion.html#editor-de-archivos."><i class="fa fa-check"></i><b>0.5.2</b> Editor de Archivos.</a></li>
+<li class="chapter" data-level="0.5.3" data-path="introduccion.html"><a href="introduccion.html#entorno-de-trabajo."><i class="fa fa-check"></i><b>0.5.3</b> Entorno de trabajo.</a></li>
+<li class="chapter" data-level="0.5.4" data-path="introduccion.html"><a href="introduccion.html#graficos."><i class="fa fa-check"></i><b>0.5.4</b> Gráficos.</a></li>
+<li class="chapter" data-level="0.5.5" data-path="introduccion.html"><a href="introduccion.html#ayuda."><i class="fa fa-check"></i><b>0.5.5</b> Ayuda.</a></li>
+<li class="chapter" data-level="0.5.6" data-path="introduccion.html"><a href="introduccion.html#paquetes-de-extension."><i class="fa fa-check"></i><b>0.5.6</b> Paquetes de extensión.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="introduccion.html"><a href="introduccion.html#tipos-y-estructuras-de-datos"><i class="fa fa-check"></i><b>0.6</b> Tipos y estructuras de datos</a><ul>
+<li class="chapter" data-level="0.6.1" data-path="introduccion.html"><a href="introduccion.html#tipos-de-datos"><i class="fa fa-check"></i><b>0.6.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="0.6.2" data-path="introduccion.html"><a href="introduccion.html#estructuras-de-datos."><i class="fa fa-check"></i><b>0.6.2</b> Estructuras de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.7" data-path="introduccion.html"><a href="introduccion.html#orientacion-a-objetos."><i class="fa fa-check"></i><b>0.7</b> Orientación a objetos.</a></li>
+<li class="chapter" data-level="0.8" data-path="introduccion.html"><a href="introduccion.html#programacion-funcional."><i class="fa fa-check"></i><b>0.8</b> Programación funcional.</a></li>
+<li class="chapter" data-level="0.9" data-path="introduccion.html"><a href="introduccion.html#vocabulario."><i class="fa fa-check"></i><b>0.9</b> Vocabulario.</a></li>
+<li class="chapter" data-level="0.10" data-path="introduccion.html"><a href="introduccion.html#funciones-y-librerias-de-funciones."><i class="fa fa-check"></i><b>0.10</b> Funciones y librerías de funciones.</a></li>
+<li class="chapter" data-level="0.11" data-path="introduccion.html"><a href="introduccion.html#convenciones-de-estilo-de-este-documento."><i class="fa fa-check"></i><b>0.11</b> Convenciones de estilo de este documento.</a></li>
+<li class="chapter" data-level="0.12" data-path="introduccion.html"><a href="introduccion.html#bloques-de-codigo-y-comentarios."><i class="fa fa-check"></i><b>0.12</b> Bloques de código y comentarios.</a></li>
+<li class="chapter" data-level="0.13" data-path="introduccion.html"><a href="introduccion.html#uso-de-mayusculas."><i class="fa fa-check"></i><b>0.13</b> Uso de mayúsculas.</a></li>
+<li class="chapter" data-level="0.14" data-path="introduccion.html"><a href="introduccion.html#sobre-el-estilo-de-programacion-en-r."><i class="fa fa-check"></i><b>0.14</b> Sobre el estilo de programación en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="primeros.html"><a href="primeros.html"><i class="fa fa-check"></i><b>1</b> Primeros pasos en R</a><ul>
+<li class="chapter" data-level="1.1" data-path="primeros.html"><a href="primeros.html#crear-un-proyecto."><i class="fa fa-check"></i><b>1.1</b> Crear un proyecto.</a></li>
+<li class="chapter" data-level="1.2" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-operadores-y-operandos."><i class="fa fa-check"></i><b>1.2</b> Sintaxis de R: operadores y operandos.</a></li>
+<li class="chapter" data-level="1.3" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-funciones-y-argumentos."><i class="fa fa-check"></i><b>1.3</b> Sintaxis de R: funciones y argumentos.</a></li>
+<li class="chapter" data-level="1.4" data-path="primeros.html"><a href="primeros.html#vectores-y-atributos-de-los-vectores."><i class="fa fa-check"></i><b>1.4</b> Vectores y atributos de los vectores.</a></li>
+<li class="chapter" data-level="1.5" data-path="primeros.html"><a href="primeros.html#manipulacion-de-datos."><i class="fa fa-check"></i><b>1.5</b> Manipulación de datos.</a></li>
+<li class="chapter" data-level="1.6" data-path="primeros.html"><a href="primeros.html#funcion-para-calcular-una-mediana-con-funciones-primitivas-de-r."><i class="fa fa-check"></i><b>1.6</b> Función para calcular una mediana con funciones primitivas de R.</a></li>
+<li class="chapter" data-level="1.7" data-path="primeros.html"><a href="primeros.html#manipulacion-de-estructuras-de-datos."><i class="fa fa-check"></i><b>1.7</b> Manipulación de estructuras de datos.</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="primeros.html"><a href="primeros.html#magia"><i class="fa fa-check"></i><b>1.7.1</b> Magia</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="primeros.html"><a href="primeros.html#sobre-los-archivos-de-sintaxis."><i class="fa fa-check"></i><b>1.8</b> Sobre los archivos de sintaxis.</a></li>
+<li class="chapter" data-level="1.9" data-path="primeros.html"><a href="primeros.html#anexo"><i class="fa fa-check"></i><b>1.9</b> Anexo</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="primeros.html"><a href="primeros.html#operadores-binarios-de-r"><i class="fa fa-check"></i><b>1.9.1</b> Operadores binarios de R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html"><i class="fa fa-check"></i><b>2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#introduccion-alcances-del-problema."><i class="fa fa-check"></i><b>2.1</b> Introducción: alcances del problema.</a></li>
+<li class="chapter" data-level="2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#investigacion-reproducible.-1"><i class="fa fa-check"></i><b>2.2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#ventajas-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.1</b> Ventajas de la investigación reproducible.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#desafios-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.2</b> Desafíos de la investigación reproducible.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#filosofia-programacion-funcional-con-inmutabilidad-de-datos-transparencia-referencial-y-funciones-puras."><i class="fa fa-check"></i><b>2.3</b> Filosofía: programación funcional con inmutabilidad de datos, transparencia referencial y funciones puras.</a></li>
+<li class="chapter" data-level="2.4" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#hagamos-pizza-en-r."><i class="fa fa-check"></i><b>2.4</b> Hagamos pizza en R.</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-el-asignador.-pizzas-de-hoy-y-de-ayer."><i class="fa fa-check"></i><b>2.4.1</b> Pizzería “El asignador”. Pizzas de hoy y de ayer.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-la-funcional-clasica.-el-cambio-se-lo-da-en-parentesis."><i class="fa fa-check"></i><b>2.4.2</b> Pizzería La funcional clásica. El cambio se lo da en paréntesis.</a></li>
+<li class="chapter" data-level="2.4.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-magrittr-la-mas-del-rumbo"><i class="fa fa-check"></i><b>2.4.3</b> Pizzería magrittr ¡La más %&gt;% del rumbo!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="manejo.html"><a href="manejo.html"><i class="fa fa-check"></i><b>3</b> Manejo da datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="manejo.html"><a href="manejo.html#el-objeto-de-este-documento."><i class="fa fa-check"></i><b>3.1</b> El objeto de este documento.</a></li>
+<li class="chapter" data-level="3.2" data-path="manejo.html"><a href="manejo.html#manipulacion-de-datos-con-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Manipulación de datos con <code>tidyverse::</code></a></li>
+<li class="chapter" data-level="3.3" data-path="manejo.html"><a href="manejo.html#la-forma-de-los-datos."><i class="fa fa-check"></i><b>3.3</b> La forma de los datos.</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="manejo.html"><a href="manejo.html#sumarios-de-datos-o-base-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> ¿Sumarios de datos o base de datos?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="manejo.html"><a href="manejo.html#datos-rectangulares."><i class="fa fa-check"></i><b>3.4</b> Datos rectangulares.</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="manejo.html"><a href="manejo.html#datos-prolijos-tidy-data"><i class="fa fa-check"></i><b>3.4.1</b> Datos prolijos (tidy data)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="manejo.html"><a href="manejo.html#reformateo-de-datos."><i class="fa fa-check"></i><b>3.4.2</b> Reformateo de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="manejo.html"><a href="manejo.html#manejo-de-datos-con-dplyr"><i class="fa fa-check"></i><b>3.5</b> Manejo de datos con <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="manejo.html"><a href="manejo.html#verbos-basicos-de-dplyr"><i class="fa fa-check"></i><b>3.5.1</b> Verbos básicos de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.5.2" data-path="manejo.html"><a href="manejo.html#uso-de-la-de-sintaxis-de-dplyr"><i class="fa fa-check"></i><b>3.5.2</b> Uso de la de sintaxis de <code>dplyr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="manejo.html"><a href="manejo.html#uso-avanzado-de-dplyr"><i class="fa fa-check"></i><b>3.6</b> Uso avanzado de <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.6.1" data-path="manejo.html"><a href="manejo.html#alternar-entre-formato-largo-y-ancho."><i class="fa fa-check"></i><b>3.6.1</b> Alternar entre formato largo y ancho.</a></li>
+<li class="chapter" data-level="3.6.2" data-path="manejo.html"><a href="manejo.html#seleccionar-las-columnas-que-cumplen-determinada-condicion."><i class="fa fa-check"></i><b>3.6.2</b> Seleccionar las columnas que cumplen determinada condición.</a></li>
+<li class="chapter" data-level="3.6.3" data-path="manejo.html"><a href="manejo.html#filtrar-por-mas-de-una-condicion-o-dentro-de-un-conjunto."><i class="fa fa-check"></i><b>3.6.3</b> Filtrar por más de una condición o dentro de un conjunto.</a></li>
+<li class="chapter" data-level="3.6.4" data-path="manejo.html"><a href="manejo.html#transformacion-avanzada-de-datos."><i class="fa fa-check"></i><b>3.6.4</b> Transformacion avanzada de datos.</a></li>
+<li class="chapter" data-level="3.6.5" data-path="manejo.html"><a href="manejo.html#sumarios-avanzados."><i class="fa fa-check"></i><b>3.6.5</b> Sumarios avanzados.</a></li>
+<li class="chapter" data-level="3.6.6" data-path="manejo.html"><a href="manejo.html#funciones-avanzadas-de-combinacion-de-bases-de-datos."><i class="fa fa-check"></i><b>3.6.6</b> Funciones avanzadas de combinación de bases de datos.</a></li>
+<li class="chapter" data-level="3.6.7" data-path="manejo.html"><a href="manejo.html#operadores-avanzados-de-magrittr"><i class="fa fa-check"></i><b>3.6.7</b> Operadores avanzados de <code>magrittr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="manejo.html"><a href="manejo.html#limites-de-dplyr"><i class="fa fa-check"></i><b>3.7</b> Límites de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.8" data-path="manejo.html"><a href="manejo.html#manipulacion-con-dplyren-la-practica.-flujo-de-trabajo."><i class="fa fa-check"></i><b>3.8</b> Manipulación con <code>dplyr::</code>en la práctica. Flujo de trabajo.</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="manejo.html"><a href="manejo.html#implementacion-en-dplyr-de-un-analisis-exploratorio-de-la-base-de-datos-indice-de-marginacion-del-conapo."><i class="fa fa-check"></i><b>3.8.1</b> Implementación en dplyr:: de un análisis exploratorio de la base de datos Índice de marginación del CONAPO.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graficos.html"><a href="graficos.html"><i class="fa fa-check"></i><b>4</b> Gráficos con R y ggplot</a><ul>
+<li class="chapter" data-level="4.1" data-path="graficos.html"><a href="graficos.html#acerca-de-este-documento."><i class="fa fa-check"></i><b>4.1</b> Acerca de este documento.</a></li>
+<li class="chapter" data-level="4.2" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos."><i class="fa fa-check"></i><b>4.2</b> La gramática de los gráficos.</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="graficos.html"><a href="graficos.html#filosofia."><i class="fa fa-check"></i><b>4.2.1</b> Filosofía.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos-aplicada-en-ggplot."><i class="fa fa-check"></i><b>4.3</b> La gramática de los gráficos aplicada en <code>ggplot()</code>.</a></li>
+<li class="chapter" data-level="4.4" data-path="graficos.html"><a href="graficos.html#la-base-de-datos."><i class="fa fa-check"></i><b>4.4</b> La base de datos.</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="graficos.html"><a href="graficos.html#indice-de-marginacion-por-municipios-1990-2015."><i class="fa fa-check"></i><b>4.4.1</b> Índice de marginación por municipios 1990-2015.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="graficos.html"><a href="graficos.html#descripcion-rapida-de-la-base-de-datos."><i class="fa fa-check"></i><b>4.5</b> Descripción rápida de la base de datos.</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="graficos.html"><a href="graficos.html#nombres-cortos-y-largos."><i class="fa fa-check"></i><b>4.5.1</b> Nombres cortos y largos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="graficos.html"><a href="graficos.html#grafico-basico."><i class="fa fa-check"></i><b>4.6</b> Gráfico básico.</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="graficos.html"><a href="graficos.html#construccion-de-un-grafico-de-barras-paso-a-paso."><i class="fa fa-check"></i><b>4.6.1</b> Construcción de un gráfico de barras paso a paso.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="graficos.html"><a href="graficos.html#personalizacion-de-grafico."><i class="fa fa-check"></i><b>4.7</b> Personalización de gráfico.</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="graficos.html"><a href="graficos.html#orden-manual-de-las-categorias."><i class="fa fa-check"></i><b>4.7.1</b> Orden manual de las categorías.</a></li>
+<li class="chapter" data-level="4.7.2" data-path="graficos.html"><a href="graficos.html#orden-automatico-de-categorias."><i class="fa fa-check"></i><b>4.7.2</b> Orden automático de categorías.</a></li>
+<li class="chapter" data-level="4.7.3" data-path="graficos.html"><a href="graficos.html#titulo-subtitulo-titulos-de-ejes-vineta"><i class="fa fa-check"></i><b>4.7.3</b> Título, subtítulo, títulos de ejes, viñeta</a></li>
+<li class="chapter" data-level="4.7.4" data-path="graficos.html"><a href="graficos.html#estilos-visuales."><i class="fa fa-check"></i><b>4.7.4</b> Estilos visuales.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="graficos.html"><a href="graficos.html#graficos-intermedios-mas-de-una-serie-de-datos"><i class="fa fa-check"></i><b>4.8</b> Gráficos intermedios (más de una serie de datos)</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="graficos.html"><a href="graficos.html#datos-formato-de-datos-largo-y-ancho."><i class="fa fa-check"></i><b>4.8.1</b> Datos Formato de datos largo y ancho.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="graficos.html"><a href="graficos.html#grafico-de-barras-lado-a-lado."><i class="fa fa-check"></i><b>4.8.2</b> Gráfico de barras lado a lado.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="graficos.html"><a href="graficos.html#graficos-multipanel."><i class="fa fa-check"></i><b>4.8.3</b> Gráficos multipanel.</a></li>
+<li class="chapter" data-level="4.8.4" data-path="graficos.html"><a href="graficos.html#grafico-de-punto."><i class="fa fa-check"></i><b>4.8.4</b> Gráfico de punto.</a></li>
+<li class="chapter" data-level="4.8.5" data-path="graficos.html"><a href="graficos.html#grafico-de-punto-y-linea."><i class="fa fa-check"></i><b>4.8.5</b> Gráfico de punto y línea.</a></li>
+<li class="chapter" data-level="4.8.6" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion."><i class="fa fa-check"></i><b>4.8.6</b> Gráfico de dispersión.</a></li>
+<li class="chapter" data-level="4.8.7" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-en-paneles."><i class="fa fa-check"></i><b>4.8.7</b> Gráfico de dispersión en paneles.</a></li>
+<li class="chapter" data-level="4.8.8" data-path="graficos.html"><a href="graficos.html#grafico-de-caja."><i class="fa fa-check"></i><b>4.8.8</b> Gráfico de caja.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="graficos.html"><a href="graficos.html#personalizacion-avanzada-de-graficos."><i class="fa fa-check"></i><b>4.9</b> Personalización avanzada de gráficos.</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="graficos.html"><a href="graficos.html#etiquetas-y-elementos-de-texto."><i class="fa fa-check"></i><b>4.9.1</b> Etiquetas y elementos de texto.</a></li>
+<li class="chapter" data-level="4.9.2" data-path="graficos.html"><a href="graficos.html#ajuste-del-elemento-texto."><i class="fa fa-check"></i><b>4.9.2</b> Ajuste del elemento texto.</a></li>
+<li class="chapter" data-level="4.9.3" data-path="graficos.html"><a href="graficos.html#posicion-de-las-leyendas."><i class="fa fa-check"></i><b>4.9.3</b> Posición de las leyendas.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="graficos.html"><a href="graficos.html#escalas."><i class="fa fa-check"></i><b>4.10</b> Escalas.</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="graficos.html"><a href="graficos.html#escalas-y-sistemas-de-coordenadas"><i class="fa fa-check"></i><b>4.10.1</b> Escalas y sistemas de coordenadas</a></li>
+<li class="chapter" data-level="4.10.2" data-path="graficos.html"><a href="graficos.html#ajuste-manual-de-intervalos-de-escala."><i class="fa fa-check"></i><b>4.10.2</b> Ajuste manual de intervalos de escala.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="graficos.html"><a href="graficos.html#transformacion-de-escalas"><i class="fa fa-check"></i><b>4.10.3</b> Transformación de escalas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="graficos.html"><a href="graficos.html#sistemas-de-coordenadas."><i class="fa fa-check"></i><b>4.11</b> Sistemas de coordenadas.</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="graficos.html"><a href="graficos.html#coordenadas-polares."><i class="fa fa-check"></i><b>4.11.1</b> Coordenadas polares.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="graficos.html"><a href="graficos.html#fortificar-nuestros-graficos-con-datos-de-un-modelo"><i class="fa fa-check"></i><b>4.12</b> Fortificar nuestros gráficos con datos de un modelo</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="graficos.html"><a href="graficos.html#rectas-de-ajuste"><i class="fa fa-check"></i><b>4.12.1</b> Rectas de ajuste</a></li>
+<li class="chapter" data-level="4.12.2" data-path="graficos.html"><a href="graficos.html#intervalos-de-confianza-y-barras-de-error."><i class="fa fa-check"></i><b>4.12.2</b> Intervalos de confianza y barras de error.</a></li>
+<li class="chapter" data-level="4.12.3" data-path="graficos.html"><a href="graficos.html#etiquetado-de-casos."><i class="fa fa-check"></i><b>4.12.3</b> Etiquetado de casos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="graficos.html"><a href="graficos.html#extensiones-a-ggplot2"><i class="fa fa-check"></i><b>4.13</b> Extensiones a <code>ggplot2::</code></a></li>
+<li class="chapter" data-level="4.14" data-path="graficos.html"><a href="graficos.html#etiquetas"><i class="fa fa-check"></i><b>4.14</b> Etiquetas</a><ul>
+<li class="chapter" data-level="4.14.1" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-con-histogramas-marginales."><i class="fa fa-check"></i><b>4.14.1</b> Gráfico de dispersión con histogramas marginales.</a></li>
+<li class="chapter" data-level="4.14.2" data-path="graficos.html"><a href="graficos.html#graficos-de-proporciones-jerarquicas."><i class="fa fa-check"></i><b>4.14.2</b> Gráficos de proporciones jerárquicas.</a></li>
+<li class="chapter" data-level="4.14.3" data-path="graficos.html"><a href="graficos.html#im-feeling-lucky"><i class="fa fa-check"></i><b>4.14.3</b> I’m feeling lucky…</a></li>
+<li class="chapter" data-level="4.14.4" data-path="graficos.html"><a href="graficos.html#relaciones-multivariadas."><i class="fa fa-check"></i><b>4.14.4</b> Relaciones multivariadas.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html"><i class="fa fa-check"></i><b>5</b> Análisis de datos categóricos</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#introduccion-1"><i class="fa fa-check"></i><b>5.1</b> Introducción</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#datos-categoricos"><i class="fa fa-check"></i><b>5.1.1</b> Datos categóricos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas"><i class="fa fa-check"></i><b>5.2</b> Tablas</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-de-dos-dimensiones."><i class="fa fa-check"></i><b>5.2.1</b> Tablas de contingencia de dos dimensiones.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-en-r."><i class="fa fa-check"></i><b>5.2.2</b> Tablas de contingencia en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-hipotesis-de-independencia-estadistica-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.3</b> Prueba de hipótesis de independencia estadística para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#el-modelo-de-independencia."><i class="fa fa-check"></i><b>5.3.1</b> El modelo de independencia.</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-independencia-para-una-tabla-bidimensional."><i class="fa fa-check"></i><b>5.3.2</b> Prueba de independencia para una tabla bidimensional.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-de-los-residuos."><i class="fa fa-check"></i><b>5.4</b> Análisis de los residuos.</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-chi2-en-r."><i class="fa fa-check"></i><b>5.4.1</b> Prueba <span class="math inline">\(\chi\)</span><sup>2</sup> en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#metodos-graficos-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.5</b> Métodos gráficos para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-loglineales-para-datos-categoricos."><i class="fa fa-check"></i><b>5.5.1</b> Modelos loglineales para datos categóricos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-practico-de-datos-categoricos."><i class="fa fa-check"></i><b>5.6</b> Análisis práctico de datos categóricos.</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-base-de-datos.-1"><i class="fa fa-check"></i><b>5.6.1</b> La base de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#genero-y-partido-politico."><i class="fa fa-check"></i><b>5.7</b> Género y partido político.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lineales.html"><a href="lineales.html"><i class="fa fa-check"></i><b>6</b> Modelos lineales</a><ul>
+<li class="chapter" data-level="6.1" data-path="lineales.html"><a href="lineales.html#introduccion-2"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.2" data-path="lineales.html"><a href="lineales.html#ajuste-de-modelo-lineales-con-lm"><i class="fa fa-check"></i><b>6.2</b> Ajuste de modelo lineales con <code>lm()</code></a><ul>
+<li class="chapter" data-level="6.2.1" data-path="lineales.html"><a href="lineales.html#sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.1</b> Sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.2" data-path="lineales.html"><a href="lineales.html#interpretacion-basica-del-sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.2</b> Interpretación básica del sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.3" data-path="lineales.html"><a href="lineales.html#intervalos-de-confianza."><i class="fa fa-check"></i><b>6.2.3</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="6.2.4" data-path="lineales.html"><a href="lineales.html#valores-estimados-y-residuos."><i class="fa fa-check"></i><b>6.2.4</b> Valores estimados y residuos.</a></li>
+<li class="chapter" data-level="6.2.5" data-path="lineales.html"><a href="lineales.html#prediccion-del-modelo."><i class="fa fa-check"></i><b>6.2.5</b> Predicción del modelo.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-mas-de-una-variable-independiente."><i class="fa fa-check"></i><b>6.3</b> Modelos lineales con más de una variable independiente.</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="lineales.html"><a href="lineales.html#exploracion-de-datos-multivariados."><i class="fa fa-check"></i><b>6.3.1</b> Exploración de datos multivariados.</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lineales.html"><a href="lineales.html#especificacion-de-modelos-con-multiples-variables-independientes."><i class="fa fa-check"></i><b>6.3.2</b> Especificación de modelos con múltiples variables independientes.</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lineales.html"><a href="lineales.html#comparar-modelos-lineales-multiples."><i class="fa fa-check"></i><b>6.3.3</b> Comparar modelos lineales múltiples.</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.4</b> Imprimir un sumario de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-formateado-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.5</b> Imprimir un sumario formateado de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.6" data-path="lineales.html"><a href="lineales.html#anova-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.6</b> ANOVA de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.7" data-path="lineales.html"><a href="lineales.html#criterio-de-informacion-de-akaike."><i class="fa fa-check"></i><b>6.3.7</b> Criterio de información de Akaike.</a></li>
+<li class="chapter" data-level="6.3.8" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-variables-independientes-categoricas."><i class="fa fa-check"></i><b>6.3.8</b> Modelos lineales con variables independientes categóricas.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lineales.html"><a href="lineales.html#supuestos-de-un-modelo-lineal."><i class="fa fa-check"></i><b>6.4</b> Supuestos de un modelo lineal.</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="lineales.html"><a href="lineales.html#normalidad."><i class="fa fa-check"></i><b>6.4.1</b> Normalidad.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lineales.html"><a href="lineales.html#independencia."><i class="fa fa-check"></i><b>6.4.2</b> Independencia.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lineales.html"><a href="lineales.html#linealidad."><i class="fa fa-check"></i><b>6.4.3</b> Linealidad.</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lineales.html"><a href="lineales.html#homocedasticidad."><i class="fa fa-check"></i><b>6.4.4</b> Homocedasticidad.</a></li>
+<li class="chapter" data-level="6.4.5" data-path="lineales.html"><a href="lineales.html#casos-atipicos."><i class="fa fa-check"></i><b>6.4.5</b> Casos atípicos.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lineales.html"><a href="lineales.html#regresion-robusta."><i class="fa fa-check"></i><b>6.5</b> Regresión robusta.</a></li>
+<li class="chapter" data-level="6.6" data-path="lineales.html"><a href="lineales.html#supuestos-de-los-modelos-lineales-problemas-y-soluciones."><i class="fa fa-check"></i><b>6.6</b> Supuestos de los modelos lineales: problemas y soluciones.</a></li>
+<li class="chapter" data-level="6.7" data-path="lineales.html"><a href="lineales.html#funciones-adicionales-para-modelos-lineales."><i class="fa fa-check"></i><b>6.7</b> Funciones adicionales para modelos lineales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="generalizados.html"><a href="generalizados.html"><i class="fa fa-check"></i><b>7</b> Modelos lineales generalizados</a><ul>
+<li class="chapter" data-level="7.1" data-path="generalizados.html"><a href="generalizados.html#introduccion."><i class="fa fa-check"></i><b>7.1</b> Introducción.</a></li>
+<li class="chapter" data-level="7.2" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-con-glm"><i class="fa fa-check"></i><b>7.2</b> Ajuste de modelos logit con <code>glm()</code></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-los-datos."><i class="fa fa-check"></i><b>7.2.1</b> Presentación de los datos.</a></li>
+<li class="chapter" data-level="7.2.2" data-path="generalizados.html"><a href="generalizados.html#un-modelo-lineal-con-glm"><i class="fa fa-check"></i><b>7.2.2</b> Un modelo lineal con <code>glm()</code></a></li>
+<li class="chapter" data-level="7.2.3" data-path="generalizados.html"><a href="generalizados.html#la-ordenada-al-origen-de-un-modelo-logit."><i class="fa fa-check"></i><b>7.2.3</b> La ordenada al origen de un modelo logit.</a></li>
+<li class="chapter" data-level="7.2.4" data-path="generalizados.html"><a href="generalizados.html#estimacion-de-beta_1"><i class="fa fa-check"></i><b>7.2.4</b> Estimación de <span class="math inline">\(\beta_1\)</span></a></li>
+<li class="chapter" data-level="7.2.5" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-dos-variables-independientes."><i class="fa fa-check"></i><b>7.2.5</b> Modelo logit con dos variables independientes.</a></li>
+<li class="chapter" data-level="7.2.6" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-multiples-variables-dependientes."><i class="fa fa-check"></i><b>7.2.6</b> Modelo logit con múltiples variables dependientes.</a></li>
+<li class="chapter" data-level="7.2.7" data-path="generalizados.html"><a href="generalizados.html#pruebas-de-significancia."><i class="fa fa-check"></i><b>7.2.7</b> Pruebas de significancia.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-resultados."><i class="fa fa-check"></i><b>7.3</b> Presentación de resultados.</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="generalizados.html"><a href="generalizados.html#intervalos-de-confianza.-1"><i class="fa fa-check"></i><b>7.3.1</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="7.3.2" data-path="generalizados.html"><a href="generalizados.html#grafico-de-coeficientes."><i class="fa fa-check"></i><b>7.3.2</b> Gráfico de coeficientes.</a></li>
+<li class="chapter" data-level="7.3.3" data-path="generalizados.html"><a href="generalizados.html#tabla-y-grafico-de-efectos-totales-promedio."><i class="fa fa-check"></i><b>7.3.3</b> Tabla y gráfico de efectos totales promedio.</a></li>
+<li class="chapter" data-level="7.3.4" data-path="generalizados.html"><a href="generalizados.html#sumario-de-efectos-marginales."><i class="fa fa-check"></i><b>7.3.4</b> Sumario de efectos marginales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="generalizados.html"><a href="generalizados.html#modelos-ligit-multinomiales."><i class="fa fa-check"></i><b>7.4</b> Modelos ligit multinomiales.</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-multinomiales-com-multinom"><i class="fa fa-check"></i><b>7.4.1</b> Ajuste de modelos logit multinomiales com <code>multinom()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="generalizados.html"><a href="generalizados.html#anexo-i.-probabilidades-y-razones-de-probabilidad."><i class="fa fa-check"></i><b>7.5</b> Anexo I. Probabilidades y razones de probabilidad.</a></li>
+<li class="chapter" data-level="7.6" data-path="generalizados.html"><a href="generalizados.html#anexo-ii.-asterisco-sobre-los-asteriscos."><i class="fa fa-check"></i><b>7.6</b> Anexo II. Asterisco sobre los asteriscos.</a></li>
+<li class="chapter" data-level="7.7" data-path="generalizados.html"><a href="generalizados.html#anexo-iii.-tipos-de-variables-independiente-y-modelo-lineal-apropiado."><i class="fa fa-check"></i><b>7.7</b> Anexo III. Tipos de variables independiente y modelo lineal apropiado.</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="martinpaladino.github.com" target="blank">Martín Paladino</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R para Ciencias Sociales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">R para Ciencias Sociales</h1>
+<h4 class="author"><em>Martín Paladino</em></h4>
+<h4 class="date"><em>2018-08-10</em></h4>
+</div>
+<div id="preambulo" class="section level1 unnumbered">
+<h1>Preámbulo</h1>
+<div id="para-quien-es-este-libro" class="section level2">
+<h2><span class="header-section-number">0.1</span> ¿Para quién es este libro?</h2>
+<p>Este libro<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> presenta algunos elementos importantes de análisis cuantitativo con aplicación en ciencias sociales. Quizás sea más simple empezar diciendo que <em>no</em> es este libro.</p>
+<ul>
+<li>Un libro exhaustivo de metodología de la ciencias sociales.</li>
+<li>Un libro de estadística aplicada a las ciencias sociales.</li>
+<li>Un libro de programación en R.</li>
+</ul>
+<p>Aunque se tocan algunas cuestiones relativas a los procesos de inferencia en las ciencias sociales –en pocas palabras, como sociólogos, politólogos y otros científicos sociales interpretamos los resultados del análisis cuantitativo para extraer conclusiones sobre los temas de investigación- el tratamiento no es sistemático. No hay referencias a problemas tan importantes como el diseño de investigación.</p>
+<p>Aunque en algunos casos se presentan los fundamentos estadísticos que subyacen a las operaciones de análisis llevadas a cabo, una vez más el abordaje no es sistemático si ad-hoc. En términos concretos, se utiliza mucho más R que la notación matemática como vehículo.</p>
+<p>Aunque habrá mucho de programación este libro no está orientado a programadores que quieran extender sus conocimientos a R o a usuarios de R interesados en programación –por ejemplo, el desarrollo de paquetería o de nuevas fucniones. El enfoque es, más bien, utilizar de maneras creativas funciones ya existentes para lograr los resultados esperados. Se aboradarán algunos temas relativos a programación a los efectos de presentar buenas prácticas de análisis de datos.</p>
+<p>Este libro está pensado para científicos sociales que quieren utilizar R como plataforma para el análisis de datos y la generación de productos académicos o de consultoría. Asume que el lector tiene algunos conocimientos de estadística y reposa en la formación previa del lector o lectora para las desiciones de diseño metodológico, inferencia y validación sustantiva de los resultados. En pocas palabras, se dirá mucho acerca del <em>como</em> del análisis de datos y bastante menos sobre el <em>que</em>.</p>
+</div>
+<div id="el-tidyverse" class="section level2">
+<h2><span class="header-section-number">0.2</span> El <code>tidyverse</code></h2>
+<blockquote>
+<p>Mi vieja mula ya no es lo que era.</p>
+</blockquote>
+<p>El manejo de datos es una parte sustancial del análisis cuantitativo. Exceptuando algunos ejemplos incluídos en libros los datos no suelen tener la estructura necesaria para analizarlos. Esto no tiene nada de llamativo, “estructura necesaria” es un concepto totalmente relativo a nuestras necesidades en un momento dado. Una misma base de datos puede requerir diferentes estructuras –formas- dependiendo del análisis que querramos practicar.</p>
+<p>Para este importantísimo tema hemos tomado la decisión de dejar al margen las funciones base de R para manipulación formateado de datos y utilizar siempre librerías especializadas en manipulación. Las librerías que utilizaremos están reunidas en la metalibrería <code>tidyverse</code>. Tomar una decisión implica asumir un riesgo. Aquí asumimos dos: los lectores que tengan a este libro como única referencia quizás tengan dificultades para leer y reutilizar el código escrito en otro estilo y en aquellos casos en los que no es posible hacer determinada operación dentro del paradigma <code>tidyverse</code> se verán en dificultades. Estos riesgos están mitigados por dos contrapesos: siempre es difícil leer código escrito por otras personas, ya que cada cuál tiene su estilo y convenciones y el número de operaciones que no es posible llevar a cabo desde el <code>tidyverse</code> es cada vez más restringido.</p>
+<p>Las ventajas son muchas. <code>tidyverse</code> no solo es un conjunto de librerías para R, es un paradigma de trabajo, una forma de hacer las cosas. La principal ventaja es la consistencia y esta se registra en dos niveles. La estructura básica de datos es consistente y siempre es la misma, el data.frame. En nuestras operaciones comenzamos con un data.frame y terminamos con otro. Aún más importante, hay convenciones claras en el uso de las funciones<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>: los datos van primero, las expresiones no necesitan comillas y siempre podemos encadenarlas con tuberías.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Lo será.<a href="index.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Claro que los usuarios de años de R en su forma clásica disentirán: la evaluación no estándar es poco convencional y no muy consistente con el resto de R. Pero desde el punto de vista del usuario no tener que alternar entre cadenas de caracteres encomilladas y no encomilladas, número de índice o nombre de variables, <code>$</code>, <code>[[]]</code> y <code>[]</code> es una gran ventaja.]<a href="index.html#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="introduccion.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["libRo.pdf", "libRo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

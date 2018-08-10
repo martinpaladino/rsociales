@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R para Ciencias Sociales</title>
+  <meta name="description" content="Análisis de datos con R, con aplicación a las ciencias sociales">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R para Ciencias Sociales" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R para Ciencias Sociales" />
+  
+  <meta name="twitter:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+<meta name="author" content="Martín Paladino">
+
+
+<meta name="date" content="2018-08-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="introduccion.html">
+<link rel="next" href="investigacion-reproducible-.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.0/DiagrammeR.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R para ciencias sociales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preámbulo</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#para-quien-es-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Para quién es este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#el-tidyverse"><i class="fa fa-check"></i><b>0.2</b> El <code>tidyverse</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introducción</a><ul>
+<li class="chapter" data-level="0.3" data-path="introduccion.html"><a href="introduccion.html#que-es-r"><i class="fa fa-check"></i><b>0.3</b> ¿Qué es R?</a><ul>
+<li class="chapter" data-level="0.3.1" data-path="introduccion.html"><a href="introduccion.html#el-lenguaje-de-programacion-r"><i class="fa fa-check"></i><b>0.3.1</b> El <em>lenguaje de programación R</em></a></li>
+<li class="chapter" data-level="0.3.2" data-path="introduccion.html"><a href="introduccion.html#el-interprete"><i class="fa fa-check"></i><b>0.3.2</b> El <em>intérprete</em></a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="introduccion.html"><a href="introduccion.html#instalacion-de-r-y-rstudio-en-windows."><i class="fa fa-check"></i><b>0.4</b> Instalación de R y Rstudio en Windows.</a></li>
+<li class="chapter" data-level="0.5" data-path="introduccion.html"><a href="introduccion.html#interface-de-rstudio."><i class="fa fa-check"></i><b>0.5</b> Interface de Rstudio.</a><ul>
+<li class="chapter" data-level="0.5.1" data-path="introduccion.html"><a href="introduccion.html#consola."><i class="fa fa-check"></i><b>0.5.1</b> Consola.</a></li>
+<li class="chapter" data-level="0.5.2" data-path="introduccion.html"><a href="introduccion.html#editor-de-archivos."><i class="fa fa-check"></i><b>0.5.2</b> Editor de Archivos.</a></li>
+<li class="chapter" data-level="0.5.3" data-path="introduccion.html"><a href="introduccion.html#entorno-de-trabajo."><i class="fa fa-check"></i><b>0.5.3</b> Entorno de trabajo.</a></li>
+<li class="chapter" data-level="0.5.4" data-path="introduccion.html"><a href="introduccion.html#graficos."><i class="fa fa-check"></i><b>0.5.4</b> Gráficos.</a></li>
+<li class="chapter" data-level="0.5.5" data-path="introduccion.html"><a href="introduccion.html#ayuda."><i class="fa fa-check"></i><b>0.5.5</b> Ayuda.</a></li>
+<li class="chapter" data-level="0.5.6" data-path="introduccion.html"><a href="introduccion.html#paquetes-de-extension."><i class="fa fa-check"></i><b>0.5.6</b> Paquetes de extensión.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="introduccion.html"><a href="introduccion.html#tipos-y-estructuras-de-datos"><i class="fa fa-check"></i><b>0.6</b> Tipos y estructuras de datos</a><ul>
+<li class="chapter" data-level="0.6.1" data-path="introduccion.html"><a href="introduccion.html#tipos-de-datos"><i class="fa fa-check"></i><b>0.6.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="0.6.2" data-path="introduccion.html"><a href="introduccion.html#estructuras-de-datos."><i class="fa fa-check"></i><b>0.6.2</b> Estructuras de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.7" data-path="introduccion.html"><a href="introduccion.html#orientacion-a-objetos."><i class="fa fa-check"></i><b>0.7</b> Orientación a objetos.</a></li>
+<li class="chapter" data-level="0.8" data-path="introduccion.html"><a href="introduccion.html#programacion-funcional."><i class="fa fa-check"></i><b>0.8</b> Programación funcional.</a></li>
+<li class="chapter" data-level="0.9" data-path="introduccion.html"><a href="introduccion.html#vocabulario."><i class="fa fa-check"></i><b>0.9</b> Vocabulario.</a></li>
+<li class="chapter" data-level="0.10" data-path="introduccion.html"><a href="introduccion.html#funciones-y-librerias-de-funciones."><i class="fa fa-check"></i><b>0.10</b> Funciones y librerías de funciones.</a></li>
+<li class="chapter" data-level="0.11" data-path="introduccion.html"><a href="introduccion.html#convenciones-de-estilo-de-este-documento."><i class="fa fa-check"></i><b>0.11</b> Convenciones de estilo de este documento.</a></li>
+<li class="chapter" data-level="0.12" data-path="introduccion.html"><a href="introduccion.html#bloques-de-codigo-y-comentarios."><i class="fa fa-check"></i><b>0.12</b> Bloques de código y comentarios.</a></li>
+<li class="chapter" data-level="0.13" data-path="introduccion.html"><a href="introduccion.html#uso-de-mayusculas."><i class="fa fa-check"></i><b>0.13</b> Uso de mayúsculas.</a></li>
+<li class="chapter" data-level="0.14" data-path="introduccion.html"><a href="introduccion.html#sobre-el-estilo-de-programacion-en-r."><i class="fa fa-check"></i><b>0.14</b> Sobre el estilo de programación en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="primeros.html"><a href="primeros.html"><i class="fa fa-check"></i><b>1</b> Primeros pasos en R</a><ul>
+<li class="chapter" data-level="1.1" data-path="primeros.html"><a href="primeros.html#crear-un-proyecto."><i class="fa fa-check"></i><b>1.1</b> Crear un proyecto.</a></li>
+<li class="chapter" data-level="1.2" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-operadores-y-operandos."><i class="fa fa-check"></i><b>1.2</b> Sintaxis de R: operadores y operandos.</a></li>
+<li class="chapter" data-level="1.3" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-funciones-y-argumentos."><i class="fa fa-check"></i><b>1.3</b> Sintaxis de R: funciones y argumentos.</a></li>
+<li class="chapter" data-level="1.4" data-path="primeros.html"><a href="primeros.html#vectores-y-atributos-de-los-vectores."><i class="fa fa-check"></i><b>1.4</b> Vectores y atributos de los vectores.</a></li>
+<li class="chapter" data-level="1.5" data-path="primeros.html"><a href="primeros.html#manipulacion-de-datos."><i class="fa fa-check"></i><b>1.5</b> Manipulación de datos.</a></li>
+<li class="chapter" data-level="1.6" data-path="primeros.html"><a href="primeros.html#funcion-para-calcular-una-mediana-con-funciones-primitivas-de-r."><i class="fa fa-check"></i><b>1.6</b> Función para calcular una mediana con funciones primitivas de R.</a></li>
+<li class="chapter" data-level="1.7" data-path="primeros.html"><a href="primeros.html#manipulacion-de-estructuras-de-datos."><i class="fa fa-check"></i><b>1.7</b> Manipulación de estructuras de datos.</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="primeros.html"><a href="primeros.html#magia"><i class="fa fa-check"></i><b>1.7.1</b> Magia</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="primeros.html"><a href="primeros.html#sobre-los-archivos-de-sintaxis."><i class="fa fa-check"></i><b>1.8</b> Sobre los archivos de sintaxis.</a></li>
+<li class="chapter" data-level="1.9" data-path="primeros.html"><a href="primeros.html#anexo"><i class="fa fa-check"></i><b>1.9</b> Anexo</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="primeros.html"><a href="primeros.html#operadores-binarios-de-r"><i class="fa fa-check"></i><b>1.9.1</b> Operadores binarios de R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html"><i class="fa fa-check"></i><b>2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#introduccion-alcances-del-problema."><i class="fa fa-check"></i><b>2.1</b> Introducción: alcances del problema.</a></li>
+<li class="chapter" data-level="2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#investigacion-reproducible.-1"><i class="fa fa-check"></i><b>2.2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#ventajas-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.1</b> Ventajas de la investigación reproducible.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#desafios-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.2</b> Desafíos de la investigación reproducible.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#filosofia-programacion-funcional-con-inmutabilidad-de-datos-transparencia-referencial-y-funciones-puras."><i class="fa fa-check"></i><b>2.3</b> Filosofía: programación funcional con inmutabilidad de datos, transparencia referencial y funciones puras.</a></li>
+<li class="chapter" data-level="2.4" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#hagamos-pizza-en-r."><i class="fa fa-check"></i><b>2.4</b> Hagamos pizza en R.</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-el-asignador.-pizzas-de-hoy-y-de-ayer."><i class="fa fa-check"></i><b>2.4.1</b> Pizzería “El asignador”. Pizzas de hoy y de ayer.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-la-funcional-clasica.-el-cambio-se-lo-da-en-parentesis."><i class="fa fa-check"></i><b>2.4.2</b> Pizzería La funcional clásica. El cambio se lo da en paréntesis.</a></li>
+<li class="chapter" data-level="2.4.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-magrittr-la-mas-del-rumbo"><i class="fa fa-check"></i><b>2.4.3</b> Pizzería magrittr ¡La más %&gt;% del rumbo!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="manejo.html"><a href="manejo.html"><i class="fa fa-check"></i><b>3</b> Manejo da datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="manejo.html"><a href="manejo.html#el-objeto-de-este-documento."><i class="fa fa-check"></i><b>3.1</b> El objeto de este documento.</a></li>
+<li class="chapter" data-level="3.2" data-path="manejo.html"><a href="manejo.html#manipulacion-de-datos-con-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Manipulación de datos con <code>tidyverse::</code></a></li>
+<li class="chapter" data-level="3.3" data-path="manejo.html"><a href="manejo.html#la-forma-de-los-datos."><i class="fa fa-check"></i><b>3.3</b> La forma de los datos.</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="manejo.html"><a href="manejo.html#sumarios-de-datos-o-base-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> ¿Sumarios de datos o base de datos?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="manejo.html"><a href="manejo.html#datos-rectangulares."><i class="fa fa-check"></i><b>3.4</b> Datos rectangulares.</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="manejo.html"><a href="manejo.html#datos-prolijos-tidy-data"><i class="fa fa-check"></i><b>3.4.1</b> Datos prolijos (tidy data)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="manejo.html"><a href="manejo.html#reformateo-de-datos."><i class="fa fa-check"></i><b>3.4.2</b> Reformateo de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="manejo.html"><a href="manejo.html#manejo-de-datos-con-dplyr"><i class="fa fa-check"></i><b>3.5</b> Manejo de datos con <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="manejo.html"><a href="manejo.html#verbos-basicos-de-dplyr"><i class="fa fa-check"></i><b>3.5.1</b> Verbos básicos de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.5.2" data-path="manejo.html"><a href="manejo.html#uso-de-la-de-sintaxis-de-dplyr"><i class="fa fa-check"></i><b>3.5.2</b> Uso de la de sintaxis de <code>dplyr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="manejo.html"><a href="manejo.html#uso-avanzado-de-dplyr"><i class="fa fa-check"></i><b>3.6</b> Uso avanzado de <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.6.1" data-path="manejo.html"><a href="manejo.html#alternar-entre-formato-largo-y-ancho."><i class="fa fa-check"></i><b>3.6.1</b> Alternar entre formato largo y ancho.</a></li>
+<li class="chapter" data-level="3.6.2" data-path="manejo.html"><a href="manejo.html#seleccionar-las-columnas-que-cumplen-determinada-condicion."><i class="fa fa-check"></i><b>3.6.2</b> Seleccionar las columnas que cumplen determinada condición.</a></li>
+<li class="chapter" data-level="3.6.3" data-path="manejo.html"><a href="manejo.html#filtrar-por-mas-de-una-condicion-o-dentro-de-un-conjunto."><i class="fa fa-check"></i><b>3.6.3</b> Filtrar por más de una condición o dentro de un conjunto.</a></li>
+<li class="chapter" data-level="3.6.4" data-path="manejo.html"><a href="manejo.html#transformacion-avanzada-de-datos."><i class="fa fa-check"></i><b>3.6.4</b> Transformacion avanzada de datos.</a></li>
+<li class="chapter" data-level="3.6.5" data-path="manejo.html"><a href="manejo.html#sumarios-avanzados."><i class="fa fa-check"></i><b>3.6.5</b> Sumarios avanzados.</a></li>
+<li class="chapter" data-level="3.6.6" data-path="manejo.html"><a href="manejo.html#funciones-avanzadas-de-combinacion-de-bases-de-datos."><i class="fa fa-check"></i><b>3.6.6</b> Funciones avanzadas de combinación de bases de datos.</a></li>
+<li class="chapter" data-level="3.6.7" data-path="manejo.html"><a href="manejo.html#operadores-avanzados-de-magrittr"><i class="fa fa-check"></i><b>3.6.7</b> Operadores avanzados de <code>magrittr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="manejo.html"><a href="manejo.html#limites-de-dplyr"><i class="fa fa-check"></i><b>3.7</b> Límites de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.8" data-path="manejo.html"><a href="manejo.html#manipulacion-con-dplyren-la-practica.-flujo-de-trabajo."><i class="fa fa-check"></i><b>3.8</b> Manipulación con <code>dplyr::</code>en la práctica. Flujo de trabajo.</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="manejo.html"><a href="manejo.html#implementacion-en-dplyr-de-un-analisis-exploratorio-de-la-base-de-datos-indice-de-marginacion-del-conapo."><i class="fa fa-check"></i><b>3.8.1</b> Implementación en dplyr:: de un análisis exploratorio de la base de datos Índice de marginación del CONAPO.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graficos.html"><a href="graficos.html"><i class="fa fa-check"></i><b>4</b> Gráficos con R y ggplot</a><ul>
+<li class="chapter" data-level="4.1" data-path="graficos.html"><a href="graficos.html#acerca-de-este-documento."><i class="fa fa-check"></i><b>4.1</b> Acerca de este documento.</a></li>
+<li class="chapter" data-level="4.2" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos."><i class="fa fa-check"></i><b>4.2</b> La gramática de los gráficos.</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="graficos.html"><a href="graficos.html#filosofia."><i class="fa fa-check"></i><b>4.2.1</b> Filosofía.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos-aplicada-en-ggplot."><i class="fa fa-check"></i><b>4.3</b> La gramática de los gráficos aplicada en <code>ggplot()</code>.</a></li>
+<li class="chapter" data-level="4.4" data-path="graficos.html"><a href="graficos.html#la-base-de-datos."><i class="fa fa-check"></i><b>4.4</b> La base de datos.</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="graficos.html"><a href="graficos.html#indice-de-marginacion-por-municipios-1990-2015."><i class="fa fa-check"></i><b>4.4.1</b> Índice de marginación por municipios 1990-2015.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="graficos.html"><a href="graficos.html#descripcion-rapida-de-la-base-de-datos."><i class="fa fa-check"></i><b>4.5</b> Descripción rápida de la base de datos.</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="graficos.html"><a href="graficos.html#nombres-cortos-y-largos."><i class="fa fa-check"></i><b>4.5.1</b> Nombres cortos y largos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="graficos.html"><a href="graficos.html#grafico-basico."><i class="fa fa-check"></i><b>4.6</b> Gráfico básico.</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="graficos.html"><a href="graficos.html#construccion-de-un-grafico-de-barras-paso-a-paso."><i class="fa fa-check"></i><b>4.6.1</b> Construcción de un gráfico de barras paso a paso.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="graficos.html"><a href="graficos.html#personalizacion-de-grafico."><i class="fa fa-check"></i><b>4.7</b> Personalización de gráfico.</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="graficos.html"><a href="graficos.html#orden-manual-de-las-categorias."><i class="fa fa-check"></i><b>4.7.1</b> Orden manual de las categorías.</a></li>
+<li class="chapter" data-level="4.7.2" data-path="graficos.html"><a href="graficos.html#orden-automatico-de-categorias."><i class="fa fa-check"></i><b>4.7.2</b> Orden automático de categorías.</a></li>
+<li class="chapter" data-level="4.7.3" data-path="graficos.html"><a href="graficos.html#titulo-subtitulo-titulos-de-ejes-vineta"><i class="fa fa-check"></i><b>4.7.3</b> Título, subtítulo, títulos de ejes, viñeta</a></li>
+<li class="chapter" data-level="4.7.4" data-path="graficos.html"><a href="graficos.html#estilos-visuales."><i class="fa fa-check"></i><b>4.7.4</b> Estilos visuales.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="graficos.html"><a href="graficos.html#graficos-intermedios-mas-de-una-serie-de-datos"><i class="fa fa-check"></i><b>4.8</b> Gráficos intermedios (más de una serie de datos)</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="graficos.html"><a href="graficos.html#datos-formato-de-datos-largo-y-ancho."><i class="fa fa-check"></i><b>4.8.1</b> Datos Formato de datos largo y ancho.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="graficos.html"><a href="graficos.html#grafico-de-barras-lado-a-lado."><i class="fa fa-check"></i><b>4.8.2</b> Gráfico de barras lado a lado.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="graficos.html"><a href="graficos.html#graficos-multipanel."><i class="fa fa-check"></i><b>4.8.3</b> Gráficos multipanel.</a></li>
+<li class="chapter" data-level="4.8.4" data-path="graficos.html"><a href="graficos.html#grafico-de-punto."><i class="fa fa-check"></i><b>4.8.4</b> Gráfico de punto.</a></li>
+<li class="chapter" data-level="4.8.5" data-path="graficos.html"><a href="graficos.html#grafico-de-punto-y-linea."><i class="fa fa-check"></i><b>4.8.5</b> Gráfico de punto y línea.</a></li>
+<li class="chapter" data-level="4.8.6" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion."><i class="fa fa-check"></i><b>4.8.6</b> Gráfico de dispersión.</a></li>
+<li class="chapter" data-level="4.8.7" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-en-paneles."><i class="fa fa-check"></i><b>4.8.7</b> Gráfico de dispersión en paneles.</a></li>
+<li class="chapter" data-level="4.8.8" data-path="graficos.html"><a href="graficos.html#grafico-de-caja."><i class="fa fa-check"></i><b>4.8.8</b> Gráfico de caja.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="graficos.html"><a href="graficos.html#personalizacion-avanzada-de-graficos."><i class="fa fa-check"></i><b>4.9</b> Personalización avanzada de gráficos.</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="graficos.html"><a href="graficos.html#etiquetas-y-elementos-de-texto."><i class="fa fa-check"></i><b>4.9.1</b> Etiquetas y elementos de texto.</a></li>
+<li class="chapter" data-level="4.9.2" data-path="graficos.html"><a href="graficos.html#ajuste-del-elemento-texto."><i class="fa fa-check"></i><b>4.9.2</b> Ajuste del elemento texto.</a></li>
+<li class="chapter" data-level="4.9.3" data-path="graficos.html"><a href="graficos.html#posicion-de-las-leyendas."><i class="fa fa-check"></i><b>4.9.3</b> Posición de las leyendas.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="graficos.html"><a href="graficos.html#escalas."><i class="fa fa-check"></i><b>4.10</b> Escalas.</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="graficos.html"><a href="graficos.html#escalas-y-sistemas-de-coordenadas"><i class="fa fa-check"></i><b>4.10.1</b> Escalas y sistemas de coordenadas</a></li>
+<li class="chapter" data-level="4.10.2" data-path="graficos.html"><a href="graficos.html#ajuste-manual-de-intervalos-de-escala."><i class="fa fa-check"></i><b>4.10.2</b> Ajuste manual de intervalos de escala.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="graficos.html"><a href="graficos.html#transformacion-de-escalas"><i class="fa fa-check"></i><b>4.10.3</b> Transformación de escalas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="graficos.html"><a href="graficos.html#sistemas-de-coordenadas."><i class="fa fa-check"></i><b>4.11</b> Sistemas de coordenadas.</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="graficos.html"><a href="graficos.html#coordenadas-polares."><i class="fa fa-check"></i><b>4.11.1</b> Coordenadas polares.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="graficos.html"><a href="graficos.html#fortificar-nuestros-graficos-con-datos-de-un-modelo"><i class="fa fa-check"></i><b>4.12</b> Fortificar nuestros gráficos con datos de un modelo</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="graficos.html"><a href="graficos.html#rectas-de-ajuste"><i class="fa fa-check"></i><b>4.12.1</b> Rectas de ajuste</a></li>
+<li class="chapter" data-level="4.12.2" data-path="graficos.html"><a href="graficos.html#intervalos-de-confianza-y-barras-de-error."><i class="fa fa-check"></i><b>4.12.2</b> Intervalos de confianza y barras de error.</a></li>
+<li class="chapter" data-level="4.12.3" data-path="graficos.html"><a href="graficos.html#etiquetado-de-casos."><i class="fa fa-check"></i><b>4.12.3</b> Etiquetado de casos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="graficos.html"><a href="graficos.html#extensiones-a-ggplot2"><i class="fa fa-check"></i><b>4.13</b> Extensiones a <code>ggplot2::</code></a></li>
+<li class="chapter" data-level="4.14" data-path="graficos.html"><a href="graficos.html#etiquetas"><i class="fa fa-check"></i><b>4.14</b> Etiquetas</a><ul>
+<li class="chapter" data-level="4.14.1" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-con-histogramas-marginales."><i class="fa fa-check"></i><b>4.14.1</b> Gráfico de dispersión con histogramas marginales.</a></li>
+<li class="chapter" data-level="4.14.2" data-path="graficos.html"><a href="graficos.html#graficos-de-proporciones-jerarquicas."><i class="fa fa-check"></i><b>4.14.2</b> Gráficos de proporciones jerárquicas.</a></li>
+<li class="chapter" data-level="4.14.3" data-path="graficos.html"><a href="graficos.html#im-feeling-lucky"><i class="fa fa-check"></i><b>4.14.3</b> I’m feeling lucky…</a></li>
+<li class="chapter" data-level="4.14.4" data-path="graficos.html"><a href="graficos.html#relaciones-multivariadas."><i class="fa fa-check"></i><b>4.14.4</b> Relaciones multivariadas.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html"><i class="fa fa-check"></i><b>5</b> Análisis de datos categóricos</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#introduccion-1"><i class="fa fa-check"></i><b>5.1</b> Introducción</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#datos-categoricos"><i class="fa fa-check"></i><b>5.1.1</b> Datos categóricos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas"><i class="fa fa-check"></i><b>5.2</b> Tablas</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-de-dos-dimensiones."><i class="fa fa-check"></i><b>5.2.1</b> Tablas de contingencia de dos dimensiones.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-en-r."><i class="fa fa-check"></i><b>5.2.2</b> Tablas de contingencia en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-hipotesis-de-independencia-estadistica-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.3</b> Prueba de hipótesis de independencia estadística para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#el-modelo-de-independencia."><i class="fa fa-check"></i><b>5.3.1</b> El modelo de independencia.</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-independencia-para-una-tabla-bidimensional."><i class="fa fa-check"></i><b>5.3.2</b> Prueba de independencia para una tabla bidimensional.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-de-los-residuos."><i class="fa fa-check"></i><b>5.4</b> Análisis de los residuos.</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-chi2-en-r."><i class="fa fa-check"></i><b>5.4.1</b> Prueba <span class="math inline">\(\chi\)</span><sup>2</sup> en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#metodos-graficos-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.5</b> Métodos gráficos para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-loglineales-para-datos-categoricos."><i class="fa fa-check"></i><b>5.5.1</b> Modelos loglineales para datos categóricos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-practico-de-datos-categoricos."><i class="fa fa-check"></i><b>5.6</b> Análisis práctico de datos categóricos.</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-base-de-datos.-1"><i class="fa fa-check"></i><b>5.6.1</b> La base de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#genero-y-partido-politico."><i class="fa fa-check"></i><b>5.7</b> Género y partido político.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lineales.html"><a href="lineales.html"><i class="fa fa-check"></i><b>6</b> Modelos lineales</a><ul>
+<li class="chapter" data-level="6.1" data-path="lineales.html"><a href="lineales.html#introduccion-2"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.2" data-path="lineales.html"><a href="lineales.html#ajuste-de-modelo-lineales-con-lm"><i class="fa fa-check"></i><b>6.2</b> Ajuste de modelo lineales con <code>lm()</code></a><ul>
+<li class="chapter" data-level="6.2.1" data-path="lineales.html"><a href="lineales.html#sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.1</b> Sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.2" data-path="lineales.html"><a href="lineales.html#interpretacion-basica-del-sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.2</b> Interpretación básica del sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.3" data-path="lineales.html"><a href="lineales.html#intervalos-de-confianza."><i class="fa fa-check"></i><b>6.2.3</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="6.2.4" data-path="lineales.html"><a href="lineales.html#valores-estimados-y-residuos."><i class="fa fa-check"></i><b>6.2.4</b> Valores estimados y residuos.</a></li>
+<li class="chapter" data-level="6.2.5" data-path="lineales.html"><a href="lineales.html#prediccion-del-modelo."><i class="fa fa-check"></i><b>6.2.5</b> Predicción del modelo.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-mas-de-una-variable-independiente."><i class="fa fa-check"></i><b>6.3</b> Modelos lineales con más de una variable independiente.</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="lineales.html"><a href="lineales.html#exploracion-de-datos-multivariados."><i class="fa fa-check"></i><b>6.3.1</b> Exploración de datos multivariados.</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lineales.html"><a href="lineales.html#especificacion-de-modelos-con-multiples-variables-independientes."><i class="fa fa-check"></i><b>6.3.2</b> Especificación de modelos con múltiples variables independientes.</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lineales.html"><a href="lineales.html#comparar-modelos-lineales-multiples."><i class="fa fa-check"></i><b>6.3.3</b> Comparar modelos lineales múltiples.</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.4</b> Imprimir un sumario de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-formateado-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.5</b> Imprimir un sumario formateado de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.6" data-path="lineales.html"><a href="lineales.html#anova-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.6</b> ANOVA de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.7" data-path="lineales.html"><a href="lineales.html#criterio-de-informacion-de-akaike."><i class="fa fa-check"></i><b>6.3.7</b> Criterio de información de Akaike.</a></li>
+<li class="chapter" data-level="6.3.8" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-variables-independientes-categoricas."><i class="fa fa-check"></i><b>6.3.8</b> Modelos lineales con variables independientes categóricas.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lineales.html"><a href="lineales.html#supuestos-de-un-modelo-lineal."><i class="fa fa-check"></i><b>6.4</b> Supuestos de un modelo lineal.</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="lineales.html"><a href="lineales.html#normalidad."><i class="fa fa-check"></i><b>6.4.1</b> Normalidad.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lineales.html"><a href="lineales.html#independencia."><i class="fa fa-check"></i><b>6.4.2</b> Independencia.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lineales.html"><a href="lineales.html#linealidad."><i class="fa fa-check"></i><b>6.4.3</b> Linealidad.</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lineales.html"><a href="lineales.html#homocedasticidad."><i class="fa fa-check"></i><b>6.4.4</b> Homocedasticidad.</a></li>
+<li class="chapter" data-level="6.4.5" data-path="lineales.html"><a href="lineales.html#casos-atipicos."><i class="fa fa-check"></i><b>6.4.5</b> Casos atípicos.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lineales.html"><a href="lineales.html#regresion-robusta."><i class="fa fa-check"></i><b>6.5</b> Regresión robusta.</a></li>
+<li class="chapter" data-level="6.6" data-path="lineales.html"><a href="lineales.html#supuestos-de-los-modelos-lineales-problemas-y-soluciones."><i class="fa fa-check"></i><b>6.6</b> Supuestos de los modelos lineales: problemas y soluciones.</a></li>
+<li class="chapter" data-level="6.7" data-path="lineales.html"><a href="lineales.html#funciones-adicionales-para-modelos-lineales."><i class="fa fa-check"></i><b>6.7</b> Funciones adicionales para modelos lineales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="generalizados.html"><a href="generalizados.html"><i class="fa fa-check"></i><b>7</b> Modelos lineales generalizados</a><ul>
+<li class="chapter" data-level="7.1" data-path="generalizados.html"><a href="generalizados.html#introduccion."><i class="fa fa-check"></i><b>7.1</b> Introducción.</a></li>
+<li class="chapter" data-level="7.2" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-con-glm"><i class="fa fa-check"></i><b>7.2</b> Ajuste de modelos logit con <code>glm()</code></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-los-datos."><i class="fa fa-check"></i><b>7.2.1</b> Presentación de los datos.</a></li>
+<li class="chapter" data-level="7.2.2" data-path="generalizados.html"><a href="generalizados.html#un-modelo-lineal-con-glm"><i class="fa fa-check"></i><b>7.2.2</b> Un modelo lineal con <code>glm()</code></a></li>
+<li class="chapter" data-level="7.2.3" data-path="generalizados.html"><a href="generalizados.html#la-ordenada-al-origen-de-un-modelo-logit."><i class="fa fa-check"></i><b>7.2.3</b> La ordenada al origen de un modelo logit.</a></li>
+<li class="chapter" data-level="7.2.4" data-path="generalizados.html"><a href="generalizados.html#estimacion-de-beta_1"><i class="fa fa-check"></i><b>7.2.4</b> Estimación de <span class="math inline">\(\beta_1\)</span></a></li>
+<li class="chapter" data-level="7.2.5" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-dos-variables-independientes."><i class="fa fa-check"></i><b>7.2.5</b> Modelo logit con dos variables independientes.</a></li>
+<li class="chapter" data-level="7.2.6" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-multiples-variables-dependientes."><i class="fa fa-check"></i><b>7.2.6</b> Modelo logit con múltiples variables dependientes.</a></li>
+<li class="chapter" data-level="7.2.7" data-path="generalizados.html"><a href="generalizados.html#pruebas-de-significancia."><i class="fa fa-check"></i><b>7.2.7</b> Pruebas de significancia.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-resultados."><i class="fa fa-check"></i><b>7.3</b> Presentación de resultados.</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="generalizados.html"><a href="generalizados.html#intervalos-de-confianza.-1"><i class="fa fa-check"></i><b>7.3.1</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="7.3.2" data-path="generalizados.html"><a href="generalizados.html#grafico-de-coeficientes."><i class="fa fa-check"></i><b>7.3.2</b> Gráfico de coeficientes.</a></li>
+<li class="chapter" data-level="7.3.3" data-path="generalizados.html"><a href="generalizados.html#tabla-y-grafico-de-efectos-totales-promedio."><i class="fa fa-check"></i><b>7.3.3</b> Tabla y gráfico de efectos totales promedio.</a></li>
+<li class="chapter" data-level="7.3.4" data-path="generalizados.html"><a href="generalizados.html#sumario-de-efectos-marginales."><i class="fa fa-check"></i><b>7.3.4</b> Sumario de efectos marginales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="generalizados.html"><a href="generalizados.html#modelos-ligit-multinomiales."><i class="fa fa-check"></i><b>7.4</b> Modelos ligit multinomiales.</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-multinomiales-com-multinom"><i class="fa fa-check"></i><b>7.4.1</b> Ajuste de modelos logit multinomiales com <code>multinom()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="generalizados.html"><a href="generalizados.html#anexo-i.-probabilidades-y-razones-de-probabilidad."><i class="fa fa-check"></i><b>7.5</b> Anexo I. Probabilidades y razones de probabilidad.</a></li>
+<li class="chapter" data-level="7.6" data-path="generalizados.html"><a href="generalizados.html#anexo-ii.-asterisco-sobre-los-asteriscos."><i class="fa fa-check"></i><b>7.6</b> Anexo II. Asterisco sobre los asteriscos.</a></li>
+<li class="chapter" data-level="7.7" data-path="generalizados.html"><a href="generalizados.html#anexo-iii.-tipos-de-variables-independiente-y-modelo-lineal-apropiado."><i class="fa fa-check"></i><b>7.7</b> Anexo III. Tipos de variables independiente y modelo lineal apropiado.</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="martinpaladino.github.com" target="blank">Martín Paladino</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R para Ciencias Sociales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="primeros" class="section level1">
+<h1><span class="header-section-number">Capítulo 1</span> Primeros pasos en R</h1>
+<p>Con R y Rstudio instalados estamos podemos empezar a interactuar con R, es decir, a pasar instrucciones escritas con R al intérprete de R.</p>
+<div id="crear-un-proyecto." class="section level2">
+<h2><span class="header-section-number">1.1</span> Crear un proyecto.</h2>
+<p>Los proyectos son una manera de organizar el trabajo: reúnen todos los archivos que necesitamos y, como si fuera poco, permiten grabar una imagen de nuestra sesión en el disco rígido. De ese modo podemos cerrar el programa y guardar el entorno de trabajo completo, regresando más tarde al punto exacto en el que los habíamos dejado. En el entorno de trabajo de R se ubican los datos y los resultados de nuestros análisis. Para convertir a un archivo con datos en una estructura de datos de R debemos importarlo y para poder compartir nuestros resultados de análisis debemos exportarlos.</p>
+<blockquote>
+<p>La mayoría de los programas de análisis de datos –incluyendo Excel, pero también SPSS y en menor medida Stata– utilizan al archivo como metáfora de los datos. Trabajamos sobre un archivo, o al menos eso parece: cargar los datos es abrir un archivo, manipularlos es modificar ese archivo, los resultados del análisis se guardan como un archivo. En lugar de la metáfora del archivo R utiliza la metáfora de los <em>objetos</em>. A diferencia de los objetos no se guardan en el disco rígido -entonces no podemos copiarlos desde el Explorador o Finder–, existen solamente en la memoria RAM y no necesariamente tienen un nombre.</p>
+</blockquote>
+<p>Nuestro primer proyecto se llamará “tareas” y lo crearemos yendo al menú File-&gt;New Project y seleccionando después New Directory -&gt; Empty Project. Finalmente introducimos el nombre que queremos dar al proyecto, que será también el nombre de la carpeta en la que estará. En este caso se llamará <code>tareas</code>. Podemos especificar en qué ubicación se creará esa carpeta. Recomiendo utilizar la carpeta DropBox para nuestros proyectos de R De ese modo no tendrá que preocuparse de hacer copias de seguridad.</p>
+</div>
+<div id="sintaxis-de-r-operadores-y-operandos." class="section level2">
+<h2><span class="header-section-number">1.2</span> Sintaxis de R: operadores y operandos.</h2>
+<p>La forma más directa de empezar a usar R es usarlo como una calculadora. R incluye los operadores aritméticos usuales: <code>+</code>,<code>-</code>,<code>*</code>,<code>/</code>,<code>^</code>. Dentro de R llamamos a este tipo de operadores <em>operadores binarios</em>: se ubican entre dos términos, uno a la izquierda y otro a la derecha. Esos dos términos son operando, los datos sobre los que se realizará la operación. Las reglas de operación matemáticas usuales aplican, <code>2-1</code> restará una unidad a 2, no a la inversa. Del mismo modo que utilizamos los operadores binarios podemos utilizar los paréntesis para separar términos y dar orden a la ejecución de una operación. El primer uso que haremos de los paréntesis es tanto sintáctico de R como matemático. Para calcular el área de un círculo usamos <em>pi por radio al cuadrado</em>. Entonces tenemos que elevar el radio del círculo en cuestión al cuadrado y luego multiplicarlo por pi, que simplificaremos como 3.1416. Ese es nuestro orden de ejecución. En R lo resolvemos ubicando entre paréntesis la operación que se resolverá primero. Por ejemplo:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="co">#Calcular el área de un círculo de 5 cm de radio.</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="fl">3.1416</span><span class="op">*</span>(<span class="dv">5</span><span class="op">^</span><span class="dv">2</span>)  <span class="co">#Indicamos explícitamente el orden de las operaciones.</span></a></code></pre></div>
+<pre><code>## [1] 78.54</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="co">#También es correcto, pero ambiguo: </span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="fl">3.1416</span><span class="op">*</span><span class="dv">5</span><span class="op">^</span><span class="dv">2</span>   <span class="co">#R es resuelve primero 5 al cuadrado.</span></a></code></pre></div>
+<pre><code>## [1] 78.54</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="co">#Error en el orden: eleva al cuadrado pi*5</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">(<span class="fl">3.1416</span><span class="op">*</span><span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 246.7413</code></pre>
+<p>Pi es un número muy común en las matemáticas. Es conveniente tenerlo a mano y llamarlo de una manera más directa que capturarlo con el teclado cada vez que lo vamos a usar. R incluye una variable llamada <code>pi</code>, que cuando la invocamos nos regresa ese número. Como <code>pi</code> es una variable en el entorno la llamamos invocando su nombre sin comillas. Podemos hacer la operación anterior introduciendo la expresión <code>pi</code> para invocar a <span class="math inline">\(\pi\)</span>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">pi         <span class="co">#Muestra le valor de pi</span></a></code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">pi<span class="op">*</span>(<span class="dv">5</span><span class="op">^</span><span class="dv">2</span>)   <span class="co">#Regresa la el área.</span></a></code></pre></div>
+<pre><code>## [1] 78.53982</code></pre>
+<p>Lo mismo podemos hacer con el radio, sólo que como no es una variable de entorno debemos crearla nosotros y asignarle un valor. La combinación de caracteres <code>&lt;-</code> (menor que seguido de guion medio) es el operador que R utiliza para asignar un nombre a un objeto. El objeto al que damos nombre es el output de una función y, a través del operador <code>&lt;-</code>, los vinculamos con un nombre. Los objetos ‘bautizados’ pueden ser convocados más tarde llamándolos por su nombre y no desaparecerán del entorno de trabajo a menos que los eliminemos intencionalmente.</p>
+<blockquote>
+<p><em>Nota para programadores de otros lenguajes</em>: R utiliza tipos de datos débiles e inferencia de tipos. No es estrictamente necesario crear una estructura de datos, asignarle un tipo y luego un valor. Estas tres operaciones se hacen al mismo tiempo. Sólo recuerde que los tipos de datos de R <em>siempre</em> son mutables. Revise su código y verifique el tipo con frecuencia.</p>
+</blockquote>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">radio &lt;-<span class="st"> </span><span class="dv">5</span>                  <span class="co">#Crea el objeto radio y le asigna el valor 5. </span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="kw">typeof</span>(radio)               <span class="co">#R infirió que era numérico (double).</span></a></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">radio_cuadrado &lt;-<span class="st"> </span>radio<span class="op">^</span><span class="dv">2</span>   <span class="co">#Crea el objeto radio cuadrado al que asigna el resultado de la operación radio^2</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">pi<span class="op">*</span>radio_cuadrado           <span class="co">#Multiplica pi por radio_cuadrado y nos muestra el resultado. No le asigna nombre. </span></a></code></pre></div>
+<pre><code>## [1] 78.53982</code></pre>
+<p>Es posible utilizar el signo <code>=</code> para hacer la misma operación, asignar nombres y es posible que se encuentre con código de R que lo utiliza. Sin embargo los manuales de estilo[^1^](#fn1){#fnref1 .footnoteRef} recomiendan usar <code>&lt;-</code> por diversos motivos. El más importante es que podemos leerlo como una flecha que indica dónde quedará registrado el resultado. En <code>radio &lt;- 5</code> queda claro que radio tomará el valor 5, en esa dirección apunta la flecha. No hay ambigüedad: es claro que no queremos cambiar el valor de 5 por otra cosa. Otro motivo es que es fácil confundir <code>=</code> y <code>==</code>, este último es el evaluador lógico de igualdad y hace una operación muy diferente a su similar <code>=</code>.</p>
+<p>Tanto <code>pi</code> como <code>radio</code> son <em>variables</em> en el sentido informático: objetos con un nombre asociado –asignado– en los que podemos ubicar información. En este caso ambos tienen un sólo valor, por eso decimos que son vectores de largo 1. Sin embargo en muchos casos tenemos más información y es muy conveniente almacenarla de manera estructurada. Si en lugar de querer saber el área de un círculo queremos saber la de 5 círculos podríamos crear varios objetos <code>radio</code>, uno para cada círculo. O, muchísimo mejor, aprovechar que <code>radio</code> es un vector y guardar de manera ordenada los radios de los 5 círculos. Para crear un vector con un largo mayor podemos utilizar una función que se encarga de eso, se llama <code>c()</code>, por <em>concatenate</em> o concatenar: literalmente encadenar valores en una estructura más grande.</p>
+</div>
+<div id="sintaxis-de-r-funciones-y-argumentos." class="section level2">
+<h2><span class="header-section-number">1.3</span> Sintaxis de R: funciones y argumentos.</h2>
+<p><code>c()</code> se comporta como una típica función de R: un nombre seguido paréntesis y entre los paréntesis, separados por comas <code>,</code> los <em>argumentos</em> que pasamos a la función. Los argumentos son expresiones que indican a la función sobre qué datos operar y de qué manera. La función procesa los argumentos y nos regresa el resultado. En el caso de <code>c()</code> recibe varios valores unitarios[^2^](#fn2){#fnref2 .footnoteRef} y los convierte en un único vector. Este es el segundo estilo sintáctico de R y es diferente al que empleamos cuando usamos operadores binarios. Con los operadores binarios la sintaxis básica es <code>operando operador operando</code>, la notación usual en las matemáticas. Cuando usamos una función utilizamos otra notación matemática que tiene el curioso nombre de <em>Notación Polaca Invertida</em> y su estructura en R es <code>operador (operando,operando)</code>. El operador ya no está <em>entre</em> los operandos, se ubica antes. Además no necesariamente debe estar representado por un símbolo, puede ser una función con un nombre propio. <code>c()</code> es el nombre propio de la función que concatena valores en un vector. Se trata de un estilo más abstracto de notación que da a R gran capacidad expresiva. Lo interesante es que podemos combinar estos dos estilos para escribir un código compacto y fácil de leer. Veamos un ejemplo:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="co">#Creo un vector con el radio de 5 círculos. </span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">radio &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">1</span>)   <span class="co">#Uso en una misma línea un operador binario y una función. </span></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="co"># Verifiquemos que contiene ese vector.</span></a>
+<a class="sourceLine" id="cb39-5" data-line-number="5">radio    <span class="co">#Felicidades! Ha creado un vector numérico de largo 5.</span></a></code></pre></div>
+<pre><code>## [1]  3 10 11 14  1</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co"># El área de los 5 círculos. </span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">pi<span class="op">*</span>(radio<span class="op">^</span><span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## [1]  28.274334 314.159265 380.132711 615.752160   3.141593</code></pre>
+</div>
+<div id="vectores-y-atributos-de-los-vectores." class="section level2">
+<h2><span class="header-section-number">1.4</span> Vectores y atributos de los vectores.</h2>
+<p>Los vectores son muy importantes en R porque nos facilitan los cálculos, especialmente porque podemos aprovechar sus atributos. Ya usamos el más importante: la vectorización de las operaciones. Cuando hacemos una operación sobre un vector R entiende que queremos aplicarla a todos los elementos, no es necesario pedírselo o copiar la fórmula. Otro atributo interesante de los vectores en que tienen un largo, que señala la cantidad de elementos que lo componen. En términos estadísticos diríamos que le largo de un vector es la N y en R podemos acceder a su valor con la función <code>length(x)</code>, dónde <code>x</code> es un vector. El output de <code>length(x)</code> es a su vez un vector numérico de largo 1. Cuando evaluamos <code>length(length(x))==1</code> siempre debe regresarnos <code>TRUE</code>. Digamos que tenemos un grupo de estudiantes y nos interesa conocer la media de edad. En términos matemáticos lo podemos expresar de la siguiente manera:</p>
+<p><span class="math inline">\(\bar{x}=\frac{\sum{x}}{n}\)</span></p>
+<p>La sumatoria de los valores de <span class="math inline">\(x\)</span> entre el número de observaciones en <span class="math inline">\(x\)</span>.</p>
+<p>Ya sabemos todo necesario para lograrlo usando R:</p>
+<ul>
+<li>La función <code>c()</code> nos sirve para crear un vector con las edades.</li>
+<li>La función <code>length()</code> nos regresa el largo del vector: la N.</li>
+<li>La función <code>sum()</code> nos regresa la sumatoria de un vector, en este caso el de edades.</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="co">#Cálculo en un paso de una media aritmética. </span></a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">edad &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">38</span>, <span class="dv">39</span>, <span class="dv">41</span>, <span class="dv">27</span>, <span class="dv">32</span>) <span class="co">#Creo un vector numérico, le asigno el nombre edad.</span></a>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="kw">sum</span>(edad)<span class="op">/</span><span class="kw">length</span>(edad)        <span class="co">#Obtengo la media de edad: sumatoria de edad entre entre n de edad. </span></a></code></pre></div>
+<pre><code>## [1] 35.4</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="co"># Otras operaciones sobre un vector. </span></a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="kw">sum</span>(edad)                     <span class="co">#Sumatoria de todos los elementos del vector edad. </span></a></code></pre></div>
+<pre><code>## [1] 177</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">length</span>(edad)                  <span class="co">#Consulto el largo del vector edad.</span></a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">edad<span class="op">+</span><span class="dv">1</span>                        <span class="co">#Suma 1 a cada elemento del vector edad.</span></a></code></pre></div>
+<pre><code>## [1] 39 40 42 28 33</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">sum</span>(<span class="kw">c</span>(<span class="dv">38</span>, <span class="dv">39</span>, <span class="dv">41</span>, <span class="dv">27</span>, <span class="dv">32</span>))    <span class="co">#Anido funciones: R procesa desde dentro hacia afuera, primero resuelve c() y después sum(). </span></a></code></pre></div>
+<pre><code>## [1] 177</code></pre>
+<p><code>c()</code> es una función importante,<code>sum()</code> es otra que utilizaremos con frecuencia: nos regresa la sumatoria de los elementos de un vector numérico. Por supuesto, los vectores también aceptan otros tipos de datos, como las cadenas de caracteres. Podemos crear un un vector de cadenas de caracteres usando <code>c()</code> e introduciendo cada cadena entre paréntesis.</p>
+<p>Todos los vectores tienen un atributo llamado <code>names</code>, que no sirve para registrar los nombres (u otro metadato) de cada uno de los valores que allí guardamos. Siguiendo con el ejemplo de las edades, valdría la pena saber a qué personas corresponden. El problema es que si cargamos el nombre junto con el número ya no podremos obtener promedios, por R considerará que son caracteres y no números. Para eso es útil el atributo <code>names()</code> de los vectores, que nos permite agregar información sin tener alterar los datos originales. Para ver los nombres de un vector usamos la función <code>names()</code>. Si nuestro vector no tiene nombres asignados nos regresará <code>NULL</code>, es decir, un vector vacío. El atributo <code>names()</code> de un vector también es un vector. Entonces podemos crear un vector con los nombres –del mismo largo que el vector de las edades– y luego asignarlo con <code>&lt;-</code> al vector edad.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">nombres &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Martín&quot;</span>, <span class="st">&quot;Andrea&quot;</span>, <span class="st">&quot;Iris&quot;</span>, <span class="st">&quot;Felipe&quot;</span>, <span class="st">&quot;Susana&quot;</span>) <span class="co">#Creo el vector de caracteres nombres</span></a>
+<a class="sourceLine" id="cb53-2" data-line-number="2">nombres</a></code></pre></div>
+<pre><code>## [1] &quot;Martín&quot; &quot;Andrea&quot; &quot;Iris&quot;   &quot;Felipe&quot; &quot;Susana&quot;</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">names</span>(edad) &lt;-<span class="st"> </span>nombres                                        <span class="co">#Uso nombres como atributo del vector numérico edad. </span></a>
+<a class="sourceLine" id="cb55-2" data-line-number="2">edad                                                          <span class="co">#Obtengo la edad y nombres emparejados</span></a></code></pre></div>
+<pre><code>## Martín Andrea   Iris Felipe Susana 
+##     38     39     41     27     32</code></pre>
+<p>Una ventaja de usar el atributo <code>names()</code> es que después nos sirven de ayuda memoria para recuperar la información. En R recuperamos alguna información específica usando los corchetes <code>[]</code> después del nombre de la estructura de datos en la que estamos buscando. Piense en los corchetes como algo parecido a Google: en los corchetes introducimos una expresión y R nos regresa el resultado de la búsqueda. ¿Qué edad tendrá Martín?</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1">edad [<span class="st">&quot;Martín&quot;</span>]              <span class="co">#Pongo el nombre entre paréntesis</span></a></code></pre></div>
+<pre><code>## Martín 
+##     38</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">edad[<span class="st">&quot;Martin&quot;</span>]               <span class="co">#Martin sin acento no existe en names de edad. Regresa NA: no disponible. </span></a></code></pre></div>
+<pre><code>## &lt;NA&gt; 
+##   NA</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">edad [<span class="kw">c</span>(<span class="st">&quot;Andrea&quot;</span>, <span class="st">&quot;Iris&quot;</span>)]   <span class="co">#Le puedo pasar un vector de términos de búsqueda. </span></a></code></pre></div>
+<pre><code>## Andrea   Iris 
+##     39     41</code></pre>
+<p>Otra forma de recuperar es un registro es por la ubicación. Los vectores son listas ordenadas, así que con el número de orden de un elemento podemos obtener el valor correspondiente. También podemos realizar búsquedas lógicas en la que R nos regresará todos los elementos que cumplen con algún requisito.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">edad[<span class="dv">5</span>]               <span class="co">#Regresa el valor del 5to elemento de la lista.</span></a></code></pre></div>
+<pre><code>## Susana 
+##     32</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">edad[edad<span class="op">&lt;</span><span class="dv">35</span>]         <span class="co">#Menores de 35 años. Repito el nombre del vector entre []!</span></a></code></pre></div>
+<pre><code>## Felipe Susana 
+##     27     32</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">edad[edad<span class="op">==</span><span class="dv">41</span>]        <span class="co">#Edad igual a 41 años. Usamos == para evaluar igualdad. </span></a></code></pre></div>
+<pre><code>## Iris 
+##   41</code></pre>
+</div>
+<div id="manipulacion-de-datos." class="section level2">
+<h2><span class="header-section-number">1.5</span> Manipulación de datos.</h2>
+<p>Para el análisis de datos los vectores son básicos, pero lo más interesante es su orden y longitud. Si dos vectores tienen el mismo orden y largo podemos hacer operaciones cruzadas: diferencias entre vectores, adiciones, correlaciones, modelos lineales. En nuestro ejemplo de las edades podríamos agregar los días desde nacido. En principio y de forma tosca podemos multiplicar cada edad por 365 y guardar el resultado en un vector, que tendrá el mismo orden y longitud del vector edad.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">edad_dias &lt;-<span class="st"> </span>edad<span class="op">*</span><span class="dv">365</span>     <span class="co">#Operación vectorial: multiplica cada elemento del vector por 365</span></a>
+<a class="sourceLine" id="cb69-2" data-line-number="2">edad_dias                 <span class="co">#Regresa el contenido del nuevo vector </span></a></code></pre></div>
+<pre><code>## Martín Andrea   Iris Felipe Susana 
+##  13870  14235  14965   9855  11680</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">cor</span> (edad, edad_dias)     <span class="co">#Correlación entre la edad... y la edad. Perfecta.</span></a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="co">#Manipulación de cadenas de texto con paste(). Concatenación de texto. </span></a>
+<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="kw">paste</span> (<span class="kw">names</span>(edad[<span class="st">&quot;Martín&quot;</span>]), <span class="st">&quot;escribió este texto cuando tenía&quot;</span>, edad[<span class="st">&quot;Martín&quot;</span>], <span class="st">&quot;años.&quot;</span>) </a></code></pre></div>
+<pre><code>## [1] &quot;Martín escribió este texto cuando tenía 38 años.&quot;</code></pre>
+</div>
+<div id="funcion-para-calcular-una-mediana-con-funciones-primitivas-de-r." class="section level2">
+<h2><span class="header-section-number">1.6</span> Función para calcular una mediana con funciones primitivas de R.</h2>
+<p>Demás está decir que para la mayoría de los casos no vamos a tener que crear las funciones para nuestros análisis. Sin embargo comprender las operaciones que hace un función nos ayuda mucho a entender la sintaxis de R. La mediana es una medida de tendencia central que indica el valor de la observación que divide a un vector ordenado por magnitud en dos partes iguales. Para vectores <em>de largo par</em> el primer paso es ordenar al vector por magnitud, el siguiente identificar el número de orden del valor central <span class="math inline">\(\frac{n+1}{2}\)</span> y el tercero extraer el valor que corresponde a ese número de índice. Sumamos 1 a la n para que se convierta en un número par que, dividido entre 2, tiene resto 0.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="co">#Paso a paso</span></a>
+<a class="sourceLine" id="cb75-2" data-line-number="2"><span class="co">#=============</span></a>
+<a class="sourceLine" id="cb75-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb75-4" data-line-number="4">edad_ordenada &lt;-<span class="st"> </span><span class="kw">sort</span>(edad)            <span class="co">#Con la función sort creo una versión ordenada del vector edad, la nombro edad_ordenana</span></a>
+<a class="sourceLine" id="cb75-5" data-line-number="5">largo_mas_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">length</span>(edad_ordenada)<span class="op">+</span><span class="dv">1</span> <span class="co">#Obtengo la n, a la que le sumo 1 para hacerla par. </span></a>
+<a class="sourceLine" id="cb75-6" data-line-number="6">ubicacion &lt;-<span class="st"> </span>largo_mas_<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>             <span class="co">#Ubico el valor central: largo dividido 2</span></a>
+<a class="sourceLine" id="cb75-7" data-line-number="7">ubicacion                              <span class="co">#Valor registrado en el objeto ubicacion</span></a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">edad_ordenada [ubicacion]              <span class="co">#Valor de edad ordenada en la ubicación... ubicacion </span></a></code></pre></div>
+<pre><code>## Martín 
+##     38</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">edad_ordenada[<span class="dv">3</span>]                       <span class="co">#Lo mismo, peor manualmente.</span></a></code></pre></div>
+<pre><code>## Martín 
+##     38</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="co">#En un solo paso. R resuelve el orden ejecución interpretando los paréntesis y corchetes.</span></a>
+<a class="sourceLine" id="cb81-2" data-line-number="2"><span class="kw">sort</span>(edad)[(<span class="kw">length</span>(<span class="kw">sort</span>(edad))<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>]</a></code></pre></div>
+<pre><code>## Martín 
+##     38</code></pre>
+</div>
+<div id="manipulacion-de-estructuras-de-datos." class="section level2">
+<h2><span class="header-section-number">1.7</span> Manipulación de estructuras de datos.</h2>
+<p>Los vectores son muy interesante, pero sería penoso tener que manejar decenas o cientos de vectores resultantes de la codificación de un cuestionario. En ese caso cada pregunta será registrada como un vector y, para complicar aún más las cosas, posiblemente tengan tipos diferentes: algunos sean numéricos, como la edad, otros ordinales como la el grado académico, otros cadenas de caracteres como los nombres. R tiene una estructura de datos perfecta para este tipo de información: el <code>data.frame</code>. Un <code>data.frame</code> reúne múltiples vectores en una estructura rectangular compuesta de columnas (las variables) y filas (las observaciones). Un <code>data.frame</code> es un tabla de doble entrada, pero no usamos ese nombre porque está reservado para otros objetos que conoceremos más adelante. En este rectángulo de datos tanto filas como columnas pueden ser extraídas como vectores, aunque la mayor parte del trabajo se dedica a las columnas. Esto se debe a que, por convención, en las columnas se ubican las variables y en general eso es lo que analizamos. Como ahora tenemos dos dimensiones el uso que dimos a los corchetes para seleccionar valores de un vectorya no funciona. Tenemos que pasar dos coordenadas para ubicar un registro: fila y columna. Y así lo hacemos y en ese orden, usando una coma como separador. Para crear un <code>data.frame</code> uso la función del mismo nombre con la siguiente sintaxis: <code>data.frame(vector_1, vector_2, vector_n)</code>. Como argumentos entre paréntesis van vectores y <em>todos deben ser del mismo largo</em>. No se preocupe mucho por la forma de crear un <code>data.frame</code>, generalmente en estas estructuras ubicamos datos que hemos importado de una fuente externa. Sin embargo conocer las propiedades de los data.frame es de la mayor importancia: buena parte de nuestro trabajo analizando datos pasará por manipular esta estructura: seleccionar variables sobre las que hacer operaciones, filtrar casos de acuerdo a determinadas características, agrupar los datos, recodificarlos, etc.<br />
+Vamos a un primer ejemplo, recuerde que ya creamos los vectores <code>nombres</code> y <code>edad</code> y están disponibles en el entorno de trabajo para invocarlos por su nombre. Crearemos uno nuevo que se llamará carrera, con las carreras de cada uno de los alumnos.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="co">#Creo un nuevo vector</span></a>
+<a class="sourceLine" id="cb83-2" data-line-number="2">carrera &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sociología&quot;</span>, <span class="st">&quot;Sociología&quot;</span>, <span class="st">&quot;Biología&quot;</span>, <span class="st">&quot;Arquitectura&quot;</span>, <span class="st">&quot;Arquitectura&quot;</span>)</a>
+<a class="sourceLine" id="cb83-3" data-line-number="3">carrera</a></code></pre></div>
+<pre><code>## [1] &quot;Sociología&quot;   &quot;Sociología&quot;   &quot;Biología&quot;     &quot;Arquitectura&quot;
+## [5] &quot;Arquitectura&quot;</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="co">#Creo el data.frame alumnos con tres columnas, que son vectores que ya existían.</span></a>
+<a class="sourceLine" id="cb85-2" data-line-number="2">alumnos &lt;-<span class="st"> </span><span class="kw">data.frame</span> (nombres, edad, carrera) </a>
+<a class="sourceLine" id="cb85-3" data-line-number="3">alumnos   <span class="co">#¿A ver?</span></a></code></pre></div>
+<pre><code>##        nombres edad      carrera
+## Martín  Martín   38   Sociología
+## Andrea  Andrea   39   Sociología
+## Iris      Iris   41     Biología
+## Felipe  Felipe   27 Arquitectura
+## Susana  Susana   32 Arquitectura</code></pre>
+<p>Ya tenemos disponible en el entorno el data.frame llamado <code>alumnos</code>. Me gustaría saber qué edad tiene Andrea. Sé que Andrea es la observación número 2 (fila) y la edad es la segunda variable (columna). Entonces puedo usar esos dos números entre corchetes para recuperar ese registro:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">alumnos[<span class="dv">2</span>,<span class="dv">2</span>]</a></code></pre></div>
+<pre><code>## [1] 39</code></pre>
+<p>¿Qué tal si me interesan todas las edades, porque quiero calcular nuevamente la media? En ese caso debería indicar que me interesa la columna 2 y todas las filas. Como este es el comportamiento por defecto de R no tengo que hacer mucho, simplemente dejar vacío el lugar en el que indicaría la fila que me interesa y R me regresará todas las filas. El espacio en blanco se interpreta como un comodín: quiere decir <em>todos los elementos</em>. Lo mismo para vale para las columnas, si dejo en blanco la especificación de columna R entiende que me interesan todas.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">alumnos [ ,<span class="dv">2</span>]  <span class="co">#Regresa toda la columna 2, edad</span></a></code></pre></div>
+<pre><code>## [1] 38 39 41 27 32</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">alumnos [<span class="dv">1</span>, ]  <span class="co">#Regresa toda la fila 1, Martín</span></a></code></pre></div>
+<pre><code>##        nombres edad    carrera
+## Martín  Martín   38 Sociología</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">alumnos [ , ]  <span class="co">#Regresa todos los datos!!</span></a></code></pre></div>
+<pre><code>##        nombres edad      carrera
+## Martín  Martín   38   Sociología
+## Andrea  Andrea   39   Sociología
+## Iris      Iris   41     Biología
+## Felipe  Felipe   27 Arquitectura
+## Susana  Susana   32 Arquitectura</code></pre>
+<p>Funciona, pero no hemos avanzado mucho con respecto a Excel: debemos identificar visualmente los registros que queremos recuperar e indicarlos explícitamente. Tiene que haber una mejor manera… y la hay. Dado que las columnas tienen nombres podemos llamarlas por nombre. Para eso R utiliza el símbolo <code>$</code>, que indica una subestructura de datos dentro de una más amplia. Por ejemplo, un vector dentro de un data.frame. De este modo no debemos memorizar los números de ubicación de un dato, simplemente el nombre de la variable, que es más fácil de recordar.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="co">#Veo los nombres de columna en alumnos</span></a>
+<a class="sourceLine" id="cb95-2" data-line-number="2"><span class="kw">names</span>(alumnos)</a></code></pre></div>
+<pre><code>## [1] &quot;nombres&quot; &quot;edad&quot;    &quot;carrera&quot;</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="co">#Selecciono la columna carrera</span></a>
+<a class="sourceLine" id="cb97-2" data-line-number="2">alumnos<span class="op">$</span>carrera</a></code></pre></div>
+<pre><code>## [1] Sociología   Sociología   Biología     Arquitectura Arquitectura
+## Levels: Arquitectura Biología Sociología</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="co"># O la edad</span></a>
+<a class="sourceLine" id="cb99-2" data-line-number="2">alumnos<span class="op">$</span>edad</a></code></pre></div>
+<pre><code>## [1] 38 39 41 27 32</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="co">#Realizo una operación sobre una columna: la media de edad.</span></a>
+<a class="sourceLine" id="cb101-2" data-line-number="2"><span class="kw">mean</span>(alumnos<span class="op">$</span>edad)</a></code></pre></div>
+<pre><code>## [1] 35.4</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="co">#Produzco un resultado inválido: trato de obtener la media de toda la estructura de datos. </span></a>
+<a class="sourceLine" id="cb103-2" data-line-number="2"><span class="kw">mean</span>(alumnos)</a></code></pre></div>
+<pre><code>## Warning in mean.default(alumnos): argument is not numeric or logical:
+## returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>Estas operaciones de selección de datos por filas o columnas se llama en inglés <em>subsetting</em> y en español hacer subconjuntos. Del conjunto de datos alumnos extraemos diferentes subconjuntos: la columna edad, la fila 1, etc. Un paso más avanzado es hacer subconjuntos de acuerdo a criterios lógicos: quedarnos con todos los registros que cumplen con determinado criterio.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="co"># Selecciono a los alumnos cuya carrera es sociología.</span></a>
+<a class="sourceLine" id="cb106-2" data-line-number="2">alumnos[carrera<span class="op">==</span><span class="st">&quot;Sociología&quot;</span>, ]                <span class="co">#espacio después de la coma: todas las columnas.</span></a></code></pre></div>
+<pre><code>##        nombres edad    carrera
+## Martín  Martín   38 Sociología
+## Andrea  Andrea   39 Sociología</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">alumnos[carrera<span class="op">==</span><span class="st">&quot;Sociología&quot;</span>, <span class="st">&quot;edad&quot;</span>]          <span class="co">#columna edad</span></a></code></pre></div>
+<pre><code>## [1] 38 39</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">alumnos [edad<span class="op">&gt;</span><span class="dv">36</span>, ]                             <span class="co">#Alumnos mayores de 36 años</span></a></code></pre></div>
+<pre><code>##        nombres edad    carrera
+## Martín  Martín   38 Sociología
+## Andrea  Andrea   39 Sociología
+## Iris      Iris   41   Biología</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">alumnos [edad<span class="op">&gt;</span><span class="kw">mean</span>(alumnos<span class="op">$</span>edad), ]             <span class="co">#Alumnos con una edad mayor a la media</span></a></code></pre></div>
+<pre><code>##        nombres edad    carrera
+## Martín  Martín   38 Sociología
+## Andrea  Andrea   39 Sociología
+## Iris      Iris   41   Biología</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">mean</span>(alumnos[carrera<span class="op">==</span><span class="st">&quot;Arquitectura&quot;</span>, <span class="st">&quot;edad&quot;</span>])  <span class="co">#Media de edad de Arquitectura. </span></a></code></pre></div>
+<pre><code>## [1] 29.5</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">mean</span>(alumnos[carrera<span class="op">==</span><span class="st">&quot;Ingeniería&quot;</span>, <span class="st">&quot;edad&quot;</span>])    <span class="co">#NaN: Not a Number</span></a></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"><span class="kw">plot</span>(alumnos<span class="op">$</span>carrera)                           <span class="co">#Distribución de las carreras (gráfico)</span></a></code></pre></div>
+<p><img src="libRo_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p>Del mismo modo en que los vectores tienen un atributo <code>names()</code> los data.frame también los tienen, excepto que tienen dos, uno por cada dimensión. Para conocer los nombres de columna utilizamos específicamente la función <code>colnames()</code> y para ver los filas <code>rownames()</code>.</p>
+<div id="magia" class="section level3">
+<h3><span class="header-section-number">1.7.1</span> Magia</h3>
+<p>¿Para qué nos sirve especificar detalladamente una estructura, si lo que queremos es resultados de análisis aplicables a nuestros problemas de investigación? Porque con datos bien estructurados el análisis es muy fácil. R tiene algunas funciones sorprendentes, <code>summary()</code> es una de ellas. Veamos lo que hace con un data.frame bien construído:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1"><span class="kw">summary</span>(alumnos)</a></code></pre></div>
+<pre><code>##    nombres       edad              carrera 
+##  Andrea:1   Min.   :27.0   Arquitectura:2  
+##  Felipe:1   1st Qu.:32.0   Biología    :1  
+##  Iris  :1   Median :38.0   Sociología  :2  
+##  Martín:1   Mean   :35.4                   
+##  Susana:1   3rd Qu.:39.0                   
+##             Max.   :41.0</code></pre>
+<p>Al saber cuáles son los tipos de datos R infiere qué tipo de sumario queremos para cada uno: si son nominales un conteo, si son numéricos un resúmen de 6 puntos: valor mínimo, máximo, media, mediana, y el 1er y 3er cuartil con una sola línea de código. No olvide a <code>summary()</code>, para casi cualquier objeto le dará muchísima información con poco esfuerzo. Es una de las joyas de R.</p>
+</div>
+</div>
+<div id="sobre-los-archivos-de-sintaxis." class="section level2">
+<h2><span class="header-section-number">1.8</span> Sobre los archivos de sintaxis.</h2>
+<p>Aunque los proyectos y la restauración de sesión son muy útiles para continuar el trabajo, es una buena práctica trabajar directamente con archivos en los que guardamos los scripts. En lugar de guardar nuestros outputs guardamos el código que los producen. De este modo nuestros productos de investigación son <em>reproducibles</em>: con el mismo software libre otra persona en otra computadora puede obtener los mismos resultados. R utiliza la extensión <code>.r</code> para los archivos con guiones de R. Todos los archivos con esa extensión serán considerados directamente ejecutables dentro del entorno de R. Dentro de Rstudio podemos ejecutar una línea de código o una parte a la que hemos resaltado utilizando la combinación <code>Ctrl-Enter</code>.</p>
+</div>
+<div id="anexo" class="section level2">
+<h2><span class="header-section-number">1.9</span> Anexo</h2>
+<div id="operadores-binarios-de-r" class="section level3">
+<h3><span class="header-section-number">1.9.1</span> Operadores binarios de R</h3>
+<table>
+<caption>Operadores aritméticos de R. Regresan un valor numérico.</caption>
+<thead>
+<tr class="header">
+<th align="left">Operador</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">+</td>
+<td align="left">Suma</td>
+</tr>
+<tr class="even">
+<td align="left">-</td>
+<td align="left">Resta</td>
+</tr>
+<tr class="odd">
+<td align="left">*</td>
+<td align="left">Multiplicación</td>
+</tr>
+<tr class="even">
+<td align="left">/</td>
+<td align="left">División</td>
+</tr>
+<tr class="odd">
+<td align="left">^ o **</td>
+<td align="left">Exponenciación</td>
+</tr>
+<tr class="even">
+<td align="left">x %% y</td>
+<td align="left">Resto de una división</td>
+</tr>
+<tr class="odd">
+<td align="left">x %/% y</td>
+<td align="left">División de enteros</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Operadores lógicos en R. Regresan un valor lógico.</caption>
+<thead>
+<tr class="header">
+<th align="left">Operador</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">&lt;</td>
+<td align="left">Menor que</td>
+</tr>
+<tr class="even">
+<td align="left">&lt;=</td>
+<td align="left">Menor o igual que</td>
+</tr>
+<tr class="odd">
+<td align="left">&gt;</td>
+<td align="left">Mayor que</td>
+</tr>
+<tr class="even">
+<td align="left">&gt;=</td>
+<td align="left">Mayor o igual que</td>
+</tr>
+<tr class="odd">
+<td align="left">==</td>
+<td align="left">Exactamente igual que</td>
+</tr>
+<tr class="even">
+<td align="left">%in%</td>
+<td align="left">Dentro de</td>
+</tr>
+<tr class="odd">
+<td align="left">!=</td>
+<td align="left">No igual que</td>
+</tr>
+<tr class="even">
+<td align="left">!x</td>
+<td align="left">No x</td>
+</tr>
+<tr class="odd">
+<td align="left">x</td>
+<td align="left">y</td>
+</tr>
+<tr class="even">
+<td align="left">x &amp; y</td>
+<td align="left">x Y y</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Operadores de manipulación de datos. Regresan una estructura de datos.</caption>
+<thead>
+<tr class="header">
+<th align="left">Operador</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">x:y</td>
+<td align="left">Secuencia de enteros entre x Y y</td>
+</tr>
+<tr class="even">
+<td align="left">$</td>
+<td align="left">Al interior de</td>
+</tr>
+<tr class="odd">
+<td align="left">[ ]</td>
+<td align="left">En la ubicación</td>
+</tr>
+<tr class="even">
+<td align="left">&lt;-</td>
+<td align="left">Asignación de nombres.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduccion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="investigacion-reproducible-.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["libRo.pdf", "libRo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

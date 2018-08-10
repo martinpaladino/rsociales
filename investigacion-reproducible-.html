@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R para Ciencias Sociales</title>
+  <meta name="description" content="Análisis de datos con R, con aplicación a las ciencias sociales">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R para Ciencias Sociales" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R para Ciencias Sociales" />
+  
+  <meta name="twitter:description" content="Análisis de datos con R, con aplicación a las ciencias sociales" />
+  
+
+<meta name="author" content="Martín Paladino">
+
+
+<meta name="date" content="2018-08-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="primeros.html">
+<link rel="next" href="manejo.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.0/DiagrammeR.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R para ciencias sociales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preámbulo</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#para-quien-es-este-libro"><i class="fa fa-check"></i><b>0.1</b> ¿Para quién es este libro?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#el-tidyverse"><i class="fa fa-check"></i><b>0.2</b> El <code>tidyverse</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduccion.html"><a href="introduccion.html"><i class="fa fa-check"></i>Introducción</a><ul>
+<li class="chapter" data-level="0.3" data-path="introduccion.html"><a href="introduccion.html#que-es-r"><i class="fa fa-check"></i><b>0.3</b> ¿Qué es R?</a><ul>
+<li class="chapter" data-level="0.3.1" data-path="introduccion.html"><a href="introduccion.html#el-lenguaje-de-programacion-r"><i class="fa fa-check"></i><b>0.3.1</b> El <em>lenguaje de programación R</em></a></li>
+<li class="chapter" data-level="0.3.2" data-path="introduccion.html"><a href="introduccion.html#el-interprete"><i class="fa fa-check"></i><b>0.3.2</b> El <em>intérprete</em></a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="introduccion.html"><a href="introduccion.html#instalacion-de-r-y-rstudio-en-windows."><i class="fa fa-check"></i><b>0.4</b> Instalación de R y Rstudio en Windows.</a></li>
+<li class="chapter" data-level="0.5" data-path="introduccion.html"><a href="introduccion.html#interface-de-rstudio."><i class="fa fa-check"></i><b>0.5</b> Interface de Rstudio.</a><ul>
+<li class="chapter" data-level="0.5.1" data-path="introduccion.html"><a href="introduccion.html#consola."><i class="fa fa-check"></i><b>0.5.1</b> Consola.</a></li>
+<li class="chapter" data-level="0.5.2" data-path="introduccion.html"><a href="introduccion.html#editor-de-archivos."><i class="fa fa-check"></i><b>0.5.2</b> Editor de Archivos.</a></li>
+<li class="chapter" data-level="0.5.3" data-path="introduccion.html"><a href="introduccion.html#entorno-de-trabajo."><i class="fa fa-check"></i><b>0.5.3</b> Entorno de trabajo.</a></li>
+<li class="chapter" data-level="0.5.4" data-path="introduccion.html"><a href="introduccion.html#graficos."><i class="fa fa-check"></i><b>0.5.4</b> Gráficos.</a></li>
+<li class="chapter" data-level="0.5.5" data-path="introduccion.html"><a href="introduccion.html#ayuda."><i class="fa fa-check"></i><b>0.5.5</b> Ayuda.</a></li>
+<li class="chapter" data-level="0.5.6" data-path="introduccion.html"><a href="introduccion.html#paquetes-de-extension."><i class="fa fa-check"></i><b>0.5.6</b> Paquetes de extensión.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="introduccion.html"><a href="introduccion.html#tipos-y-estructuras-de-datos"><i class="fa fa-check"></i><b>0.6</b> Tipos y estructuras de datos</a><ul>
+<li class="chapter" data-level="0.6.1" data-path="introduccion.html"><a href="introduccion.html#tipos-de-datos"><i class="fa fa-check"></i><b>0.6.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="0.6.2" data-path="introduccion.html"><a href="introduccion.html#estructuras-de-datos."><i class="fa fa-check"></i><b>0.6.2</b> Estructuras de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="0.7" data-path="introduccion.html"><a href="introduccion.html#orientacion-a-objetos."><i class="fa fa-check"></i><b>0.7</b> Orientación a objetos.</a></li>
+<li class="chapter" data-level="0.8" data-path="introduccion.html"><a href="introduccion.html#programacion-funcional."><i class="fa fa-check"></i><b>0.8</b> Programación funcional.</a></li>
+<li class="chapter" data-level="0.9" data-path="introduccion.html"><a href="introduccion.html#vocabulario."><i class="fa fa-check"></i><b>0.9</b> Vocabulario.</a></li>
+<li class="chapter" data-level="0.10" data-path="introduccion.html"><a href="introduccion.html#funciones-y-librerias-de-funciones."><i class="fa fa-check"></i><b>0.10</b> Funciones y librerías de funciones.</a></li>
+<li class="chapter" data-level="0.11" data-path="introduccion.html"><a href="introduccion.html#convenciones-de-estilo-de-este-documento."><i class="fa fa-check"></i><b>0.11</b> Convenciones de estilo de este documento.</a></li>
+<li class="chapter" data-level="0.12" data-path="introduccion.html"><a href="introduccion.html#bloques-de-codigo-y-comentarios."><i class="fa fa-check"></i><b>0.12</b> Bloques de código y comentarios.</a></li>
+<li class="chapter" data-level="0.13" data-path="introduccion.html"><a href="introduccion.html#uso-de-mayusculas."><i class="fa fa-check"></i><b>0.13</b> Uso de mayúsculas.</a></li>
+<li class="chapter" data-level="0.14" data-path="introduccion.html"><a href="introduccion.html#sobre-el-estilo-de-programacion-en-r."><i class="fa fa-check"></i><b>0.14</b> Sobre el estilo de programación en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="primeros.html"><a href="primeros.html"><i class="fa fa-check"></i><b>1</b> Primeros pasos en R</a><ul>
+<li class="chapter" data-level="1.1" data-path="primeros.html"><a href="primeros.html#crear-un-proyecto."><i class="fa fa-check"></i><b>1.1</b> Crear un proyecto.</a></li>
+<li class="chapter" data-level="1.2" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-operadores-y-operandos."><i class="fa fa-check"></i><b>1.2</b> Sintaxis de R: operadores y operandos.</a></li>
+<li class="chapter" data-level="1.3" data-path="primeros.html"><a href="primeros.html#sintaxis-de-r-funciones-y-argumentos."><i class="fa fa-check"></i><b>1.3</b> Sintaxis de R: funciones y argumentos.</a></li>
+<li class="chapter" data-level="1.4" data-path="primeros.html"><a href="primeros.html#vectores-y-atributos-de-los-vectores."><i class="fa fa-check"></i><b>1.4</b> Vectores y atributos de los vectores.</a></li>
+<li class="chapter" data-level="1.5" data-path="primeros.html"><a href="primeros.html#manipulacion-de-datos."><i class="fa fa-check"></i><b>1.5</b> Manipulación de datos.</a></li>
+<li class="chapter" data-level="1.6" data-path="primeros.html"><a href="primeros.html#funcion-para-calcular-una-mediana-con-funciones-primitivas-de-r."><i class="fa fa-check"></i><b>1.6</b> Función para calcular una mediana con funciones primitivas de R.</a></li>
+<li class="chapter" data-level="1.7" data-path="primeros.html"><a href="primeros.html#manipulacion-de-estructuras-de-datos."><i class="fa fa-check"></i><b>1.7</b> Manipulación de estructuras de datos.</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="primeros.html"><a href="primeros.html#magia"><i class="fa fa-check"></i><b>1.7.1</b> Magia</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="primeros.html"><a href="primeros.html#sobre-los-archivos-de-sintaxis."><i class="fa fa-check"></i><b>1.8</b> Sobre los archivos de sintaxis.</a></li>
+<li class="chapter" data-level="1.9" data-path="primeros.html"><a href="primeros.html#anexo"><i class="fa fa-check"></i><b>1.9</b> Anexo</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="primeros.html"><a href="primeros.html#operadores-binarios-de-r"><i class="fa fa-check"></i><b>1.9.1</b> Operadores binarios de R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html"><i class="fa fa-check"></i><b>2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#introduccion-alcances-del-problema."><i class="fa fa-check"></i><b>2.1</b> Introducción: alcances del problema.</a></li>
+<li class="chapter" data-level="2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#investigacion-reproducible.-1"><i class="fa fa-check"></i><b>2.2</b> Investigación reproducible.</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#ventajas-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.1</b> Ventajas de la investigación reproducible.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#desafios-de-la-investigacion-reproducible."><i class="fa fa-check"></i><b>2.2.2</b> Desafíos de la investigación reproducible.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#filosofia-programacion-funcional-con-inmutabilidad-de-datos-transparencia-referencial-y-funciones-puras."><i class="fa fa-check"></i><b>2.3</b> Filosofía: programación funcional con inmutabilidad de datos, transparencia referencial y funciones puras.</a></li>
+<li class="chapter" data-level="2.4" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#hagamos-pizza-en-r."><i class="fa fa-check"></i><b>2.4</b> Hagamos pizza en R.</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-el-asignador.-pizzas-de-hoy-y-de-ayer."><i class="fa fa-check"></i><b>2.4.1</b> Pizzería “El asignador”. Pizzas de hoy y de ayer.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-la-funcional-clasica.-el-cambio-se-lo-da-en-parentesis."><i class="fa fa-check"></i><b>2.4.2</b> Pizzería La funcional clásica. El cambio se lo da en paréntesis.</a></li>
+<li class="chapter" data-level="2.4.3" data-path="investigacion-reproducible-.html"><a href="investigacion-reproducible-.html#pizzeria-magrittr-la-mas-del-rumbo"><i class="fa fa-check"></i><b>2.4.3</b> Pizzería magrittr ¡La más %&gt;% del rumbo!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="manejo.html"><a href="manejo.html"><i class="fa fa-check"></i><b>3</b> Manejo da datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="manejo.html"><a href="manejo.html#el-objeto-de-este-documento."><i class="fa fa-check"></i><b>3.1</b> El objeto de este documento.</a></li>
+<li class="chapter" data-level="3.2" data-path="manejo.html"><a href="manejo.html#manipulacion-de-datos-con-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Manipulación de datos con <code>tidyverse::</code></a></li>
+<li class="chapter" data-level="3.3" data-path="manejo.html"><a href="manejo.html#la-forma-de-los-datos."><i class="fa fa-check"></i><b>3.3</b> La forma de los datos.</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="manejo.html"><a href="manejo.html#sumarios-de-datos-o-base-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> ¿Sumarios de datos o base de datos?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="manejo.html"><a href="manejo.html#datos-rectangulares."><i class="fa fa-check"></i><b>3.4</b> Datos rectangulares.</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="manejo.html"><a href="manejo.html#datos-prolijos-tidy-data"><i class="fa fa-check"></i><b>3.4.1</b> Datos prolijos (tidy data)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="manejo.html"><a href="manejo.html#reformateo-de-datos."><i class="fa fa-check"></i><b>3.4.2</b> Reformateo de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="manejo.html"><a href="manejo.html#manejo-de-datos-con-dplyr"><i class="fa fa-check"></i><b>3.5</b> Manejo de datos con <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.5.1" data-path="manejo.html"><a href="manejo.html#verbos-basicos-de-dplyr"><i class="fa fa-check"></i><b>3.5.1</b> Verbos básicos de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.5.2" data-path="manejo.html"><a href="manejo.html#uso-de-la-de-sintaxis-de-dplyr"><i class="fa fa-check"></i><b>3.5.2</b> Uso de la de sintaxis de <code>dplyr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="manejo.html"><a href="manejo.html#uso-avanzado-de-dplyr"><i class="fa fa-check"></i><b>3.6</b> Uso avanzado de <code>dplyr::</code></a><ul>
+<li class="chapter" data-level="3.6.1" data-path="manejo.html"><a href="manejo.html#alternar-entre-formato-largo-y-ancho."><i class="fa fa-check"></i><b>3.6.1</b> Alternar entre formato largo y ancho.</a></li>
+<li class="chapter" data-level="3.6.2" data-path="manejo.html"><a href="manejo.html#seleccionar-las-columnas-que-cumplen-determinada-condicion."><i class="fa fa-check"></i><b>3.6.2</b> Seleccionar las columnas que cumplen determinada condición.</a></li>
+<li class="chapter" data-level="3.6.3" data-path="manejo.html"><a href="manejo.html#filtrar-por-mas-de-una-condicion-o-dentro-de-un-conjunto."><i class="fa fa-check"></i><b>3.6.3</b> Filtrar por más de una condición o dentro de un conjunto.</a></li>
+<li class="chapter" data-level="3.6.4" data-path="manejo.html"><a href="manejo.html#transformacion-avanzada-de-datos."><i class="fa fa-check"></i><b>3.6.4</b> Transformacion avanzada de datos.</a></li>
+<li class="chapter" data-level="3.6.5" data-path="manejo.html"><a href="manejo.html#sumarios-avanzados."><i class="fa fa-check"></i><b>3.6.5</b> Sumarios avanzados.</a></li>
+<li class="chapter" data-level="3.6.6" data-path="manejo.html"><a href="manejo.html#funciones-avanzadas-de-combinacion-de-bases-de-datos."><i class="fa fa-check"></i><b>3.6.6</b> Funciones avanzadas de combinación de bases de datos.</a></li>
+<li class="chapter" data-level="3.6.7" data-path="manejo.html"><a href="manejo.html#operadores-avanzados-de-magrittr"><i class="fa fa-check"></i><b>3.6.7</b> Operadores avanzados de <code>magrittr::</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="manejo.html"><a href="manejo.html#limites-de-dplyr"><i class="fa fa-check"></i><b>3.7</b> Límites de <code>dplyr::</code></a></li>
+<li class="chapter" data-level="3.8" data-path="manejo.html"><a href="manejo.html#manipulacion-con-dplyren-la-practica.-flujo-de-trabajo."><i class="fa fa-check"></i><b>3.8</b> Manipulación con <code>dplyr::</code>en la práctica. Flujo de trabajo.</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="manejo.html"><a href="manejo.html#implementacion-en-dplyr-de-un-analisis-exploratorio-de-la-base-de-datos-indice-de-marginacion-del-conapo."><i class="fa fa-check"></i><b>3.8.1</b> Implementación en dplyr:: de un análisis exploratorio de la base de datos Índice de marginación del CONAPO.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graficos.html"><a href="graficos.html"><i class="fa fa-check"></i><b>4</b> Gráficos con R y ggplot</a><ul>
+<li class="chapter" data-level="4.1" data-path="graficos.html"><a href="graficos.html#acerca-de-este-documento."><i class="fa fa-check"></i><b>4.1</b> Acerca de este documento.</a></li>
+<li class="chapter" data-level="4.2" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos."><i class="fa fa-check"></i><b>4.2</b> La gramática de los gráficos.</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="graficos.html"><a href="graficos.html#filosofia."><i class="fa fa-check"></i><b>4.2.1</b> Filosofía.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="graficos.html"><a href="graficos.html#la-gramatica-de-los-graficos-aplicada-en-ggplot."><i class="fa fa-check"></i><b>4.3</b> La gramática de los gráficos aplicada en <code>ggplot()</code>.</a></li>
+<li class="chapter" data-level="4.4" data-path="graficos.html"><a href="graficos.html#la-base-de-datos."><i class="fa fa-check"></i><b>4.4</b> La base de datos.</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="graficos.html"><a href="graficos.html#indice-de-marginacion-por-municipios-1990-2015."><i class="fa fa-check"></i><b>4.4.1</b> Índice de marginación por municipios 1990-2015.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="graficos.html"><a href="graficos.html#descripcion-rapida-de-la-base-de-datos."><i class="fa fa-check"></i><b>4.5</b> Descripción rápida de la base de datos.</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="graficos.html"><a href="graficos.html#nombres-cortos-y-largos."><i class="fa fa-check"></i><b>4.5.1</b> Nombres cortos y largos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="graficos.html"><a href="graficos.html#grafico-basico."><i class="fa fa-check"></i><b>4.6</b> Gráfico básico.</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="graficos.html"><a href="graficos.html#construccion-de-un-grafico-de-barras-paso-a-paso."><i class="fa fa-check"></i><b>4.6.1</b> Construcción de un gráfico de barras paso a paso.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="graficos.html"><a href="graficos.html#personalizacion-de-grafico."><i class="fa fa-check"></i><b>4.7</b> Personalización de gráfico.</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="graficos.html"><a href="graficos.html#orden-manual-de-las-categorias."><i class="fa fa-check"></i><b>4.7.1</b> Orden manual de las categorías.</a></li>
+<li class="chapter" data-level="4.7.2" data-path="graficos.html"><a href="graficos.html#orden-automatico-de-categorias."><i class="fa fa-check"></i><b>4.7.2</b> Orden automático de categorías.</a></li>
+<li class="chapter" data-level="4.7.3" data-path="graficos.html"><a href="graficos.html#titulo-subtitulo-titulos-de-ejes-vineta"><i class="fa fa-check"></i><b>4.7.3</b> Título, subtítulo, títulos de ejes, viñeta</a></li>
+<li class="chapter" data-level="4.7.4" data-path="graficos.html"><a href="graficos.html#estilos-visuales."><i class="fa fa-check"></i><b>4.7.4</b> Estilos visuales.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="graficos.html"><a href="graficos.html#graficos-intermedios-mas-de-una-serie-de-datos"><i class="fa fa-check"></i><b>4.8</b> Gráficos intermedios (más de una serie de datos)</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="graficos.html"><a href="graficos.html#datos-formato-de-datos-largo-y-ancho."><i class="fa fa-check"></i><b>4.8.1</b> Datos Formato de datos largo y ancho.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="graficos.html"><a href="graficos.html#grafico-de-barras-lado-a-lado."><i class="fa fa-check"></i><b>4.8.2</b> Gráfico de barras lado a lado.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="graficos.html"><a href="graficos.html#graficos-multipanel."><i class="fa fa-check"></i><b>4.8.3</b> Gráficos multipanel.</a></li>
+<li class="chapter" data-level="4.8.4" data-path="graficos.html"><a href="graficos.html#grafico-de-punto."><i class="fa fa-check"></i><b>4.8.4</b> Gráfico de punto.</a></li>
+<li class="chapter" data-level="4.8.5" data-path="graficos.html"><a href="graficos.html#grafico-de-punto-y-linea."><i class="fa fa-check"></i><b>4.8.5</b> Gráfico de punto y línea.</a></li>
+<li class="chapter" data-level="4.8.6" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion."><i class="fa fa-check"></i><b>4.8.6</b> Gráfico de dispersión.</a></li>
+<li class="chapter" data-level="4.8.7" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-en-paneles."><i class="fa fa-check"></i><b>4.8.7</b> Gráfico de dispersión en paneles.</a></li>
+<li class="chapter" data-level="4.8.8" data-path="graficos.html"><a href="graficos.html#grafico-de-caja."><i class="fa fa-check"></i><b>4.8.8</b> Gráfico de caja.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="graficos.html"><a href="graficos.html#personalizacion-avanzada-de-graficos."><i class="fa fa-check"></i><b>4.9</b> Personalización avanzada de gráficos.</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="graficos.html"><a href="graficos.html#etiquetas-y-elementos-de-texto."><i class="fa fa-check"></i><b>4.9.1</b> Etiquetas y elementos de texto.</a></li>
+<li class="chapter" data-level="4.9.2" data-path="graficos.html"><a href="graficos.html#ajuste-del-elemento-texto."><i class="fa fa-check"></i><b>4.9.2</b> Ajuste del elemento texto.</a></li>
+<li class="chapter" data-level="4.9.3" data-path="graficos.html"><a href="graficos.html#posicion-de-las-leyendas."><i class="fa fa-check"></i><b>4.9.3</b> Posición de las leyendas.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="graficos.html"><a href="graficos.html#escalas."><i class="fa fa-check"></i><b>4.10</b> Escalas.</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="graficos.html"><a href="graficos.html#escalas-y-sistemas-de-coordenadas"><i class="fa fa-check"></i><b>4.10.1</b> Escalas y sistemas de coordenadas</a></li>
+<li class="chapter" data-level="4.10.2" data-path="graficos.html"><a href="graficos.html#ajuste-manual-de-intervalos-de-escala."><i class="fa fa-check"></i><b>4.10.2</b> Ajuste manual de intervalos de escala.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="graficos.html"><a href="graficos.html#transformacion-de-escalas"><i class="fa fa-check"></i><b>4.10.3</b> Transformación de escalas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="graficos.html"><a href="graficos.html#sistemas-de-coordenadas."><i class="fa fa-check"></i><b>4.11</b> Sistemas de coordenadas.</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="graficos.html"><a href="graficos.html#coordenadas-polares."><i class="fa fa-check"></i><b>4.11.1</b> Coordenadas polares.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="graficos.html"><a href="graficos.html#fortificar-nuestros-graficos-con-datos-de-un-modelo"><i class="fa fa-check"></i><b>4.12</b> Fortificar nuestros gráficos con datos de un modelo</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="graficos.html"><a href="graficos.html#rectas-de-ajuste"><i class="fa fa-check"></i><b>4.12.1</b> Rectas de ajuste</a></li>
+<li class="chapter" data-level="4.12.2" data-path="graficos.html"><a href="graficos.html#intervalos-de-confianza-y-barras-de-error."><i class="fa fa-check"></i><b>4.12.2</b> Intervalos de confianza y barras de error.</a></li>
+<li class="chapter" data-level="4.12.3" data-path="graficos.html"><a href="graficos.html#etiquetado-de-casos."><i class="fa fa-check"></i><b>4.12.3</b> Etiquetado de casos.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="graficos.html"><a href="graficos.html#extensiones-a-ggplot2"><i class="fa fa-check"></i><b>4.13</b> Extensiones a <code>ggplot2::</code></a></li>
+<li class="chapter" data-level="4.14" data-path="graficos.html"><a href="graficos.html#etiquetas"><i class="fa fa-check"></i><b>4.14</b> Etiquetas</a><ul>
+<li class="chapter" data-level="4.14.1" data-path="graficos.html"><a href="graficos.html#grafico-de-dispersion-con-histogramas-marginales."><i class="fa fa-check"></i><b>4.14.1</b> Gráfico de dispersión con histogramas marginales.</a></li>
+<li class="chapter" data-level="4.14.2" data-path="graficos.html"><a href="graficos.html#graficos-de-proporciones-jerarquicas."><i class="fa fa-check"></i><b>4.14.2</b> Gráficos de proporciones jerárquicas.</a></li>
+<li class="chapter" data-level="4.14.3" data-path="graficos.html"><a href="graficos.html#im-feeling-lucky"><i class="fa fa-check"></i><b>4.14.3</b> I’m feeling lucky…</a></li>
+<li class="chapter" data-level="4.14.4" data-path="graficos.html"><a href="graficos.html#relaciones-multivariadas."><i class="fa fa-check"></i><b>4.14.4</b> Relaciones multivariadas.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html"><i class="fa fa-check"></i><b>5</b> Análisis de datos categóricos</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#introduccion-1"><i class="fa fa-check"></i><b>5.1</b> Introducción</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#datos-categoricos"><i class="fa fa-check"></i><b>5.1.1</b> Datos categóricos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas"><i class="fa fa-check"></i><b>5.2</b> Tablas</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-de-dos-dimensiones."><i class="fa fa-check"></i><b>5.2.1</b> Tablas de contingencia de dos dimensiones.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tablas-de-contingencia-en-r."><i class="fa fa-check"></i><b>5.2.2</b> Tablas de contingencia en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-hipotesis-de-independencia-estadistica-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.3</b> Prueba de hipótesis de independencia estadística para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#el-modelo-de-independencia."><i class="fa fa-check"></i><b>5.3.1</b> El modelo de independencia.</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-independencia-para-una-tabla-bidimensional."><i class="fa fa-check"></i><b>5.3.2</b> Prueba de independencia para una tabla bidimensional.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-de-los-residuos."><i class="fa fa-check"></i><b>5.4</b> Análisis de los residuos.</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-chi2-en-r."><i class="fa fa-check"></i><b>5.4.1</b> Prueba <span class="math inline">\(\chi\)</span><sup>2</sup> en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#metodos-graficos-para-tablas-de-contingencia."><i class="fa fa-check"></i><b>5.5</b> Métodos gráficos para tablas de contingencia.</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-loglineales-para-datos-categoricos."><i class="fa fa-check"></i><b>5.5.1</b> Modelos loglineales para datos categóricos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#analisis-practico-de-datos-categoricos."><i class="fa fa-check"></i><b>5.6</b> Análisis práctico de datos categóricos.</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-base-de-datos.-1"><i class="fa fa-check"></i><b>5.6.1</b> La base de datos.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#genero-y-partido-politico."><i class="fa fa-check"></i><b>5.7</b> Género y partido político.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lineales.html"><a href="lineales.html"><i class="fa fa-check"></i><b>6</b> Modelos lineales</a><ul>
+<li class="chapter" data-level="6.1" data-path="lineales.html"><a href="lineales.html#introduccion-2"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.2" data-path="lineales.html"><a href="lineales.html#ajuste-de-modelo-lineales-con-lm"><i class="fa fa-check"></i><b>6.2</b> Ajuste de modelo lineales con <code>lm()</code></a><ul>
+<li class="chapter" data-level="6.2.1" data-path="lineales.html"><a href="lineales.html#sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.1</b> Sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.2" data-path="lineales.html"><a href="lineales.html#interpretacion-basica-del-sumario-de-un-modelo."><i class="fa fa-check"></i><b>6.2.2</b> Interpretación básica del sumario de un modelo.</a></li>
+<li class="chapter" data-level="6.2.3" data-path="lineales.html"><a href="lineales.html#intervalos-de-confianza."><i class="fa fa-check"></i><b>6.2.3</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="6.2.4" data-path="lineales.html"><a href="lineales.html#valores-estimados-y-residuos."><i class="fa fa-check"></i><b>6.2.4</b> Valores estimados y residuos.</a></li>
+<li class="chapter" data-level="6.2.5" data-path="lineales.html"><a href="lineales.html#prediccion-del-modelo."><i class="fa fa-check"></i><b>6.2.5</b> Predicción del modelo.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-mas-de-una-variable-independiente."><i class="fa fa-check"></i><b>6.3</b> Modelos lineales con más de una variable independiente.</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="lineales.html"><a href="lineales.html#exploracion-de-datos-multivariados."><i class="fa fa-check"></i><b>6.3.1</b> Exploración de datos multivariados.</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lineales.html"><a href="lineales.html#especificacion-de-modelos-con-multiples-variables-independientes."><i class="fa fa-check"></i><b>6.3.2</b> Especificación de modelos con múltiples variables independientes.</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lineales.html"><a href="lineales.html#comparar-modelos-lineales-multiples."><i class="fa fa-check"></i><b>6.3.3</b> Comparar modelos lineales múltiples.</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.4</b> Imprimir un sumario de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lineales.html"><a href="lineales.html#imprimir-un-sumario-formateado-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.5</b> Imprimir un sumario formateado de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.6" data-path="lineales.html"><a href="lineales.html#anova-de-varios-modelos."><i class="fa fa-check"></i><b>6.3.6</b> ANOVA de varios modelos.</a></li>
+<li class="chapter" data-level="6.3.7" data-path="lineales.html"><a href="lineales.html#criterio-de-informacion-de-akaike."><i class="fa fa-check"></i><b>6.3.7</b> Criterio de información de Akaike.</a></li>
+<li class="chapter" data-level="6.3.8" data-path="lineales.html"><a href="lineales.html#modelos-lineales-con-variables-independientes-categoricas."><i class="fa fa-check"></i><b>6.3.8</b> Modelos lineales con variables independientes categóricas.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lineales.html"><a href="lineales.html#supuestos-de-un-modelo-lineal."><i class="fa fa-check"></i><b>6.4</b> Supuestos de un modelo lineal.</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="lineales.html"><a href="lineales.html#normalidad."><i class="fa fa-check"></i><b>6.4.1</b> Normalidad.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lineales.html"><a href="lineales.html#independencia."><i class="fa fa-check"></i><b>6.4.2</b> Independencia.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lineales.html"><a href="lineales.html#linealidad."><i class="fa fa-check"></i><b>6.4.3</b> Linealidad.</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lineales.html"><a href="lineales.html#homocedasticidad."><i class="fa fa-check"></i><b>6.4.4</b> Homocedasticidad.</a></li>
+<li class="chapter" data-level="6.4.5" data-path="lineales.html"><a href="lineales.html#casos-atipicos."><i class="fa fa-check"></i><b>6.4.5</b> Casos atípicos.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lineales.html"><a href="lineales.html#regresion-robusta."><i class="fa fa-check"></i><b>6.5</b> Regresión robusta.</a></li>
+<li class="chapter" data-level="6.6" data-path="lineales.html"><a href="lineales.html#supuestos-de-los-modelos-lineales-problemas-y-soluciones."><i class="fa fa-check"></i><b>6.6</b> Supuestos de los modelos lineales: problemas y soluciones.</a></li>
+<li class="chapter" data-level="6.7" data-path="lineales.html"><a href="lineales.html#funciones-adicionales-para-modelos-lineales."><i class="fa fa-check"></i><b>6.7</b> Funciones adicionales para modelos lineales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="generalizados.html"><a href="generalizados.html"><i class="fa fa-check"></i><b>7</b> Modelos lineales generalizados</a><ul>
+<li class="chapter" data-level="7.1" data-path="generalizados.html"><a href="generalizados.html#introduccion."><i class="fa fa-check"></i><b>7.1</b> Introducción.</a></li>
+<li class="chapter" data-level="7.2" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-con-glm"><i class="fa fa-check"></i><b>7.2</b> Ajuste de modelos logit con <code>glm()</code></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-los-datos."><i class="fa fa-check"></i><b>7.2.1</b> Presentación de los datos.</a></li>
+<li class="chapter" data-level="7.2.2" data-path="generalizados.html"><a href="generalizados.html#un-modelo-lineal-con-glm"><i class="fa fa-check"></i><b>7.2.2</b> Un modelo lineal con <code>glm()</code></a></li>
+<li class="chapter" data-level="7.2.3" data-path="generalizados.html"><a href="generalizados.html#la-ordenada-al-origen-de-un-modelo-logit."><i class="fa fa-check"></i><b>7.2.3</b> La ordenada al origen de un modelo logit.</a></li>
+<li class="chapter" data-level="7.2.4" data-path="generalizados.html"><a href="generalizados.html#estimacion-de-beta_1"><i class="fa fa-check"></i><b>7.2.4</b> Estimación de <span class="math inline">\(\beta_1\)</span></a></li>
+<li class="chapter" data-level="7.2.5" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-dos-variables-independientes."><i class="fa fa-check"></i><b>7.2.5</b> Modelo logit con dos variables independientes.</a></li>
+<li class="chapter" data-level="7.2.6" data-path="generalizados.html"><a href="generalizados.html#modelo-logit-con-multiples-variables-dependientes."><i class="fa fa-check"></i><b>7.2.6</b> Modelo logit con múltiples variables dependientes.</a></li>
+<li class="chapter" data-level="7.2.7" data-path="generalizados.html"><a href="generalizados.html#pruebas-de-significancia."><i class="fa fa-check"></i><b>7.2.7</b> Pruebas de significancia.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="generalizados.html"><a href="generalizados.html#presentacion-de-resultados."><i class="fa fa-check"></i><b>7.3</b> Presentación de resultados.</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="generalizados.html"><a href="generalizados.html#intervalos-de-confianza.-1"><i class="fa fa-check"></i><b>7.3.1</b> Intervalos de confianza.</a></li>
+<li class="chapter" data-level="7.3.2" data-path="generalizados.html"><a href="generalizados.html#grafico-de-coeficientes."><i class="fa fa-check"></i><b>7.3.2</b> Gráfico de coeficientes.</a></li>
+<li class="chapter" data-level="7.3.3" data-path="generalizados.html"><a href="generalizados.html#tabla-y-grafico-de-efectos-totales-promedio."><i class="fa fa-check"></i><b>7.3.3</b> Tabla y gráfico de efectos totales promedio.</a></li>
+<li class="chapter" data-level="7.3.4" data-path="generalizados.html"><a href="generalizados.html#sumario-de-efectos-marginales."><i class="fa fa-check"></i><b>7.3.4</b> Sumario de efectos marginales.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="generalizados.html"><a href="generalizados.html#modelos-ligit-multinomiales."><i class="fa fa-check"></i><b>7.4</b> Modelos ligit multinomiales.</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="generalizados.html"><a href="generalizados.html#ajuste-de-modelos-logit-multinomiales-com-multinom"><i class="fa fa-check"></i><b>7.4.1</b> Ajuste de modelos logit multinomiales com <code>multinom()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="generalizados.html"><a href="generalizados.html#anexo-i.-probabilidades-y-razones-de-probabilidad."><i class="fa fa-check"></i><b>7.5</b> Anexo I. Probabilidades y razones de probabilidad.</a></li>
+<li class="chapter" data-level="7.6" data-path="generalizados.html"><a href="generalizados.html#anexo-ii.-asterisco-sobre-los-asteriscos."><i class="fa fa-check"></i><b>7.6</b> Anexo II. Asterisco sobre los asteriscos.</a></li>
+<li class="chapter" data-level="7.7" data-path="generalizados.html"><a href="generalizados.html#anexo-iii.-tipos-de-variables-independiente-y-modelo-lineal-apropiado."><i class="fa fa-check"></i><b>7.7</b> Anexo III. Tipos de variables independiente y modelo lineal apropiado.</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="martinpaladino.github.com" target="blank">Martín Paladino</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R para Ciencias Sociales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="investigacion-reproducible." class="section level1">
+<h1><span class="header-section-number">Capítulo 2</span> Investigación reproducible.</h1>
+<div id="introduccion-alcances-del-problema." class="section level2">
+<h2><span class="header-section-number">2.1</span> Introducción: alcances del problema.</h2>
+<p>El texto que está a punto de leer presentará algunos conceptos sumamente abstractos sobre las formas en que unas entidades abstractas -los programas- tratan a otras entidades abstractas -los datos. Propone una disciplina de trabajo aplicando un paradigma estricto y de comprensión no muy accesible, desarrollado en el ámbito de la cibernética, que lo retomó de las matemáticas. No en vano <a href="https://xkcd.com/1270/">Randall Munroe</a> dice que la programación funcional combina la flexibilidad y el poder de las matemáticas abstractas con la claridad intuitiva de las matemáticas abstractas. La programación funcional se desarrolló para atender problemas de desarrollo de software altamente complejo, en los que se hacía imposible o muy costoso conocer el estado de un programa en un momento dado. ¿Por qué debería interesar esto a un científico social? Porque la programación funcional hace una contribución significativa a la investigación reproducible. Dicho de otro modo, la investigación reproducible hace de la redacción –incluyendo texto y código– de un reporte, artículo, tesis o libro un problema de computación suficientemente complejo como para requerir soluciones igualmente complejas. Es claro que podemos que podemos hacer investigación reproducible sin recurrir a la programación funcional, pero a medida que aumenta la complejidad de nuestro producto –al que llamaremos y con razón <em>programa</em>, aunque se trate del más breve e insignificante paper– controlar la ejecución de ese programa se torna difícil. Si alguna vez intentó generar un script extenso en el que analiza una o más bases de datos usando R y notó que a medida que avanzaba pasaba más tiempo corrigiendo el código anterior que escribiendo código sabe de lo que le hablo. Si alguna vez, después de recibir un dictamen, regresó a su código para hacer algunas correcciones y notó que la <code>base</code> en la línea 1 no es la misma <code>base</code> que en la línea 134 también lo sabe.</p>
+</div>
+<div id="investigacion-reproducible.-1" class="section level2">
+<h2><span class="header-section-number">2.2</span> Investigación reproducible.</h2>
+<p>Uno de los temas actuales en la investigación académica, especialmente la que se apoya en métodos cuantitativos, pasa por la investigación reproducible. Uno de los fundamentos de la ciencia –sea cual sea el paradigma desde el que nos ubiquemos– es su naturaleza pública, por eso publicamos resultados. Y hacemos públicos nuestros resultados porque buscamos que la comunidad académica los lea, critique, valide o refute. Para hacer ese proceso todavía más profundo la investigación reproducible nos llama a no solamente publicar los resultados, también los procesos que nos han llevado a ellos. De acuerdo con Rodríguez Sánchez, Pérez Luque, Bartomeu y Varela <span class="citation">(<span class="citeproc-not-found" data-reference-id="rodriguez-sanchez_ciencia_2016"><strong>???</strong></span>)</span> los estudios científicos reproducibles son aquellos que incluyen el código informático capaz de recrear todos los resultados a partir de los datos originales, así como el texto creado por los o las autoras. De este modo otro investigador o investigadora podrá partir de los mismos datos y aplicar el mismo análisis, verificar los resultados, buscar posibles errores, retomar el análisis donde lo dejamos y continuar el trabajo. Si entendemos a la actividades científica como colectiva no es aceptable que el análisis propiamente dicho –no sólo los resultados– nunca salga de Mis documentos.</p>
+<div class="figure">
+<img src="imagenes/reproducible.png" alt="Investigación reproducible. Tomado de Rodríguez Sánchez et. al." />
+<p class="caption">Investigación reproducible. Tomado de Rodríguez Sánchez et. al.</p>
+</div>
+<p>En principio sería suficiente con hacer públicos –siempre que sea posible– los datos y adjuntar las sintaxis con la que los analizamos. Sin embargo esto implica que debemos mantener sincronizadas “manualmente” tres estructuras diferentes: los datos, el código y el texto. En verdad es mucho más fácil hacer que todo esto funcione si contamos con una plataforma de software unificada que procese tanto los datos como el código y el texto y a partir de estos elementos produzca salidas en formatos compatibles con la publicación: LaTeX, .pdf., .docx, etc. Esa plataforma existe y es completamente gratuita: se llama R y gracias al trabajo voluntario de personas como <a href="https://yihui.name/en/">Yihui Xie</a>, autor de la librería knitr, ha simplificado enormemente el proceso de la investigación reproducible. Usar en conjunto knitr, pandoc y LaTeX desde Rstudio es en verdad muy fácil y estas de librerías se encargan de prácticamente todo el proceso de edición: ejecutan el código R, conservan y dan formato a los resultados, agregan números de figuras y tablas, crean la bibliografías, tablas de referencias cruzadas, numeran las páginas y, como si fuera poco, organizan la ubicación de tablas y gráficos en el documento, evitando páginas en blanco y gráficos recortados. Toda la cadena de software es open source y multiplataforma: corre exactamente igual en Linux, macOS o Windows.</p>
+<div id="ventajas-de-la-investigacion-reproducible." class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Ventajas de la investigación reproducible.</h3>
+<p>¿Qué ventajas tiene la investigación reproducible? La ventaja para la comunidad de investigadores ya fue expuesta. Para cada investigador o investigadora también las tiene.
+La primera, también esbozada, es la <em>simplificación del flujo de trabajo</em> al utilizar una solo plataforma de software. Es innecesario pasar por el penoso trabajo de realizar el análisis en un programa –digamos, Stata–, copiar los resultados, formatearlos en otro –digamos, Excel para las tablas y/o un editor de gráficos para estos– y finalmente reunirlos en un documento de procesador de texto –digamos, Word; sólo para repetir la cadena cada vez que queremos introducir algún cambio, por mínimo que sea. Este proceso no solo es laborioso, también es propenso a errores y no deja rastros que nos permitan identificar con facilidad donde los cometimos: no hay una sintaxis o log del proceso, todo lo hicimos moviendo el ratón. Integrando todos los pasos en R los cambios, grandes o pequeños, se actualizan inmediatamente. Si hay error de sintaxis será ruidoso e interrumpirá el proceso, si hay un error conceptual o de otro tipo tendremos la sintaxis paso a paso de lo que hemos hecho y podremos identificarlo y solucionarlo. Podemos recorrer y validar el camino que nos lleva a nuestros resultados con gran facilidad.
+La segunda es la aplicación de <em>control de versiones</em>. Uno de verdad, como el que implementa el algoritmo Git, no el control de cambios de Word, que nadie en su sano juicio utiliza y por buenos motivos. Para el investigador individual significa que podemos ir hacia atrás y hacia adelante en el avance del documento, comparar cambios, regresar si el camino que tomamos no nos gusta. Esto hace obsoletas tanto las versiones con múltiples nombres de un mismo archivo como los documentos que reservamos para párrafos sueltos. Para los equipos de trabajo que no es necesario pasar versión tras versión por correo electrónico: texto y código están en un repositorio compartido y permanentemente actualizado que, si se dieran conflictos de versiones, los resuelve automáticamente. También posibilita abrir bifurcaciones para probar ideas nuevas sin alterar el original. Al final y si lo consideramos mejor podemos reunirlo con el original.
+La tercera es la posibilidad de <em>reutilizar nuestro propio trabajo</em>. No me refiero a hacer refritos para inflar el CV, me refiero a encontrarnos en el futuro con un problema que ya resolvimos y encontrar rápidamente esa solución para volver a implementarla.</p>
+</div>
+<div id="desafios-de-la-investigacion-reproducible." class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Desafíos de la investigación reproducible.</h3>
+<p>¿Qué desafíos trae la investigación reproducible? El más inmediato es que posiblemente no estemos acostumbrados a utilizar las herramientas de software que lo implementan. No se trata de versiones diferentes de los paquetes de oficina o de análisis estadístico que usamos, se trata de software que emplea interfaces y metáforas totalmente diferentes. R, pandoc, LaTeX o Git no tienen ningún atisbo de isomorfismo, no intentan simular nuestras interacciones con objetos cotidianos para darnos una sensación de familiaridad o implementan menús para mostrarnos todas las opciones. Reciben sus comandos de manera escrita a través de una consola, misma en la que vemos los resultados, se manejan exclusivamente con archivos de texto que debemos editar con cuidado. Esta familia de software tiene una característica común: la curva de aprendizaje tiene pendiente alta al principio. R hace difícil lo fácil y fácil lo difícil, al menos en un comienzo.</p>
+<div class="figure"><span id="fig:rversusexcel"></span>
+<img src="libRo_files/figure-html/rversusexcel-1.png" alt="Curva de aprendizaje y dificultad de problemas." width="672" />
+<p class="caption">
+Figure 2.1: Curva de aprendizaje y dificultad de problemas.
+</p>
+</div>
+<p>Llegado el punto en el que el manejo de R y en general de la cadena de software de investigación reproducible no son un problema aparecen otros. Esos problemas más avanzados son los que atenderemos en el resto del documento. Se trata de problemas conocidos a los que han buscado –y encontrado– soluciones en el campo del desarrollo de software y lenguajes de programación. Entrar comandos en la consola de R es una cosa. Escribir un script con algunos comandos que, en conjunto, hacen algo más complejo, otra. Y escribir una tesis o un libro en el que haremos múltiples manipulaciones de datos, recodificaciones, transformaciones, gráficos y modelos otra muy diferente. Sin pudor o equivocados aires de superioridad podemos llamar a ese libro o esa tesis, producido en el marco de la investigación reproducible, un <em>programa</em>: código que cuando se ejecuta define estados de un sistema informático y cambia esos estados. Cada tipo de programa tiene sus dificultades, mayores o menores. Un programa de investigación reproducible –el código que produce el artículo, libro o tesis– tiene como principal problema garantizar la integridad de los datos a lo largo del programa, es decir, evitar que sufran modificaciones que o rompen el código siguiente o, peor aún, producen errores silenciosos. Todos los programas comparten, eso sí, una misma dificultad: el mantenimiento o revisión del código. Ya sea que buscamos agregar una nueva característica a un sistema operativo o hacer correcciones a un artículo sin dudas volveremos sobre nuestro código y nos parecerá escrito por un completo desconocido ¿en qué linea cambia <code>datos_reco_2</code>? ¿Contiene la recodificación de la variable x o esa está en <code>datos_reco_3</code>. Integridad de los datos y mantenibilidad del código son dos problemas con una solución: programación funcional. No es la manera obvia y difícilmente sea la que aplicamos cuando estamos aprendiendo a usar R. Dado que R es multiparadigma admite tanto programación imperativa o procedimental como programación funcional. La metáfora de tiempo espacio implícita en el script nos lleva sutilmente al paradigma imperativo: ¡R! haz esto y guárdalo aquí, léelo, luego haz esto y guárdalo allí, lee allí y luego haz esto. Una instrucción y una asignación por cada línea de código.
+El paradigma funcional procura, en cambio, no asignar nombres en el entorno de trabajo en la medida de lo posible y encadenar funciones: pasar el output de una como input de la otra sin asignarles un nombre al input ni al output. Puede parecer innecesariamente complejo, pero a medida que a medida que la complejidad de nuestro programa aumenta en realidad simplifica las cosas. En el paradigma procedimental debemos controlar las transformaciones de los datos a lo largo de todo el programa, en el funcional solamente dentro de la cadena de funciones que produce el resultado que estamos esperando. Bien implementado el paradigma funcional puede tiene la misma potencia expresiva que el procedimental, es decir, podemos hacer las mismas operaciones. Se trata de enfocar de manera distinta el desarrollo del código.</p>
+<p>El siguiente ejemplo ilustra dos maneras de resolver el mismo problema. Buscamos un gráfico que en el eje x tenga una variable categórica con las 5 primeras letras del alfabeto y en el eje y números aleatorios consistentes con una distribución normal con <span class="math inline">\(\hat{x}=0\)</span> y <span class="math inline">\(\sigma=3\)</span>. Ese es nuestro output, cualquier cambio de estado del programa –producido, por ejemplo, por pasos intermedios- es un efecto colateral. Hemos agregado un valor missing para hacer aumentar levemente la complejidad del problema y demostrar la forma en que puede solucionarse con programación funcional.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="co">#Programación procedimental en R: cada línea modifica el estado anterior del programa. </span></a>
+<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">1244</span>)</a>
+<a class="sourceLine" id="cb121-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="ot">NA</span>)   <span class="co">#Creo el vector x</span></a>
+<a class="sourceLine" id="cb121-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">3</span>)              <span class="co">#Creo el vector y: una normal aleatoria.</span></a>
+<a class="sourceLine" id="cb121-5" data-line-number="5">df &lt;-<span class="st"> </span><span class="kw">data.frame</span> (<span class="dt">x=</span>x, <span class="dt">y=</span>y)      <span class="co">#Los reuno en un data.frame</span></a>
+<a class="sourceLine" id="cb121-6" data-line-number="6">df &lt;-<span class="st"> </span><span class="kw">na.omit</span>(df)                <span class="co">#Elimino las filas con missing (NA)</span></a>
+<a class="sourceLine" id="cb121-7" data-line-number="7"><span class="kw">plot</span>(df)                        <span class="co">#Produzco un gráfico. </span></a></code></pre></div>
+<p><img src="libRo_files/figure-html/imperativo_funcional-1.png" width="672" /></p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1"><span class="co">#Entorno de trabajo en R con paradigma procedimental: 3 efectos colaterales, un output.</span></a>
+<a class="sourceLine" id="cb122-2" data-line-number="2"><span class="kw">ls</span>()                          <span class="co">#Muestra el entorno de trabajo en consola.</span></a></code></pre></div>
+<pre><code>##  [1] &quot;alumnos&quot;        &quot;carrera&quot;        &quot;df&quot;             &quot;edad&quot;          
+##  [5] &quot;edad_dias&quot;      &quot;edad_ordenada&quot;  &quot;largo_mas_1&quot;    &quot;nombres&quot;       
+##  [9] &quot;radio&quot;          &quot;radio_cuadrado&quot; &quot;ubicacion&quot;      &quot;x&quot;             
+## [13] &quot;y&quot;</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())                 <span class="co">#Borro el entorno de trabajo completo.</span></a>
+<a class="sourceLine" id="cb124-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb124-3" data-line-number="3"><span class="kw">plot</span>(<span class="kw">na.omit</span>(<span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="ot">NA</span>), <span class="dt">y=</span><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">3</span>))))  <span class="co">#Sólo output, 0 efectos colaterales.</span></a></code></pre></div>
+<p><img src="libRo_files/figure-html/imperativo_funcional-2.png" width="672" /></p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="co">#Entorno de trabajo funcional. Nada por aquí... sólo producimos output, cero efectos colaterales.</span></a>
+<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="kw">ls</span>()</a></code></pre></div>
+<pre><code>## character(0)</code></pre>
+<p>En lugar de ir transformando nuestros datos a lo largo del programa y registrando esos cambios asignándoles uno o más nombres crearemos los datos que necesitamos de manera ad hoc, en una cadena que inicia con los datos y culmina con el resultado esperado: una tabla, un gráfico, un modelo. Los datos no son un río que fluye y cambia de forma a medida avanza el programa: son un depósito del que sacamos una tubería cada vez que lo necesitamos. Si una se tapa las demás siguen funcionando. Seguiremos organizando nuestro código con una pauta de tiempo espacio: esto es investigación reproducible y los resultados de R deben estar en sincronizados con el texto que estamos escribiendo, que tiene su propia metáfora tiempo-espacio: más arriba es antes, más abajo después. Pero a los efectos ejecución del programa este es paralelo: hay una fuente inmutable de datos y múltiples funciones que pueden procesarlos simultáneamente<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Cada bloque está separado de los demás, no depende se sus resultados. Puedo eliminar bloques completos de código y el resto sigue funcionando. La integridad de los datos y el mantenimiento del código están garantizados.</p>
+</div>
+</div>
+<div id="filosofia-programacion-funcional-con-inmutabilidad-de-datos-transparencia-referencial-y-funciones-puras." class="section level2">
+<h2><span class="header-section-number">2.3</span> Filosofía: programación funcional con inmutabilidad de datos, transparencia referencial y funciones puras.</h2>
+<p>R permite manipular datos de una forma sólo limitada por nuestra propia capacidad, es decir, es posible y probable que descubramos formas de corromper o deformar nuestros datos que nunca hubiéramos imaginado. Dado que R no nos limita ni nos induce a determinadas maneras de programación es necesario que desarrollemos un conjunto de prácticas que eviten siempre que sea posible la corrupción de los datos y reduzcan la carga cognitiva del programador/analista reduciendo el número de objetos en el entornos.</p>
+<p>Las líneas siguientes no son un manual de procedimientos sino un breve y simplificado excurso sobre teoría de los lenguajes de programación y la forma en que podemos aprovecharla para crear prácticas y flujos de trabajo al mismo tiempo predecibles y flexibles que producen un código fácil de mantener. Con programas cortos y simples sobre los que estamos trabajando activamente el mantenimiento del código no es problemático: podemos recordar que hace cada línea y tener un registro mental de los nombres que vamos asignando a las estructuras de datos. Sabemos, por ejemplo, que <code>datos</code> son los datos originales, <code>datos2</code> una copia en la que recodificamos de cierto modo un variable y que <code>datos</code> <em>después de la línea 25</em> incorporó esa recodificación. Sin embargo cuando el código crece en tamaño y complejidad y/o volvemos a trabajar sobre ese código después de un tiempo y ya no tenemos memorizadas las mutaciones a las que fuimos sometiendo a los datos a lo largo del programa estaremos ante un código difícil de mantener. Hacer una pequeña modificación -digamos, incorporar las observaciones de un dictamen- implicará varias horas de estudio de nuestro propio código hasta familiarizarnos nuevamente con la serie de transformaciones y estar en condiciones de hacer los cambios sin romper la sintaxis. La programación funcional es un paradigma de programación que elimina de raíz estos escenarios y está implementada en R desde sus orígenes.</p>
+<p>R es un lenguaje multiparadigma, admite varias formas de obtener los mismos resultados. Pertinentes a este apartado son los paradigmas procedimentales y funcionales, ambos disponibles en R. Podemos combinarlos y de hecho en ocasiones no tendremos más alternativa que hacerlo, pero para evitar confusiones es mejor utilizar sólo uno de ellos y por lo ya dicho es todavía mejor utilizar solamente el paradigma funcional.</p>
+<p>Los conceptos clave del paradigma funcional que aplicaremos son la inmutabilidad de los datos, las funciones puras y la transparencia referencial. De la inmutabilidad de los datos ya hemos dicho que significa que los datos, una vez que fueron importados al entorno de R nunca serán modificados.</p>
+<p>Las <strong>funciones puras</strong> son aquellas que reciben un input y nos regresan un output y no producen efectos colaterales. Un efecto colateral es un efecto de la función que produce un cambio de estado del programa fuera del ámbito estricto esa función.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> Dado que no queremos cambiar estados más allá del input-output de la función y que frecuentemente el resultado final esperado implica más de una función sería una buena idea poder encadenar funciones, de modo que el output de una sea el input de la siguiente. Para esto nos ayuda la transparencia referencial.</p>
+<p>La <strong>transparencia referencial</strong> es una propiedad de los lenguajes de programación que hace mutuamente reemplazables en la sintaxis a expresiones equivalentes. Dado que <code>1/2 = 0.5</code> en R podemos usar uno u otro indistintamente. Si nos interesa trabajar sobre variable transformada esto significa que en lugar de crear primero esa variable transformada, guardarla en algún lugar y pasarla posteriormente a otra función llamar directamente a la función de transformación en lugar mismo en el que lo necesitamos. La transparencia referencial se encarga hacer la transformación en el momento adecuado. Inclusive nos permite hacer subconjuntos sobre el output de una función directamente en la llamada a la función. Así <code>rnorm(15, 0, 1)[3]</code> nos regresará el tercer valor del vector de números normales aleatorios que hemos creado, no es necesario asignar un nombre al vector y luego extraer el valor.
+Veamos algunas pruebas de estos conceptos en R aplicándolos a la estimación de una mediana y algunos problemas de de unión y separación de datos. La mediana es el valor que se ubica en el centro de un vector ordenado. Para obtenerla debemos primero ordenar al vector, luego ubicar la posición que divide al vector en 2 partes iguales y finalmente ver cuál es el valor que ocupa esa posición, es decir, <span class="math inline">\(M_e=x_{(n+1)/2}\)</span>.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="co">#=======================================#</span></a>
+<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="co">#Bloque 1. Demostración de los conceptos#</span></a>
+<a class="sourceLine" id="cb127-3" data-line-number="3"><span class="co">#=======================================#</span></a>
+<a class="sourceLine" id="cb127-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb127-5" data-line-number="5"><span class="co">#Captura de datos.</span></a>
+<a class="sourceLine" id="cb127-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb127-7" data-line-number="7">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">100000</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">100</span>, <span class="dv">1000</span>) <span class="co">#Creo el vector &quot;x&quot; con valores numéricos. Se mantendrá inmutable a lo largo de todo el ejercicio. </span></a>
+<a class="sourceLine" id="cb127-8" data-line-number="8">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;i&quot;</span>) <span class="co">#El vector y tiene valores caracter. </span></a>
+<a class="sourceLine" id="cb127-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb127-10" data-line-number="10"><span class="co">#Inmutabilidad de los datos</span></a>
+<a class="sourceLine" id="cb127-11" data-line-number="11"><span class="co">#==========================</span></a>
+<a class="sourceLine" id="cb127-12" data-line-number="12"><span class="co">#Realizo una serie de operaciones sobre x y y, pero estos permanecen iguales. </span></a>
+<a class="sourceLine" id="cb127-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb127-14" data-line-number="14">x                       <span class="co">#Imprimo x</span></a></code></pre></div>
+<pre><code>## [1] 1e+05 1e+00 2e+00 3e+00 4e+00 5e+00 6e+00 1e+02 1e+03</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="kw">data.frame</span>(<span class="dt">y=</span>y, <span class="dt">x=</span>x)    <span class="co">#Combino x y y en una estructura rectangular</span></a></code></pre></div>
+<pre><code>##   y     x
+## 1 a 1e+05
+## 2 b 1e+00
+## 3 c 2e+00
+## 4 d 3e+00
+## 5 e 4e+00
+## 6 f 5e+00
+## 7 g 6e+00
+## 8 h 1e+02
+## 9 i 1e+03</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1">x<span class="op">*</span>x                     <span class="co">#x al cuadrado</span></a></code></pre></div>
+<pre><code>## [1] 1.0e+10 1.0e+00 4.0e+00 9.0e+00 1.6e+01 2.5e+01 3.6e+01 1.0e+04 1.0e+06</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw">median</span>(x)               <span class="co">#mediana de x</span></a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1">x                       <span class="co">#x nunca se modificó</span></a></code></pre></div>
+<pre><code>## [1] 1e+05 1e+00 2e+00 3e+00 4e+00 5e+00 6e+00 1e+02 1e+03</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="co">#Funciones puras. Estimación de una mediana para vectores de largo impar.</span></a>
+<a class="sourceLine" id="cb137-2" data-line-number="2"><span class="co">#========================================================================</span></a>
+<a class="sourceLine" id="cb137-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb137-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb137-5" data-line-number="5"><span class="co">#Programación funcional: sin efectos colaterales. La función recibe al vector y regresa la mediana. </span></a>
+<a class="sourceLine" id="cb137-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb137-7" data-line-number="7"><span class="kw">sort</span>(x)[(<span class="kw">length</span>(x)<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>]           </a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">x                          <span class="co">#x se mantiene igual.</span></a></code></pre></div>
+<pre><code>## [1] 1e+05 1e+00 2e+00 3e+00 4e+00 5e+00 6e+00 1e+02 1e+03</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1"><span class="co">#Programación procedimental. Con efectos colaterales.  </span></a>
+<a class="sourceLine" id="cb141-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb141-3" data-line-number="3">n &lt;-<span class="st"> </span><span class="kw">length</span>(x)</a>
+<a class="sourceLine" id="cb141-4" data-line-number="4">x &lt;-<span class="st"> </span><span class="kw">sort</span>(x)</a>
+<a class="sourceLine" id="cb141-5" data-line-number="5">posicion &lt;-<span class="st"> </span>(n<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>        </a>
+<a class="sourceLine" id="cb141-6" data-line-number="6">x [posicion]               <span class="co">#Regresa la mediana. </span></a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">x                          <span class="co">#Efecto colateral: reordenó x. </span></a></code></pre></div>
+<pre><code>## [1] 1e+00 2e+00 3e+00 4e+00 5e+00 6e+00 1e+02 1e+03 1e+05</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1">n;posicion                 <span class="co">#También agregó dos objetos al entorno que no volveremos a utilizar.</span></a></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="kw">data.frame</span>(<span class="dt">y=</span>y, <span class="dt">x=</span>x)       <span class="co">#Corrupción de datos: no coinciden las filas. </span></a></code></pre></div>
+<pre><code>##   y     x
+## 1 a 1e+00
+## 2 b 2e+00
+## 3 c 3e+00
+## 4 d 4e+00
+## 5 e 5e+00
+## 6 f 6e+00
+## 7 g 1e+02
+## 8 h 1e+03
+## 9 i 1e+05</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="co">#Transparencia refencial. </span></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2"><span class="co">#========================</span></a>
+<a class="sourceLine" id="cb150-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb150-4" data-line-number="4"><span class="kw">median</span>(x) <span class="op">==</span><span class="st"> </span><span class="kw">sort</span>(x)[(<span class="kw">length</span>(x)<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>]     <span class="co">#Igualdad de dos expresiones. </span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw">sort</span>(x, <span class="dt">decreasing=</span><span class="ot">TRUE</span>)            <span class="co">#Reordeno x de mayor a menor, lo asingo a z.</span></a>
+<a class="sourceLine" id="cb152-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb152-3" data-line-number="3">z</a></code></pre></div>
+<pre><code>## [1] 1e+05 1e+03 1e+02 6e+00 5e+00 4e+00 3e+00 2e+00 1e+00</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">z[<span class="dv">1</span>]                                      <span class="co">#z en la posición 1</span></a></code></pre></div>
+<pre><code>## [1] 1e+05</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1"><span class="kw">sort</span>(x, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)[<span class="dv">1</span>]             <span class="co">#Podemos usar las expresiones z[1] y sort(x, decreasing = TRUE)[1] de manera totalmente equivalente. Ambas son la misma referencia para R. </span></a></code></pre></div>
+<pre><code>## [1] 1e+05</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="kw">data.frame</span>(<span class="dt">y=</span>y, <span class="dt">x=</span><span class="kw">log</span>(x))</a></code></pre></div>
+<pre><code>##   y          x
+## 1 a  0.0000000
+## 2 b  0.6931472
+## 3 c  1.0986123
+## 4 d  1.3862944
+## 5 e  1.6094379
+## 6 f  1.7917595
+## 7 g  4.6051702
+## 8 h  6.9077553
+## 9 i 11.5129255</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw">data.frame</span>(<span class="dt">y=</span>y, <span class="dt">x=</span>x, <span class="dt">z=</span><span class="kw">log</span>(x))</a></code></pre></div>
+<pre><code>##   y     x          z
+## 1 a 1e+00  0.0000000
+## 2 b 2e+00  0.6931472
+## 3 c 3e+00  1.0986123
+## 4 d 4e+00  1.3862944
+## 5 e 5e+00  1.6094379
+## 6 f 6e+00  1.7917595
+## 7 g 1e+02  4.6051702
+## 8 h 1e+03  6.9077553
+## 9 i 1e+05 11.5129255</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">z                                          <span class="co">#z no se modificó, z=log(x) sólo es válido dentro de la función. </span></a></code></pre></div>
+<pre><code>## [1] 1e+05 1e+03 1e+02 6e+00 5e+00 4e+00 3e+00 2e+00 1e+00</code></pre>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1"><span class="co">#Función para estimar la mediana en vectores de cualquier largo. </span></a>
+<a class="sourceLine" id="cb164-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb164-3" data-line-number="3"><span class="kw">ifelse</span>(<span class="kw">length</span>(x)<span class="op">%%</span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>,                                                       <span class="co">#%%Regresa el resto de la división, si es igual a 0 length(x) es par.</span></a>
+<a class="sourceLine" id="cb164-4" data-line-number="4">      (<span class="kw">sort</span>(x)[<span class="kw">floor</span>((<span class="kw">length</span>(x)<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>)] <span class="op">+</span><span class="st"> </span><span class="kw">sort</span>(x)[<span class="kw">ceiling</span>((<span class="kw">length</span>(x)<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>)])<span class="op">/</span><span class="dv">2</span>,  <span class="co">#length(x) par, promedio de los valores centrales. </span></a>
+<a class="sourceLine" id="cb164-5" data-line-number="5">      <span class="kw">sort</span>(x)[(<span class="kw">length</span>(x)<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>]                                                  <span class="co">#length(x) par: valor central. </span></a>
+<a class="sourceLine" id="cb164-6" data-line-number="6">      )</a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>Como vemos en el Bloque 1 R se maneja tanto dentro de un paradigma procedimental –en el que modificamos estado del programa o de los datos línea por línea- como dentro de un paradigma funcional, en el que nunca modificamos el estado del programa o la estructura de los datos de modo que afecte al código siguiente. Cuando modificamos los datos lo hacemos <em>dentro</em> de funciones. De este modo x será siempre x, a lo largo de todo el programa, con los mismos datos en el mismo orden. Así se reduce notablemente la carga cognitiva del programador/analista, no es necesario verificar en cada paso que los datos no han perdido su integridad. R se encarga de administrar los nombres de los objetos, por lo tanto no son necesarias una convención y disciplina estrictas para nombrar objetos. También evitamos completamente llevar a cabo prácticas riesgosas como el reciclado de nombres.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+<p>##CODA:</p>
+<p><strong>Use el asignador <code>&lt;-</code> cuando sea estrictamente indispensable.</strong></p>
+<ul>
+<li>Su uso se justifica solamente cuando hay una penalización de desempeño muy alta.
+<ul>
+<li>Como regla general, sólo asigne nombre a objetos cuya producción requiere demasiado tiempo.</li>
+<li>Importar datos leyéndolos de un archivo suele ser un proceso lento, hágalo sólo una vez al principio del programa y asigne un nombre al objeto resultante.</li>
+<li>Lo mismo vale para alguna transformación basada en un algoritmo complejo y que utilizará recurrentemente.
+<ul>
+<li>Por ejemplo, los modelos con efectos aleatorios para n grande son complejos de resolver y analizaremos en profundidad el resultado. En este caso un nombre al resultado en lugar de llamar a la función que produce el modelo una y otra vez.</li>
+<li>Las recodificaciones, partición de datos y unión de bases son muy rápidas en R y propensas a generar errores en el código que les sigue. Nunca asigne nombre en estos casos, llame directamente a la función pertinente.<br />
+</li>
+</ul></li>
+</ul></li>
+<li>Por su paz mental nunca recicle nombres: un objeto distinto requiere un nombre distinto. Nunca debería crear líneas del tipo <code>datos &lt;- datos[algo]</code>, <code>datos_algo &lt;- datos[algo]</code> es una mejor alternativa.
+<ul>
+<li>Si aún así prefiere asignar nombres a los datos transformados use una convención clara y sea estricto al respecto. El data.frame en el que recodificó la variable V3 deberían llamarse <code>datos_recodificados_V3_dicotomica</code> o algo por el estilo. Nunca <code>datos2</code>, <code>datos_reco</code> u otros nombres que no le dan información sobre lo que contienen. Cuando lo escriba recordará perfectamente que hay ahí, en unos meses no. Si preferiría no tener que tipear nombres tan largos puede usar programación funcional y simplemente no tendrá que tipear ningún nombre.</li>
+</ul></li>
+</ul>
+<p><strong>Use funciones siempre que sea posible.</strong></p>
+<ul>
+<li>En lugar de generar múltiples copias de un objeto a medida que lo transforma, genere múltiples funciones que hacen esas transformaciones sin efectos colaterales y llámelas cada vez que necesita los datos transformados.</li>
+<li>Asegúrese de que las funciones que utiliza, incluyendo las que usted crea, sea puras. Sólo imput y output.
+<ul>
+<li>R permite funciones lambda, es decir, funciones anónimas. Úselas para funciones ad hoc que no volverá a utilizar.</li>
+</ul></li>
+<li>Si nota que está copiando y pegando código con frecuencia considere convertir ese código en una función. De este modo evitará posible errores en el copiado/pegado.
+<ul>
+<li>De ese modo si quiere hacer algún cambio a la sintaxis lo hará directamente en la función, produciendo efectos sobre todo el código que llama a esa función. No será necesario repetir el cambio en cada aparición de ese código.</li>
+</ul></li>
+<li>En la programación funcional los paréntesis reemplazan al salto de línea para organizar el orden de ejecución del programa. Esto que puede dificultar la lectura del código.
+<ul>
+<li>Utilice tuberías para encadenar funciones. Tendrá un código mucho más legible.<br />
+</li>
+<li>Utilice sangrías para hacer más legible su código: cada función y/o sus argumentos deberían estar en línea aparte.</li>
+<li>El único efecto colateral de la programación funcional es que tendrá que contar paréntesis. Si se toma el trabajo adicional de alinearlos será más fácil ubicar cuál abre y cual cierra cada función.</li>
+</ul></li>
+<li>Al finalizar su análisis su entorno de trabajo debería tener solamente la o las fuentes de datos originales y las funciones con las que las transforma, nunca 15 o 20 versiones levemente diferentes y con nombres parecidos de los mismos datos.</li>
+</ul>
+</div>
+<div id="hagamos-pizza-en-r." class="section level2">
+<h2><span class="header-section-number">2.4</span> Hagamos pizza en R.</h2>
+<div id="pizzeria-el-asignador.-pizzas-de-hoy-y-de-ayer." class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Pizzería “El asignador”. Pizzas de hoy y de ayer.</h3>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="co">#Pizzería &quot;El asignador&quot;</span></a>
+<a class="sourceLine" id="cb166-2" data-line-number="2">ingredientes_masa &lt;-<span class="st"> </span><span class="kw">c</span>(harina, agua, levadura)</a>
+<a class="sourceLine" id="cb166-3" data-line-number="3">ingredientes_salsa &lt;-<span class="st"> </span><span class="kw">c</span>(ajo, tomate, cebolla)</a>
+<a class="sourceLine" id="cb166-4" data-line-number="4">salsa &lt;-<span class="st"> </span><span class="kw">cocinar</span>(ingredientes_salsa)</a>
+<a class="sourceLine" id="cb166-5" data-line-number="5">masa &lt;-<span class="st"> </span><span class="kw">amasar</span>(ingredientes_masas)</a>
+<a class="sourceLine" id="cb166-6" data-line-number="6">masa_estirada &lt;-<span class="st"> </span><span class="kw">estirar</span>(masa)</a>
+<a class="sourceLine" id="cb166-7" data-line-number="7">prepizza &lt;-<span class="st"> </span><span class="kw">salsear</span> (masa_estirada, salsa)</a>
+<a class="sourceLine" id="cb166-8" data-line-number="8">pizza &lt;-<span class="st"> </span><span class="kw">hornear</span> (prepizza)</a></code></pre></div>
+</div>
+<div id="pizzeria-la-funcional-clasica.-el-cambio-se-lo-da-en-parentesis." class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Pizzería La funcional clásica. El cambio se lo da en paréntesis.</h3>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="co">#Pizzero La funcional</span></a>
+<a class="sourceLine" id="cb167-2" data-line-number="2"><span class="kw">pizza</span>(</a>
+<a class="sourceLine" id="cb167-3" data-line-number="3">  <span class="kw">hornear</span>(</a>
+<a class="sourceLine" id="cb167-4" data-line-number="4">    <span class="kw">salsear</span>(<span class="kw">c</span>(ajo, tomate, cebolla),</a>
+<a class="sourceLine" id="cb167-5" data-line-number="5">            <span class="kw">estirar</span>(</a>
+<a class="sourceLine" id="cb167-6" data-line-number="6">              <span class="kw">amasar</span>(<span class="kw">c</span>(harina, agua, levadura)</a>
+<a class="sourceLine" id="cb167-7" data-line-number="7">                    )</a>
+<a class="sourceLine" id="cb167-8" data-line-number="8">                   ) </a>
+<a class="sourceLine" id="cb167-9" data-line-number="9">           ) </a>
+<a class="sourceLine" id="cb167-10" data-line-number="10">         ) </a>
+<a class="sourceLine" id="cb167-11" data-line-number="11">     )</a></code></pre></div>
+</div>
+<div id="pizzeria-magrittr-la-mas-del-rumbo" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Pizzería magrittr ¡La más %&gt;% del rumbo!</h3>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1"><span class="co">#Pizzería magrittr, de René Magritte e hijos. </span></a>
+<a class="sourceLine" id="cb168-2" data-line-number="2"><span class="kw">c</span>(harina, agua, levadura) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb168-3" data-line-number="3"><span class="st">  </span>amasar <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb168-4" data-line-number="4"><span class="st">  </span>estirar <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb168-5" data-line-number="5"><span class="st">  </span><span class="kw">salsear</span> (<span class="kw">c</span>(ajo, tomate, cebolla) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb168-6" data-line-number="6"><span class="st">  </span>hornear</a></code></pre></div>
+<p>El sabor es el mismo y si todo marcha bien jamás notaremos la diferencia.</p>
+<p>Sin embargo el proceso es diferente. Si la pizza de “El asignador” tiene problemas el pizzero deberá rastrear siete objetos para identificar en cuál está el problema. Quizás le quedó <code>masa_estirada</code> del día de ayer<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>, entonces no está seguro si la pizza que sale del horno tiene <code>masa_estirada</code> fresca o una que quedó de ayer.</p>
+<p>El pizzero funcional ni siquiera le da un nombre al objeto que está manipulando, sólo le interesa el proceso. Simplemente le pasa el resultado de ese proceso al cliente (¡otra función!) cuando este la requiere. Hace pizza cada vez que le piden, no tiene un inventario al que estar rastreando. Pero si no lee la receta con cuidado podría poner primero la salsa y después la masa, ya que la receta comienza con el resultado y no con las materias primas. Y no digamos nada del trabajo que le daría cambiar su receta para agregar queso a la pizza o ponerle salsa hasta las orillas a pedido de un cliente. A contar paréntesis y ubicar la línea exacta en la que pasar un argumento adicional a una función.</p>
+<p>En Pizzería mgrittr empezamos por los ingredientes y terminamos con el horneado. Si queremos agregar un ingrediente o modificar un proceso simplemente lo ubicamos en el lugar obvio. El queso va después de salsear y antes de hornear. <code>cubrir_borde</code> es un argumento que pasamos a la función salsear, que identificamos inmediatamente en el código. La receta es legible de una forma intuitiva, comienza por las materias primas y termina en el horneado. Es fácil identificar cada paso y modificarlo de acuerdo a las necesidades del momento.</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>No es extraño que la programación funcional sea utilizada en aplicaciones que requieren procesamiento paralelo aprovechando los múltiples núcleos de procesamiento de las computadoras. Lamentablemente R, en su versión actual, tiene pocas capacidades para aprovechar el paralelismo implícito en el paradigma funcional. Ojalá esto cambie. Si escribimos código funcional podremos aprovechar ese paralelismo.<a href="investigacion-reproducible-.html#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>Evidentemente no consideramos al output de la función como un efecto colateral.<a href="investigacion-reproducible-.html#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>Reciclamos nombres cuando en una misma sintaxis utilizamos el mismo nombre para objetos no idénticos. Por ejemplo, el objeto <code>datos</code> al comienzo tiene determinada información y estructura, en un punto del programa por una necesidad puntual lo modificamos -digamos, recodificamos algunas de las variables- y mantenemos el nombre <code>datos</code>. Aquí hay dos problemas posibles: 1) Que necesitemos nuevamente los datos originales y debamos modificar una vez más <code>datos</code> para regresarlo a su forma original o, peor aún, que la recodificación falle por algún error pero R no detenga la ejecución, ya que la línea de código que invoca a <code>datos</code> recibirá un objeto con ese nombre, aunque con la información incorrecta. A esto nos referimos con <em>errores silenciosos</em>.<a href="investigacion-reproducible-.html#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p>Esto es un muy frecuente: si repetimos los nombres de los objetos estos quedarán en nuestro entorno, cargados de datos. Luego, digamos, ajustamos un modelo sobre los datos con ese nombre a los que recodificamos para el caso. Si esta recodificación fallara por un error de sintaxis el modelo se ejecutará igual -pues sigue encontrando un objeto con ese nombre. Esto produce un error silencioso, que no advertiremos hasta el resultado final, si es que lo advertimos.<a href="investigacion-reproducible-.html#fnref6" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="primeros.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="manejo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["libRo.pdf", "libRo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
